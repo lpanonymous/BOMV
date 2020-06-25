@@ -5,16 +5,9 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM categoria_varonil_peso_welter WHERE id_boxeador = ?";
+$sql = "SELECT * FROM categoria_varonil_peso_welter WHERE id_boxeador = '{$_GET["id"]}'";
     
     if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "i", $param_id);
-        
-        // Set parameters
-        $param_id = trim($_GET["id"]);
-        
-        // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
     

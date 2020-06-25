@@ -3,60 +3,95 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $address = $salary = "";
-$name_err = $address_err = $salary_err = "";
+$id_boxeador = $id_gimnasio = $nombre_boxeador = $peleas_ganadas = $peleas_perdidas = $empates = $foto_boxeador ="";
+$id_boxeador_err = $id_gimnasio_err = $nombre_boxeador_err = $peleas_ganadas_err = $peleas_perdidas_err = $empates_err = $foto_boxeador_err ="";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Validate name
-    $input_name = trim($_POST["name"]);
-    if(empty($input_name)){
-        $name_err = "Please enter a name.";
-    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $name_err = "Please enter a valid name.";
+    // Validate id_boxeador
+    $input_id_boxeador = trim($_POST["id_boxeador"]);
+    if(empty($input_id_boxeador)){
+        $id_boxeador_err = "Please enter a name.";
+    } elseif(!filter_var($input_id_boxeador, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $id_boxeador_err = "Please enter a valid name.";
     } else{
-        $name = $input_name;
+        $id_boxeador = $input_id_boxeador;
+    }
+
+    // Validate id_gimnasio
+    $input_id_gimnasio = trim($_POST["id_gimnasio"]);
+    if(empty($input_id_gimnasio)){
+        $id_gimnasio_err = "Ingresa el id de gimnasio.";
+    } elseif(!filter_var($input_id_gimnasio, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $id_gimnasio_err = "Please enter a valid name.";
+    } else{
+        $id_gimnasio = $input_id_gimnasio;
+    }
+
+    // Validate nombre_boxeador
+    $input_nombre_boxeador = trim($_POST["nombre_boxeador"]);
+    if(empty($input_nombre_boxeador)){
+        $nombre_boxeador_err = "Ingresa el nombre del boxeador.";
+    } elseif(!filter_var($input_nombre_boxeador, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $nombre_boxeador_err = "Por favor, introduzca un nombre valido";
+    } else{
+        $nombre_boxeador = $input_nombre_boxeador;
     }
     
-    // Validate address
-    $input_address = trim($_POST["address"]);
-    if(empty($input_address)){
-        $address_err = "Please enter an address.";     
+    // Validate peleas_ganadas
+    $input_peleas_ganadas = trim($_POST["peleas_ganadas"]);
+    if(empty($input_peleas_ganadas)){
+        $peleas_ganadas_err = "Ingresa el numero de peleas ganadas.";     
+    } elseif(!ctype_digit($input_peleas_ganadas)){
+        $peleas_ganadas_err = "Por favor, introduzca un valor entero positivo.";
     } else{
-        $address = $input_address;
+        $peleas_ganadas = $input_peleas_ganadas;
     }
-    
-    // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if(empty($input_salary)){
-        $salary_err = "Please enter the salary amount.";     
-    } elseif(!ctype_digit($input_salary)){
-        $salary_err = "Please enter a positive integer value.";
+
+    // Validate peleas_perdidas
+    $input_peleas_perdidas = trim($_POST["peleas_perdidas"]);
+    if(empty($input_peleas_perdidas)){
+        $peleas_perdidas_err = "Ingresa el numero de peleas perdidas.";     
+    } elseif(!ctype_digit($input_peleas_perdidas)){
+        $peleas_perdidas_err = "Por favor, introduzca un valor entero positivo.";
     } else{
-        $salary = $input_salary;
+        $peleas_perdidas = $input_peleas_perdidas;
+    }
+
+
+    // Validate empates
+    $input_empates = trim($_POST["empates"]);
+    if(empty($input_empates)){
+        $empates_err = "Ingresa el numero de peleas empatadas.";     
+    } elseif(!ctype_digit($input_empates)){
+        $empates_err = "Por favor, introduzca un valor entero valido.";
+    } else{
+        $empates = $input_empates;
+    }
+
+    // Validate foto_boxeador
+    $input_foto_boxeador = trim($_POST["foto_boxeador"]);
+    if(empty($input_foto_boxeador)){
+        $foto_boxeador_err = "Ingresa la imagen del boxeador";
+    } elseif(!filter_var($input_foto_boxeador, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $foto_boxeador_err = "Por favor, la imagen debe de coincidir con un formato valido de imagen.";
+    } else{
+        $foto_boxeador = $input_foto_boxeador;
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($address_err) && empty($salary_err)){
+    if(empty($id_boxeador) && empty($id_gimasio) && empty($nombre_boxeador) && empty($peleas_ganadas) && empty($peleas_perdidas) && empty($empates) && empty($foto_boxeador)){
         // Prepare an insert statement
-        $sql = "INSERT INTO employees (name, address, salary) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO categoria_varonil_peso_welter (id_boxeador, id_gimasio, nombre_boxeador, peleas_ganadas, peleas_perdidas,empates,foto_boxeador) VALUES ('{$_POST["id_boxeador"]}', '{$_POST["id_gimnasio"]}', '{$_POST["nombre_boxeador"]}', '{$_POST["peleas_ganadas"]}', '{$_POST["peleas_perdidas"]}', '{$_POST["empates"]}', '{$_POST["foto_boxeador"]}')";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_address, $param_salary);
-            
-            // Set parameters
-            $param_name = $name;
-            $param_address = $address;
-            $param_salary = $salary;
-            
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: ../index.php");
+                echo "Registro exitoso.";
                 exit();
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Algo salió mal.";
             }
         }
          
@@ -73,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Record</title>
+    <title>Crear resultado</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -88,27 +123,50 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Create Record</h2>
+                        <h2>Crear resultado</h2>
                     </div>
                     <p>Please fill this form and submit to add employee record to the database.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
-                            <span class="help-block"><?php echo $name_err;?></span>
+                        <div class="form-group <?php echo (!empty($id_boxeador_err)) ? 'has-error' : ''; ?>">
+                            <label>Id boxeador</label>
+                            <input type="text" name="id_boxeador" class="form-control" value="<?php echo $id_boxeador; ?>">
+                            <span class="help-block"><?php echo $id_boxeador_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($address_err)) ? 'has-error' : ''; ?>">
-                            <label>Address</label>
-                            <textarea name="address" class="form-control"><?php echo $address; ?></textarea>
-                            <span class="help-block"><?php echo $address_err;?></span>
+                        <div class="form-group <?php echo (!empty($id_gimnasio_err)) ? 'has-error' : ''; ?>">
+                            <label>Id gimasio</label>
+                            <input type="text" name="id_gimnasio" class="form-control" value="<?php echo $id_gimnasio; ?>">
+                            <span class="help-block"><?php echo $id_gimnasio_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($salary_err)) ? 'has-error' : ''; ?>">
-                            <label>Salary</label>
-                            <input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
-                            <span class="help-block"><?php echo $salary_err;?></span>
+                        <div class="form-group <?php echo (!empty($nombre_boxeador_err)) ? 'has-error' : ''; ?>">
+                            <label>Nombre boxeador</label>
+                            <input type="text" name="nombre_boxeador" class="form-control" value="<?php echo $nombre_boxeador; ?>">
+                            <span class="help-block"><?php echo $nombre_boxeador_err;?></span>
                         </div>
+                        <div class="form-group <?php echo (!empty($peleas_ganadas_err)) ? 'has-error' : ''; ?>">
+                            <label>Peleas ganadas</label>
+                            <input type="number" name="peleas_ganadas" class="form-control" value="<?php echo $peleas_ganadas; ?>">
+                            <span class="help-block"><?php echo $peleas_ganadas_err;?></span>
+                        </div>
+                        <div class="form-group <?php echo (!empty($peleas_perdidas_err)) ? 'has-error' : ''; ?>">
+                            <label>Peleas perdidas</label>
+                            <input type="number" name="peleas_perdidas" class="form-control" value="<?php echo $peleas_perdidas; ?>">
+                            <span class="help-block"><?php echo $peleas_perdidas_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($empates_err)) ? 'has-error' : ''; ?>">
+                            <label>Empates</label>
+                            <input type="number" name="empates" class="form-control" value="<?php echo $empates; ?>">
+                            <span class="help-block"><?php echo $empates_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($foto_boxeador_err)) ? 'has-error' : ''; ?>">
+                            <label>Foto boxeador</label>
+                            <input type="text" name="foto_boxeador" class="form-control" value="<?php echo $foto_boxeador; ?>">
+                            <span class="help-block"><?php echo $foto_boxeador_err;?></span>
+                        </div>
+
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
+                        <a href="../index.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>
             </div>        
