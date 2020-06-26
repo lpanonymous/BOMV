@@ -12,9 +12,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_id_boxeador = trim($_POST["id_boxeador"]);
     if(empty($input_id_boxeador)){
         $id_boxeador_err = "Please enter a name.";
-    } elseif(!filter_var($input_id_boxeador, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $id_boxeador_err = "Please enter a valid name.";
-    } else{
+    } 
+    else{
         $id_boxeador = $input_id_boxeador;
     }
 
@@ -22,9 +21,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_id_gimnasio = trim($_POST["id_gimnasio"]);
     if(empty($input_id_gimnasio)){
         $id_gimnasio_err = "Ingresa el id de gimnasio.";
-    } elseif(!filter_var($input_id_gimnasio, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $id_gimnasio_err = "Please enter a valid name.";
-    } else{
+    } 
+    else{
         $id_gimnasio = $input_id_gimnasio;
     }
 
@@ -32,42 +30,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_nombre_boxeador = trim($_POST["nombre_boxeador"]);
     if(empty($input_nombre_boxeador)){
         $nombre_boxeador_err = "Ingresa el nombre del boxeador.";
-    } elseif(!filter_var($input_nombre_boxeador, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $nombre_boxeador_err = "Por favor, introduzca un nombre valido";
-    } else{
+    }else{
         $nombre_boxeador = $input_nombre_boxeador;
     }
     
     // Validate peleas_ganadas
     $input_peleas_ganadas = trim($_POST["peleas_ganadas"]);
-    if(empty($input_peleas_ganadas)){
-        $peleas_ganadas_err = "Ingresa el numero de peleas ganadas.";     
-    } elseif(!ctype_digit($input_peleas_ganadas)){
-        $peleas_ganadas_err = "Por favor, introduzca un valor entero positivo.";
-    } else{
-        $peleas_ganadas = $input_peleas_ganadas;
-    }
+    $peleas_ganadas = $input_peleas_ganadas;
 
     // Validate peleas_perdidas
     $input_peleas_perdidas = trim($_POST["peleas_perdidas"]);
-    if(empty($input_peleas_perdidas)){
-        $peleas_perdidas_err = "Ingresa el numero de peleas perdidas.";     
-    } elseif(!ctype_digit($input_peleas_perdidas)){
-        $peleas_perdidas_err = "Por favor, introduzca un valor entero positivo.";
-    } else{
-        $peleas_perdidas = $input_peleas_perdidas;
-    }
+    $peleas_perdidas = $input_peleas_perdidas;
+    
 
 
     // Validate empates
     $input_empates = trim($_POST["empates"]);
-    if(empty($input_empates)){
-        $empates_err = "Ingresa el numero de peleas empatadas.";     
-    } elseif(!ctype_digit($input_empates)){
-        $empates_err = "Por favor, introduzca un valor entero valido.";
-    } else{
-        $empates = $input_empates;
-    }
+    $empates = $input_empates;
+    
 
     // Validate foto_boxeador
     $input_foto_boxeador = trim($_POST["foto_boxeador"]);
@@ -80,9 +60,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Check input errors before inserting in database
-    if(empty($id_boxeador) && empty($id_gimasio) && empty($nombre_boxeador) && empty($peleas_ganadas) && empty($peleas_perdidas) && empty($empates) && empty($foto_boxeador)){
+    if(empty($id_boxeador_err) && empty($id_gimnasio_err) && empty($nombre_boxeador_err) && empty($peleas_ganadas_err) && empty($peleas_perdidas_err) && empty($empates_err) && empty($foto_boxeador_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO categoria_varonil_peso_welter (id_boxeador, id_gimasio, nombre_boxeador, peleas_ganadas, peleas_perdidas,empates,foto_boxeador) VALUES ('{$_POST["id_boxeador"]}', '{$_POST["id_gimnasio"]}', '{$_POST["nombre_boxeador"]}', '{$_POST["peleas_ganadas"]}', '{$_POST["peleas_perdidas"]}', '{$_POST["empates"]}', '{$_POST["foto_boxeador"]}')";
+        $sql = "INSERT INTO categoria_varonil_peso_welter (id_boxeador, id_gimnasio, nombre_boxeador, peleas_ganadas, peleas_perdidas,empates,foto_boxeador) VALUES ('{$_POST["id_boxeador"]}', '{$_POST["id_gimnasio"]}', '{$_POST["nombre_boxeador"]}', '{$_POST["peleas_ganadas"]}', '{$_POST["peleas_perdidas"]}', '{$_POST["empates"]}', '{$_POST["foto_boxeador"]}')";
          
         if($stmt = mysqli_prepare($link, $sql)){
             if(mysqli_stmt_execute($stmt)){
@@ -144,18 +124,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_ganadas_err)) ? 'has-error' : ''; ?>">
                             <label>Peleas ganadas</label>
-                            <input type="number" name="peleas_ganadas" class="form-control" value="<?php echo $peleas_ganadas; ?>">
+                            <input type="number" name="peleas_ganadas" class="form-control" value="<?php echo $peleas_ganadas; ?>" min="0">
                             <span class="help-block"><?php echo $peleas_ganadas_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_perdidas_err)) ? 'has-error' : ''; ?>">
                             <label>Peleas perdidas</label>
-                            <input type="number" name="peleas_perdidas" class="form-control" value="<?php echo $peleas_perdidas; ?>">
+                            <input type="number" name="peleas_perdidas" class="form-control" value="<?php echo $peleas_perdidas; ?>" min="0">
                             <span class="help-block"><?php echo $peleas_perdidas_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($empates_err)) ? 'has-error' : ''; ?>">
                             <label>Empates</label>
-                            <input type="number" name="empates" class="form-control" value="<?php echo $empates; ?>">
+                            <input type="number" name="empates" class="form-control" value="<?php echo $empates; ?>" min="0">
                             <span class="help-block"><?php echo $empates_err;?></span>
                         </div>
 
