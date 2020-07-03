@@ -95,15 +95,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check input errors before inserting in database
     if(empty($categoria_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err)){
         // Prepare an update statement
-        $sql = "UPDATE peleas_municipios_categoria_varonil SET categoria='{$_POST["categoria"]}', id_juez1='{$_POST["id_juez1"]}', id_juez2='{$_POST["id_juez2"]}', id_juez3='{$_POST["id_juez3"]}', id_juez4='{$_POST["id_juez4"]}', id_boxeador1='{$_POST["id_boxeador1"]}', id_boxeador2='{$_POST["id_boxeador2"]}' , fecha='{$_POST["fecha"]}', hora='{$_POST["hora"]}' WHERE id='{$_POST["id"]}'";
+        $sql = "UPDATE peleas_estatales_categoria_varonil SET categoria='{$_POST["categoria"]}', id_juez1='{$_POST["id_juez1"]}', id_juez2='{$_POST["id_juez2"]}', id_juez3='{$_POST["id_juez3"]}', id_juez4='{$_POST["id_juez4"]}', id_boxeador1='{$_POST["id_boxeador1"]}', id_boxeador2='{$_POST["id_boxeador2"]}' , fecha='{$_POST["fecha"]}', hora='{$_POST["hora"]}' WHERE id='{$_POST["id"]}'";
          
         if($stmt = mysqli_prepare($link, $sql)){
             if(mysqli_stmt_execute($stmt)){
                 // Records updated successfully. Redirect to landing page
-                header("location: ../views/peleas_municipales_cv.php");
+                header("location: ../views/peleas_estatales_cv.php");
                 exit();
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Hay un error. Intente mas tarde.";
             }
         }
          
@@ -120,7 +120,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM peleas_municipios_categoria_varonil WHERE id = '{$_GET["id"]}'";
+        $sql = "SELECT * FROM peleas_estatales_categoria_varonil WHERE id = '{$_GET["id"]}'";
         if($stmt = mysqli_prepare($link, $sql)){
             if(mysqli_stmt_execute($stmt)){
                 $result = mysqli_stmt_get_result($stmt);
@@ -186,7 +186,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     </div>
                     <p>Please edit the input values and submit to update the record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
-                    <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
                             <label>Categoria</label>
                             <input type="text" name="categoria" class="form-control" value="<?php echo $categoria; ?>">
                             <span class="help-block"><?php echo $categoria_err;?></span>
@@ -237,7 +237,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="../views/peleas_municipales_cv.php" class="btn btn-default">Cancelar</a>   
+                        <a href="../views/peleas_estatales_cv.php" class="btn btn-default">Cancelar</a>   
                     </form>
                 </div>
             </div>        
