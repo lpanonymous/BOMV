@@ -5,7 +5,7 @@
 	$servicio->configureWSDL("ServicioWeb-BOX", $ns);
 	$servicio->schemaTargetBamespace = $ns;
 
-	$servicio->register("agregarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarGimnasio", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('buscarGimnasio',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
@@ -28,10 +28,10 @@
 
 	}
 
-	function agregarGimnasio($id, $nombre, $ubicacion, $telefono, $facebook, $email, $descripcion){
+	function agregarGimnasio($id, $nombre, $ubicacion, $telefono, $facebook, $email, $descripcion, $foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO gimnasio(id, nombre, ubicacion, telefono, facebook, email, descripcion) VALUES ('".$id."','".$nombre."','".$ubicacion."','".$telefono."','".$facebook."','".$email."','".$descripcion."')");
+		$agregar = $conexion->query("INSERT INTO gimnasio(id, nombre, ubicacion, telefono, facebook, email, descripcion, foto) VALUES ('$id','$nombre','$ubicacion','$telefono','$facebook','$email','$descripcion', '$foto')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -81,6 +81,8 @@
 				."</td><td>".$fila['foto'].
 				"</td><td>
 				<a href='../controllers/soap_clients/cliente_gimnasio_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>
+				<a href='../controllers/soap_clients/cliente_gimnasio_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>
+				<a href='../controllers/soap_clients/cliente_gimnasio_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>
 				<td></tr>";
 		}
 		$listado = $listado."</tbody></table>";

@@ -75,10 +75,10 @@
 		}
 		
 		// Check input errors before inserting in database
-		if(empty($id_err) && empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err)){
+		if(empty($id_err) && empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err) && empty($foto_err)){
 			$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 
-			$datos = array('id' => $id_err, 'nombre' => $nombre_err, 'ubicacion' => $ubicacion_err, 'telefono' => $telefono_err, 'facebook' => $facebook_err, 'email' => $email_err, 'descripcion' => $descripcion_err);
+			$datos = array('id' => $_POST["id"], 'nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"], 'foto' => $_POST["foto"]);
 
 			$resultado = $cliente->call('agregarGimnasio', $datos);
 			
