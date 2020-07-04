@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2020 at 03:16 AM
+-- Generation Time: Jul 04, 2020 at 05:14 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -54,7 +54,7 @@ CREATE TABLE `boxeadores` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria varonil peso welter`
+-- Table structure for table `categoria_varonil_peso_welter`
 --
 
 CREATE TABLE `categoria_varonil_peso_welter` (
@@ -68,7 +68,7 @@ CREATE TABLE `categoria_varonil_peso_welter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `categoria varonil peso welter`
+-- Dumping data for table `categoria_varonil_peso_welter`
 --
 
 INSERT INTO `categoria_varonil_peso_welter` (`id_boxeador`, `id_gimnasio`, `nombre_boxeador`, `peleas_ganadas`, `peleas_perdidas`, `empates`, `foto_boxeador`) VALUES
@@ -125,7 +125,7 @@ CREATE TABLE `gimnasio` (
 --
 
 INSERT INTO `gimnasio` (`id`, `nombre`, `ubicacion`, `telefono`, `facebook`, `email`, `descripcion`, `foto`) VALUES
-('G1', 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', NULL),
+('G1', 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 0x484f4c41),
 ('G2', 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', NULL, 'Equipo deportivo', NULL),
 ('G3', 'Leones', 'https://www.google.com.mx/maps/place/Velodromo+Internacional+Xalapa/@19.5102922,-96.928647,17z/data=!4m5!3m4!1s0x85db2df2fdb0a561:0xa74bdbebe5232fe4!8m2!3d19.5102922!4d-96.928647?hl=en&authuser=0', '', 'Leones Xalapa', 'leonesxalapa@outlook.es', 'Equipo deportivo de aficionados', NULL),
 ('G4', 'Sparring Boxing Club', 'https://www.google.com.mx/maps/place/Sparring+Boxing+Club/@19.528234,-96.8950183,17z/data=!3m1!4b1!4m5!3m4!1s0x85db322139a0ca7f:0x171560e90ccae6c0!8m2!3d19.528234!4d-96.8950183?hl=en&authuser=0', '228 180 2668', 'Sparring Boxing Club', 'sparringboxingclub@gmail.com', 'Gimnasio para la práctica del boxeo, en el cual mejorarás tu condición física, desarrollarás habilidades y reducirás de peso.', NULL),
@@ -174,32 +174,89 @@ INSERT INTO `noticias` (`id`, `titulo`, `fecha`, `cuerpo`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peleas`
+-- Table structure for table `peleas_estatales_categoria_varonil`
 --
 
-CREATE TABLE `peleas` (
+CREATE TABLE `peleas_estatales_categoria_varonil` (
   `id` int(11) NOT NULL,
-  `id_programacion_pelea` int(11) NOT NULL,
+  `categoria` varchar(50) NOT NULL,
   `id_juez1` varchar(50) NOT NULL,
   `id_juez2` varchar(50) NOT NULL,
   `id_juez3` varchar(50) NOT NULL,
   `id_juez4` varchar(50) NOT NULL,
   `id_boxeador1` varchar(50) NOT NULL,
-  `id_boxeador2` varchar(50) NOT NULL
+  `id_boxeador2` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `peleas_estatales_categoria_varonil`
+--
+
+INSERT INTO `peleas_estatales_categoria_varonil` (`id`, `categoria`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`) VALUES
+(1, 'welter', 'J1', 'J2', 'J3', 'J5', 'B1', 'B2', '2020-07-10', '23:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peleas_municipios_categoria_varonil`
+--
+
+CREATE TABLE `peleas_municipios_categoria_varonil` (
+  `id` int(11) NOT NULL,
+  `categoria` varchar(50) NOT NULL,
+  `id_juez1` varchar(50) NOT NULL,
+  `id_juez2` varchar(50) NOT NULL,
+  `id_juez3` varchar(50) NOT NULL,
+  `id_juez4` varchar(50) NOT NULL,
+  `id_boxeador1` varchar(50) NOT NULL,
+  `id_boxeador2` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `peleas_municipios_categoria_varonil`
+--
+
+INSERT INTO `peleas_municipios_categoria_varonil` (`id`, `categoria`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`) VALUES
+(1, 'welter', 'J1', 'J2', 'J3', 'J4', 'B1', 'B2', '2020-07-01', '23:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resultados_estatales_categoria_varonil`
+--
+
+CREATE TABLE `resultados_estatales_categoria_varonil` (
+  `id` int(11) NOT NULL,
+  `idb1` varchar(50) NOT NULL,
+  `idb2` varchar(50) NOT NULL,
+  `peso` varchar(50) NOT NULL,
+  `idganador` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `programacion_pelea`
+-- Table structure for table `resultados_municipios_categoria_varonil`
 --
 
-CREATE TABLE `programacion_pelea` (
+CREATE TABLE `resultados_municipios_categoria_varonil` (
   `id` int(11) NOT NULL,
-  `fecha` date NOT NULL,
-  `hora` time NOT NULL,
-  `referi` varchar(50) NOT NULL
+  `aliasb1` varchar(50) NOT NULL,
+  `aliasb2` varchar(50) NOT NULL,
+  `peso` varchar(50) NOT NULL,
+  `aliasganador` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `resultados_municipios_categoria_varonil`
+--
+
+INSERT INTO `resultados_municipios_categoria_varonil` (`id`, `aliasb1`, `aliasb2`, `peso`, `aliasganador`) VALUES
+(1, 'B1', 'B2', 'welter', 'B1');
 
 -- --------------------------------------------------------
 
@@ -209,9 +266,9 @@ CREATE TABLE `programacion_pelea` (
 
 CREATE TABLE `tabla_de_pelea` (
   `id` int(11) NOT NULL,
-  `id_juez` int(11) NOT NULL,
+  `id_juez` varchar(50) NOT NULL,
   `id_pelea` int(11) NOT NULL,
-  `id_boxeador` int(11) NOT NULL,
+  `id_boxeador` varchar(50) NOT NULL,
   `round1` int(11) DEFAULT NULL,
   `round2` int(11) DEFAULT NULL,
   `round3` int(11) DEFAULT NULL,
@@ -227,8 +284,23 @@ CREATE TABLE `tabla_de_pelea` (
   `total_puntos` int(11) DEFAULT NULL,
   `num_jabs` int(11) DEFAULT NULL,
   `num_power` int(11) DEFAULT NULL,
-  `total_golpes` int(11) DEFAULT NULL
+  `total_golpes` int(11) DEFAULT NULL,
+  `ganador?` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tabla_de_pelea`
+--
+
+INSERT INTO `tabla_de_pelea` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round1`, `round2`, `round3`, `round4`, `round5`, `round6`, `round7`, `round8`, `round9`, `round10`, `round11`, `round12`, `total_puntos`, `num_jabs`, `num_power`, `total_golpes`, `ganador?`) VALUES
+(1, 'J1', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(2, 'J1', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(3, 'J2', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(4, 'J2', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(5, 'J3', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(6, 'J3', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(7, 'J4', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(8, 'J4', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0);
 
 --
 -- Indexes for dumped tables
@@ -241,7 +313,7 @@ ALTER TABLE `boxeadores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categoria varonil peso welter`
+-- Indexes for table `categoria_varonil_peso_welter`
 --
 ALTER TABLE `categoria_varonil_peso_welter`
   ADD PRIMARY KEY (`id_boxeador`);
@@ -262,18 +334,6 @@ ALTER TABLE `jueces`
 -- Indexes for table `noticias`
 --
 ALTER TABLE `noticias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `peleas`
---
-ALTER TABLE `peleas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `programacion_pelea`
---
-ALTER TABLE `programacion_pelea`
   ADD PRIMARY KEY (`id`);
 
 --
