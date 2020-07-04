@@ -4,7 +4,7 @@
 	$ns = "urn:miserviciowsdl";
 	$servicio->configureWSDL("ServicioWeb-BOX", $ns);
 	$servicio->schemaTargetBamespace = $ns;
-
+	
 	$servicio->register("agregarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarGimnasio", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
@@ -16,15 +16,18 @@
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
 		$sql = "SELECT * FROM gimnasio where id='$id'";
 		$resultado = mysqli_query($conexion, $sql);
-
-		while ($fila = mysqli_fetch_array($resultado))
-		{
-			$datos = array("id" => $fila['id'], "nombre" => $fila['nombre'], "ubicacion" => $fila['ubicacion'], "telefono" => $fila['telefono'], "facebook" => $fila['facebook'], "email" => $fila['email'], "descripcion" => $fila['descripcion'], "foto" => $fila['foto']);	
+		
+		$listado = "<table><tr><td>ID</td><td>Nombre</td><td>Ubicación</td><td>Teléfono</td><td>Facebook</td><td>Email</td><td>Descripción</td><td>Foto</td></tr>";
+		while ($fila = mysqli_fetch_array($resultado)){
+			$listado = $listado."<tr><td>".$fila['id']."</td><td>".$fila['nombre']
+				."</td><td>".$fila['ubicacion']."</td><td>".$fila['telefono']
+				."</td><td>".$fila['facebook']."</td><td>".$fila['email']."</td><td>".$fila['descripcion']
+				."</td><td>".$fila['foto']."</td></tr>";
 		}
+		$listado = $listado."</table>";
 		mysqli_close($conexion);
-		$datos2 = implode("<", $datos);
 
-		return $datos2;
+		return new soapval('return', 'xsd:string', $listado);
 
 	}
 
@@ -41,9 +44,9 @@
 		mysqli_close($conexion);
 	}
 
-	function editarGimnasio($id, $nombre, $ubicacion, $telefono, $facebook, $email, $descripcion, $foto){
+	function editarGimnasio($id, $nombre, $ubicacion, $telefono, $facebook, $email, $descripcion){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$editar = $conexion->query("UPDATE gimnasio SET nombre='$nombre',ubicacion='$ubicacion',telefono='$telefono',facebook='$facebook',email='$email',descripcion='$descripcion', foto='$foto'  WHERE id='$id'");
+		$editar = $conexion->query("UPDATE gimnasio SET nombre='$nombre',ubicacion='$ubicacion',telefono='$telefono',facebook='$facebook',email='$email',descripcion='$descripcion' WHERE id='$id'");
 		$resultado=mysqli_query($conexion, $editar);
 
 		if(!$conexion) {
@@ -73,17 +76,14 @@
 		$sql = "SELECT * FROM gimnasio";
 		$resultado = mysqli_query($conexion, $sql);
 
-		$listado = "<table class='table table-bordered table-striped'><thead><tr><th>ID</th><th>Nombre</th><th>Ubicacion</th><th>Telefono</th><th>Facebook</th><th>Email</th><th>Descripción</th><th>Foto</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<table><tr><td>ID</td><td>Nombre</td><td>Ubicacion</td><td>Telefono</td><td>Facebook</td><td>Email</td><td>Descripción</td><td>Foto</td></tr>";
 		while ($fila = mysqli_fetch_array($resultado)){
 			$listado = $listado."<tr><td>".$fila['id']."</td><td>".$fila['nombre']
 				."</td><td>".$fila['ubicacion']."</td><td>".$fila['telefono']
 				."</td><td>".$fila['facebook']."</td><td>".$fila['email']."</td><td>".$fila['descripcion']
-				."</td><td>".$fila['foto'].
-				"</td><td>
-				<a href='../controllers/soap_clients/cliente_gimnasio_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>
-				<td></tr>";
+				."</td><td>".$fila['foto']."</td></tr>";
 		}
-		$listado = $listado."</tbody></table>";
+		$listado = $listado."</table>";
 		mysqli_close($conexion);
 
 		return new soapval('return', 'xsd:string', $listado);

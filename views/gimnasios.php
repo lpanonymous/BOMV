@@ -31,61 +31,26 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Gimnasios</h2>
-                        <a href="../controllers/creategimnasios.php" class="btn btn-success pull-right">Agregar nuevo gimnasio</a>
+                        <a href="../controllers/soap_clients/cliente_gimnasio_agregar.php" class="btn btn-success pull-right">Agregar nuevo gimnasio</a>
                     </div>
                     <?php
-                    // Include config file
-                    require_once "../controllers/config.php";
+                        require_once('../ws_soap/lib/nusoap.php');
+                        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+                        $datos = array();
                     
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM gimnasio";
-                    if($result = mysqli_query($link, $sql)){
-                        if(mysqli_num_rows($result) > 0){
-                            echo "<table class='table table-bordered table-striped'>";
-                                echo "<thead>";
-                                    echo "<tr>";
-                                        echo "<th>Id</th>";
-                                        echo "<th>Nombre</th>";
-                                        echo "<th>Ubicacion</th>";
-                                        echo "<th>Telefono</th>";
-                                        echo "<th>Facebook</th>";
-                                        echo "<th>Email</th>";
-                                        echo "<th>Descripción</th>";
-                                        echo "<th>Foto</th>";
-                                        echo "<th>Funciones</th>";
-                                    echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
-                                while($row = mysqli_fetch_array($result)){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
-                                        echo "<td>" . $row['nombre'] . "</td>";
-                                        echo "<td>" . $row['ubicacion'] . "</td>";
-                                        echo "<td>" . $row['telefono'] . "</td>";
-                                        echo "<td>" . $row['facebook'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['descripcion'] . "</td>";
-                                        echo "<td>" . $row['foto'] . "</td>";
-                                        echo "<td>";
-                                            echo "<a href='../controllers/readgimnasios.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-                                            echo "<a href='../controllers/updategimnasios.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='../controllers/deletegimnasios.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
-                                        echo "</td>";
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
-                            echo "</table>";
-                            // Free result set
-                            mysqli_free_result($result);
-                        } else{
-                            echo "<p class='lead'><em>No hay registros.</em></p>";
+                        $resultado = $cliente->call('mostrarGimnasios', $datos);
+                        
+                        $err = $cliente->getError();
+                        if($err){
+                            echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
+                            echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
+                            echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
+                            echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
                         }
-                    } else{
-                        echo "ERROR: uteCould not able to exec $sql. " . mysqli_error($link);
-                    }
- 
-                    // Close connection
-                    mysqli_close($link);
+                        else
+                        {
+                            echo $resultado;
+                        }
                     ?>
                 </div>
             </div>        
