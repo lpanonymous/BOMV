@@ -50,9 +50,9 @@ else{
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger fade in">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
-                            <p>Are you sure you want to delete this record?</p><br>
+                            <p>¿Estas seguro de querer eliminar este gimnasio?</p><br>
                             <p>
-                                <input type="submit" value="Yes" class="btn btn-danger">
+                                <input type="submit" value="Si" class="btn btn-danger">
                                 <a href="../../views/gimnasios.php" class="btn btn-default">No</a>
                             </p>
                         </div>

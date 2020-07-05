@@ -73,17 +73,16 @@
 		$sql = "SELECT * FROM gimnasio";
 		$resultado = mysqli_query($conexion, $sql);
 
-		$listado = "<table class='table table-bordered table-striped'><thead><tr><th>ID</th><th>Nombre</th><th>Ubicacion</th><th>Telefono</th><th>Facebook</th><th>Email</th><th>Descripción</th><th>Foto</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped' ><thead><tr><th>ID</th><th>Nombre</th><th>Ubicacion</th><th>Telefono</th><th>Facebook</th><th>Email</th><th>Descripción</th><th>Foto</th><th>Funciones</th></tr></thead><tbody>";
 		while ($fila = mysqli_fetch_array($resultado)){
-			$listado = $listado."<tr><td>".$fila['id']."</td><td>".$fila['nombre']
-				."</td><td>".$fila['ubicacion']."</td><td>".$fila['telefono']
+				$listado = $listado."<tr><td>".$fila['id']."</td><td>".$fila['nombre']
+				."</td><td><a href=".$fila['ubicacion'].">Ver mapa</a></td><td>".$fila['telefono']
 				."</td><td>".$fila['facebook']."</td><td>".$fila['email']."</td><td>".$fila['descripcion']
-				."</td><td>".$fila['foto'].
-				"</td><td>
+				."</td><td><img src='".$fila['foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>
 				<a href='../controllers/soap_clients/cliente_gimnasio_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>
 				<a href='../controllers/soap_clients/cliente_gimnasio_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>
 				<a href='../controllers/soap_clients/cliente_gimnasio_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>
-				<td></tr>";
+				</td></tr>";
 		}
 		$listado = $listado."</tbody></table>";
 		mysqli_close($conexion);

@@ -87,7 +87,7 @@ else
                         <label>Foto</label>
                         <p class="form-control-static"><?php echo $foto; ?></p>
                     </div>
-                    <p><a href="../views/gimnasios.php" class="btn btn-primary">Regresar</a></p>
+                    <p><a href="../../views/gimnasios.php" class="btn btn-primary">Regresar</a></p>
                 </div>
             </div>        
         </div>

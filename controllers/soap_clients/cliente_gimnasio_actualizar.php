@@ -63,8 +63,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     $input_foto = trim($_POST["foto"]);
     if(empty($input_foto)){
         $foto_err = "Ingresa la imagen del gimnasio";
-    } elseif(!filter_var($input_foto, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $foto_err = "Por favor, la imagen debe de coincidir con un formato valido de imagen.";
     } else{
         $foto = $input_foto;
     }
@@ -156,7 +154,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <div class="form-group <?php echo (!empty($ubicacion_err)) ? 'has-error' : ''; ?>">
                             <label>Ubicación</label>
-                            <input type="text" name="ubicacion" class="form-control" value="<?php echo $ubicacion; ?>">
+                            <input type="text" name="ubicacion" class="form-control" value="<?php echo $ubicacion; ?>" placeholder="Dirección de google maps">
                             <span class="help-block"><?php echo $ubicacion_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($telefono_err)) ? 'has-error' : ''; ?>">
@@ -184,7 +182,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
                         <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>">
+                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>" placeholder="Dirección de internet de la imágen">
                             <span class="help-block"><?php echo $foto_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
