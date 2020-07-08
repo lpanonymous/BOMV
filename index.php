@@ -33,7 +33,7 @@
                         <h2 class="pull-left">Resultados de categoria varonil peso welter</h2>
                         <a href="controllers/create.php" class="btn btn-success pull-right">Agregar nuevo resultado</a>
                     </div>
-                    <?php
+                    <?php //hola soy leo
                     // Include config file
                     require_once "controllers/config.php";
                     
