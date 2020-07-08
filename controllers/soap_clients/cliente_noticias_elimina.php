@@ -5,7 +5,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 	$datos = array('id' => $_POST["id"]);
 
-	$resultado = $cliente->call('eliminarGimnasio', $datos);
+	$resultado = $cliente->call('eliminarNoticia', $datos);
 	
 	$err = $cliente->getError();
 	if($err){
@@ -14,7 +14,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-		header("location: ../../views/gimnasios.php");
+		header("location: ../../views/noticias.php");
 	}
 } 
 else{
@@ -31,7 +31,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Eliminar gimasio</title>
+    <title>Eliminar Noticia</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -50,15 +50,15 @@ else{
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Eliminar gimnasio</h1>
+                        <h1>Eliminar Noticia</h1>
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
-                            <p>¿Estas seguro de querer eliminar este gimnasio?</p><br>
+                            <p>Estas seguro que quieres eliminar esta noticia?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="../../views/gimnasios.php" class="btn btn-default">No</a>
+                                <a href="../../views/noticias.php" class="btn btn-default">No</a>
                             </p>
                         </div>
                     </form>

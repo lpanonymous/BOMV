@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gimnasios</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-image: url('../resources/ali.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .opacity
+        {
+            opacity:0.8; /* Opacidad 60% */
+        }
+    </style>
     <script type="text/javascript">
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
@@ -14,12 +28,50 @@
     </script>
 </head>
 <body>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" style="background-image: linear-gradient(to right, white, cyan);">
+  <a class="navbar-brand" href="#">BOMV</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="noticias.php">Noticias<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Gimnasios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Jueces</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tablas de peleas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Peleas municipales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Resultados de peleas municipales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Peleas estatales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Resultados de peleas estatales</a>
+      </li>
+    </ul>
+  </div>
+</nav>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Gimnasios</h2>
+                        <h2 class="pull-left" style="color:white;">Gimnasios</h2>
                         <a href="../controllers/soap_clients/cliente_gimnasio_agregar.php" class="btn btn-success pull-right">Agregar nuevo gimnasio</a>
                     </div>
                     <?php

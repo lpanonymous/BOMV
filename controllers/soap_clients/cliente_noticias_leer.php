@@ -7,7 +7,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
     $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 	$datos = array('id' => $id);
 
-	$resultado = $cliente->call('buscarGimnasio', $datos);
+	$resultado = $cliente->call('buscarNoticia', $datos);
 	
 	$err = $cliente->getError();
 	if($err){
@@ -18,28 +18,25 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 	}else{
         $array = explode("<", $resultado);
         $id = $array[0];
-		$nombre = $array[1];
-        $ubicacion = $array[2];
-        $telefono = $array[3];
-        $facebook = $array[4];
-        $email = $array[5];
-        $descripcion = $array[6];
-        $foto = $array[7];
+		$titulo = $array[1];
+        $fecha = $array[2];
+        $cuerpo = $array[3];
+        $foto = $array[4];
 	}
 } 
 else
 {
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: ../error.php");
     exit();
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>View Record</title>
+    <title>Ver noticia</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -58,41 +55,29 @@ else
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Ver Gimnasio</h1>
+                        <h1>Noticia</h1>
                     </div>
                     <div class="form-group">
-                        <label>Id Gimnasio</label>
+                        <label>Id</label>
                         <p class="form-control-static"><?php echo $id; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Nombre</label>
-                        <p class="form-control-static"><?php echo $nombre; ?></p>
+                        <label>Titulo</label>
+                        <p class="form-control-static"><?php echo $titulo; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Ubicacion</label>
-                        <p class="form-control-static"><?php echo $ubicacion; ?></p>
+                        <label>Fecha</label>
+                        <p class="form-control-static"><?php echo $fecha; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Telefono</label>
-                        <p class="form-control-static"><?php echo $telefono; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Facebook</label>
-                        <p class="form-control-static"><?php echo $facebook; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <p class="form-control-static"><?php echo $email; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Descripcion</label>
-                        <p class="form-control-static"><?php echo $descripcion; ?></p>
+                        <label>Cuerpo</label>
+                        <p class="form-control-static"><?php echo $cuerpo; ?></p>
                     </div>
                     <div class="form-group">
                         <label>Foto</label>
                         <p class="form-control-static"><?php echo $foto; ?></p>
                     </div>
-                    <p><a href="../../views/gimnasios.php" class="btn btn-primary">Regresar</a></p>
+                    <p><a href="../../views/noticias.php" class="btn btn-primary">Regresar</a></p>
                 </div>
             </div>        
         </div>
