@@ -61,7 +61,7 @@
         <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Resultados de peleas estatales</a>
+        <a class="nav-link" href="resultados_peleas_estatales.php">Resultados de peleas estatales</a>
       </li>
     </ul>
   </div>

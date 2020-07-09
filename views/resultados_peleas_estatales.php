@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Peleas Municipales</title>
+    <title>Resultados de Peleas Municipales</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -51,7 +51,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Tablas de peleas</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="peleas_municipales.php">Peleas municipales</a>
       </li>
       <li class="nav-item">
@@ -60,7 +60,7 @@
       <li class="nav-item">
         <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="resultados_peleas_estatales.php">Resultados de peleas estatales</a>
       </li>
     </ul>
@@ -71,15 +71,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left" style="color:white;">Peleas Municipales</h2>
-                        <a href="../controllers/soap_clients/cliente_peleas_municipales_agregar.php" class="btn btn-success pull-right">Agregar nueva pelea munipal</a>
+                        <h2 class="pull-left" style="color:white;">Resultados de Peleas Estatales</h2>
+                        <a href="../controllers/soap_clients/cliente_resultados_peleas_estatales_agregar.php" class="btn btn-success pull-right">Agregar nuevo resultado de pelea estatal</a>
                     </div>
                     <?php
                         require_once('../ws_soap/lib/nusoap.php');
-                        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_municipales.php");
+                        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_estatales.php");
                         $datos = array();
                     
-                        $resultado = $cliente->call('mostrarPeleaMunicipal', $datos);
+                        $resultado = $cliente->call('mostrarResultadoPeleaEstatal', $datos);
                         
                         $err = $cliente->getError();
                         if($err){
