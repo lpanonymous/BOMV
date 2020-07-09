@@ -59,7 +59,7 @@
         <a class="nav-link" href="resultados_peleas_municipales.php">Resultados de peleas municipales</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Peleas estatales</a>
+        <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Resultados de peleas estatales</a>

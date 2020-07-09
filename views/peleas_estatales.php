@@ -40,7 +40,7 @@
         <a class="nav-link" href="noticias.php">Noticias<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Gimnasios</a>
+        <a class="nav-link" href="gimnasios.php">Gimnasios</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="boxeadores.php">Boxeadores</a>
@@ -52,13 +52,13 @@
         <a class="nav-link" href="#">Tablas de peleas</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Peleas municipales</a>
+        <a class="nav-link" href="peleas_municipales.php">Peleas municipales</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Resultados de peleas municipales</a>
+        <a class="nav-link" href="resultados_peleas_municipales.php">Resultados de peleas municipales</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Peleas estatales</a>
+        <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Resultados de peleas estatales</a>
