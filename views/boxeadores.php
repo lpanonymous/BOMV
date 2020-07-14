@@ -20,6 +20,13 @@
         {
             opacity:0.8; /* Opacidad 60% */
         }
+
+        #div1 
+        {
+          overflow:scroll;
+          height:17%;
+          width:100%;
+        }
     </style>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -28,7 +35,7 @@
     </script>
 </head>
 <body>
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" style="background-image: linear-gradient(to right, white, cyan);">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" style="background-image: linear-gradient(to right, white, cyan); position: relative;">
   <a class="navbar-brand" href="#">BOMV</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -72,7 +79,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Boxeadores</h2>
-                        <a href="../controllers/soap_clients/cliente_boxeador_agregar.php" class="btn btn-success pull-right">Agregar nuevo boxeador</a>
+                        <a href="../controllers/soap_clients/cliente_boxeadores_agregar.php" class="btn btn-success pull-right">Agregar nuevo boxeador</a>
                     </div>
                     <?php
                         require_once('../ws_soap/lib/nusoap.php');

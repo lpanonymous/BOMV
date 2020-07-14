@@ -20,6 +20,12 @@
         {
             opacity:0.8; /* Opacidad 60% */
         }
+        #div1 
+        {
+          overflow:scroll;
+          height:75%;
+          width:100%;
+        }
     </style>
     <script type="text/javascript">
         $(document).ready(function(){

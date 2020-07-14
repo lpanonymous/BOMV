@@ -14,8 +14,11 @@
         .page-header h2{
             margin-top: 0;
         }
-        table tr td:last-child a{
-            margin-right: 15px;
+        #div1 
+        {
+          overflow:scroll;
+          height:70%;
+          width:100%;
         }
     </style>
     <script type="text/javascript">
