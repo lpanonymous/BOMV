@@ -36,8 +36,11 @@
 		{
 			$datos = array("id" => $fila['id'], "nombre" => $fila['nombre'], "ubicacion" => $fila['ubicacion'], "telefono" => $fila['telefono'], "facebook" => $fila['facebook'], "email" => $fila['email'], "descripcion" => $fila['descripcion'], "foto" => $fila['foto']);	
 		}
+		//$json = json_encode($datos);
+		//$json2 = json_decode($datos);
 		mysqli_close($conexion);
 		$datos2 = implode("<", $datos);
+		
 
 		return $datos2;
 
@@ -88,7 +91,7 @@
 		$sql = "SELECT * FROM gimnasio";
 		$resultado = mysqli_query($conexion, $sql);
 
-		$listado = "<div class='opacity'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Nombre</th><th>Ubicacion</th><th>Telefono</th><th>Facebook</th><th>Email</th><th>Descripción</th><th>Foto</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<div class='opacity'><table id='myTable' table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Nombre</th><th>Ubicacion</th><th>Telefono</th><th>Facebook</th><th>Email</th><th>Descripción</th><th>Foto</th><th>Funciones</th></tr></thead><tbody>";
 		while ($fila = mysqli_fetch_array($resultado)){
 				$listado = $listado."<tr><td>".$fila['id']."</td><td>".$fila['nombre']
 				."</td><td><a href=".$fila['ubicacion'].">Ver mapa</a></td><td>".$fila['telefono']
@@ -100,6 +103,7 @@
 				</td></tr>";
 		}
 		$listado = $listado."</tbody></table></div>";
+		$json = json_encode($listado);
 		mysqli_close($conexion);
 
 		return new soapval('return', 'xsd:string', $listado);

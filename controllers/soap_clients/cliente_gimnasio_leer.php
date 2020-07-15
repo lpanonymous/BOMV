@@ -6,7 +6,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
     $id =  trim($_GET["id"]);
     $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 	$datos = array('id' => $id);
-
+	//$json = json_decode($datos);
 	$resultado = $cliente->call('buscarGimnasio', $datos);
 	
 	$err = $cliente->getError();
@@ -90,7 +90,8 @@ else
                     </div>
                     <div class="form-group">
                         <label>Foto</label>
-                        <p class="form-control-static"><?php echo $foto; ?></p>
+
+                        <img src="<?php echo $foto; ?>" class="img-fluid" alt="Imagen">
                     </div>
                     <p><a href="../../views/gimnasios.php" class="btn btn-primary">Regresar</a></p>
                 </div>
