@@ -20,6 +20,12 @@
         {
             opacity:0.8; /* Opacidad 60% */
         }
+        #div1 
+        {
+          overflow:scroll;
+          height:80%;
+          width:100%;
+        }
     </style>
 
     <script type="text/javascript">
@@ -47,7 +53,7 @@
         <a class="nav-link" href="boxeadores.php">Boxeadores</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Jueces</a>
+        <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Tablas de peleas</a>
