@@ -8,6 +8,10 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 	$datos = array('id' => $id);
 
 	$resultado = $cliente->call('buscarResultadoPeleaMunicipal', $datos);
+	$array = unserialize($resultado);
+    //print_r($array);
+    $json = json_encode($array);
+    $obj = json_decode($json);
 	
 	$err = $cliente->getError();
 	if($err){
@@ -16,12 +20,11 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-        $array = explode("<", $resultado);
-        $id = $array[0];
-		$aliasb1 = $array[1];
-        $aliasb2 = $array[2];
-        $peso = $array[3];
-        $aliasganador = $array[4];
+        $id = $obj->id;
+		$aliasb1 = $obj->aliasb1;
+        $aliasb2 = $obj->aliasb2;
+        $peso = $obj->peso;
+        $aliasganador = $obj->aliasganador;
 	}
 } 
 else

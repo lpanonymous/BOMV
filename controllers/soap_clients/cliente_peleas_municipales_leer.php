@@ -8,6 +8,10 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 	$datos = array('id' => $id);
 
 	$resultado = $cliente->call('buscarPeleaMunicipal', $datos);
+	$array = unserialize($resultado);
+    //print_r($array);
+    $json = json_encode($array);
+    $obj = json_decode($json);
 	
 	$err = $cliente->getError();
 	if($err){
@@ -16,17 +20,16 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-        $array = explode("<", $resultado);
-        $id = $array[0];
-		$categoria = $array[1];
-        $id_juez1 = $array[2];
-        $id_juez2 = $array[3];
-        $id_juez3 = $array[4];
-        $id_juez4 = $array[5];
-        $id_boxeador1 = $array[6];
-        $id_boxeador2 = $array[7];
-		$fecha = $array[8];
-        $hora = $array[9];
+        $id = $obj->id;
+		$categoria = $obj->categoria;
+        $id_juez1 = $obj->id_juez1;
+        $id_juez2 = $obj->id_juez2;
+        $id_juez3 = $obj->id_juez3;
+        $id_juez4 = $obj->id_juez4;
+        $id_boxeador1 = $obj->id_boxeador1;
+        $id_boxeador2 = $obj->id_boxeador2;
+		$fecha = $obj->fecha;
+        $hora = $obj->hora;
 	}
 } 
 else

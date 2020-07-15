@@ -8,6 +8,10 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 	$datos = array('id' => $id);
 
 	$resultado = $cliente->call('buscarNoticia', $datos);
+	$array = unserialize($resultado);
+    //print_r($array);
+    $json = json_encode($array);
+    $obj = json_decode($json);
 	
 	$err = $cliente->getError();
 	if($err){
@@ -16,12 +20,11 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-        $array = explode("<", $resultado);
-        $id = $array[0];
-		$titulo = $array[1];
-        $fecha = $array[2];
-        $cuerpo = $array[3];
-        $foto = $array[4];
+		$id = $obj->id;
+		$titulo = $obj->titulo;
+        $fecha = $obj->fecha;
+        $cuerpo = $obj->cuerpo;
+        $foto = $obj->foto;
 	}
 } 
 else

@@ -12,6 +12,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
     //print_r($array);
     $json = json_encode($array);
     $obj = json_decode($json);
+	
 	$err = $cliente->getError();
 	if($err){
 		echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
