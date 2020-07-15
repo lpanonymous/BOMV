@@ -49,7 +49,7 @@
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tablas de peleas</a>
+        <a class="nav-link" href="tablas_peleas.php">Tablas de peleas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="peleas_municipales.php">Peleas municipales</a>
