@@ -29,11 +29,13 @@
 		{
 			$datos = array("id" => $fila['id'], "categoria" => $fila['categoria'], "id_juez1" => $fila['id_juez1'], "id_juez2" => $fila['id_juez2'], "id_juez3" => $fila['id_juez3'], "id_juez4" => $fila['id_juez4'], "id_boxeador1" => $fila['id_boxeador1'], "id_boxeador2" => $fila['id_boxeador2'], "fecha" => $fila['fecha'], "hora" => $fila['hora']);	
 		}
-		mysqli_close($conexion);
+		/*mysqli_close($conexion);
 		$datos2 = implode("<", $datos);
-
-		return $datos2;
-
+		return $datos2;*/
+		$juezJSON=json_encode($datos);
+		$juezJSON2=json_decode($juezJSON, true);
+		$data = serialize($juezJSON2);
+		return $data;
 	}
 
 	function agregarPeleaMunicipal($id, $categoria, $id_juez1, $id_juez2, $id_juez3, $id_juez4, $id_boxeador1, $id_boxeador2, $fecha, $hora){
@@ -109,11 +111,13 @@
 		{
 			$datos = array("id" => $fila['id'], "aliasb1" => $fila['aliasb1'], "aliasb2" => $fila['aliasb2'], "peso" => $fila['peso'], "aliasganador" => $fila['aliasganador']);	
 		}
-		mysqli_close($conexion);
+		/*mysqli_close($conexion);
 		$datos2 = implode("<", $datos);
-
-		return $datos2;
-
+		return $datos2;*/
+		$juezJSON=json_encode($datos);
+		$juezJSON2=json_decode($juezJSON, true);
+		$data = serialize($juezJSON2);
+		return $data;
 	}
 
 	function agregarResultadoPeleaMunicipal($id, $aliasb1, $aliasb2, $peso, $aliasganador){

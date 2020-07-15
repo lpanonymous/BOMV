@@ -45,12 +45,15 @@
 		}
 		//$json = json_encode($datos);
 		//$json2 = json_decode($datos);
-		mysqli_close($conexion);
+		/*mysqli_close($conexion);
 		$datos2 = implode("<", $datos);
 		
 
-		return $datos2;
-
+		return $datos2;*/
+		$boxeadorJSON=json_encode($datos);
+		$boxeadorJSON2=json_decode($boxeadorJSON, true);
+		$data = serialize($boxeadorJSON2);
+		return $data;
 	}
 
 	function agregarGimnasio($id, $nombre, $ubicacion, $telefono, $facebook, $email, $descripcion, $foto){
@@ -113,7 +116,7 @@
 				</td></tr>";
 		}
 		$listado = $listado."</tbody></table></div>";
-		$json = json_encode($listado);
+		//$json = json_encode($listado);
 		mysqli_close($conexion);
 
 		return new soapval('return', 'xsd:string', $listado);
@@ -130,11 +133,13 @@
 		{
 			$datos = array("id" => $fila['id'], "titulo" => $fila['titulo'], "fecha" => $fila['fecha'], "cuerpo" => $fila['cuerpo'], "foto" => $fila['foto']);	
 		}
-		mysqli_close($conexion);
+		/*mysqli_close($conexion);
 		$datos2 = implode("<", $datos);
-
-		return $datos2;
-
+		return $datos2;*/
+		$boxeadorJSON=json_encode($datos);
+		$boxeadorJSON2=json_decode($boxeadorJSON, true);
+		$data = serialize($boxeadorJSON2);
+		return $data;
 	}
 
 	function agregarNoticia($id, $titulo, $fecha, $cuerpo, $foto)

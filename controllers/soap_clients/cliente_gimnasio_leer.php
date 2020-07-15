@@ -8,6 +8,10 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 	$datos = array('id' => $id);
 	//$json = json_decode($datos);
 	$resultado = $cliente->call('buscarGimnasio', $datos);
+	$array = unserialize($resultado);
+    //print_r($array);
+    $json = json_encode($array);
+    $obj = json_decode($json);
 	
 	$err = $cliente->getError();
 	if($err){
@@ -16,15 +20,14 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-        $array = explode("<", $resultado);
-        $id = $array[0];
-		$nombre = $array[1];
-        $ubicacion = $array[2];
-        $telefono = $array[3];
-        $facebook = $array[4];
-        $email = $array[5];
-        $descripcion = $array[6];
-        $foto = $array[7];
+        $id = $obj->id;
+		$nombre = $obj->nombre;
+        $ubicacion = $obj->ubicacion;
+        $telefono = $obj->telefono;
+        $facebook = $obj->facebook;
+        $email = $obj->email;
+        $descripcion = $obj->descripcion;
+        $foto = $obj->foto;
 	}
 } 
 else
