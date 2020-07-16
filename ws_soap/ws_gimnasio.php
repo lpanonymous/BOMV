@@ -422,7 +422,7 @@
 						   "num_jabs" => $fila['num_jabs'],
 						   "num_power" => $fila['num_power'],
 						   "total_golpes" => $fila['total_golpes'],
-						   "ganador" => $fila['ganador?']
+						   "ganador" => $fila['ganador']
 						);	
 		}
 		$juezJSON=json_encode($datos);
@@ -436,7 +436,7 @@
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO tabla_de_pelea(id, id_juez, id_pelea, id_boxeador, round1, round2, round3, round4, round5, round6, round7, round8, round9, round10, round11, round12, total_puntos, num_jabs, num_power, total_golpes, ganador?) VALUES ('$id','$id_juez','$id_pelea','$id_boxeador','$round1','$round2','$round3','$round4','$round5','$round6','$round7','$round8','$round9','$round10','$round11','$round12','$total_puntos','$num_jabs','$num_power','$total_golpes','$ganador')");
+		$agregar = $conexion->query("INSERT INTO tabla_de_pelea(id, id_juez, id_pelea, id_boxeador, round1, round2, round3, round4, round5, round6, round7, round8, round9, round10, round11, round12, total_puntos, num_jabs, num_power, total_golpes, ganador) VALUES ('$id','$id_juez','$id_pelea','$id_boxeador','$round1','$round2','$round3','$round4','$round5','$round6','$round7','$round8','$round9','$round10','$round11','$round12','$total_puntos','$num_jabs','$num_power','$total_golpes','$ganador')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -448,7 +448,7 @@
 
 	function editarTablaPelea($id, $id_juez, $id_pelea, $id_boxeador, $round1, $round2, $round3, $round4, $round5, $round6, $round7, $round8, $round9, $round10, $round11, $round12, $total_puntos, $num_jabs, $num_power, $total_golpes, $ganador){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$editar = $conexion->query("UPDATE tabla_de_pelea SET id='$id',id_juez='$id_juez',id_pelea='$id_pelea',id_boxeador='$id_boxeador',round1='$round1',round2='$round2',round3='$round3',round4='$round4',round5='$round5',round6='$round6',round7='$round7',round8='$round8',round9='$round9',round10='$round10',round11='$round11',round12='$round12',total_puntos='$total_puntos',num_jabs='$num_jabs',num_power='$num_power',total_golpes='$total_golpes',ganador?='$ganador'  WHERE id='$id'");
+		$editar = $conexion->query("UPDATE tabla_de_pelea SET id='$id',id_juez='$id_juez',id_pelea='$id_pelea',id_boxeador='$id_boxeador',round1='$round1',round2='$round2',round3='$round3',round4='$round4',round5='$round5',round6='$round6',round7='$round7',round8='$round8',round9='$round9',round10='$round10',round11='$round11',round12='$round12',total_puntos='$total_puntos',num_jabs='$num_jabs',num_power='$num_power',total_golpes='$total_golpes',ganador='$ganador'  WHERE id='$id'");
 		$resultado=mysqli_query($conexion, $editar);
 
 		if(!$conexion) {
@@ -502,10 +502,10 @@
 					"</td><td>".$fila['num_jabs'].
 					"</td><td>".$fila['num_power'].
 					"</td><td>".$fila['total_golpes'].
-					"</td><td>".$fila['ganador?'].
-					"</td><td><a href='../controllers/soap_clients/cliente_jueces_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
-					<a href='../controllers/soap_clients/cliente_jueces_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
-					<a href='../controllers/soap_clients/cliente_jueces_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
+					"</td><td>".$fila['ganador'].
+					"</td><td><a href='../views/tablas_peleas_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
+					<a href='../views/tablas_peleas_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
+					<a href='../controllers/soap_clients/cliente_tablas_peleas_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
 					</td>
 				</tr>";
 		}
