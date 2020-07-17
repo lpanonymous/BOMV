@@ -112,7 +112,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $datos = array('id' => $id);
 
 		$resultado = $cliente2->call('buscarPeleaMunicipal', $datos);
-		
+		$array = unserialize($resultado);
+        //print_r($array);
+        $json = json_encode($array);
+        $obj = json_decode($json);
 		$err = $cliente2->getError();
 		if($err){
 			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
@@ -122,16 +125,16 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
         else
         {
-            $array = explode("<", $resultado);
-			$categoria = $array[1];
-        	$id_juez1 = $array[2];
-        	$id_juez2 = $array[3];
-        	$id_juez3 = $array[4];
-        	$id_juez4 = $array[5];
-        	$id_boxeador1 = $array[6];
-        	$id_boxeador2 = $array[7];
-			$fecha = $array[8];
-        	$hora = $array[9];
+            $id = $obj->id;
+			$categoria = $obj->categoria;
+        	$id_juez1 = $obj->id_juez1;
+        	$id_juez2 = $obj->id_juez2;
+        	$id_juez3 = $obj->id_juez3;
+        	$id_juez4 = $obj->id_juez4;
+        	$id_boxeador1 = $obj->id_boxeador1;
+        	$id_boxeador2 = $obj->id_boxeador2;
+			$fecha = $obj->fecha;
+        	$hora = $obj->hora;
 		}
         
     }  else{    

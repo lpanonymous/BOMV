@@ -119,15 +119,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 }
 ?>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <base target="_parent">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
-    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.1/css/mdb.min.css">
-    <link rel="stylesheet" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-addons-4.19.1.min.css">
-    <link rel="stylesheet" type="text/css" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css">
+    <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+<!-- jQuery UI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+ 
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .pt-3-half 
         {
@@ -148,6 +151,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
           text-align:center;
           background-color:transparent;
         }
+        #search_boxeador
+        {
+          width:150px;
+        }
     </style>
     <style type="text/css">/* Chart.js */
         @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
@@ -166,7 +173,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <th class="text-center">Id</th>
             <th class="text-center">Id juez</th>
             <th class="text-center">Id pelea</th>
-            <th class="text-center">Id boxeador</th>
+            <th class="text-center">Alias boxeador</th>
             <th class="text-center">Round 1</th>
             <th class="text-center">Round 2</th>
             <th class="text-center">Round 3</th>
@@ -184,9 +191,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <th class="text-center"># power</th>
             <th class="text-center">Total golpes</th>
             <th class="text-center">Ganador?</th>
-            <th class="text-center">Sort</th>
             <th class="text-center">Actualizar</th>
-            <th class="text-center">Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -195,7 +200,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <td class="pt-3-half"><input type="number" name="id" value="<?php echo $id; ?>"></td>
               <td class="pt-3-half"><input type="text" name="id_juez" value="<?php echo $id_juez; ?>"></td>
               <td class="pt-3-half"><input type="number" name="id_pelea" value="<?php echo $id_pelea; ?>"></td>
-              <td class="pt-3-half"><input type="text" name="id_boxeador" value="<?php echo $id_boxeador; ?>"></td>
+              <td class="pt-3-half"><input type="text" id="search_boxeador" name="id_boxeador" value="<?php echo $id_boxeador; ?>"></td>
               <td class="pt-3-half"><input type="number" name="round1" value="<?php echo $round1; ?>"></td>
               <td class="pt-3-half"><input type="number" name="round2" value="<?php echo $round2; ?>"></td>
               <td class="pt-3-half"><input type="number" name="round3" value="<?php echo $round3; ?>"></td>
@@ -213,16 +218,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
               <td class="pt-3-half"><input type="number" name="num_power" value="<?php echo $num_power; ?>"></td>
               <td class="pt-3-half"><input type="number" name="total_golpes" value="<?php echo $total_golpes; ?>"></td>
               <td class="pt-3-half"><input type="number" name="ganador" value="<?php echo $ganador; ?>"></td>
-              <td class="pt-3-half">
-              <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-              <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-            </td>
             <td>
               <input type="hidden" name="id" value="<?php echo $id; ?>"/>
               <span><button type="submit" class="btn btn-success btn-rounded btn-sm my-0 waves-effect waves-light">Actualizar</button></span>
-            </td>
-            <td>
-              <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Eliminar</button></span>
             </td>
           </form>
           </tr>
@@ -232,119 +230,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     </div>
   </div>
 </div>
-<!-- Editable table -->
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.1/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.1/js/popper.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.1/js/mdb.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/bundles/4.19.1/compiled-addons.min.js"></script>
-<script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
+<div class="hiddendiv common">
+</div>
 <script type="text/javascript">
-        const $tableID = $('#table');
-        const $BTN = $('#export-btn');
-        const $EXPORT = $('#export');
-
-        const newTr = `
-        <tr class="hide">
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half" contenteditable="true">Example</td>
-        <td class="pt-3-half">
-            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-            <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-        </td>
-        <td>
-            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
-        </td>
-        </tr>`;
-
-        $('.table-add').on('click', 'i', () => {
-
-        const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
-
-        if ($tableID.find('tbody tr').length === 0) {
-
-            $('tbody').append(newTr);
-        }
-
-        $tableID.find('table').append($clone);
-        });
-
-        $tableID.on('click', '.table-remove', function () {
-
-        $(this).parents('tr').detach();
-        });
-
-        $tableID.on('click', '.table-up', function () {
-
-        const $row = $(this).parents('tr');
-
-        if ($row.index() === 0) {
-            return;
-        }
-
-        $row.prev().before($row.get(0));
-        });
-
-        $tableID.on('click', '.table-down', function () {
-
-        const $row = $(this).parents('tr');
-        $row.next().after($row.get(0));
-        });
-
-        // A few jQuery helpers for exporting only
-        jQuery.fn.pop = [].pop;
-        jQuery.fn.shift = [].shift;
-
-        $BTN.on('click', () => {
-
-        const $rows = $tableID.find('tr:not(:hidden)');
-        const headers = [];
-        const data = [];
-
-        // Get the headers (add special header logic here)
-        $($rows.shift()).find('th:not(:empty)').each(function () {
-
-            headers.push($(this).text().toLowerCase());
-        });
-
-        // Turn all existing rows into a loopable array
-        $rows.each(function () {
-            const $td = $(this).find('td');
-            const h = {};
-
-            // Use the headers from earlier to name our hash keys
-            headers.forEach((header, i) => {
-
-            h[header] = $td.eq(i).text();
-            });
-
-            data.push(h);
-        });
-
-        // Output the result
-        $EXPORT.text(JSON.stringify(data));
-        });
+  $(function() {
+     $( "#search_boxeador" ).autocomplete({
+       source: '../controllers/ajax-boxeador-search.php',
+     });
+  });
 </script>
-            <div class="hiddendiv common">
-        </div>
-    </body>
- </html>
+</body>
+</html>
