@@ -73,7 +73,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $datos = array('id' => $id);
 
 		$resultado = $cliente2->call('buscarResultadoPeleaMunicipal', $datos);
-		
+		$array = unserialize($resultado);
+        //print_r($array);
+        $json = json_encode($array);
+        $obj = json_decode($json);
 		$err = $cliente2->getError();
 		if($err){
 			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
@@ -83,11 +86,11 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
         else
         {
-            $array = explode("<", $resultado);
-			$aliasb1 = $array[1];
-        	$aliasb2 = $array[2];
-        	$peso = $array[3];
-        	$aliasganador = $array[4];
+            $id = $obj->id;
+            $aliasb1 = $obj->aliasb1;
+            $aliasb2 = $obj->aliasb2;
+            $peso = $obj->peso;
+            $aliasganador = $obj->aliasganador;
 		}
         
     }  else{    
