@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2020 at 08:11 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Generation Time: Jul 18, 2020 at 04:59 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,7 @@ CREATE TABLE `boxeadores` (
 --
 
 INSERT INTO `boxeadores` (`id_boxeador`, `id_gimnasio`, `alias`, `nombre_boxeador`, `total_peleas`, `peleas_ganadas`, `peleas_ganadas_ko`, `peleas_perdidas`, `peleas_perdidas_ko`, `empates`, `categoria`, `division`, `peso`, `altura`, `estado`, `ciudad`, `municipio`, `foto`) VALUES
-('B1', 'G1', 'Pac Man', 'Emmanuel Dapidran Pacquiao', 71, 62, 39, 7, 3, 2, 'M', 'welter', 66, 1.66, 'Cotabato del Sur', 'General Santos City', NULL, 'https://boxrec.com/media/images/thumb/f/fa/MannyPacquiao1.jpg/200px-MannyPacquiao1.jpg'),
+('B1', 'G1', 'Pac Man', 'Emmanuel Dapidran Pacquiao', 71, 62, 39, 7, 3, 2, 'M', 'welter', 66, 1.66, 'Cotabato del Sur', 'General Santos City', 'ninguno', 'https://boxrec.com/media/images/thumb/f/fa/MannyPacquiao1.jpg/200px-MannyPacquiao1.jpg'),
 ('B10', 'G2', 'Finito', 'Ricardo López Nava', 52, 51, 38, 0, 0, 1, 'M', 'minimosca', 48, 1.65, 'Morelos', 'Cuernavaca', NULL, 'https://boxrec.com/media/images/thumb/3/32/Viaja-finito-a-induccion-a-salon-de-la-fama.jpg/200px-Viaja-finito-a-induccion-a-salon-de-la-fama.jpg'),
 ('B11', 'G3', 'Baby Arizmendi', 'Alberto Arizmendi', 128, 87, 20, 26, 4, 14, 'M', 'pluma', 58, 1.64, 'Tamaulipas', 'Tampico', NULL, 'https://boxrec.com/media/images/thumb/e/e0/ArizmendiB.jpeg/200px-ArizmendiB.jpeg'),
 ('B12', 'G3', 'The Filipino Flash', 'Nonito Gonzales Donaire Jr', 46, 40, 26, 6, 1, 0, 'M', 'gallo', 56, 1.7, 'Bohol', 'Talibon', NULL, 'https://boxrec.com/media/images/thumb/b/b4/Nonito_Donaire.jpg/200px-Nonito_Donaire.jpg'),
@@ -78,11 +78,11 @@ INSERT INTO `boxeadores` (`id_boxeador`, `id_gimnasio`, `alias`, `nombre_boxeado
 ('B3', 'G1', 'Junito', 'Miguel Angel Cotto', 43, 32, 1, 11, 0, 0, 'M', 'mediano', 77, 1.71, 'Puerto Rico', 'Caguas', NULL, 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Miguel_Cotto.jpg/245px-Miguel_Cotto.jpg'),
 ('B30', 'G6', 'Travieso', 'Jorge Arce', 75, 64, 49, 8, 5, 2, 'M', 'mini mosca', 49, 1.64, 'Sinaloa', 'Los Mochis', NULL, 'https://boxrec.com/media/images/thumb/0/03/Jorge_Arce1.jpg/200px-Jorge_Arce1.jpg'),
 ('B4', 'G1', 'J.C.', 'Julio Cesar Chavez Gonzalez', 115, 107, 85, 6, 4, 2, 'M', 'ligero', 63, 1.71, 'Sonora', 'Ciudad Obregón', NULL, 'https://boxrec.com/media/images/thumb/4/40/Julio_Cesar_Chavez.jpg/200px-Julio_Cesar_Chavez.jpg'),
-('B5', 'G1', '', 'Rubén Olivares', 0, 89, 0, 13, 0, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, ''),
-('B6', 'G2', '', 'Érik Morales', 0, 59, 0, 9, 0, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, ''),
-('B7', 'G2', '', 'Salvador Sánchez', 0, 41, 0, 1, 0, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, ''),
-('B8', 'G2', '', 'Marco Antonio Barrera', 0, 67, 0, 7, 0, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, ''),
-('B9', 'G2', '', 'Carlos Zárate ', 0, 66, 0, 4, 0, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, '');
+('B5', 'G1', 'El Puas', 'Rubén Olivares Avila', 105, 89, 79, 13, 9, 3, 'M', 'gallo', 54, 1.66, 'Distrito Federal', 'Mexico City', NULL, 'https://boxrec.com/media/images/thumb/3/33/Olivares.Ruben.jpg/200px-Olivares.Ruben.jpg'),
+('B6', 'G2', 'El Terrible', 'Erik Isaac Morales Elvira', 61, 52, 36, 9, 3, 0, 'M', 'gallo', 56, 1.73, 'California', 'San Ysidro', NULL, 'https://boxrec.com/media/images/thumb/d/dd/Erik_Isaac_Morales_Elvira.jpg/200px-Erik_Isaac_Morales_Elvira.jpg'),
+('B7', 'G2', 'Chava', 'Salvador Sánchez', 46, 44, 32, 1, 0, 1, 'M', 'pluma', 57, 1.68, 'México', 'Tianguistenco', NULL, 'https://boxrec.com/media/images/thumb/e/e6/Salvador_Sanchez.jpg/200px-Salvador_Sanchez.jpg'),
+('B8', 'G2', 'Baby Faced Assassin', 'Marco Antonio Barrera Tapia', 75, 67, 44, 7, 1, 0, 'M', 'gallo', 56, 1.68, 'Jalisco', 'Guadalajara', NULL, 'https://boxrec.com/media/images/thumb/5/50/MarcoBarrera.jpg/200px-MarcoBarrera.jpg'),
+('B9', 'G2', 'Canas', 'Carlos Zárate ', 70, 66, 63, 4, 2, 0, 'M', 'gallo', 55, 1.73, 'Distrito Federal', 'Mexico City', NULL, 'https://boxrec.com/media/images/thumb/b/bf/Carlos_Zarate.jpg/200px-Carlos_Zarate.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,9 +123,19 @@ CREATE TABLE `jueces` (
   `id` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `usuario` varchar(50) NOT NULL,
-  `contrasena` varchar(50) NOT NULL,
-  `foto` mediumblob NOT NULL
+  `contrasena` varchar(1000) NOT NULL,
+  `foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jueces`
+--
+
+INSERT INTO `jueces` (`id`, `nombre`, `usuario`, `contrasena`, `foto`) VALUES
+('J1', 'Andres Sanchez', 'andresSanchez', '$2y$10$Qh0L8blcdmS8LCUQptDBIeR.tPTrRRJMIFbNCr6YzMUkAyayLJTGu', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png'),
+('J2', 'Beto Garcia', 'betoGarcia', '$2y$10$EkUrMhZ55izkS9grV7SLBuiuXYxitOo8DcanCi0RggWI85nGkAZxS', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png'),
+('J3', 'Carlos Gonzalez', 'carlosGonzalez', '$2y$10$qPprP0G2HKxFZnhHGCbrYe.7g7eo5hS8QlJ1Tj5wqesQgALmeJVZ2', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png'),
+('J4', 'Daniel Martinez', 'danielMartinez', '$2y$10$2DLmiMe7SP07/Ijs6pRhSOh5ociWsho0G3bjt5Qn9XlUchN24K0eW', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png');
 
 -- --------------------------------------------------------
 
@@ -218,6 +228,13 @@ CREATE TABLE `resultados_estatales_categoria_varonil` (
   `idganador` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `resultados_estatales_categoria_varonil`
+--
+
+INSERT INTO `resultados_estatales_categoria_varonil` (`id`, `idb1`, `idb2`, `peso`, `idganador`) VALUES
+(1, 'B1', 'B2', 'welter', 'B1');
+
 -- --------------------------------------------------------
 
 --
@@ -266,22 +283,22 @@ CREATE TABLE `tabla_de_pelea` (
   `num_jabs` int(11) DEFAULT NULL,
   `num_power` int(11) DEFAULT NULL,
   `total_golpes` int(11) DEFAULT NULL,
-  `ganador?` tinyint(1) NOT NULL
+  `ganador` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tabla_de_pelea`
 --
 
-INSERT INTO `tabla_de_pelea` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round1`, `round2`, `round3`, `round4`, `round5`, `round6`, `round7`, `round8`, `round9`, `round10`, `round11`, `round12`, `total_puntos`, `num_jabs`, `num_power`, `total_golpes`, `ganador?`) VALUES
-(1, 'J1', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
-(2, 'J1', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
-(3, 'J2', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
-(4, 'J2', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
-(5, 'J3', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
-(6, 'J3', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
-(7, 'J4', 1, 'B1', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
-(8, 'J4', 1, 'B2', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0);
+INSERT INTO `tabla_de_pelea` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round1`, `round2`, `round3`, `round4`, `round5`, `round6`, `round7`, `round8`, `round9`, `round10`, `round11`, `round12`, `total_puntos`, `num_jabs`, `num_power`, `total_golpes`, `ganador`) VALUES
+(1, 'J1', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(2, 'J1', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(3, 'J2', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(4, 'J2', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(5, 'J3', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(6, 'J3', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(7, 'J4', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(8, 'J4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0);
 
 --
 -- Indexes for dumped tables
