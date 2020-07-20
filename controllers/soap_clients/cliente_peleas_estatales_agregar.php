@@ -151,35 +151,163 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
                         </div>
                         <div class="form-group <?php echo (!empty($id_juez1_err)) ? 'has-error' : ''; ?>">
                             <label>Id juez1</label>
-                            <input type="text" name="id_juez1" class="form-control" value="<?php echo $id_juez1; ?>" placeholder="">
+                            <!--<input type="text" name="id_juez1" class="form-control" value="</*?php echo $id_juez1; ?*>" placeholder="">-->
+                            <select id="lista_juez" name="id_juez1" class="form-control" value="<?php echo $id_juez1;?>">
+                             	<?php
+								 	//include("");
+								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
+								 	$query = "SELECT * FROM jueces ORDER BY id";	
+								 	$result = mysqli_query($conexion, $query);
+								 	if ($result == true){
+										if(mysqli_num_rows($result) > 0){
+								 			//$result = mysqli_query($gimnasios);
+											while($row = mysqli_fetch_array($result)){	
+												$id_juez1 = $row['id'];
+												$nombre = $row['nombre'];
+										
+								?>
+								 		<option name="id_juez1" value="<?php echo $id_juez1;?>"><?php echo $nombre;?></option>
+										<?php
+										}
+										}
+									}
+								 ?>
+                             </select>
                             <span class="help-block"><?php echo $id_juez1_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($id_juez2_err)) ? 'has-error' : ''; ?>">
                             <label>Id juez2</label>
-                            <input type="text" name="id_juez2" class="form-control" value="<?php echo $id_juez2; ?>">
+                            <!--<input type="text" name="id_juez2" class="form-control" value="</*?php echo $id_juez2; ?*/>">-->
+                            <select id="lista_juez" name="id_juez2" class="form-control" value="<?php echo $id_juez2;?>">
+                             	<?php
+								 	//include("");
+								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
+								 	$query = "SELECT * FROM jueces ORDER BY id";	
+								 	$result = mysqli_query($conexion, $query);
+								 	if ($result == true){
+										if(mysqli_num_rows($result) > 0){
+								 			//$result = mysqli_query($gimnasios);
+											while($row = mysqli_fetch_array($result)){	
+												$id_juez2 = $row['id'];
+												$nombre = $row['nombre'];
+										
+								?>
+								 		<option name="id_juez2" value="<?php echo $id_juez2;?>"><?php echo $nombre;?></option>
+										<?php
+										}
+										}
+									}
+								 ?>
+                             </select>
                             <span class="help-block"><?php echo $id_juez2_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($id_juez3_err)) ? 'has-error' : ''; ?>">
                             <label>Id juez3</label>
-                            <input type="text" name="id_juez3" class="form-control" value="<?php echo $id_juez3; ?>">
+                            <!--<input type="text" name="id_juez3" class="form-control" value="</*?php echo $id_juez3; ?*/>">-->
+                            <select id="lista_juez" name="id_juez3" class="form-control" value="<?php echo $id_juez3;?>">
+                             	<?php
+								 	//include("");
+								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
+								 	$query = "SELECT * FROM jueces ORDER BY id";	
+								 	$result = mysqli_query($conexion, $query);
+								 	if ($result == true){
+										if(mysqli_num_rows($result) > 0){
+								 			//$result = mysqli_query($gimnasios);
+											while($row = mysqli_fetch_array($result)){	
+												$id_juez3 = $row['id'];
+												$nombre = $row['nombre'];
+										
+								?>
+								 		<option name="id_juez3" value="<?php echo $id_juez3;?>"><?php echo $nombre;?></option>
+										<?php
+										}
+										}
+									}
+								 ?>
+                             </select>
                             <span class="help-block"><?php echo $id_juez3_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($id_juez4_err)) ? 'has-error' : ''; ?>">
                             <label>Id juez4</label>
-                            <input type="text" name="id_juez4" class="form-control" value="<?php echo $id_juez4; ?>">
+                            <!--<input type="text" name="id_juez4" class="form-control" value="</*?php echo $id_juez4; ?*/>">-->
+                            <select id="lista_juez" name="id_juez4" class="form-control" value="<?php echo $id_juez4;?>">
+                             	<?php
+								 	//include("");
+								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
+								 	$query = "SELECT * FROM jueces ORDER BY id";	
+								 	$result = mysqli_query($conexion, $query);
+								 	if ($result == true){
+										if(mysqli_num_rows($result) > 0){
+								 			//$result = mysqli_query($gimnasios);
+											while($row = mysqli_fetch_array($result)){	
+												$id_juez4 = $row['id'];
+												$nombre = $row['nombre'];
+										
+								?>
+								 		<option name="id_juez4" value="<?php echo $id_juez4;?>"><?php echo $nombre;?></option>
+										<?php
+										}
+										}
+									}
+								 ?>
+                             </select>
                             <span class="help-block"><?php echo $id_juez4_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($id_boxeador1_err)) ? 'has-error' : ''; ?>">
                             <label>Id boxeador1</label>
-                            <input type="text" name="id_boxeador1" class="form-control" value="<?php echo $id_boxeador1; ?>">
+                            <!--<input type="text" name="id_boxeador1" class="form-control" value="</*?php echo $id_boxeador1; ?>">-->
+                            <select id="lista_gimnasios" name="id_boxeador1" class="form-control" value="<?php echo $id_boxeador1;?>">
+                             	<!--<option value="">Elige el Gimnasio</option>-->
+                             	<?php
+								 	//include("");
+								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
+								 	$query = "SELECT * FROM boxeadores ORDER BY id_boxeador";	
+								 	$result = mysqli_query($conexion, $query);
+								 	if ($result == true){
+										if(mysqli_num_rows($result) > 0){
+								 			//$result = mysqli_query($gimnasios);
+											while($row = mysqli_fetch_array($result)){	
+												$id_boxeador1 = $row['id_boxeador'];
+												$alias = $row['alias'];
+										
+								?>
+								 		<option name="id_boxeador1" value="<?php echo $id_boxeador1;?>"><?php echo $alias;?></option>
+										<?php
+										}
+										}
+									}
+								 ?>
+                             </select>
                             <span class="help-block"><?php echo $id_boxeador1_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($id_boxeador1_err)) ? 'has-error' : ''; ?>">
                             <label>Id boxeador2</label>
-                            <input type="text" name="id_boxeador2" class="form-control" value="<?php echo $id_boxeador2; ?>" placeholder="">
+                            <!--<input type="text" name="id_boxeador2" class="form-control" value="</*?php echo $id_boxeador2; ?>" placeholder="">-->
+                            <select id="lista_gimnasios" name="id_boxeador2" class="form-control" value="<?php echo $id_boxeador2;?>">
+                             	<!--<option value="">Elige el Gimnasio</option>-->
+                             	<?php
+								 	//include("");
+								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
+								 	$query = "SELECT * FROM boxeadores ORDER BY id_boxeador";	
+								 	$result = mysqli_query($conexion, $query);
+								 	if ($result == true){
+										if(mysqli_num_rows($result) > 0){
+								 			//$result = mysqli_query($gimnasios);
+											while($row = mysqli_fetch_array($result)){	
+												$id_boxeador2 = $row['id_boxeador'];
+												$alias = $row['alias'];
+										
+								?>
+								 		<option name="id_boxeador1" value="<?php echo $id_boxeador2;?>"><?php echo $alias;?></option>
+										<?php
+										}
+										}
+									}
+								 ?>
+                             </select>
                             <span class="help-block"><?php echo $id_boxeador1_err;?></span>
                         </div>
                         

@@ -16,15 +16,13 @@
             background-attachment: fixed;
             background-size: cover;
         }
-        .opacity
-        {
+        .opacity{
             opacity:0.8; /* Opacidad 60% */
         }
-        #div1 
-        {
-          overflow:scroll;
-          height:80%;
-          width:100%;
+        #div1{
+			overflow:scroll;
+			height:80%;
+			width:100%;
         }
     </style>
 

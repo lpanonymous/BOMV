@@ -88,8 +88,7 @@
 		while ($fila = mysqli_fetch_array($resultado)){
 				$listado = $listado."<tr><td>".$fila['id']."</td><td>".$fila['categoria']
 				."</td><td>".$fila['id_juez1']."</td><td>".$fila['id_juez2']."</td><td>".$fila['id_juez3']."</td><td>".$fila['id_juez4']
-				."</td><td>".$fila['id_boxeador1']."</td><td>".$fila['id_boxeador2']."</td><td>".$fila['fecha']
-				."</td><td>".$fila['hora']."</td><td>
+				."</td><td>".$fila['id_boxeador1']."</td><td>".$fila['id_boxeador2']."</td><td>".date("d/m/Y", strtotime($fila['fecha']))."</td><td>".date("H:i", strtotime($fila['hora']))."</td><td>
 				<a href='../controllers/soap_clients/cliente_peleas_estatales_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
 				<a href='../controllers/soap_clients/cliente_peleas_estatales_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
 				<a href='../controllers/soap_clients/cliente_peleas_estatales_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
