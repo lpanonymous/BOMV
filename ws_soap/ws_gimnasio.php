@@ -58,9 +58,9 @@
 		
 
 		return $datos2;*/
-		$boxeadorJSON=json_encode($datos);
-		$boxeadorJSON2=json_decode($boxeadorJSON, true);
-		$data = serialize($boxeadorJSON2);
+		$gimnasioJSON=json_encode($datos);
+		$gimnasioJSON2=json_decode($gimnasioJSON, true);
+		$data = serialize($gimnasioJSON2);
 		return $data;
 	}
 
@@ -144,9 +144,9 @@
 		/*mysqli_close($conexion);
 		$datos2 = implode("<", $datos);
 		return $datos2;*/
-		$boxeadorJSON=json_encode($datos);
-		$boxeadorJSON2=json_decode($boxeadorJSON, true);
-		$data = serialize($boxeadorJSON2);
+		$noticiaJSON=json_encode($datos);
+		$noticiaJSON2=json_decode($noticiaJSON, true);
+		$data = serialize($noticiaJSON2);
 		return $data;
 	}
 

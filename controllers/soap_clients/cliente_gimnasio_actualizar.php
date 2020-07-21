@@ -95,7 +95,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $datos = array('id' => $id);
 
 		$resultado = $cliente2->call('buscarGimnasio', $datos);
-		
+		$array = unserialize($resultado);
+        //print_r($array);
+        $json = json_encode($array);
+        $obj = json_decode($json);
 		$err = $cliente2->getError();
 		if($err){
 			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
@@ -105,14 +108,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
         else
         {
-            $array = explode("<", $resultado);
-			$nombre = $array[1];
-            $ubicacion = $array[2];
-            $telefono = $array[3];
-            $facebook = $array[4];
-            $email = $array[5];
-            $descripcion = $array[6];
-            $foto = $array[7];
+            $nombre = $obj->nombre;
+            $ubicacion = $obj->ubicacion;
+            $telefono = $obj->telefono;
+            $facebook = $obj->facebook;
+            $email = $obj->email;
+            $descripcion = $obj->descripcion;
+            $foto = $obj->foto;
 		}
         
     }  else{    

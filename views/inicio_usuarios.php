@@ -36,6 +36,10 @@
           top: 100%;
           bottom: auto;
       }
+      input
+      {
+        border:0;  
+      }
     </style>
 </head>
 <body>
@@ -135,7 +139,14 @@
                       <div class='card-body'>
                         <h5 class='card-title'>{$titulo}</h5>
                         <p class='card-text'><small class='text-muted'>{$fecha}</small></p>
-                        <a href='#' class='btn btn-primary'>Más informacion...</a>
+                        <form action='noticia.php' method='Post'>
+                          <input type='text' value='{$id}' name='id' hidden/>
+                          <input type='text' value='{$titulo}' name='titulo' hidden/>
+                          <input type='text' value='{$fecha}' name='fecha' hidden/>
+                          <input type='text' value='{$cuerpo}' name='cuerpo' hidden/>
+                          <input type='text' value='{$foto}' name='foto' hidden/>
+      						        <input type='submit' class='btn btn-primary' value='Más información'/>
+							  				</form>
                       </div>
                     </div>
                   </div>
@@ -155,13 +166,21 @@
                       <div class='card-body'>
                         <h5 class='card-title'>{$titulo}</h5>
                         <p class='card-text'><small class='text-muted'>{$fecha}</small></p>
-                        <a href='#' class='btn btn-primary'>Más informacion...</a>
+                        <form action='noticia.php' method='Post'>
+                          <input type='text' value='{$id}' name='id' hidden/>
+                          <input type='text' value='{$titulo}' name='titulo' hidden/>
+                          <input type='text' value='{$fecha}' name='fecha' hidden/>
+                          <input type='text' value='{$cuerpo}' name='cuerpo' hidden/>
+                          <input type='text' value='{$foto}' name='foto' hidden/>
+      						        <input type='submit' class='btn btn-primary' value='Más información'/>
+							  				</form>
                       </div>
                     </div>
                   </div>
                 </div>";
                 }
               }
+              echo "</div>";
             ?>
 </body>
 </html>
