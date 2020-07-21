@@ -20,7 +20,7 @@
             opacity:0.8; /* Opacidad 60% */
         }
         #div1{
-			overflow:scroll;
+			/*overflow:scroll;*/
 			height:80%;
 			width:100%;
         }

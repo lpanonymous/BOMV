@@ -23,7 +23,8 @@
 
         #div1 
         {
-          overflow:scroll;
+          /*overflow:scroll;*/
+			overflow-x: auto;	
           height:17%;
           width:100%;
         }
@@ -105,8 +106,8 @@
 		td:nth-of-type(15):before { content: "Altura:"; }
 		td:nth-of-type(16):before { content: "Estado:"; }
 		td:nth-of-type(17):before { content: "Ciudad:"; }
-		td:nth-of-type(18):before { content: "Munici:"; }
-				td:nth-of-type(19):before { content: "Funciones:"; }
+		td:nth-of-type(18):before { content: "Municipio:"; }
+		td:nth-of-type(19):before { content: "Funciones:"; }
 
 	}
     </style>

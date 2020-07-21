@@ -178,7 +178,20 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err ="";-->
                     <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
                             <label>Categoria</label>
-                            <input type="text" name="categoria" class="form-control" value="<?php echo $categoria; ?>">
+                            <!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
+                            <select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
+                            	<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
+								<option name="categoria" value="Minimosca">Minimosca</option>
+								<option name="categoria" value="Mosca">Mosca</option>
+								<option name="categoria" value="Gallo">Gallo</option>
+								<option name="categoria" value="Liviano">Liviano</option>
+								<option name="categoria" value="Welter Junior">Welter Junior</option>
+								<option name="categoria" value="Welter">Welter</option>
+								<option name="categoria" value="Medio">Medio</option>
+								<option name="categoria" value="Semipesado">Semipesado</option>
+								<option name="categoria" value="Pesado">Pesado</option>
+								<option name="categoria" value="Superpesado">Superpesado</option>
+							</select>
                             <span class="help-block"><?php echo $categoria_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($id_juez1_err)) ? 'has-error' : ''; ?>">
