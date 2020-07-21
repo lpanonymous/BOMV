@@ -62,7 +62,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $datos = array('id' => $id);
 
 		$resultado = $cliente2->call('buscarNoticia', $datos);
-		
+        $array = unserialize($resultado);
+        //print_r($array);
+        $json = json_encode($array);
+        $obj = json_decode($json);
 		$err = $cliente2->getError();
 		if($err){
 			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
@@ -72,11 +75,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
         else
         {
-            $array = explode("<", $resultado);
-			$titulo = $array[1];
-            $fecha = $array[2];
-            $cuerpo = $array[3];
-            $foto = $array[4];
+            $titulo = $obj->titulo;
+            $fecha = $obj->fecha;
+            $cuerpo = $obj->cuerpo;
+            $foto = $obj->foto;
 		}
         
     }  else{    
