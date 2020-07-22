@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2020 at 03:56 AM
+-- Generation Time: Jul 22, 2020 at 05:29 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -165,12 +165,13 @@ INSERT INTO `noticias` (`id`, `titulo`, `fecha`, `cuerpo`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peleas_estatales_categoria_varonil`
+-- Table structure for table `peleas_estatales`
 --
 
-CREATE TABLE `peleas_estatales_categoria_varonil` (
+CREATE TABLE `peleas_estatales` (
   `id` int(11) NOT NULL,
-  `categoria` varchar(50) NOT NULL,
+  `categoria` varchar(1) NOT NULL,
+  `division` varchar(50) NOT NULL,
   `id_juez1` varchar(50) NOT NULL,
   `id_juez2` varchar(50) NOT NULL,
   `id_juez3` varchar(50) NOT NULL,
@@ -183,21 +184,22 @@ CREATE TABLE `peleas_estatales_categoria_varonil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `peleas_estatales_categoria_varonil`
+-- Dumping data for table `peleas_estatales`
 --
 
-INSERT INTO `peleas_estatales_categoria_varonil` (`id`, `categoria`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
-(1, 'welter', 'J1', 'J2', 'J3', 'J5', 'B1', 'B2', '2020-07-10', '23:00:00', NULL);
+INSERT INTO `peleas_estatales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
+(1, '', 'welter', 'J1', 'J2', 'J3', 'J5', 'B1', 'B2', '2020-07-10', '23:00:00', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peleas_municipios_categoria_varonil`
+-- Table structure for table `peleas_municipales`
 --
 
-CREATE TABLE `peleas_municipios_categoria_varonil` (
+CREATE TABLE `peleas_municipales` (
   `id` int(11) NOT NULL,
-  `categoria` varchar(50) NOT NULL,
+  `categoria` varchar(1) NOT NULL,
+  `division` varchar(50) NOT NULL,
   `id_juez1` varchar(50) NOT NULL,
   `id_juez2` varchar(50) NOT NULL,
   `id_juez3` varchar(50) NOT NULL,
@@ -209,11 +211,43 @@ CREATE TABLE `peleas_municipios_categoria_varonil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `peleas_municipios_categoria_varonil`
+-- Dumping data for table `peleas_municipales`
 --
 
-INSERT INTO `peleas_municipios_categoria_varonil` (`id`, `categoria`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`) VALUES
-(1, 'welter', 'J1', 'J2', 'J3', 'J4', 'B1', 'B2', '2020-07-01', '23:00:00');
+INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`) VALUES
+(1, '', 'welter', 'J1', 'J2', 'J3', 'J4', 'B1', 'B2', '2020-07-01', '23:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posiciones_generales_estatales`
+--
+
+CREATE TABLE `posiciones_generales_estatales` (
+  `alias_boxeador` varchar(100) NOT NULL,
+  `gimnasio` varchar(50) NOT NULL,
+  `categoria` varchar(1) NOT NULL,
+  `division` varchar(50) NOT NULL,
+  `peleas_ganadas` int(11) NOT NULL,
+  `peleas_perdidas` int(11) NOT NULL,
+  `empates` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posiciones_generales_municipales`
+--
+
+CREATE TABLE `posiciones_generales_municipales` (
+  `alias_boxeador` varchar(100) NOT NULL,
+  `gimnasio` varchar(50) NOT NULL,
+  `categoria` varchar(1) NOT NULL,
+  `division` varchar(50) NOT NULL,
+  `peleas_ganadas` int(11) NOT NULL,
+  `peleas_perdidas` int(11) NOT NULL,
+  `empates` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
