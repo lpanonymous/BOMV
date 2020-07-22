@@ -88,7 +88,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         }
         else
         {
-          $id = $obj->id;
           $id_juez = $obj->id_juez;
           $id_pelea = $obj->id_pelea;
           $id_boxeador = $obj->id_boxeador;
@@ -155,6 +154,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         {
           width:150px;
         }
+        #search_juez
+        {
+          width:150px;
+        }
     </style>
     <style type="text/css">/* Chart.js */
         @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
@@ -170,8 +173,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
       <table class="table table-bordered table-responsive{-sm|-md|-lg|-xl} table-striped text-center">
         <thead>
           <tr>
-            <th class="text-center">Id</th>
-            <th class="text-center">Id juez</th>
+            <th class="text-center">Juez</th>
             <th class="text-center">Id pelea</th>
             <th class="text-center">Alias boxeador</th>
             <th class="text-center">Round 1</th>
@@ -197,8 +199,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <tbody>
           <tr>
           <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
-            <td class="pt-3-half"><input type="number" name="id" value="<?php echo $id; ?>"></td>
-              <td class="pt-3-half"><input type="text" name="id_juez" value="<?php echo $id_juez; ?>"></td>
+              <td class="pt-3-half"><input type="text" id="search_juez" name="id_juez" value="<?php echo $id_juez; ?>"></td>
               <td class="pt-3-half"><input type="number" name="id_pelea" value="<?php echo $id_pelea; ?>"></td>
               <td class="pt-3-half"><input type="text" id="search_boxeador" name="id_boxeador" value="<?php echo $id_boxeador; ?>"></td>
               <td class="pt-3-half"><input type="number" name="round1" value="<?php echo $round1; ?>"></td>
@@ -239,5 +240,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
      });
   });
 </script>
+
+<script type="text/javascript">
+		$(function() {
+			$( "#search_juez" ).autocomplete({
+			source: '../controllers/ajax-juez-search.php',
+			});
+		});
+	</script>
+
 </body>
 </html>

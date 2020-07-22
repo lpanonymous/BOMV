@@ -1,8 +1,6 @@
 <?php
     require_once('lib/nusoap.php');
-     
-    // Define variables and initialize with empty values
-    $id = $_POST["id"];
+
     $id_juez = $_POST["id_juez"];
     $id_pelea = $_POST["id_pelea"];;
     $id_boxeador = $_POST["id_boxeador"]; 
@@ -24,15 +22,14 @@
     $total_golpes = $_POST["total_golpes"];
     $ganador = $_POST["ganador"];
         // Check input errors before inserting in database
-        if(empty($id) && empty($id_juez) && empty($id_pelea) && empty($id_boxeador) && empty($round1) && empty($round2) && empty($round3) && empty($round4) && empty($round5) && empty($round6) && empty($round7) && empty($round8) && empty($round9) && empty($round10) && empty($roun11) && empty($roun12) && empty($total_puntos) && empty($num_jabs) && empty($num_power) && empty($total_golpes) && empty($ganador)){
+        if(empty($id_juez) && empty($id_pelea) && empty($id_boxeador) && empty($round1) && empty($round2) && empty($round3) && empty($round4) && empty($round5) && empty($round6) && empty($round7) && empty($round8) && empty($round9) && empty($round10) && empty($roun11) && empty($roun12) && empty($total_puntos) && empty($num_jabs) && empty($num_power) && empty($total_golpes) && empty($ganador)){
             header("location: ../error.php");
         }
         else
         {
             $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
     
-            $datos = array('id' => $id, 
-                           'id_juez' => $id_juez, 
+            $datos = array('id_juez' => $id_juez, 
                            'id_pelea' => $id_pelea, 
                            'id_boxeador' => $id_boxeador, 
                            'round1' => $round1, 

@@ -34,6 +34,10 @@
         {
           width:150px;
         }
+        #search_juez
+        {
+          width:150px;
+        }
     </style>
     <style type="text/css">/* Chart.js */
         @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
@@ -49,8 +53,7 @@
       <table class="table table-bordered table-responsive{-sm|-md|-lg|-xl} table-striped text-center">
         <thead>
           <tr>
-            <th class="text-center">Id</th>
-            <th class="text-center">Id juez</th>
+            <th class="text-center">Juez</th>
             <th class="text-center">Id pelea</th>
             <th class="text-center">Alias boxeador</th>
             <th class="text-center">Round 1</th>
@@ -76,8 +79,7 @@
         <tbody>
           <tr>
           <form action="../controllers/soap_clients/cliente_tablas_peleas_agregar.php" method="post">
-            <td class="pt-3-half"><input type="number" name="id" placeholder="1"></td>
-            <td class="pt-3-half"><input type="text" name="id_juez" placeholder="J1"></td>
+            <td class="pt-3-half"><input type="text" name="id_juez" id="search_juez"></td>
             <td class="pt-3-half"><input type="number" name="id_pelea" placeholder="1"></td>
             <td class="pt-3-half"><input type="text" name="id_boxeador" id="search_boxeador"></td>  
             <td class="pt-3-half"><input type="number" name="round1" placeholder="10"></td>
@@ -118,5 +120,12 @@
      });
   });
 </script>
+<script type="text/javascript">
+		$(function() {
+			$( "#search_juez" ).autocomplete({
+			source: '../controllers/ajax-juez-search.php',
+			});
+		});
+	</script>
 </body>
 </html>

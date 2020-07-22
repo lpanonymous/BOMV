@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2020 at 06:12 AM
+-- Generation Time: Jul 22, 2020 at 11:24 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -47,6 +47,7 @@ CREATE TABLE `boxeadores` (
   `municipio` varchar(50) DEFAULT NULL,
   `foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Dumping data for table `boxeadores`
 --
@@ -81,8 +82,9 @@ INSERT INTO `boxeadores` (`id_boxeador`, `id_gimnasio`, `alias`, `nombre_boxeado
 (27, '6', 'Iron', 'Michael Gerard Tyson', 58, 50, 44, 6, 5, 0, 'M', 'pesado', 91, 1.78, 'New York', 'Brooklyn', NULL, 'https://boxrec.com/media/images/thumb/9/94/MikeTysonHeadshot2.jpg/200px-MikeTysonHeadshot2.jpg'),
 (28, '6', 'Money Pretty Boy', 'Floyd Joy Sinclair', 50, 50, 27, 0, 0, 0, 'M', 'welter', 72, 1.73, 'Michigan', 'Grand Rapids', NULL, 'https://boxrec.com/media/images/thumb/1/1a/FloydMayweatherHeadshot3.jpg/200px-FloydMayweatherHeadshot3.jpg'),
 (29, '6', 'Manos de Piedra / El Cholo', 'Roberto Duran Samaniego', 119, 103, 70, 16, 4, 0, 'M', 'ligero', 62, 1.7, 'Panama', 'El Chorrillo', NULL, 'https://boxrec.com/media/images/thumb/9/9c/Roberto_Duran1.JPG/200px-Roberto_Duran1.JPG'),
-(30, '6', '\'Kingry\' \'The Flash\'', 'Ryan Garcia', 20, 20, 17, 0, 0, 0, 'M', 'ligero', 62, 1.78, 'California', 'Los Angeles', NULL, 'https://boxrec.com/media/images/thumb/0/07/RyanGarcia.jpg/200px-RyanGarcia.jpg'),
+(30, '6', 'Kingry \r\n The Flash', 'Ryan Garcia', 20, 20, 17, 0, 0, 0, 'M', 'ligero', 62, 1.78, 'California', 'Los Angeles', NULL, 'https://boxrec.com/media/images/thumb/0/07/RyanGarcia.jpg/200px-RyanGarcia.jpg'),
 (31, '1', 'Old man', 'Lucas', 4, 4, 4, 4, 4, 4, 'M', 'welter', 14, 147, 'xalapa', 'xalapa', 'xalapa', 'https://boxrec.com/media/images/thumb/f/fa/MannyPacquiao1.jpg/200px-MannyPacquiao1.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -187,7 +189,7 @@ CREATE TABLE `peleas_estatales` (
 --
 
 INSERT INTO `peleas_estatales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
-(1, 'M', 'welter', 'J1', 'J2', 'J3', 'J5', 'B1', 'B2', '2020-07-10', '23:00:00', NULL);
+(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Baby Arizmendi', 'Canelo', '2020-07-10', '23:00:00', 'Canelo');
 
 -- --------------------------------------------------------
 
@@ -206,15 +208,17 @@ CREATE TABLE `peleas_municipales` (
   `id_boxeador1` varchar(50) NOT NULL,
   `id_boxeador2` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
-  `hora` time NOT NULL
+  `hora` time NOT NULL,
+  `ganador` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peleas_municipales`
 --
 
-INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`) VALUES
-(1, 'M', 'welter', 'J1', 'J2', 'J3', 'J4', 'B1', 'B2', '2020-07-01', '23:00:00');
+INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
+(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia'),
+(2, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Kingry  The Flash', 'Tank', '2020-07-30', '21:00:00', 'Tank');
 
 -- --------------------------------------------------------
 
@@ -292,7 +296,8 @@ INSERT INTO `tabla_de_pelea` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round
 (5, '3', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
 (6, '3', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
 (7, '4', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
-(8, '4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0);
+(8, '4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(9, 'Beto Garcia', 1, 'Kingry  The Flash', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1);
 
 --
 -- Indexes for dumped tables
@@ -355,6 +360,10 @@ ALTER TABLE `tabla_de_pelea`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `boxeadores`
+--
 ALTER TABLE `boxeadores`
   MODIFY `id_boxeador` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
@@ -386,7 +395,7 @@ ALTER TABLE `peleas_estatales`
 -- AUTO_INCREMENT for table `peleas_municipales`
 --
 ALTER TABLE `peleas_municipales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `posiciones_generales_estatales`
@@ -399,6 +408,12 @@ ALTER TABLE `posiciones_generales_estatales`
 --
 ALTER TABLE `posiciones_generales_municipales`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tabla_de_pelea`
+--
+ALTER TABLE `tabla_de_pelea`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
