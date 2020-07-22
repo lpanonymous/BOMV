@@ -299,29 +299,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group <?php echo (!empty($id_gimnasio_err)) ? 'has-error' : ''; ?>">
                             <label>Id gimnasio</label>
-                            <!--<input type="text" name="id_gimnasio" class="form-control" value="</*?php echo $id_gimnasio; */?>">-->
-                            <select id="lista_gimnasios" name="id_gimnasio" class="form-control" value="<?php echo $id_gimnasio;?>">
-                             	<!--<option value="">Elige el Gimnasio</option>-->
-                             	<?php
-								 	//include("");
-								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-								 	$query = "SELECT * FROM gimnasio ORDER BY id";	
-								 	$result = mysqli_query($conexion, $query);
-								 	if ($result == true){
-										if(mysqli_num_rows($result) > 0){
-								 			//$result = mysqli_query($gimnasios);
-											while($row = mysqli_fetch_array($result)){	
-												$id_gimnasio = $row['id'];
-												$nombre = $row['nombre'];
-										
-								?>
-								 		<option name="id_gimnasio" value="<?php echo $id_gimnasio;?>"><?php echo $nombre;?></option>
-										<?php
-										}
-										}
-									}
-								 ?>
-                             </select>
+                            <input type="text" name="id_gimnasio" class="form-control" value="<?php echo $id_gimnasio;?>">
                             <span class="help-block"><?php echo $id_gimnasio_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($alias_err)) ? 'has-error' : ''; ?>">
