@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2020 at 11:24 PM
+-- Generation Time: Jul 23, 2020 at 01:06 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -299,6 +299,50 @@ INSERT INTO `tabla_de_pelea` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round
 (8, '4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
 (9, 'Beto Garcia', 1, 'Kingry  The Flash', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabla_de_pelea_estatal`
+--
+
+CREATE TABLE `tabla_de_pelea_estatal` (
+  `id` int(11) NOT NULL,
+  `id_juez` varchar(50) NOT NULL,
+  `id_pelea` int(11) NOT NULL,
+  `id_boxeador` varchar(50) NOT NULL,
+  `round1` int(11) DEFAULT NULL,
+  `round2` int(11) DEFAULT NULL,
+  `round3` int(11) DEFAULT NULL,
+  `round4` int(11) DEFAULT NULL,
+  `round5` int(11) DEFAULT NULL,
+  `round6` int(11) DEFAULT NULL,
+  `round7` int(11) DEFAULT NULL,
+  `round8` int(11) DEFAULT NULL,
+  `round9` int(11) DEFAULT NULL,
+  `round10` int(11) DEFAULT NULL,
+  `round11` int(11) DEFAULT NULL,
+  `round12` int(11) NOT NULL,
+  `total_puntos` int(11) DEFAULT NULL,
+  `num_jabs` int(11) DEFAULT NULL,
+  `num_power` int(11) DEFAULT NULL,
+  `total_golpes` int(11) DEFAULT NULL,
+  `ganador` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tabla_de_pelea_estatal`
+--
+
+INSERT INTO `tabla_de_pelea_estatal` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round1`, `round2`, `round3`, `round4`, `round5`, `round6`, `round7`, `round8`, `round9`, `round10`, `round11`, `round12`, `total_puntos`, `num_jabs`, `num_power`, `total_golpes`, `ganador`) VALUES
+(1, '1', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(2, '1', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(3, '2', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(4, '2', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(5, '3', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(6, '3', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
+(7, '4', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(8, '4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0);
+
 --
 -- Indexes for dumped tables
 --
@@ -358,6 +402,12 @@ ALTER TABLE `tabla_de_pelea`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tabla_de_pelea_estatal`
+--
+ALTER TABLE `tabla_de_pelea_estatal`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -414,6 +464,12 @@ ALTER TABLE `posiciones_generales_municipales`
 --
 ALTER TABLE `tabla_de_pelea`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tabla_de_pelea_estatal`
+--
+ALTER TABLE `tabla_de_pelea_estatal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

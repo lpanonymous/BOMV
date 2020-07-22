@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Noticias</title>
+    <title>Tablas de peleas estatales</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -16,81 +16,16 @@
             background-attachment: fixed;
             background-size: cover;
         }
-        .opacity{
+        .opacity
+        {
             opacity:0.8; /* Opacidad 60% */
         }
-        #div1{
-			/*overflow:scroll;*/
-			height:80%;
-			width:100%;
+        #div1 
+        {
+          overflow:scroll;
+          height:80%;
+          width:100%;
         }
-		@media
-	  only screen 
-    and (max-width: 800px), (min-device-width: 868px) 
-    and (max-device-width: 1024px)  {
-
-		/* Force table to not be like tables anymore */
-		table, thead, tbody, th, td, tr {
-			display: block;
-		}
-
-		/* Hide table headers (but not display: none;, for accessibility) */
-		thead tr {
-			position: absolute;
-			top: -9999px;
-			left: -9999px;
-		}
-
-    tr {
-      margin: 0 0 2rem 0;
-    }
-      
-    tr:nth-child(odd) {
-      background: #ccc;
-    }
-    
-		td {
-			/* Behave  like a "row" */
-			border: none;
-			border-bottom: 1px solid #eee;
-			position: relative;
-			padding-left: 50%;
-		}
-
-		td:before {
-			/* Now like a table header */
-			position: absolute;
-			/* Top/left values mimic padding */
-			top: 0;
-			left: 6px;
-			width: 45%;
-			padding-right: 100px;
-			white-space: nowrap;
-		}
-		tr td:first-child {
-           background: #5499C7;
-           font-weight:bold;
-           font-size:1.3em;
-       }
-		tbody td {
-           display: block;
-           text-align:center;
-       }
-       tbody td:before {
-           content: attr(data-th);
-           display: block;
-           text-align:center;
-       }
-		/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
-		td:nth-of-type(1):before { content: "Id"; }
-		td:nth-of-type(2):before { content: "Foto:"; }
-		td:nth-of-type(3):before { content: "Titulo:"; }
-		td:nth-of-type(4):before { content: "Fecha:"; }
-		td:nth-of-type(5):before { content: "Cuerpo:"; }
-	}
     </style>
 
     <script type="text/javascript">
@@ -108,8 +43,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Noticias<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="noticias.php">Noticias<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="gimnasios.php">Gimnasios</a>
@@ -123,8 +58,8 @@
       <li class="nav-item">
         <a class="nav-link" href="tablas_peleas.php">Tablas peleas municipales</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Tablas peleas estatales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="peleas_municipales.php">Peleas municipales</a>
@@ -143,15 +78,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left" style="color:white;">Noticias</h2>
-                        <a href="../controllers/soap_clients/cliente_noticias_agregar.php" class="btn btn-success pull-right">Agregar nueva noticia</a>
+                        <h2 class="pull-left" style="color:white;">Tablas de peleas estatales</h2>
+                        <a href="tablas_peleas_estatales_agregar.php" class="btn btn-success pull-right">Agregar nueva tabla de pelea</a>
                     </div>
                     <?php
                       require_once('../ws_soap/lib/nusoap.php');
                       $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
                       $datos = array();
                   
-                      $resultado = $cliente->call('mostrarNoticias', $datos);
+                      $resultado = $cliente->call('mostrarTablasPeleasEstatales', $datos);
                       
                       $err = $cliente->getError();
                       if($err){

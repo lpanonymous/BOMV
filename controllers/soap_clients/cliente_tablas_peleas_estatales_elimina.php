@@ -5,7 +5,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 	$datos = array('id' => $_POST["id"]);
 
-	$resultado = $cliente->call('eliminarTablaPelea', $datos);
+	$resultado = $cliente->call('eliminarTablaPeleaEstatal', $datos);
 	
 	$err = $cliente->getError();
 	if($err){
@@ -14,7 +14,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-		header("location: ../../views/tablas_peleas.php");
+		header("location: ../../views/tablas_peleas_estatales.php");
 	}
 } 
 else{
@@ -31,7 +31,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Eliminar tabla de pelea</title>
+    <title>Eliminar tabla de pelea estatal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -58,7 +58,7 @@ else{
                             <p>¿Estas seguro de querer eliminar la tabla de pelea?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="../../views/tablas_peleas.php" class="btn btn-default">No</a>
+                                <a href="../../views/tablas_peleas_estatales.php" class="btn btn-default">No</a>
                             </p>
                         </div>
                     </form>
