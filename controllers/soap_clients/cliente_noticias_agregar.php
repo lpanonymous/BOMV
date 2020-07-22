@@ -2,19 +2,11 @@
 require_once('lib/nusoap.php');
  
 // Define variables and initialize with empty values
-$id = $titulo = $fecha = $cuerpo = $foto="";
-$id_err = $titulo_err = $fecha_err = $cuerpo_err = $foto_err ="";
+$titulo = $fecha = $cuerpo = $foto="";
+$titulo_err = $fecha_err = $cuerpo_err = $foto_err ="";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Validate id_boxeador
-    $input_id = trim($_POST["id"]);
-    if(empty($input_id)){
-        $id_err = "Ingresa el id de la noticia.";
-    } 
-    else{
-        $id = $input_id;
-    }
 
     // Validate titulo de noticia
     $input_titulo = trim($_POST["titulo"]);
@@ -25,29 +17,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $titulo = $input_titulo;
     }
 
-    // Validate fecha de la notixia
+    // Validate fecha de la noticia
     $input_fecha = trim($_POST["fecha"]);
     if(empty($input_fecha)){
         $fecha_err = "Ingresa la fecha de la noticia.";
     }else{
         $fecha = $input_fecha;
     }
-
+	
+	// Validate cuerpo de la noticia
+    $input_cuerpo = trim($_POST["cuerpo"]);
+    if(empty($input_cuerpo)){
+        $cuerpo_err = "Ingresa el cuerpo de la noticia.";
+    }else{
+        $cuerpo = $input_cuerpo;
+    }
+	
     // Validate foto de la noticia
     $input_foto = trim($_POST["foto"]);
     if(empty($input_foto)){
         $foto_err = "Ingresa la imagen de la noticia";
-    } elseif(!filter_var($input_foto, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $foto_err = "Por favor, la imagen debe de coincidir con un formato valido de imagen.";
     } else{
         $foto = $input_foto;
     }
     
     // Check input errors before inserting in database
-    if(empty($id_err) && empty($titulo_err) && empty($fecha_err) && empty($cuerpo_err) && empty($foto_err)){
+    if(empty($titulo_err) && empty($fecha_err) && empty($cuerpo_err) && empty($foto_err)){
         $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 
-        $datos = array('id' => $_POST["id"], 'titulo' => $_POST["titulo"], 'fecha' => $_POST["fecha"], 'cuerpo' => $_POST["cuerpo"], 'foto' => $_POST["foto"]);
+        $datos = array('titulo' => $_POST["titulo"], 'fecha' => $_POST["fecha"], 'cuerpo' => $_POST["cuerpo"], 'foto' => $_POST["foto"]);
 
         $resultado = $cliente->call('agregarNoticia', $datos);
         
@@ -93,11 +91,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <p>Please fill this form and submit to add employee record to the database.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
-                            <label>Id</label>
-                            <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">
-                            <span class="help-block"><?php echo $id_err;?></span>
-                        </div>
                         <div class="form-group <?php echo (!empty($titulo_err)) ? 'has-error' : ''; ?>">
                             <label>Titulo</label>
                             <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">

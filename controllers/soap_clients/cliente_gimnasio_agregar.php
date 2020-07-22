@@ -2,19 +2,11 @@
 	require_once('lib/nusoap.php');
 
 	// Define variables and initialize with empty values
-	$id = $nombre = $ubicacion = $telefono = $facebook = $email = $descripcion = $foto ="";
-	$id_err = $nombre_err = $ubicacion_err = $telefono_err = $facebook_err = $email_err = $descripcion_err = $foto_err ="";
+	$nombre = $ubicacion = $telefono = $facebook = $email = $descripcion = $foto ="";
+	$nombre_err = $ubicacion_err = $telefono_err = $facebook_err = $email_err = $descripcion_err = $foto_err ="";
 	
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		// Validate id
-		$input_id = trim($_POST["id"]);
-		if(empty($input_id)){
-			$id_err = "Please enter a id.";
-		} 
-		else{
-			$id = $input_id;
-		}
 		// Validate nombre
 		$input_nombre = trim($_POST["nombre"]);
 		if(empty($input_nombre)){
@@ -73,10 +65,10 @@
 		}
 		
 		// Check input errors before inserting in database
-		if(empty($id_err) && empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err) && empty($foto_err)){
+		if(empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err) && empty($foto_err)){
 			$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 
-			$datos = array('id' => $_POST["id"], 'nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"], 'foto' => $_POST["foto"]);
+			$datos = array('nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"], 'foto' => $_POST["foto"]);
 
 			$resultado = $cliente->call('agregarGimnasio', $datos);
 			
@@ -122,11 +114,6 @@
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en agregar gimnasio para almacenarlo en la base de datos.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id)) ? 'has-error' : ''; ?>">
-                            <label>Id</label>
-                            <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">
-                            <span class="help-block"><?php echo $id_err;?></span>
-                        </div>
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">

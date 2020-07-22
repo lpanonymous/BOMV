@@ -1,8 +1,7 @@
 <?php
 	require_once('lib/nusoap.php');
 
-	// Define variables and initialize with empty values
-    $id_boxeador = 
+	// Define variables and initialize with empty values 
     $id_gimnasio = 
     $alias = 
     $nombre_boxeador = 
@@ -21,7 +20,6 @@
     $municipio = 
     $foto ="";
 
-    $id_boxeador_err = 
     $id_gimnasio_err = 
     $alias_err = 
     $nombre_boxeador_err = 
@@ -42,14 +40,6 @@
 	
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-        
-		$input_id_boxeador = trim($_POST["id_boxeador"]);
-		if(empty($input_id_boxeador)){
-			$id_boxeador_err = "Porfavor ingresa un id de boxeador.";
-		} 
-		else{
-			$id_boxeador = $input_id_boxeador;
-        }
         
         $input_id_gimnasio = trim($_POST["id_gimnasio"]);
 		if(empty($input_id_gimnasio)){
@@ -188,13 +178,12 @@
         }
         
         // Check input errors before inserting in database
-        if(empty($id_boxeador_err) && empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err) && empty($foto_err))
+        if(empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err) && empty($foto_err))
         {
             
 			$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 
-            $datos = array('id_boxeador' => $_POST["id_boxeador"], 
-                           'id_gimnasio' => $_POST["id_gimnasio"], 
+            $datos = array('id_gimnasio' => $_POST["id_gimnasio"], 
                            'alias' => $_POST["alias"], 
                            'nombre_boxeador' => $_POST["nombre_boxeador"], 
                            'total_peleas' => $_POST["total_peleas"], 
@@ -257,11 +246,6 @@
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en agregar boxeador para almacenarlo en la base de datos.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id_boxeador_err)) ? 'has-error' : ''; ?>">
-                            <label>Id boxeador</label>
-                            <input type="text" name="id_boxeador" class="form-control" value="<?php echo $id_boxeador; ?>">
-                            <span class="help-block"><?php echo $id_boxeador_err;?></span>
-                        </div>
                         <div class="form-group <?php echo (!empty($id_gimnasio_err)) ? 'has-error' : ''; ?>">
                             <label>Id gimnasio</label>
                             <!--<input type="text" name="id_gimnasio" class="form-control" value="</*?php echo $id_gimnasio; ?>*/">-->

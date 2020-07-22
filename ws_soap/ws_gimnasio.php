@@ -6,35 +6,35 @@
 	$servicio->schemaTargetBamespace = $ns;
 
 	//Gimnasios
-	$servicio->register("agregarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarGimnasio", array('nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarGimnasio", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('buscarGimnasio',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
 	$servicio->register('mostrarGimnasios', array(), array('return' => 'xsd:string'), $ns);
 
 	//Noticias
-	$servicio->register("agregarNoticia", array('id' => 'xsd:string', 'titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarNoticia", array('titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarNoticia", array('id' => 'xsd:string', 'titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarNoticia", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('buscarNoticia',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
 	$servicio->register('mostrarNoticias', array(), array('return' => 'xsd:string'), $ns);
 
 	//Boxeadores
-	$servicio->register("agregarBoxeador", array('id_boxeador' => 'xsd:string', 'id_gimnasio' => 'xsd:string', 'alias' => 'xsd:string', 'nombre_boxeador' => 'xsd:string', 'total_peleas' => 'xsd:string', 'peleas_ganadas' => 'xsd:string', 'peleas_ganadas_ko' => 'xsd:string', 'peleas_perdidas' => 'xsd:string', 'peleas_perdidas_ko' => 'xsd:string', 'empates' => 'xsd:string', 'categoria' => 'xsd:string', 'division' => 'xsd:string', 'peso' => 'xsd:string', 'altura' => 'xsd:string', 'estado' => 'xsd:string', 'ciudad' => 'xsd:string', 'municipio' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarBoxeador", array('id_gimnasio' => 'xsd:string', 'alias' => 'xsd:string', 'nombre_boxeador' => 'xsd:string', 'total_peleas' => 'xsd:string', 'peleas_ganadas' => 'xsd:string', 'peleas_ganadas_ko' => 'xsd:string', 'peleas_perdidas' => 'xsd:string', 'peleas_perdidas_ko' => 'xsd:string', 'empates' => 'xsd:string', 'categoria' => 'xsd:string', 'division' => 'xsd:string', 'peso' => 'xsd:string', 'altura' => 'xsd:string', 'estado' => 'xsd:string', 'ciudad' => 'xsd:string', 'municipio' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarBoxeador", array('id_boxeador' => 'xsd:string', 'id_gimnasio' => 'xsd:string', 'alias' => 'xsd:string', 'nombre_boxeador' => 'xsd:string', 'total_peleas' => 'xsd:string', 'peleas_ganadas' => 'xsd:string', 'peleas_ganadas_ko' => 'xsd:string', 'peleas_perdidas' => 'xsd:string', 'peleas_perdidas_ko' => 'xsd:string', 'empates' => 'xsd:string', 'categoria' => 'xsd:string', 'division' => 'xsd:string', 'peso' => 'xsd:string', 'altura' => 'xsd:string', 'estado' => 'xsd:string', 'ciudad' => 'xsd:string', 'municipio' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarBoxeador", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('buscarBoxeador',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
 	$servicio->register('mostrarBoxeadores', array(), array('return' => 'xsd:string'), $ns);
 
 	//Jueces
-	$servicio->register("agregarJuez", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'usuario' => 'xsd:string', 'contrasena' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarJuez", array('nombre' => 'xsd:string', 'usuario' => 'xsd:string', 'contrasena' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarJuez", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'usuario' => 'xsd:string', 'contrasena' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarJuez", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('buscarJuez',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
 	$servicio->register('mostrarJueces', array(), array('return' => 'xsd:string'), $ns);
 
 	//Tablas de peleas
-	$servicio->register("agregarTablaPelea", array('id' => 'xsd:string', 'id_juez' => 'xsd:string', 'id_pelea' => 'xsd:string', 'id_boxeador' => 'xsd:string', 'round1' => 'xsd:string', 'round2' => 'xsd:string', 'round3' => 'xsd:string', 'round4' => 'xsd:string', 'round5' => 'xsd:string', 'round6' => 'xsd:string', 'round7' => 'xsd:string', 'round8' => 'xsd:string', 'round9' => 'xsd:string', 'round10' => 'xsd:string', 'round11' => 'xsd:string', 'round12' => 'xsd:string', 'total_puntos' => 'xsd:string', 'num_jabs' => 'xsd:string', 'num_power' => 'xsd:string', 'total_golpes' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarTablaPelea", array('id_juez' => 'xsd:string', 'id_pelea' => 'xsd:string', 'id_boxeador' => 'xsd:string', 'round1' => 'xsd:string', 'round2' => 'xsd:string', 'round3' => 'xsd:string', 'round4' => 'xsd:string', 'round5' => 'xsd:string', 'round6' => 'xsd:string', 'round7' => 'xsd:string', 'round8' => 'xsd:string', 'round9' => 'xsd:string', 'round10' => 'xsd:string', 'round11' => 'xsd:string', 'round12' => 'xsd:string', 'total_puntos' => 'xsd:string', 'num_jabs' => 'xsd:string', 'num_power' => 'xsd:string', 'total_golpes' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarTablaPelea", array('id' => 'xsd:string', 'id_juez' => 'xsd:string', 'id_pelea' => 'xsd:string', 'id_boxeador' => 'xsd:string', 'round1' => 'xsd:string', 'round2' => 'xsd:string', 'round3' => 'xsd:string', 'round4' => 'xsd:string', 'round5' => 'xsd:string', 'round6' => 'xsd:string', 'round7' => 'xsd:string', 'round8' => 'xsd:string', 'round9' => 'xsd:string', 'round10' => 'xsd:string', 'round11' => 'xsd:string', 'round12' => 'xsd:string', 'total_puntos' => 'xsd:string', 'num_jabs' => 'xsd:string', 'num_power' => 'xsd:string', 'total_golpes' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarTablaPelea", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('buscarTablaPelea',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
@@ -64,10 +64,10 @@
 		return $data;
 	}
 
-	function agregarGimnasio($id, $nombre, $ubicacion, $telefono, $facebook, $email, $descripcion, $foto){
+	function agregarGimnasio($nombre, $ubicacion, $telefono, $facebook, $email, $descripcion, $foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO gimnasio(id, nombre, ubicacion, telefono, facebook, email, descripcion, foto) VALUES ('$id','$nombre','$ubicacion','$telefono','$facebook','$email','$descripcion', '$foto')");
+		$agregar = $conexion->query("INSERT INTO gimnasio(nombre, ubicacion, telefono, facebook, email, descripcion, foto) VALUES ('$nombre','$ubicacion','$telefono','$facebook','$email','$descripcion', '$foto')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -150,11 +150,11 @@
 		return $data;
 	}
 
-	function agregarNoticia($id, $titulo, $fecha, $cuerpo, $foto)
+	function agregarNoticia($titulo, $fecha, $cuerpo, $foto)
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO noticias(id, titulo, fecha, cuerpo, foto) VALUES ('$id','$titulo','$fecha','$cuerpo','$foto')");
+		$agregar = $conexion->query("INSERT INTO noticias(titulo, fecha, cuerpo, foto) VALUES ('$titulo','$fecha','$cuerpo','$foto')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -246,10 +246,10 @@
 
 	}
 
-	function agregarBoxeador($id_boxeador, $id_gimnasio, $alias, $nombre_boxeador, $total_peleas, $peleas_ganadas, $peleas_ganadas_ko, $peleas_perdidas, $peleas_perdidas_ko, $empates, $categoria, $division, $peso, $altura, $estado, $ciudad, $municipio, $foto){
+	function agregarBoxeador($id_gimnasio, $alias, $nombre_boxeador, $total_peleas, $peleas_ganadas, $peleas_ganadas_ko, $peleas_perdidas, $peleas_perdidas_ko, $empates, $categoria, $division, $peso, $altura, $estado, $ciudad, $municipio, $foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO boxeadores(id_boxeador, id_gimnasio, alias, nombre_boxeador, total_peleas, peleas_ganadas, peleas_ganadas_ko, peleas_perdidas, peleas_perdidas_ko, empates, categoria, division, peso, altura, estado, ciudad, municipio, foto) VALUES ('$id_boxeador','$id_gimnasio','$alias','$nombre_boxeador','$total_peleas','$peleas_ganadas','$peleas_ganadas_ko', '$peleas_perdidas', '$peleas_perdidas_ko', '$empates', '$categoria', '$division', '$peso', '$altura', '$estado', '$ciudad', '$municipio', '$foto')");
+		$agregar = $conexion->query("INSERT INTO boxeadores(id_gimnasio, alias, nombre_boxeador, total_peleas, peleas_ganadas, peleas_ganadas_ko, peleas_perdidas, peleas_perdidas_ko, empates, categoria, division, peso, altura, estado, ciudad, municipio, foto) VALUES ('$id_gimnasio','$alias','$nombre_boxeador','$total_peleas','$peleas_ganadas','$peleas_ganadas_ko', '$peleas_perdidas', '$peleas_perdidas_ko', '$empates', '$categoria', '$division', '$peso', '$altura', '$estado', '$ciudad', '$municipio', '$foto')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -331,11 +331,11 @@
 
 	}
 
-	function agregarJuez($id, $nombre, $usuario, $contrasena, $foto)
+	function agregarJuez($nombre, $usuario, $contrasena, $foto)
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO jueces(id, nombre, usuario, contrasena, foto) VALUES ('$id','$nombre','$usuario','$contrasena','$foto')");
+		$agregar = $conexion->query("INSERT INTO jueces(nombre, usuario, contrasena, foto) VALUES ('$nombre','$usuario','$contrasena','$foto')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -431,11 +431,11 @@
 
 	}
 
-	function agregarTablaPelea($id, $id_juez, $id_pelea, $id_boxeador, $round1, $round2, $round3, $round4, $round5, $round6, $round7, $round8, $round9, $round10, $round11, $round12, $total_puntos, $num_jabs, $num_power, $total_golpes, $ganador)
+	function agregarTablaPelea($id_juez, $id_pelea, $id_boxeador, $round1, $round2, $round3, $round4, $round5, $round6, $round7, $round8, $round9, $round10, $round11, $round12, $total_puntos, $num_jabs, $num_power, $total_golpes, $ganador)
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO tabla_de_pelea(id, id_juez, id_pelea, id_boxeador, round1, round2, round3, round4, round5, round6, round7, round8, round9, round10, round11, round12, total_puntos, num_jabs, num_power, total_golpes, ganador) VALUES ('$id','$id_juez','$id_pelea','$id_boxeador','$round1','$round2','$round3','$round4','$round5','$round6','$round7','$round8','$round9','$round10','$round11','$round12','$total_puntos','$num_jabs','$num_power','$total_golpes','$ganador')");
+		$agregar = $conexion->query("INSERT INTO tabla_de_pelea(id_juez, id_pelea, id_boxeador, round1, round2, round3, round4, round5, round6, round7, round8, round9, round10, round11, round12, total_puntos, num_jabs, num_power, total_golpes, ganador) VALUES ('$id_juez','$id_pelea','$id_boxeador','$round1','$round2','$round3','$round4','$round5','$round6','$round7','$round8','$round9','$round10','$round11','$round12','$total_puntos','$num_jabs','$num_power','$total_golpes','$ganador')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";

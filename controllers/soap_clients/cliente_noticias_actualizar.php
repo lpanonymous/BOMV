@@ -25,6 +25,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }else{
         $fecha = $input_fecha;
     }
+	
+	// Validate cuerpo de la noticia
+    $input_cuerpo = trim($_POST["cuerpo"]);
+    if(empty($input_cuerpo)){
+        $cuerpo_err = "Ingresa el cuerpo de la noticia.";
+    }else{
+        $cuerpo = $input_cuerpo;
+    }
 
     // Validate foto de la noticia
     $input_foto = trim($_POST["foto"]);

@@ -2,20 +2,11 @@
 require_once('lib/nusoap.php');
  
 // Define variables and initialize with empty values
-$id = $nombre = $usuario = $contrasena = $foto="";
-$id_err = $nombre_err = $usuario_err = $contrasena_err = $foto_err ="";
+$nombre = $usuario = $contrasena = $foto="";
+$nombre_err = $usuario_err = $contrasena_err = $foto_err ="";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Validate id_juez
-    $input_id = trim($_POST["id"]);
-    if(empty($input_id)){
-        $id_err = "Ingresa el id del juez.";
-    } 
-    else{
-        $id = $input_id;
-    }
-
     // Validate nombre juez
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
@@ -54,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($id_err) && empty($nombre_err) && empty($usuario_err) && empty($contrasena_err) && empty($foto_err)){
         $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
 
-        $datos = array('id' => $_POST["id"], 'nombre' => $_POST["nombre"], 'usuario' => $_POST["usuario"], 'contrasena' => $contrasena, 'foto' => $_POST["foto"]);
+        $datos = array('nombre' => $_POST["nombre"], 'usuario' => $_POST["usuario"], 'contrasena' => $contrasena, 'foto' => $_POST["foto"]);
 
         $resultado = $cliente->call('agregarJuez', $datos);
         
@@ -100,11 +91,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <p>Porfavor llena el formulario para almacenar al juez en la base de datos.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id_err)) ? 'has-error' : ''; ?>">
-                            <label>Id</label>
-                            <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">
-                            <span class="help-block"><?php echo $id_err;?></span>
-                        </div>
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
