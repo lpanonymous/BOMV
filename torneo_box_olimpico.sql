@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2020 at 04:59 AM
+-- Generation Time: Jul 22, 2020 at 03:56 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -156,7 +156,7 @@ CREATE TABLE `noticias` (
 --
 
 INSERT INTO `noticias` (`id`, `titulo`, `fecha`, `cuerpo`, `foto`) VALUES
-(1, 'Campeonato estatal de boxeo', '2020-06-24', 'Se aproxima el campeonato estatal de boxeo olimpico de Veracruz Para más información da clic en la imagen.', 0x68747470733a2f2f696d67322e727476652e65732f692f3f773d3136303026693d313331363739363630363039362e6a7067),
+(1, 'Campeonato estatal de boxeo', '2020-06-24', 'Se aproxima el campeonato estatal de boxeo olimpico de Veracruz.', 0x68747470733a2f2f696d67322e727476652e65732f692f3f773d3136303026693d313331363739363630363039362e6a7067),
 (2, 'Apoya a esta causa', '2020-06-25', 'Solicitamos el apoyo para este gran boxeador peso gallo, para poder participar en las estatales.', 0x68747470733a2f2f656e637279707465642d74626e302e677374617469632e636f6d2f696d616765733f713d74626e253341414e64394763527046716d5f58676f3251497a656752433467695439392d55596e55343059523647446726757371703d434155),
 (3, 'Asi relata esta gran boxeadora su vida arriba y fuera del ring', '2020-06-26', 'Su nombre es Emily Xochicale y su pasion siempre a sido el boxeo pero no a tenido una vida tan facil afuera del ring, se dedica a trabajar, estudiar y entrena en las noches en el gimnasio de su colonia, sin duda un ejemplo a seguir.', 0x68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d756e646f2d6275636b65742d73332f77702d636f6e74656e742f75706c6f6164732f323031392f30392f30343038303031342f33342d3532313734312e6a7067),
 (4, 'Por primera vez en la historia boxeadores profesionales podran participar en las olimpiadas.', '2020-06-27', 'Los Juegos Olímpicos Tokio 2020 y la posibilidad de que pugilistas profesionales participen en esa competencia reavivaron el diferendo entre los titulares del Consejo Mundial de Boxeo y de la Federación Mexicana de Box, Mauricio Sulaimán y Ricardo Conteras. El primero es tajante: de ninguna manera puede aceptarse que un boxeador profesional compita en esa justa; el segundo arguye que se hará todo lo posible para llevar a Japón la mejor delegación boxística de la historia y ganar medallas en esa disciplina.', 0x68747470733a2f2f696d672e766176656c2e636f6d2f682f3432393435305f6572726f6c2d7370656e63652d626f78696e672e6a7067),
@@ -178,15 +178,16 @@ CREATE TABLE `peleas_estatales_categoria_varonil` (
   `id_boxeador1` varchar(50) NOT NULL,
   `id_boxeador2` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
-  `hora` time NOT NULL
+  `hora` time NOT NULL,
+  `ganador` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peleas_estatales_categoria_varonil`
 --
 
-INSERT INTO `peleas_estatales_categoria_varonil` (`id`, `categoria`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`) VALUES
-(1, 'welter', 'J1', 'J2', 'J3', 'J5', 'B1', 'B2', '2020-07-10', '23:00:00');
+INSERT INTO `peleas_estatales_categoria_varonil` (`id`, `categoria`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
+(1, 'welter', 'J1', 'J2', 'J3', 'J5', 'B1', 'B2', '2020-07-10', '23:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -213,48 +214,6 @@ CREATE TABLE `peleas_municipios_categoria_varonil` (
 
 INSERT INTO `peleas_municipios_categoria_varonil` (`id`, `categoria`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`) VALUES
 (1, 'welter', 'J1', 'J2', 'J3', 'J4', 'B1', 'B2', '2020-07-01', '23:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `resultados_estatales_categoria_varonil`
---
-
-CREATE TABLE `resultados_estatales_categoria_varonil` (
-  `id` int(11) NOT NULL,
-  `idb1` varchar(50) NOT NULL,
-  `idb2` varchar(50) NOT NULL,
-  `peso` varchar(50) NOT NULL,
-  `idganador` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `resultados_estatales_categoria_varonil`
---
-
-INSERT INTO `resultados_estatales_categoria_varonil` (`id`, `idb1`, `idb2`, `peso`, `idganador`) VALUES
-(1, 'B1', 'B2', 'welter', 'B1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `resultados_municipios_categoria_varonil`
---
-
-CREATE TABLE `resultados_municipios_categoria_varonil` (
-  `id` int(11) NOT NULL,
-  `aliasb1` varchar(50) NOT NULL,
-  `aliasb2` varchar(50) NOT NULL,
-  `peso` varchar(50) NOT NULL,
-  `aliasganador` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `resultados_municipios_categoria_varonil`
---
-
-INSERT INTO `resultados_municipios_categoria_varonil` (`id`, `aliasb1`, `aliasb2`, `peso`, `aliasganador`) VALUES
-(1, 'B1', 'B2', 'welter', 'B1');
 
 -- --------------------------------------------------------
 
@@ -333,6 +292,16 @@ ALTER TABLE `noticias`
 --
 ALTER TABLE `tabla_de_pelea`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `noticias`
+--
+ALTER TABLE `noticias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
