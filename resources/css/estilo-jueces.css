@@ -1,0 +1,145 @@
+/*---------------------------------------------------------------------------------------------------------------------------------- */
+/*SETUP BASICO*/
+/*---------------------------------------------------------------------------------------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    background-color: #fff;
+    color: #000;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+  
+  .clearfix {zoom:1}
+  .clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+  
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*COMPONENTES REUSABLES*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  
+  .row {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  
+  section {
+    padding: 80px 0;
+  }
+  
+  .box {
+    padding: 1%;
+  }
+  
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*HEADER*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  
+  header{
+    background: linear-gradient(to right bottom, #000, #2a06f7);    
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+  }
+
+  h1{
+    color: #fff;
+  }
+  
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*LOGIN*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  
+  .seccion-login {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 88vh;
+  }
+  
+  .plan-box {
+    display: flex;
+    background-color: #f4f4f4;
+    border-radius: 15px;
+    width: 50%;
+    height: 90%;
+    border: 1px solid #2a06f7;
+    box-shadow: 0 8px 8px #acacac;
+    justify-content: center;
+  }
+  
+  .plan-box form{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h3{
+    display: block;
+    font-size: 200%;
+    margin: 30px 0;
+  }
+  
+  input[type=text],
+  input[type=password]{
+      width: 35%;
+      padding: 7px;
+      border-radius: 3px;
+      border: 2px solid #ccc;
+  }
+  
+  .button_slide {
+    font-family: 'Sofia', cursive;
+    margin-top: 5%;
+    color: #2a06f7;
+    border: 2px solid #18048a;
+    border-radius: 10px;
+    padding: 9px 27px;
+    font-weight: 400;
+    font-size: 120%;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #2a06f7;
+    transition: 0.4s;
+  }
+  
+  .button_slide:hover {
+    color: #fff;
+    box-shadow: inset 0 0 0 100px #2a06f7;
+  }
+  
+  .plan-box p{
+    margin-top: 7%;
+    font-size: 92%;
+    line-height: 145%;
+    margin-bottom: 2%;
+  }
+  
+  .links{
+    text-decoration: none;
+    color: #2a06f7;
+  }
+  
+  .links:hover,
+  .links:active{
+    text-decoration: none;
+    color: #d10000;
+  }
+  
