@@ -181,16 +181,130 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
                             <!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
                             <select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
                             	<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
-								<option name="categoria" value="minimosca">Minimosca</option>
-								<option name="categoria" value="mosca">Mosca</option>
-								<option name="categoria" value="gallo">Gallo</option>
-								<option name="categoria" value="liviano">Liviano</option>
-								<option name="categoria" value="welter junior">Welter Junior</option>
-								<option name="categoria" value="welter">Welter</option>
-								<option name="categoria" value="medio">Medio</option>
-								<option name="categoria" value="semipesado">Semipesado</option>
-								<option name="categoria" value="pesado">Pesado</option>
-								<option name="categoria" value="superpesado">Superpesado</option>
+								<?php
+									switch ($categoria) {
+										case "minimosca":
+											echo "<option name='categoria' value='minimosca' selected>Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "mosca":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca' selected>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "gallo":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo' selected>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "liviano":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano' selected>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "welter junior":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca' >Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior' selected>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "welter":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter' selected>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "medio":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio' selected>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "semipesado":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado' selected>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "pesado":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado' selected>Pesado</option>";
+											echo "<option name='categoria' value='superpesado'>Superpesado</option>";
+											break;
+										case "superpesado":
+											echo "<option name='categoria' value='minimosca' >Minimosca</option>";
+											echo "<option name='categoria' value='mosca'>Mosca</option>";
+											echo "<option name='categoria' value='gallo'>Gallo</option>";
+											echo "<option name='categoria' value='liviano'>Liviano</option>";
+											echo "<option name='categoria' value='welter junior'>Welter Junior</option>";
+											echo "<option name='categoria' value='welter'>Welter</option>";
+											echo "<option name='categoria' value='medio'>Medio</option>";
+											echo "<option name='categoria' value='semipesado'>Semipesado</option>";
+											echo "<option name='categoria' value='pesado'>Pesado</option>";
+											echo "<option name='categoria' value='superpesado' selected>Superpesado</option>";
+											break;		
+									}
+								?>
 							</select>
                             <span class="help-block"><?php echo $categoria_err;?></span>
                         </div>
