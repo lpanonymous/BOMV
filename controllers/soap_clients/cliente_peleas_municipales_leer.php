@@ -22,6 +22,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 	}else{
         $id = $obj->id;
 		$categoria = $obj->categoria;
+		$division = $obj->division;
         $id_juez1 = $obj->id_juez1;
         $id_juez2 = $obj->id_juez2;
         $id_juez3 = $obj->id_juez3;
@@ -73,6 +74,10 @@ else
                     <div class="form-group">
                         <label>Categoria</label>
                         <p class="form-control-static"><?php echo $categoria; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Division</label>
+                        <p class="form-control-static"><?php echo $division; ?></p>
                     </div>
                     <div class="form-group">
                         <label>Id juez1</label>

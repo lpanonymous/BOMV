@@ -288,7 +288,7 @@
 	function mostrarBoxeadores() 
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$sql = "SELECT * FROM boxeadores";
+		$sql = "SELECT * FROM boxeadores ORDER BY nombre_boxeador ASC";
 		$resultado = mysqli_query($conexion, $sql);
 		//categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora
 		$listado = "<div class='opacity table-responsive' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>ID Gimnasio</th><th>Alias</th><th>Nombre</th><th>#Total peleas</th><th>#Peleas ganadas</th><th>#Peleas ganadas k.o</th><th>#Peleas perdidas</th><th>#Peleas perdidas k.o</th><th>Empates</th><th>Categoria</th><th>División</th><th>Peso</th><th>Altura</th><th>Estado</th><th>Ciudad</th><th>Municipio</th><th>Funciones</th></tr></thead><tbody>";

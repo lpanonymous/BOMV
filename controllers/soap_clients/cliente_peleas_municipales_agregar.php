@@ -2,19 +2,11 @@
 	require_once('lib/nusoap.php');
 
 	// Define variables and initialize with empty values
-	$id = $categoria = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora ="";
-	$id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err ="";
+	$categoria = $division = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora ="";
+	$categoria_err  = $division_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err ="";
 	
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		// Validate id
-		$input_id = trim($_POST["id"]);
-		if(empty($input_id)){
-			$id_err = "Please enter a id.";
-		} 
-		else{
-			$id = $input_id;
-		}
 		// Validate categoria
 		$input_categoria = trim($_POST["categoria"]);
 		if(empty($input_categoria)){
@@ -23,7 +15,15 @@
 		else{
 			$categoria = $input_categoria;
 		}
-
+		
+		$input_division = trim($_POST["division"]);
+		if(empty($input_division)){
+			$division_err = "Ingresa la division de la pelea.";
+		} 
+		else{
+			$division = $input_division;
+		}
+		
 		// Validate id_juez1   
 		$input_id_juez1 = trim($_POST["id_juez1"]);
 		if(empty($input_id_juez1)){
@@ -90,10 +90,10 @@
 		/*$id = $categoria = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora ="";
 $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err ="";*/
 		// Check input errors before inserting in database
-		if(empty($id_err) && empty($categoria_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err)){
+		if(empty($categoria_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err)){
 			$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_municipales.php");
 
-			$datos = array('id' => $_POST["id"], 'categoria' => $_POST["categoria"], 'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"]);
+			$datos = array('categoria' => $_POST["categoria"], 'division' => $_POST["division"], 'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"]);
 
 			$resultado = $cliente->call('agregarPeleaMunicipal', $datos);
 			
@@ -139,28 +139,32 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en agregar pelea municipal para almacenarlo en la base de datos.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id)) ? 'has-error' : ''; ?>">
-                            <label>Id</label>
-                            <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">
-                            <span class="help-block"><?php echo $id_err;?></span>
-                        </div>
                         <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
                             <label>Categoria</label>
                             <!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
-                            <select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
-                            	<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
-								<option name="categoria" value="m">Minimosca</option>
-								<option name="categoria" value="mosca">Mosca</option>
-								<option name="categoria" value="gallo">Gallo</option>
-								<option name="categoria" value="liviano">Liviano</option>
-								<option name="categoria" value="welter junior">Welter Junior</option>
-								<option name="categoria" value="welter">Welter</option>
-								<option name="categoria" value="medio">Medio</option>
-								<option name="categoria" value="semipesado">Semipesado</option>
-								<option name="categoria" value="pesado">Pesado</option>
-								<option name="categoria" value="superpesado">Superpesado</option>
-							</select>
+                             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categoria">
+                                <option name="categoria" value="M">Masculina</option>
+                                <option name="categoria" value="F">Femenina</option>
+                            </select>
                             <span class="help-block"><?php echo $categoria_err;?></span>
+                        </div>
+                        <div class="form-group <?php echo (!empty($division_err)) ? 'has-error' : ''; ?>">
+                            <label>Division</label>
+                            <select class="form-control" value="<?php echo $division; ?>" id="" name="division">
+                            	<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
+                                <option name="division" value="minimosca">minimosca o semimosca(48 kg)</option>
+                                <option name="division" value="mosca">mosca(51 kg)</option>
+                                <option name="division" value="gallo">gallo(54 kg)</option>
+                                <option name="division" value="pluma">pluma(57 kg)</option>
+                                <option name="division" value="ligero">ligero(60 kg)</option>
+                                <option name="division" value="superligero">superligero o welter jr(64 kg)</option>
+                                <option name="division" value="welter">welter(69 kg)</option>
+                                <option name="division" value="mediano">mediano o medio(75 kg)</option>
+                                <option name="division" value="mediopesado">mediopesado o semipesado(81 kg)</option>
+                                <option name="division" value="pesado">pesado(91 kg)</option>
+                                <option name="division" value="superpesado">superpesado(91 kg)</option>
+							</select>
+                            <span class="help-block"><?php echo $division_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($id_juez1_err)) ? 'has-error' : ''; ?>">
                             <label>Id juez1</label>
