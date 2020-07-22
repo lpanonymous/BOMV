@@ -64,6 +64,9 @@
       <li class="nav-item">
         <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="posiciones_generales.php">Posiciones generales municipales</a>
+      </li>
     </ul>
   </div>
 </nav>

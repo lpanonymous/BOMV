@@ -139,13 +139,16 @@
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas.php">Tablas de peleas</a>
+        <a class="nav-link" href="tablas_peleas.php">Tablas de peleas municipales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="peleas_municipales.php">Peleas municipales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="posiciones_generales.php">Posiciones generales municipales</a>
       </li>
     </ul>
   </div>
