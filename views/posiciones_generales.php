@@ -140,7 +140,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left" style="color:white;">Posiciones generales</h2>
+                        <h2 class="pull-left" style="color:white;">Posiciones generales municipales</h2>
                         <a href="../controllers/soap_clients/cliente_noticias_agregar.php" class="btn btn-success pull-right">Agregar nueva posición</a>
                     </div>
                     <form action="../ws_rest/posiciones_generales_rest.php" method="get">
