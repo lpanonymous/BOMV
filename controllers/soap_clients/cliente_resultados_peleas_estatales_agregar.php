@@ -115,7 +115,20 @@
                         </div>
                         <div class="form-group <?php echo (!empty($peso_err)) ? 'has-error' : ''; ?>">
                             <label>Peso</label>
-                            <input type="text" name="peso" class="form-control" value="<?php echo $peso; ?>">
+                            <!--<input type="text" name="peso" class="form-control" value="</*?php echo $peso; ?*/>">-->
+                            <select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
+                            	<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
+								<option name="categoria" value="minimosca">Minimosca</option>
+								<option name="categoria" value="mosca">Mosca</option>
+								<option name="categoria" value="gallo">Gallo</option>
+								<option name="categoria" value="liviano">Liviano</option>
+								<option name="categoria" value="welter junior">Welter Junior</option>
+								<option name="categoria" value="welter">Welter</option>
+								<option name="categoria" value="medio">Medio</option>
+								<option name="categoria" value="semipesado">Semipesado</option>
+								<option name="categoria" value="pesado">Pesado</option>
+								<option name="categoria" value="superpesado">Superpesado</option>
+							</select>
                             <span class="help-block"><?php echo $peso_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($idganador_err)) ? 'has-error' : ''; ?>">
