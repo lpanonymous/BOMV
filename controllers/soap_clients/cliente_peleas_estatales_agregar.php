@@ -2,19 +2,11 @@
 	require_once('lib/nusoap.php');
 
 	// Define variables and initialize with empty values
-	$id = $categoria = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora ="";
-	$id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err ="";
+	$categoria = $division = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora = $ganador="";
+	$categoria_err = $division_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err = $ganador_err="";
 	
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		// Validate id
-		$input_id = trim($_POST["id"]);
-		if(empty($input_id)){
-			$id_err = "Please enter a id.";
-		} 
-		else{
-			$id = $input_id;
-		}
 		// Validate categoria
 		$input_categoria = trim($_POST["categoria"]);
 		if(empty($input_categoria)){
@@ -22,6 +14,15 @@
 		} 
 		else{
 			$categoria = $input_categoria;
+		}
+
+		// Validate division
+		$input_division = trim($_POST["division"]);
+		if(empty($input_division)){
+			$division_err = "Ingresa la división de la pelea.";
+		} 
+		else{
+			$division = $input_division;
 		}
 
 		// Validate id_juez1   
@@ -87,13 +88,23 @@
 		}else{
 			$hora = $input_hora;
 		}
+
+		// Validate ganador  
+		$input_ganador = trim($_POST["ganador"]);
+		if(empty($input_ganador)){
+			$ganador_err = "Ingresa el alias del ganador de la pelea.";
+		}else{
+			$ganador = $input_ganador;
+		}
+
+
 		/*$id = $categoria = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora ="";
 $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err ="";*/
 		// Check input errors before inserting in database
-		if(empty($id_err) && empty($categoria_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err)){
+		if(empty($categoria_err) && empty($division_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err) && empty($ganador_err)){
 			$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_estatales.php");
 
-			$datos = array('id' => $_POST["id"], 'categoria' => $_POST["categoria"], 'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"]);
+			$datos = array('categoria' => $_POST["categoria"], 'division' => $_POST["division"],'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"],'ganador' => $_POST["ganador"]);
 
 			$resultado = $cliente->call('agregarPeleaEstatal', $datos);
 			
@@ -122,7 +133,13 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <style type="text/css">
+    <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+ <!-- jQuery UI -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<style type="text/css">
         .wrapper{
             width: 500px;
             margin: 0 auto;
@@ -139,191 +156,72 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en agregar pelea estatal para almacenarlo en la base de datos.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($id)) ? 'has-error' : ''; ?>">
-                            <label>Id</label>
-                            <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">
-                            <span class="help-block"><?php echo $id_err;?></span>
-                        </div>
-                        <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
-                            <label>Categoria</label>
+						<div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
+								<label>Categoria</label>
+								<!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
+								<select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
+									<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
+									<option name="categoria" value="M">Masculina</option>
+									<option name="categoria" value="F">Femenina</option>
+								</select>
+								<span class="help-block"><?php echo $categoria_err;?></span>
+						</div>
+                        <div class="form-group <?php echo (!empty($division_err)) ? 'has-error' : ''; ?>">
+                            <label>División</label>
                             <!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
-                            <select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
+                            <select class="form-control" value="<?php echo $division; ?>" id="" name="division">
                             	<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
-								<option name="categoria" value="minimosca">Minimosca</option>
-								<option name="categoria" value="mosca">Mosca</option>
-								<option name="categoria" value="gallo">Gallo</option>
-								<option name="categoria" value="liviano">Liviano</option>
-								<option name="categoria" value="welter junior">Welter Junior</option>
-								<option name="categoria" value="welter">Welter</option>
-								<option name="categoria" value="medio">Medio</option>
-								<option name="categoria" value="semipesado">Semipesado</option>
-								<option name="categoria" value="pesado">Pesado</option>
-								<option name="categoria" value="superpesado">Superpesado</option>
+								<option name="division" value="minimosca">minimosca o semimosca(48 kg)</option>
+								<option name="division" value="mosca">mosca(51 kg)</option>
+								<option name="division" value="gallo">gallo(54 kg)</option>
+								<option name="division" value="pluma">pluma(57 kg)</option>
+								<option name="division" value="ligero">ligero(60 kg)</option>
+								<option name="division" value="superligero">superligero o welter jr(64 kg)</option>
+								<option name="division" value="welter">welter(69 kg)</option>
+								<option name="division" value="mediano">mediano o medio(75 kg)</option>
+								<option name="division" value="mediopesado">mediopesado o semipesado(81 kg)</option>
+								<option name="division" value="pesado">pesado(91 kg)</option>
+								<option name="division" value="superpesado">superpesado(91 kg)</option>
 							</select>
-                            <span class="help-block"><?php echo $categoria_err;?></span>
+                            <span class="help-block"><?php echo $division_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($id_juez1_err)) ? 'has-error' : ''; ?>">
-                            <label>Id juez1</label>
-                            <!--<input type="text" name="id_juez1" class="form-control" value="</*?php echo $id_juez1; ?*>" placeholder="">-->
-                            <select id="lista_juez" name="id_juez1" class="form-control" value="<?php echo $id_juez1;?>">
-                             	<?php
-								 	//include("");
-								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-								 	$query = "SELECT * FROM jueces ORDER BY id";	
-								 	$result = mysqli_query($conexion, $query);
-								 	if ($result == true){
-										if(mysqli_num_rows($result) > 0){
-								 			//$result = mysqli_query($gimnasios);
-											while($row = mysqli_fetch_array($result)){	
-												$id_juez1 = $row['id'];
-												$nombre = $row['nombre'];
-										
-								?>
-								 		<option name="id_juez1" value="<?php echo $id_juez1;?>"><?php echo $nombre;?></option>
-										<?php
-										}
-										}
-									}
-								 ?>
-                             </select>
+                        
+						<div class="form-group <?php echo (!empty($id_juez1_err)) ? 'has-error' : ''; ?>">
+                            <label>Juez 1</label>
+                            <input id="search_juez" type="text" name="id_juez1" class="form-control" value="<?php echo $id_juez1; ?>">
                             <span class="help-block"><?php echo $id_juez1_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($id_juez2_err)) ? 'has-error' : ''; ?>">
-                            <label>Id juez2</label>
-                            <!--<input type="text" name="id_juez2" class="form-control" value="</*?php echo $id_juez2; ?*/>">-->
-                            <select id="lista_juez" name="id_juez2" class="form-control" value="<?php echo $id_juez2;?>">
-                             	<?php
-								 	//include("");
-								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-								 	$query = "SELECT * FROM jueces ORDER BY id";	
-								 	$result = mysqli_query($conexion, $query);
-								 	if ($result == true){
-										if(mysqli_num_rows($result) > 0){
-								 			//$result = mysqli_query($gimnasios);
-											while($row = mysqli_fetch_array($result)){	
-												$id_juez2 = $row['id'];
-												$nombre = $row['nombre'];
-										
-								?>
-								 		<option name="id_juez2" value="<?php echo $id_juez2;?>"><?php echo $nombre;?></option>
-										<?php
-										}
-										}
-									}
-								 ?>
-                             </select>
+
+						<div class="form-group <?php echo (!empty($id_juez2_err)) ? 'has-error' : ''; ?>">
+                            <label>Juez 2</label>
+                            <input id="search_juez2" type="text" name="id_juez2" class="form-control" value="<?php echo $id_juez2; ?>">
                             <span class="help-block"><?php echo $id_juez2_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($id_juez3_err)) ? 'has-error' : ''; ?>">
-                            <label>Id juez3</label>
-                            <!--<input type="text" name="id_juez3" class="form-control" value="</*?php echo $id_juez3; ?*/>">-->
-                            <select id="lista_juez" name="id_juez3" class="form-control" value="<?php echo $id_juez3;?>">
-                             	<?php
-								 	//include("");
-								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-								 	$query = "SELECT * FROM jueces ORDER BY id";	
-								 	$result = mysqli_query($conexion, $query);
-								 	if ($result == true){
-										if(mysqli_num_rows($result) > 0){
-								 			//$result = mysqli_query($gimnasios);
-											while($row = mysqli_fetch_array($result)){	
-												$id_juez3 = $row['id'];
-												$nombre = $row['nombre'];
-										
-								?>
-								 		<option name="id_juez3" value="<?php echo $id_juez3;?>"><?php echo $nombre;?></option>
-										<?php
-										}
-										}
-									}
-								 ?>
-                             </select>
+
+						<div class="form-group <?php echo (!empty($id_juez3_err)) ? 'has-error' : ''; ?>">
+                            <label>Juez 3</label>
+                            <input id="search_juez3" type="text" name="id_juez3" class="form-control" value="<?php echo $id_juez3; ?>">
                             <span class="help-block"><?php echo $id_juez3_err;?></span>
                         </div>
-
-                        <div class="form-group <?php echo (!empty($id_juez4_err)) ? 'has-error' : ''; ?>">
-                            <label>Id juez4</label>
-                            <!--<input type="text" name="id_juez4" class="form-control" value="</*?php echo $id_juez4; ?*/>">-->
-                            <select id="lista_juez" name="id_juez4" class="form-control" value="<?php echo $id_juez4;?>">
-                             	<?php
-								 	//include("");
-								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-								 	$query = "SELECT * FROM jueces ORDER BY id";	
-								 	$result = mysqli_query($conexion, $query);
-								 	if ($result == true){
-										if(mysqli_num_rows($result) > 0){
-								 			//$result = mysqli_query($gimnasios);
-											while($row = mysqli_fetch_array($result)){	
-												$id_juez4 = $row['id'];
-												$nombre = $row['nombre'];
-										
-								?>
-								 		<option name="id_juez4" value="<?php echo $id_juez4;?>"><?php echo $nombre;?></option>
-										<?php
-										}
-										}
-									}
-								 ?>
-                             </select>
+                        
+						<div class="form-group <?php echo (!empty($id_juez4_err)) ? 'has-error' : ''; ?>">
+                            <label>Juez 4</label>
+                            <input id="search_juez4" type="text" name="id_juez4" class="form-control" value="<?php echo $id_juez4; ?>">
                             <span class="help-block"><?php echo $id_juez4_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($id_boxeador1_err)) ? 'has-error' : ''; ?>">
-                            <label>Id boxeador1</label>
-                            <!--<input type="text" name="id_boxeador1" class="form-control" value="</*?php echo $id_boxeador1; ?>">-->
-                            <select id="lista_gimnasios" name="id_boxeador1" class="form-control" value="<?php echo $id_boxeador1;?>">
-                             	<!--<option value="">Elige el Gimnasio</option>-->
-                             	<?php
-								 	//include("");
-								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-								 	$query = "SELECT * FROM boxeadores ORDER BY id_boxeador";	
-								 	$result = mysqli_query($conexion, $query);
-								 	if ($result == true){
-										if(mysqli_num_rows($result) > 0){
-								 			//$result = mysqli_query($gimnasios);
-											while($row = mysqli_fetch_array($result)){	
-												$id_boxeador1 = $row['id_boxeador'];
-												$alias = $row['alias'];
-										
-								?>
-								 		<option name="id_boxeador1" value="<?php echo $id_boxeador1;?>"><?php echo $alias;?></option>
-										<?php
-										}
-										}
-									}
-								 ?>
-                             </select>
+						<div class="form-group <?php echo (!empty($id_boxeador1_err)) ? 'has-error' : ''; ?>">
+                            <label>Boxeador 1</label>
+                            <input id="search_boxeador2" type="text" name="id_boxeador1" class="form-control" value="<?php echo $id_boxeador1; ?>">
                             <span class="help-block"><?php echo $id_boxeador1_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($id_boxeador1_err)) ? 'has-error' : ''; ?>">
-                            <label>Id boxeador2</label>
-                            <!--<input type="text" name="id_boxeador2" class="form-control" value="</*?php echo $id_boxeador2; ?>" placeholder="">-->
-                            <select id="lista_gimnasios" name="id_boxeador2" class="form-control" value="<?php echo $id_boxeador2;?>">
-                             	<!--<option value="">Elige el Gimnasio</option>-->
-                             	<?php
-								 	//include("");
-								 	$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-								 	$query = "SELECT * FROM boxeadores ORDER BY id_boxeador";	
-								 	$result = mysqli_query($conexion, $query);
-								 	if ($result == true){
-										if(mysqli_num_rows($result) > 0){
-								 			//$result = mysqli_query($gimnasios);
-											while($row = mysqli_fetch_array($result)){	
-												$id_boxeador2 = $row['id_boxeador'];
-												$alias = $row['alias'];
-										
-								?>
-								 		<option name="id_boxeador1" value="<?php echo $id_boxeador2;?>"><?php echo $alias;?></option>
-										<?php
-										}
-										}
-									}
-								 ?>
-                             </select>
-                            <span class="help-block"><?php echo $id_boxeador1_err;?></span>
+						<div class="form-group <?php echo (!empty($id_boxeador2_err)) ? 'has-error' : ''; ?>">
+                            <label>Boxeador 2</label>
+                            <input id="search_boxeador3" type="text" name="id_boxeador2" class="form-control" value="<?php echo $id_boxeador2; ?>">
+                            <span class="help-block"><?php echo $id_boxeador2_err;?></span>
                         </div>
-                        
+
                         <div class="form-group <?php echo (!empty($id_fecha_err)) ? 'has-error' : ''; ?>">
                             <label>Fecha de la pelea</label>
                             <input type="date" name="fecha" class="form-control" value="<?php echo $fecha; ?>">
@@ -335,6 +233,12 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
                             <input type="time" name="hora" class="form-control" value="<?php echo $hora; ?>" placeholder="">
                             <span class="help-block"><?php echo $hora_err;?></span>
                         </div>
+						
+						<div class="form-group <?php echo (!empty($ganador_err)) ? 'has-error' : ''; ?>">
+                            <label>Ganador</label>
+                            <input id="search_boxeador" type="text" name="ganador" class="form-control" value="<?php echo $ganador; ?>">
+                            <span class="help-block"><?php echo $ganador_err;?></span>
+                        </div>
 
                         <input type="submit" class="btn btn-primary" value="Agregar Pelea Estatal">
                         <a href="../../views/peleas_estatales.php" class="btn btn-default">Cancelar</a>
@@ -343,5 +247,60 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
             </div>        
         </div>
     </div>
+
+	<script type="text/javascript">
+		$(function() {
+			$( "#search_boxeador" ).autocomplete({
+			source: '../ajax-boxeador-search.php',
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$( "#search_boxeador2" ).autocomplete({
+			source: '../ajax-boxeador-search.php',
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$( "#search_boxeador3" ).autocomplete({
+			source: '../ajax-boxeador-search.php',
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$( "#search_juez" ).autocomplete({
+			source: '../ajax-juez-search.php',
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$( "#search_juez2" ).autocomplete({
+			source: '../ajax-juez-search.php',
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$( "#search_juez3" ).autocomplete({
+			source: '../ajax-juez-search.php',
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$( "#search_juez4" ).autocomplete({
+			source: '../ajax-juez-search.php',
+			});
+		});
+	</script>
 </body>
 </html>
