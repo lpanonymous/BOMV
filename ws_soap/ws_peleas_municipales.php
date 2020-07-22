@@ -22,7 +22,7 @@
 
 	function buscarPeleaMunicipal($id){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
-		$sql = "SELECT * FROM peleas_municipios_categoria_varonil where id='$id'";
+		$sql = "SELECT * FROM peleas_municipales where id='$id'";
 		$resultado = mysqli_query($conexion, $sql);
 
 		while ($fila = mysqli_fetch_array($resultado))
@@ -41,7 +41,7 @@
 	function agregarPeleaMunicipal($id, $categoria, $id_juez1, $id_juez2, $id_juez3, $id_juez4, $id_boxeador1, $id_boxeador2, $fecha, $hora){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO peleas_municipios_categoria_varonil(id, categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora) VALUES ('$id', '$categoria', '$id_juez1', '$id_juez2', '$id_juez3', '$id_juez4', '$id_boxeador1', '$id_boxeador2', '$fecha', '$hora')");
+		$agregar = $conexion->query("INSERT INTO peleas_municipales(id, categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora) VALUES ('$id', '$categoria', '$id_juez1', '$id_juez2', '$id_juez3', '$id_juez4', '$id_boxeador1', '$id_boxeador2', '$fecha', '$hora')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -53,7 +53,7 @@
 
 	function editarPeleaMunicipal($id, $categoria, $id_juez1, $id_juez2, $id_juez3, $id_juez4, $id_boxeador1, $id_boxeador2, $fecha, $hora){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$editar = $conexion->query("UPDATE peleas_municipios_categoria_varonil SET categoria='$categoria',id_juez1='$id_juez1',id_juez2='$id_juez2',id_juez3='$id_juez3',id_juez4='$id_juez4',id_boxeador1='$id_boxeador1', id_boxeador2='$id_boxeador2',fecha='$fecha', hora='$hora'  WHERE id='$id'");
+		$editar = $conexion->query("UPDATE peleas_municipales SET categoria='$categoria',id_juez1='$id_juez1',id_juez2='$id_juez2',id_juez3='$id_juez3',id_juez4='$id_juez4',id_boxeador1='$id_boxeador1', id_boxeador2='$id_boxeador2',fecha='$fecha', hora='$hora'  WHERE id='$id'");
 		$resultado=mysqli_query($conexion, $editar);
 
 		if(!$conexion) {
@@ -66,7 +66,7 @@
 
 	function eliminarPeleaMunicipal($id) {
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$eliminar = "DELETE FROM peleas_municipios_categoria_varonil WHERE id='$id'";
+		$eliminar = "DELETE FROM peleas_municipales WHERE id='$id'";
 		$resultado=mysqli_query($conexion, $eliminar);
 
 		if(!$conexion) {
@@ -80,7 +80,7 @@
 	function mostrarPeleaMunicipal() 
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$sql = "SELECT * FROM peleas_municipios_categoria_varonil";
+		$sql = "SELECT * FROM peleas_municipales";
 		$resultado = mysqli_query($conexion, $sql);
 		//categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora
 		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Categoria</th><th>Id juez1</th><th>Id juez2</th><th>Id juez3</th><th>Id juez4</th><th>Alias boxeador 1</th><th>Alias boxeador 2</th><th>Fecha</th><th>Hora</th><th>Funciones</th></tr></thead><tbody>";
