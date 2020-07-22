@@ -10,7 +10,7 @@
       if (isset($_GET['id'])) {
     
         //Mostrar un post
-        $sql = $dbConn->prepare("SELECT * FROM noticias where id=:id");
+        $sql = $dbConn->prepare("SELECT * FROM posiciones_generales_municipales where id=:id");
         $sql->bindValue(':id', $_GET['id']);
         $sql->execute();
         header("HTTP/1.1 200 OK");
@@ -19,7 +19,7 @@
       } else {
     
         //Mostrar lista de post
-        $sql = $dbConn->prepare("SELECT * FROM noticias");
+        $sql = $dbConn->prepare("SELECT * FROM posiciones_generales_municipales");
         $sql->execute();
         $sql->setFetchMode(PDO::FETCH_ASSOC);
         header("HTTP/1.1 200 OK");
@@ -32,10 +32,10 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       $input = $_POST;
       
-      $sql = "INSERT INTO noticias
-      (titulo, fecha, cuerpo, foto)
+      $sql = "INSERT INTO posiciones_generales_municipales
+      (alias_boxeador, gimnasio, categoria, division, peleas_ganadas, peleas_perdidas, empates)
       VALUES
-      (:titulo, :fecha, :cuerpo, :foto)";
+      (:alias_boxeador, :gimnasio, :categoria, :division, :peleas_ganadas, :peleas_perdidas, :empates)";
       
       $statement = $dbConn->prepare($sql);
       bindAllValues($statement, $input);
@@ -53,7 +53,7 @@
     // ***** SERVICIO DELETE (Borrar) *****
     if ($_SERVER['REQUEST_METHOD'] == 'DELETE'){
       $id = $_GET['id'];
-      $statement = $dbConn->prepare("DELETE FROM noticias where id=:id");
+      $statement = $dbConn->prepare("DELETE FROM posiciones_generales_municipales where id=:id");
       $statement->bindValue(':id', $id);
       $statement->execute();
       header("HTTP/1.1 200 OK");
@@ -66,7 +66,7 @@
       $postId = $input['id'];
       $fields = getParams($input);
     
-      $sql = "UPDATE noticias SET $fields WHERE id='$postId'";
+      $sql = "UPDATE posiciones_generales_municipales SET $fields WHERE id='$postId'";
       $statement = $dbConn->prepare($sql);
       bindAllValues($statement, $input);
       $statement->execute();
