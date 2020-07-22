@@ -20,12 +20,6 @@
         {
             opacity:0.8; /* Opacidad 60% */
         }
-        #div1 
-        {
-          /*overflow:scroll;*/
-          height:70%;
-          width:100%;
-        }
 		@media
 	  only screen 
     and (max-width: 800px), (min-device-width: 868px) 
@@ -89,7 +83,7 @@
 		*/
 		td:nth-of-type(1):before { content: "Id"; }
 		td:nth-of-type(2):before { content: "Categoria:"; }
-		td:nth-of-type(3):before { content: "Division:"; }		
+    td:nth-of-type(3):before { content: "División:"; }
 		td:nth-of-type(4):before { content: "Id juez 1:"; }
 		td:nth-of-type(5):before { content: "Id juez 2:"; }
 		td:nth-of-type(6):before { content: "Id juez 3:"; }
@@ -147,7 +141,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Peleas Municipales</h2>
-                        <a href="../controllers/soap_clients/cliente_peleas_municipales_agregar.php" class="btn btn-success pull-right">Agregar nueva pelea munipal</a>
+                        <a href="../controllers/soap_clients/cliente_peleas_municipales_agregar.php" class="btn btn-success pull-right">Agregar nueva pelea municipal</a>
                     </div>
                     <?php
                         require_once('../ws_soap/lib/nusoap.php');
