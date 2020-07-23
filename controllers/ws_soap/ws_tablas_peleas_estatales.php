@@ -1,18 +1,23 @@
 <?php
-    include_once 'lib/nusoap.php';
+	include_once 'lib/nusoap.php';
 	$servicio = new soap_server();
 	$ns = "urn:miserviciowsdl";
 	$servicio->configureWSDL("ServicioWeb-BOX", $ns);
-    $servicio->schemaTargetBamespace = $ns;
+	$servicio->schemaTargetBamespace = $ns;
 
-	//Tablas de peleas estatales
+	//Boxeadores
 	$servicio->register('buscarTablaPeleaEstatal',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
+	
 	$servicio->register("agregarTablaPeleaEstatal", array('id_pelea' => 'xsd:string', 'id_boxeador' => 'xsd:string', 'round1' => 'xsd:string', 'round2' => 'xsd:string', 'round3' => 'xsd:string', 'round4' => 'xsd:string', 'round5' => 'xsd:string', 'round6' => 'xsd:string', 'round7' => 'xsd:string', 'round8' => 'xsd:string', 'round9' => 'xsd:string', 'round10' => 'xsd:string', 'round11' => 'xsd:string', 'round12' => 'xsd:string', 'total_puntos' => 'xsd:string', 'num_jabs' => 'xsd:string', 'num_power' => 'xsd:string', 'total_golpes' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
-	$servicio->register("editarTablaPeleaEstatal", array('id' => 'xsd:string', 'id_juez' => 'xsd:string', 'id_pelea' => 'xsd:string', 'id_boxeador' => 'xsd:string', 'round1' => 'xsd:string', 'round2' => 'xsd:string', 'round3' => 'xsd:string', 'round4' => 'xsd:string', 'round5' => 'xsd:string', 'round6' => 'xsd:string', 'round7' => 'xsd:string', 'round8' => 'xsd:string', 'round9' => 'xsd:string', 'round10' => 'xsd:string', 'round11' => 'xsd:string', 'round12' => 'xsd:string', 'total_puntos' => 'xsd:string', 'num_jabs' => 'xsd:string', 'num_power' => 'xsd:string', 'total_golpes' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
-	$servicio->register("eliminarTablaPeleaEstatal", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
-	$servicio->register('mostrarTablasPeleasEstatales', array(), array('return' => 'xsd:string'), $ns);
 
-    function buscarTablaPeleaEstatal($id) 
+	$servicio->register("editarTablaPeleaEstatal", array('id' => 'xsd:string', 'id_juez' => 'xsd:string', 'id_pelea' => 'xsd:string', 'id_boxeador' => 'xsd:string', 'round1' => 'xsd:string', 'round2' => 'xsd:string', 'round3' => 'xsd:string', 'round4' => 'xsd:string', 'round5' => 'xsd:string', 'round6' => 'xsd:string', 'round7' => 'xsd:string', 'round8' => 'xsd:string', 'round9' => 'xsd:string', 'round10' => 'xsd:string', 'round11' => 'xsd:string', 'round12' => 'xsd:string', 'total_puntos' => 'xsd:string', 'num_jabs' => 'xsd:string', 'num_power' => 'xsd:string', 'total_golpes' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	
+	$servicio->register("eliminarTablaPeleaEstatal", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	
+	$servicio->register('mostrarTablasPeleasEstatales', array(), array('return' => 'xsd:string'), $ns);
+	
+
+	function buscarTablaPeleaEstatal($id) 
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
 		$sql = "SELECT * FROM tabla_de_pelea_estatal where id='$id'";
@@ -88,9 +93,7 @@
 		}
 		return "Registro eliminado";
 		mysqli_close($conexion);
-	}
-
-	function mostrarTablasPeleasEstatales() 
+	}function mostrarTablasPeleasEstatales() 
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		$sql = "SELECT * FROM tabla_de_pelea_estatal";
@@ -98,8 +101,7 @@
 
 		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>Id</th><th>Id juez</th><th>Id pelea</th><th>Alias boxeador</th><th>round1</th><th>round2</th><th>round3</th><th>round4</th><th>round5</th><th>round6</th><th>round7</th><th>round8</th><th>round9</th><th>round10</th><th>round11</th><th>round12</th><th>Total puntos</th><th>Número de jabs</th><th>Num power</th><th>Total de golpes</th><th>Ganador?</th><th>Funciones</th></tr></thead><tbody>";
 		while ($fila = mysqli_fetch_array($resultado)){
-				$listado = $listado.
-				"<tr>
+				$listado = $listado."<tr>
 					<td>".$fila['id'].
 					"</td><td>".$fila['id_juez'].
 					"</td><td>".$fila['id_pelea'].
@@ -121,18 +123,18 @@
 					"</td><td>".$fila['num_power'].
 					"</td><td>".$fila['total_golpes'].
 					"</td><td>".$fila['ganador'].
-					"</td><td><a href='../views/tablas_peleas_estatales_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
-					<a href='../views/tablas_peleas_estatales_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
-					<a href='../controllers/soap_clients/cliente_tablas_peleas_estatales_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
-					</td>
-				</tr>";
+					"</td><td>
+				<a href='../../views/tablas_peleas_estatales_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
+				<a href='../../views/tablas_peleas_estatales_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
+				<a href='../../controllers/soap_clients/cliente_tablas_peleas_estatales_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
+			</td></tr>";
 		}
 		$listado = $listado."</tbody></table></div>";
+		//$json = json_encode($listado);
 		mysqli_close($conexion);
 
 		return new soapval('return', 'xsd:string', $listado);
 
 	}
-
 	$servicio->service(file_get_contents("php://input"));
 ?>

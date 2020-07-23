@@ -83,10 +83,10 @@
                     </div>
                     <?php
                       require_once('../../ws_soap/lib/nusoap.php');
-                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_municipales.php");
+                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_tablas_peleas_municipales.php");
                       $datos = array();
                   
-                      $resultado = $cliente->call('mostrarPeleaMunicipal', $datos);
+                      $resultado = $cliente->call('mostrarTablasPeleas', $datos);
                       
                       $err = $cliente->getError();
                       if($err){
