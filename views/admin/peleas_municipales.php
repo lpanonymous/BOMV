@@ -84,15 +84,16 @@
 		td:nth-of-type(1):before { content: "Id"; }
 		td:nth-of-type(2):before { content: "Categoria:"; }
     td:nth-of-type(3):before { content: "División:"; }
-		td:nth-of-type(4):before { content: "Id juez 1:"; }
-		td:nth-of-type(5):before { content: "Id juez 2:"; }
-		td:nth-of-type(6):before { content: "Id juez 3:"; }
-		td:nth-of-type(7):before { content: "Id juez 4:"; }
-		td:nth-of-type(8):before { content: "Id boxeador 1:"; }
-		td:nth-of-type(9):before { content: "Id boxeador 2:"; }
+		td:nth-of-type(4):before { content: "Juez 1:"; }
+		td:nth-of-type(5):before { content: "Juez 2:"; }
+		td:nth-of-type(6):before { content: "Juez 3:"; }
+		td:nth-of-type(7):before { content: "Juez 4:"; }
+		td:nth-of-type(8):before { content: "Boxeador 1:"; }
+		td:nth-of-type(9):before { content: "Boxeador 2:"; }
 		td:nth-of-type(10):before { content: "Fecha:"; }
 		td:nth-of-type(11):before { content: "Hora:"; }
-		td:nth-of-type(12):before { content: "Funciones:"; }
+		td:nth-of-type(12):before { content: "Ganador:"; }
+		td:nth-of-type(13):before { content: "Funciones:"; }
 
 	}
     </style>
