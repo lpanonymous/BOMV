@@ -6,10 +6,10 @@
 	$servicio->schemaTargetBamespace = $ns;
 	
 	//Peleas_Estatales
+	$servicio->register('buscarPeleaEstatal',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
 	$servicio->register("agregarPeleaEstatal", array('categoria' => 'xsd:string', 'division' => 'xsd:string','id_juez1' => 'xsd:string', 'id_juez2' => 'xsd:string', 'id_juez3' => 'xsd:string', 'id_juez4' => 'xsd:string', 'id_boxeador1' => 'xsd:string', 'id_boxeador2' => 'xsd:string', 'fecha' => 'xsd:string', 'hora' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarPeleaEstatal", array('id', 'categoria' => 'xsd:string', 'division' => 'xsd:string','id_juez1' => 'xsd:string', 'id_juez2' => 'xsd:string', 'id_juez3' => 'xsd:string', 'id_juez4' => 'xsd:string', 'id_boxeador1' => 'xsd:string', 'id_boxeador2' => 'xsd:string', 'fecha' => 'xsd:string', 'hora' => 'xsd:string', 'ganador' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarPeleaEstatal", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
-	$servicio->register('buscarPeleaEstatal',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
 	$servicio->register('mostrarPeleaEstatal', array(), array('return' => 'xsd:string'), $ns);
 
 	function buscarPeleaEstatal($id) 
