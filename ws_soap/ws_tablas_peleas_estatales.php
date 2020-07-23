@@ -136,10 +136,5 @@
 		return new soapval('return', 'xsd:string', $listado);
 
 	}
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> ed725eb0c6be45a63f530bee3fce968c84328872
 	$servicio->service(file_get_contents("php://input"));
 ?>
