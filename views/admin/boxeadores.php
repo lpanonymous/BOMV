@@ -164,8 +164,8 @@
                         <a href="../../controllers/soap_clients/cliente_boxeadores_agregar.php" class="btn btn-success pull-right">Agregar nuevo boxeador</a>
                     </div>
                     <?php
-                        require_once('../../ws_soap/lib/nusoap.php');
-                        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
+                        require_once('../../controllers/ws_soap/lib/nusoap.php');
+                        $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
                         $datos = array();
                     
                         $resultado = $cliente->call('mostrarBoxeadores', $datos);

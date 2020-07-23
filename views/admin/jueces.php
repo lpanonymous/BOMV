@@ -148,8 +148,8 @@
                         <a href="../controllers/soap_clients/cliente_jueces_agregar.php" class="btn btn-success pull-right">Agregar un nuevo juez</a>
                     </div>
                     <?php
-                      require_once('../../ws_soap/lib/nusoap.php');
-                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_jueces.php");
+                      require_once('../../controllers/ws_soap/lib/nusoap.php');
+                      $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_jueces.php");
                       $datos = array();
                   
                       $resultado = $cliente->call('mostrarJueces', $datos);
