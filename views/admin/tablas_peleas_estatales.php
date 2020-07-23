@@ -56,7 +56,7 @@
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas.php">Tablas peleas municipales</a>
+        <a class="nav-link" href="tablas_peleas_municipales.php">Tablas peleas municipales</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#">Tablas peleas estatales</a>
@@ -82,8 +82,8 @@
                         <a href="tablas_peleas_estatales_agregar.php" class="btn btn-success pull-right">Agregar nueva tabla de pelea</a>
                     </div>
                     <?php
-                      require_once('../ws_soap/lib/nusoap.php');
-                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+                      require_once('../../ws_soap/lib/nusoap.php');
+                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_tablas_peleas_estatales.php");
                       $datos = array();
                   
                       $resultado = $cliente->call('mostrarTablasPeleasEstatales', $datos);

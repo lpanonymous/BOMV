@@ -124,7 +124,7 @@
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas.php">Tablas peleas municipales</a>
+        <a class="nav-link" href="tablas_peleas_municipales.php">Tablas peleas municipales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
@@ -150,7 +150,7 @@
                         <a href="../controllers/soap_clients/cliente_peleas_municipales_agregar.php" class="btn btn-success pull-right">Agregar nueva pelea municipal</a>
                     </div>
                     <?php
-                        require_once('../ws_soap/lib/nusoap.php');
+                        require_once('../../ws_soap/lib/nusoap.php');
                         $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_municipales.php");
                         $datos = array();
                     

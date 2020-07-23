@@ -58,7 +58,7 @@ else{
                             <p>¿Estas seguro de querer eliminar al boxeador?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="../../views/boxeadores.php" class="btn btn-default">No</a>
+                                <a href="../../views/admin/boxeadores.php" class="btn btn-default">No</a>
                             </p>
                         </div>
                     </form>

@@ -4,7 +4,7 @@ require_once('lib/nusoap.php');
 if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 {
     $id =  trim($_GET["id"]);
-    $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+    $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
 	$datos = array('id' => $id);
 
     $resultado = $cliente->call('buscarBoxeador', $datos);
@@ -147,7 +147,7 @@ else
                         <label>Foto</label>
                         <p class="form-control-static"><?php echo $foto; ?></p>
                     </div>
-                    <p><a href="../../views/boxeadores.php" class="btn btn-primary">Regresar</a></p>
+                    <p><a href="../../views/admin/boxeadores.php" class="btn btn-primary">Regresar</a></p>
                 </div>
             </div>        
         </div>

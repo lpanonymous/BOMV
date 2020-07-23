@@ -354,7 +354,7 @@
                             <span class="help-block"><?php echo $foto_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Agregar boxeador">
-                        <a href="../../views/boxeadores.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/boxeadores.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        

@@ -1,18 +1,23 @@
 <?php
-    include_once 'lib/nusoap.php';
+	include_once 'lib/nusoap.php';
 	$servicio = new soap_server();
 	$ns = "urn:miserviciowsdl";
 	$servicio->configureWSDL("ServicioWeb-BOX", $ns);
-    $servicio->schemaTargetBamespace = $ns;
+	$servicio->schemaTargetBamespace = $ns;
 
-	//Jueces
+	//Boxeadores
 	$servicio->register('buscarJuez',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
+	
 	$servicio->register("agregarJuez", array('nombre' => 'xsd:string', 'usuario' => 'xsd:string', 'contrasena' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+
 	$servicio->register("editarJuez", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'usuario' => 'xsd:string', 'contrasena' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	
 	$servicio->register("eliminarJuez", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
-    $servicio->register('mostrarJueces', array(), array('return' => 'xsd:string'), $ns);
-    
-    function buscarJuez($id) 
+	
+	$servicio->register('mostrarJueces', array(), array('return' => 'xsd:string'), $ns);
+	
+
+	function buscarJuez($id) 
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
 		$sql = "SELECT * FROM jueces where id='$id'";
@@ -84,15 +89,18 @@
 		while ($fila = mysqli_fetch_array($resultado)){
 				$listado = $listado."<tr><td>".$fila['id']."</td><td><img src='".$fila['foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['nombre']."</td><td>".$fila['usuario']
 				."</td><td>
-				<a href='../controllers/soap_clients/cliente_jueces_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
-				<a href='../controllers/soap_clients/cliente_jueces_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
-				<a href='../controllers/soap_clients/cliente_jueces_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
+				<a href='../../controllers/soap_clients/cliente_jueces_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
+				<a href='../../controllers/soap_clients/cliente_jueces_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
+				<a href='../../controllers/soap_clients/cliente_jueces_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
 				</td></tr>";
 		}
 		$listado = $listado."</tbody></table></div>";
+		//$json = json_encode($listado);
 		mysqli_close($conexion);
 
 		return new soapval('return', 'xsd:string', $listado);
 
 	}
+	
+	$servicio->service(file_get_contents("php://input"));
 ?>

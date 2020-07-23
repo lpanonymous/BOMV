@@ -23,9 +23,8 @@
 
         #div1 
         {
-          /*overflow:scroll;*/
-			overflow-x: auto;	
-          height:17%;
+          overflow:scroll;
+          height:80%;
           width:100%;
         }
 		@media
@@ -139,7 +138,7 @@
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas.php">Tablas peleas municipales</a>
+        <a class="nav-link" href="tablas_peleas_municipales.php">Tablas peleas municipales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
@@ -162,11 +161,11 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Boxeadores</h2>
-                        <a href="../controllers/soap_clients/cliente_boxeadores_agregar.php" class="btn btn-success pull-right">Agregar nuevo boxeador</a>
+                        <a href="../../controllers/soap_clients/cliente_boxeadores_agregar.php" class="btn btn-success pull-right">Agregar nuevo boxeador</a>
                     </div>
                     <?php
-                        require_once('../ws_soap/lib/nusoap.php');
-                        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+                        require_once('../../ws_soap/lib/nusoap.php');
+                        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
                         $datos = array();
                     
                         $resultado = $cliente->call('mostrarBoxeadores', $datos);

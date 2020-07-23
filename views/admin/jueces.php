@@ -122,7 +122,7 @@
         <a class="nav-link" href="#">Jueces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas.php">Tablas peleas municipales</a>
+        <a class="nav-link" href="tablas_peleas_municipales.php">Tablas peleas municipales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
@@ -148,8 +148,8 @@
                         <a href="../controllers/soap_clients/cliente_jueces_agregar.php" class="btn btn-success pull-right">Agregar un nuevo juez</a>
                     </div>
                     <?php
-                      require_once('../ws_soap/lib/nusoap.php');
-                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+                      require_once('../../ws_soap/lib/nusoap.php');
+                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_jueces.php");
                       $datos = array();
                   
                       $resultado = $cliente->call('mostrarJueces', $datos);

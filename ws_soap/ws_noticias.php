@@ -1,19 +1,23 @@
 <?php
-    include_once 'lib/nusoap.php';
+	include_once 'lib/nusoap.php';
 	$servicio = new soap_server();
 	$ns = "urn:miserviciowsdl";
 	$servicio->configureWSDL("ServicioWeb-BOX", $ns);
-    $servicio->schemaTargetBamespace = $ns;
+	$servicio->schemaTargetBamespace = $ns;
 
-	//Noticias
+	//Boxeadores
 	$servicio->register('buscarNoticia',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
+	
 	$servicio->register("agregarNoticia", array('titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+
 	$servicio->register("editarNoticia", array('id' => 'xsd:string', 'titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	
 	$servicio->register("eliminarNoticia", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	
 	$servicio->register('mostrarNoticias', array(), array('return' => 'xsd:string'), $ns);
+	
 
-
-    function buscarNoticia($id) 
+	function buscarNoticia($id) 
 	{
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");	
 		$sql = "SELECT * FROM noticias where id='$id'";
@@ -32,8 +36,7 @@
 		return $data;
 	}
 
-	function agregarNoticia($titulo, $fecha, $cuerpo, $foto)
-	{
+	function agregarNoticia($titulo, $fecha, $cuerpo, $foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
 		$agregar = $conexion->query("INSERT INTO noticias(titulo, fecha, cuerpo, foto) VALUES ('$titulo','$fecha','$cuerpo','$foto')");
@@ -79,17 +82,22 @@
 		$resultado = mysqli_query($conexion, $sql);
 
 		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>Titulo</th><th>Fecha</th><th>Cuerpo</th><th>Funciones</th></tr></thead><tbody>";
+
+
 		while ($fila = mysqli_fetch_array($resultado)){
 				$listado = $listado."<tr><td>".$fila['id']."</td><td><img src='".$fila['foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['titulo']."</td><td>".date("d/m/Y", strtotime($fila['fecha']))."</td><td>".$fila['cuerpo']."</td><td>
-				<a href='../controllers/soap_clients/cliente_noticias_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
-				<a href='../controllers/soap_clients/cliente_noticias_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
-				<a href='../controllers/soap_clients/cliente_noticias_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
+				<a href='../../controllers/soap_clients/cliente_noticias_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
+				<a href='../../controllers/soap_clients/cliente_noticias_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
+				<a href='../../controllers/soap_clients/cliente_noticias_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
 				</td></tr>";
 		}
 		$listado = $listado."</tbody></table></div>";
+		//$json = json_encode($listado);
 		mysqli_close($conexion);
 
 		return new soapval('return', 'xsd:string', $listado);
 
 	}
+	
+	$servicio->service(file_get_contents("php://input"));
 ?>

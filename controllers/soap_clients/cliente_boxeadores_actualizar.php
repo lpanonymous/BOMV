@@ -1,43 +1,10 @@
 <?php
 require_once('lib/nusoap.php');
 // Define variables and initialize with empty values
-    $id = 
-    $id_gimnasio = 
-    $alias = 
-    $nombre_boxeador = 
-    $total_peleas = 
-    $peleas_ganadas = 
-    $peleas_ganadas_ko = 
-    $peleas_perdidas = 
-    $peleas_perdidas_ko = 
-    $empates = 
-    $categoria = 
-    $division = 
-    $peso = 
-    $altura = 
-    $estado = 
-    $ciudad = 
-    $municipio = 
-    $foto ="";
+    $id = $id_gimnasio = $alias = $nombre_boxeador = $total_peleas = $peleas_ganadas = $peleas_ganadas_ko = $peleas_perdidas = $peleas_perdidas_ko = $empates = $categoria = $division = $peso = $altura = $estado = $ciudad = $municipio = $foto ="";
 
-    $id_err = 
-    $id_gimnasio_err = 
-    $alias_err = 
-    $nombre_boxeador_err = 
-    $total_peleas_err = 
-    $peleas_ganadas_err = 
-    $peleas_ganadas_ko_err = 
-    $peleas_perdidas_err = 
-    $peleas_perdidas_ko_err = 
-    $empates_err = 
-    $categoria_err = 
-    $division_err = 
-    $peso_err = 
-    $altura_err = 
-    $estado_err = 
-    $ciudad_err = 
-    $municipio_err = 
-    $foto_err ="";
+    $id_err = $id_gimnasio_err = $alias_err = $nombre_boxeador_err = $total_peleas_err = $peleas_ganadas_err = 
+    $peleas_ganadas_ko_err = $peleas_perdidas_err = $peleas_perdidas_ko_err = $empates_err = $categoria_err = $division_err = $peso_err = $altura_err = $estado_err = $ciudad_err = $municipio_err = $foto_err ="";
  
  
 // Processing form data when form is submitted
@@ -183,7 +150,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     
     // Check input errors before inserting in database
     if(empty($id_err) && empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err) && empty($foto_err)){
-        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
 
 		$datos = array('id_boxeador' => $_POST["id"], 
                            'id_gimnasio' => $_POST["id_gimnasio"], 
@@ -222,7 +189,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         // Get URL parameter
         $id =  trim($_GET["id"]);
-        $cliente2 = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+        $cliente2 = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
 
         $datos = array('id' => $id);
 
@@ -406,7 +373,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar boxeador">
-                        <a href="../../views/boxeadores.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/boxeadores.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        
