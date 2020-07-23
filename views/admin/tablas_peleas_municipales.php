@@ -11,7 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style type="text/css">
         body{
-            background-image: url('../resources/ali.jpg');
+            background-image: url('../../resources/ali.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;

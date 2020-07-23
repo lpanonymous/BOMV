@@ -15,7 +15,7 @@
     
     <style type="text/css">
         body{
-            background-image: url('../resources/ali.jpg');
+            background-image: url('../../resources/ali.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
