@@ -82,8 +82,8 @@
                         <a href="tablas_peleas_estatales_agregar.php" class="btn btn-success pull-right">Agregar nueva tabla de pelea</a>
                     </div>
                     <?php
-                      require_once('../../ws_soap/lib/nusoap.php');
-                      $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_tablas_peleas_estatales.php");
+                      require_once('../../controllers/ws_soap/lib/nusoap.php');
+                      $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_tablas_peleas_estatales.php");
                       $datos = array();
                   
                       $resultado = $cliente->call('mostrarTablasPeleasEstatales', $datos);

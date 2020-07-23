@@ -147,11 +147,11 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Peleas Municipales</h2>
-                        <a href="../controllers/soap_clients/cliente_peleas_municipales_agregar.php" class="btn btn-success pull-right">Agregar nueva pelea municipal</a>
+                        <a href="../../controllers/soap_clients/cliente_peleas_municipales_agregar.php" class="btn btn-success pull-right">Agregar nueva pelea municipal</a>
                     </div>
                     <?php
-                        require_once('../../ws_soap/lib/nusoap.php');
-                        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_municipales.php");
+                        require_once('../../controllers/ws_soap/lib/nusoap.php');
+                        $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_municipales.php");
                         $datos = array();
                     
                         $resultado = $cliente->call('mostrarPeleaMunicipal', $datos);
