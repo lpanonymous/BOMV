@@ -133,4 +133,6 @@
 		return new soapval('return', 'xsd:string', $listado);
 
 	}
+
+	$servicio->service(file_get_contents("php://input"));
 ?>
