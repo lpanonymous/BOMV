@@ -55,7 +55,7 @@
 
 	function editarJuez($id, $nombre, $usuario, $contrasena, $foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$editar = $conexion->query("UPDATE jueces SET id='$id',nombre='$nombre',usuario='$usuario',contrasena='$contrasena'  WHERE id='$id'");
+		$editar = $conexion->query("UPDATE jueces SET id='$id',nombre='$nombre',usuario='$usuario',contrasena='$contrasena', foto='$foto'  WHERE id='$id'");
 		$resultado=mysqli_query($conexion, $editar);
 
 		if(!$conexion) {
