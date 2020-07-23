@@ -144,7 +144,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Noticias</h2>
-                        <a href="../../controllers/soap_clients/cliente_noticias_agregar.php" class="btn btn-success pull-right">Agregar nueva noticia</a>
+                        <a href="../../controllers/soap_clients/cliente_noticias_agregar.php" class="btn btn-info pull-right">Agregar nueva noticia</a>
                     </div>
                     <?php
                       require_once('../../controllers/ws_soap/lib/nusoap.php');

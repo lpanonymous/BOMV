@@ -44,8 +44,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     
     // Check input errors before inserting in database
     if(empty($id_err) && empty($titulo_err) && empty($fecha_err) && empty($cuerpo_err) && empty($foto_err)){
-        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
-
+    	$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_noticias.php");
+		//BOMV/controllers/ws_soap/ws_noticias
 		$datos = array('id' => $_POST["id"], 'titulo' => $_POST["titulo"], 'fecha' => $_POST["fecha"], 'cuerpo' => $_POST["cuerpo"], 'foto' => $_POST["foto"]);
 
 		$resultado = $cliente->call('editarNoticia', $datos);
@@ -57,7 +57,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 		}else{
-			header("location: ../../views/noticias.php");
+			header("location: ../../views/admin/noticias.php");
 		}
     }
 } else{
@@ -65,7 +65,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         // Get URL parameter
         $id =  trim($_GET["id"]);
-        $cliente2 = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+		$cliente2 = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_noticias.php");
 
         $datos = array('id' => $id);
 
@@ -148,7 +148,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Agregar">
-                        <a href="../../views/noticias.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/noticias.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        

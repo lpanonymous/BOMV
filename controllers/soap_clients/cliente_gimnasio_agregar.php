@@ -66,7 +66,7 @@
 		
 		// Check input errors before inserting in database
 		if(empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err) && empty($foto_err)){
-			$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+			$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_gimnasio.php");
 
 			$datos = array('nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"], 'foto' => $_POST["foto"]);
 
@@ -79,7 +79,7 @@
 				echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 				echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 			}else{
-				header("location: ../../views/gimnasios.php");
+				header("location: ../../views/admin/gimnasios.php");
 				//echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
 			}
 		}
@@ -154,7 +154,7 @@
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Agregar Gimnasio">
-                        <a href="../../views/gimnasios.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/gimnasios.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        

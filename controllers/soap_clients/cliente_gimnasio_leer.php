@@ -4,7 +4,7 @@ require_once('lib/nusoap.php');
 if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 {
     $id =  trim($_GET["id"]);
-    $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+    $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_gimnasios.php");
 	$datos = array('id' => $id);
 	//$json = json_decode($datos);
 	$resultado = $cliente->call('buscarGimnasio', $datos);
@@ -96,7 +96,7 @@ else
 
                         <img src="<?php echo $foto; ?>" class="img-fluid" alt="Imagen">
                     </div>
-                    <p><a href="../../views/gimnasios.php" class="btn btn-primary">Regresar</a></p>
+                    <p><a href="../../views/admin/gimnasios.php" class="btn btn-primary">Regresar</a></p>
                 </div>
             </div>        
         </div>

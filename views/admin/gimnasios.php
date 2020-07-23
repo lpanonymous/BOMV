@@ -155,7 +155,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Gimnasios</h2>
-                        <a href="../controllers/soap_clients/cliente_gimnasio_agregar.php" class="btn btn-success pull-right">Agregar nuevo gimnasio</a>
+                        <a href="../../controllers/soap_clients/cliente_gimnasio_agregar.php" class="btn btn-info pull-right">Agregar nuevo gimnasio</a>
                     </div>
                     <?php
                         require_once('../../controllers/ws_soap/lib/nusoap.php');

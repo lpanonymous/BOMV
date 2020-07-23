@@ -1,17 +1,9 @@
 <?php
 require_once('lib/nusoap.php');
 // Define variables and initialize with empty values
-    $id = 
-    $nombre = 
-    $usuario = 
-    $contrasena = 
-    $foto ="";
+    $id = $nombre = $usuario = $contrasena = $foto ="";
 
-    $id_err = 
-    $nombre_err = 
-    $usuario_err = 
-    $contrasena_err = 
-    $foto_err = "";
+    $id_err = $nombre_err = $usuario_err = $contrasena_err = $foto_err = "";
  
  
 // Processing form data when form is submitted
@@ -53,7 +45,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     
     // Check input errors before inserting in database
     if(empty($id_err) && empty($nombre_err) && empty($usuario_err) && empty($contrasena_err) && empty($foto_err)){
-        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+        $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_jueces.php");
 
 		$datos = array('id' => $_POST["id"], 
                            'nombre' => $_POST["nombre"], 
@@ -71,7 +63,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 		}else{
-			header("location: ../../views/jueces.php");
+			header("location: ../../views/admin/jueces.php");
 		}
     }
 } else{
@@ -79,7 +71,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         // Get URL parameter
         $id =  trim($_GET["id"]);
-        $cliente2 = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+        $cliente2 = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_jueces.php");
 
         $datos = array('id' => $id);
 
@@ -162,7 +154,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar juez">
-                        <a href="../../views/jueces.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/jueces.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        

@@ -4,7 +4,7 @@ require_once('lib/nusoap.php');
 if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 {
     $id =  trim($_GET["id"]);
-    $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
+    $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
 	$datos = array('id' => $id);
 
     $resultado = $cliente->call('buscarBoxeador', $datos);
