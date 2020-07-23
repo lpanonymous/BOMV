@@ -1,5 +1,5 @@
 <?php
-require_once('connection.php');
+require_once('../connection.php');
 
 function get_juez($conn , $term){	
 	$query = "SELECT * FROM jueces WHERE nombre LIKE '%".$term."%' ORDER BY nombre ASC";
