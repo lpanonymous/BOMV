@@ -2,7 +2,7 @@
 require_once('lib/nusoap.php');
 // Process delete operation after confirmation
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-	$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+	$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
 	$datos = array('id' => $_POST["id"]);
 
 	$resultado = $cliente->call('eliminarBoxeador', $datos);
@@ -14,7 +14,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-		header("location: ../../views/boxeadores.php");
+		header("location: ../../views/admin/boxeadores.php");
 	}
 } 
 else{

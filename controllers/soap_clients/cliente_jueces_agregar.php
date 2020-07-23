@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Check input errors before inserting in database
     if(empty($id_err) && empty($nombre_err) && empty($usuario_err) && empty($contrasena_err) && empty($foto_err)){
-        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+        $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_jueces.php");
 
         $datos = array('nombre' => $_POST["nombre"], 'usuario' => $_POST["usuario"], 'contrasena' => $contrasena, 'foto' => $_POST["foto"]);
 
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
             echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
         }else{
-            header("location: ../../views/jueces.php");
+            header("location: ../../views/admin/jueces.php");
             //echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
         }
     }
@@ -113,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Agregar juez">
-                        <a href="../../views/jueces.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/jueces.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        

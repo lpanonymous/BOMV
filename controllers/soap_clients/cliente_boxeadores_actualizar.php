@@ -150,7 +150,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     
     // Check input errors before inserting in database
     if(empty($id_err) && empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err) && empty($foto_err)){
-        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
+        $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
 
 		$datos = array('id_boxeador' => $_POST["id"], 
                            'id_gimnasio' => $_POST["id_gimnasio"], 
@@ -181,7 +181,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 		}else{
-			header("location: ../../views/boxeadores.php");
+			header("location: ../../views/admin/boxeadores.php");
 		}
     }
 } else{
@@ -189,7 +189,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         // Get URL parameter
         $id =  trim($_GET["id"]);
-        $cliente2 = new nusoap_client("http://localhost/BOMV/ws_soap/ws_boxeadores.php");
+        $cliente2 = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
 
         $datos = array('id' => $id);
 

@@ -145,7 +145,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Jueces</h2>
-                        <a href="../controllers/soap_clients/cliente_jueces_agregar.php" class="btn btn-success pull-right">Agregar un nuevo juez</a>
+                        <a href="../../controllers/soap_clients/cliente_jueces_agregar.php" class="btn btn-success pull-right">Agregar un nuevo juez</a>
                     </div>
                     <?php
                       require_once('../../controllers/ws_soap/lib/nusoap.php');
