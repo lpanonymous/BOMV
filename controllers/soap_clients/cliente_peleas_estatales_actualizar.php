@@ -104,7 +104,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check input errors before inserting in database
 	//$id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err
     if(empty($id_err) && empty($categoria_err)  && empty($division_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err) && empty($ganador_err)){
-        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_estatales.php");
+        $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_estatales.php");
 		//id, categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora
 		$datos = array('id' => $_POST["id"], 'categoria' => $_POST["categoria"],  'division' => $_POST["division"], 'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"], 'ganador' => $_POST["ganador"]);
 
@@ -117,7 +117,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 		}else{
-			header("location: ../../views/peleas_estatales.php");
+			header("location: ../../views/admin/peleas_estatales.php");
 		}
     }
 } else{
@@ -125,7 +125,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         // Get URL parameter
         $id =  trim($_GET["id"]);
-        $cliente2 = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_estatales.php");
+        $cliente2 = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_estatales.php");
 
         $datos = array('id' => $id);
 
@@ -159,7 +159,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         
     }  else{    
         // URL doesn't contain valid id. Redirect to error page
-        header("location: ../error.php");
+        header("location: ../tools/error.php");
         exit();
         exit();
     }
@@ -286,7 +286,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Guardar Pelea Estatal">
-                        <a href="../../views/peleas_estatales.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/peleas_estatales.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        
@@ -296,7 +296,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <script type="text/javascript">
 		$(function() {
 			$( "#search_boxeador" ).autocomplete({
-			source: '../ajax-boxeador-search.php',
+			source: '../js/ajax-boxeador-search.php',
 			});
 		});
 	</script>
@@ -304,7 +304,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	<script type="text/javascript">
 		$(function() {
 			$( "#search_boxeador2" ).autocomplete({
-			source: '../ajax-boxeador-search.php',
+			source: '../js/ajax-boxeador-search.php',
 			});
 		});
 	</script>
@@ -312,7 +312,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	<script type="text/javascript">
 		$(function() {
 			$( "#search_boxeador3" ).autocomplete({
-			source: '../ajax-boxeador-search.php',
+			source: '../js/ajax-boxeador-search.php',
 			});
 		});
 	</script>
@@ -320,14 +320,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	<script type="text/javascript">
 		$(function() {
 			$( "#search_juez" ).autocomplete({
-			source: '../ajax-juez-search.php',
+			source: '../js/ajax-juez-search.php',
 			});
 		});
 	</script>
 	<script type="text/javascript">
 		$(function() {
 			$( "#search_juez2" ).autocomplete({
-			source: '../ajax-juez-search.php',
+			source: '../js/ajax-juez-search.php',
 			});
 		});
 	</script>
@@ -335,7 +335,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	<script type="text/javascript">
 		$(function() {
 			$( "#search_juez3" ).autocomplete({
-			source: '../ajax-juez-search.php',
+			source: '../js/ajax-juez-search.php',
 			});
 		});
 	</script>
@@ -343,7 +343,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 	<script type="text/javascript">
 		$(function() {
 			$( "#search_juez4" ).autocomplete({
-			source: '../ajax-juez-search.php',
+			source: '../js/ajax-juez-search.php',
 			});
 		});
 	</script>

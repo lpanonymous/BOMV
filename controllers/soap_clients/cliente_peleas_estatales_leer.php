@@ -4,7 +4,7 @@ require_once('lib/nusoap.php');
 if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 {
     $id =  trim($_GET["id"]);
-    $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_estatales.php");
+    $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_estatales.php");
 	$datos = array('id' => $id);
 
 	$resultado = $cliente->call('buscarPeleaEstatal', $datos);
@@ -37,7 +37,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 else
 {
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: ../tools/error.php");
     exit();
 }
 ?>
@@ -116,7 +116,7 @@ else
                         <label>Ganador</label>
                         <p class="form-control-static"><?php echo $ganador; ?></p>
                     </div>
-                    <p><a href="../../views/peleas_estatales.php" class="btn btn-primary">Regresar</a></p>
+                    <p><a href="../../views/admin/peleas_estatales.php" class="btn btn-primary">Regresar</a></p>
                 </div>
             </div>        
         </div>

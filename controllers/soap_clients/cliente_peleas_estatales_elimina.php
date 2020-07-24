@@ -2,7 +2,7 @@
 require_once('lib/nusoap.php');
 // Process delete operation after confirmation
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-	$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_estatales.php");
+	$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_estatales.php");
 	$datos = array('id' => $_POST["id"]);
 
 	$resultado = $cliente->call('eliminarPeleaEstatal', $datos);
@@ -14,14 +14,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-		header("location: ../../views/peleas_estatales.php");
+		header("location: ../../views/admin/peleas_estatales.php");
 	}
 } 
 else{
     // Check existence of id parameter
     if(empty(trim($_GET["id"]))){
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: ../error.php");
+        header("location: ../tools/error.php");
         exit();
     }
 }
@@ -58,7 +58,7 @@ else{
                             <p>¿Estas seguro de querer eliminar esta pelea estatal?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="../../views/peleas_estatales.php" class="btn btn-default">No</a>
+                                <a href="../../views/admin/peleas_estatales.php" class="btn btn-default">No</a>
                             </p>
                         </div>
                     </form>
