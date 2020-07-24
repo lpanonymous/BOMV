@@ -78,7 +78,7 @@
         </thead>
         <tbody>
           <tr>
-          <form action="../controllers/soap_clients/cliente_tablas_peleas_estatales_agregar.php" method="post">
+          <form action="../../controllers/soap_clients/cliente_tablas_peleas_estatales_agregar.php" method="post">
             <td class="pt-3-half"><input type="text" name="id_juez" id="search_juez"></td>
             <td class="pt-3-half"><input type="number" name="id_pelea" placeholder="1"></td>
             <td class="pt-3-half"><input type="text" name="id_boxeador" id="search_boxeador"></td>  
@@ -116,14 +116,14 @@
 <script type="text/javascript">
   $(function() {
      $( "#search_boxeador" ).autocomplete({
-       source: '../controllers/ajax-boxeador-search.php',
+       source: '../../controllers/js/ajax-boxeador-search.php',
      });
   });
 </script>
 <script type="text/javascript">
 		$(function() {
 			$( "#search_juez" ).autocomplete({
-			source: '../controllers/ajax-juez-search.php',
+			source: '../../controllers/js/ajax-juez-search.php',
 			});
 		});
 	</script>

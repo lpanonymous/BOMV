@@ -2,7 +2,7 @@
 require_once('lib/nusoap.php');
 // Process delete operation after confirmation
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-	$cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+	$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_tablas_peleas_municipales.php");
 	$datos = array('id' => $_POST["id"]);
 
 	$resultado = $cliente->call('eliminarTablaPelea', $datos);
@@ -14,14 +14,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 		echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 		echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 	}else{
-		header("location: ../../views/tablas_peleas.php");
+		header("location: ../../views/admin/tablas_peleas_municipales.php");
 	}
 } 
 else{
     // Check existence of id parameter
     if(empty(trim($_GET["id"]))){
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: ../error.php");
+        header("location: ../tools/error.php");
         exit();
     }
 }
@@ -58,7 +58,7 @@ else{
                             <p>¿Estas seguro de querer eliminar la tabla de pelea?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="../../views/tablas_peleas.php" class="btn btn-default">No</a>
+                                <a href="../../views/admin/tablas_peleas_municipales.php" class="btn btn-default">No</a>
                             </p>
                         </div>
                     </form>

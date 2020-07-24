@@ -24,7 +24,7 @@
         #div1 
         {
           overflow:scroll;
-          height:80%;
+          height:17.5%;
           width:100%;
         }
 		@media

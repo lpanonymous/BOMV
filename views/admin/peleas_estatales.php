@@ -148,7 +148,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Peleas Estatales</h2>
-                        <a href="../../controllers/soap_clients/cliente_peleas_estatales_agregar.php" class="btn btn-success pull-right">Agregar nueva pelea estatal</a>
+                        <a href="../../controllers/soap_clients/cliente_peleas_estatales_agregar.php" class="btn btn-info pull-right">Agregar nueva pelea estatal</a>
                     </div>
                     <?php
                         require_once('../../controllers/ws_soap/lib/nusoap.php');

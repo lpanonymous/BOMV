@@ -1,5 +1,5 @@
 <?php
-require_once('../connection.php');
+require_once('../tools/connection.php');
 
 function get_boxeador($conn , $term){	
 	$query = "SELECT * FROM boxeadores WHERE alias LIKE '%".$term."%' ORDER BY alias ASC";

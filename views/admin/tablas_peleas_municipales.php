@@ -160,7 +160,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Tablas de peleas municipales</h2>
-                        <a href="tablas_peleas_agregar.php" class="btn btn-success pull-right">Agregar nueva tabla de pelea</a>
+                        <a href="tablas_peleas_agregar.php" class="btn btn-info pull-right">Agregar nueva tabla de pelea</a>
                     </div>
                     <?php
                       require_once('../../controllers/ws_soap/lib/nusoap.php');

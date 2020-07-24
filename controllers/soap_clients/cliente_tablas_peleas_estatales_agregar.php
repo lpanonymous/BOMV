@@ -23,11 +23,11 @@
     $ganador = $_POST["ganador"];
         // Check input errors before inserting in database
         if(empty($id_juez) && empty($id_pelea) && empty($id_boxeador) && empty($round1) && empty($round2) && empty($round3) && empty($round4) && empty($round5) && empty($round6) && empty($round7) && empty($round8) && empty($round9) && empty($round10) && empty($roun11) && empty($roun12) && empty($total_puntos) && empty($num_jabs) && empty($num_power) && empty($total_golpes) && empty($ganador)){
-            header("location: ../error.php");
+            header("location: ../tools/error.php");
         }
         else
         {
-            $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+            $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_tablas_peleas_estatales.php");
     
             $datos = array('id_juez' => $id_juez, 
                            'id_pelea' => $id_pelea, 
@@ -61,7 +61,7 @@
                 echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
                 echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
             }else{
-                header("location: ../../views/tablas_peleas_estatales.php");
+                header("location: ../../views/admin/tablas_peleas_estatales.php");
                 //echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
             }
         }

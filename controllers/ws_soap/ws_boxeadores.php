@@ -78,7 +78,7 @@
 		$resultado = mysqli_query($conexion, $sql);
 
 		//id_gimnasio, alias, nombre_boxeador, total_peleas, peleas_ganadas, peleas_ganadas_ko, peleas_perdidas, peleas_perdidas_ko, empates, categoria, division, peso, altura, estado, ciudad, municipio, foto
-		$listado = "<div class='opacity'><table id='myTable' table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>id_gimnasio</th><th>alias</th><th>Nombre</th><th>total_peleas</th><th>peleas_ganadas</th><th>peleas_ganadas_ko</th><th>peleas_perdidas</th><th>peleas_perdidas_ko</th><th>empates</th><th>categoria</th><th>division</th><th>peso</th><th>altura</th><th>estado</th><th>ciudad</th><th>municipio</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>id_gimnasio</th><th>alias</th><th>Nombre</th><th>total_peleas</th><th>peleas_ganadas</th><th>peleas_ganadas_ko</th><th>peleas_perdidas</th><th>peleas_perdidas_ko</th><th>empates</th><th>categoria</th><th>division</th><th>peso</th><th>altura</th><th>estado</th><th>ciudad</th><th>municipio</th><th>Funciones</th></tr></thead><tbody>";
 
 
 		while ($fila = mysqli_fetch_array($resultado)){

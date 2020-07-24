@@ -1,5 +1,5 @@
 <?php
-require_once('../ws_soap/lib/nusoap.php');
+require_once('../../controllers/ws_soap/lib/nusoap.php');
 
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -27,7 +27,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     
     // Check input errors before inserting in database
     if(!empty($id) && !empty($id_juez) && !empty($id_pelea) && !empty($id_boxeador) && !empty($round1) && !empty($round2) && !empty($round3) && !empty($round4) && !empty($round5) && !empty($round6) && !empty($round7) && !empty($round8) && !empty($round9) && !empty($round10) && !empty($round11) && !empty($round12) && !empty($total_puntos) && !empty($num_jabs) && !empty($num_power) && !empty($total_golpes)){
-        $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+        $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_tablas_peleas_municipales.php");
 
     $datos = array('id' => $_POST["id"], 
                    'id_juez' => $_POST["id_juez"],
@@ -61,7 +61,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 		}else{
-			header("location: tablas_peleas.php");
+			header("location: tablas_peleas_municipales.php");
 		}
     }
 } else{
@@ -69,7 +69,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         // Get URL parameter
         $id =  trim($_GET["id"]);
-        $cliente2 = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+        $cliente2 = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_tablas_peleas_municipales.php");
 
         $datos = array('id' => $id);
 
@@ -112,7 +112,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         
     }  else{    
         // URL doesn't contain valid id. Redirect to error page
-        header("location: ../controllers/error.php");
+        header("location: ../../controllers/tools/error.php");
         exit();
         exit();
     }
@@ -166,7 +166,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
 <body aria-busy="true"><!-- Editable table -->
 <div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Agregar tablas de peleas <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span></h3>
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Actualizar tabla de pelea<span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span></h3>
   <div class="card-body">
     <div id="table" class="table-editable">
       <div id="div1">
@@ -236,7 +236,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <script type="text/javascript">
   $(function() {
      $( "#search_boxeador" ).autocomplete({
-       source: '../controllers/ajax-boxeador-search.php',
+       source: '../../controllers/js/ajax-boxeador-search.php',
      });
   });
 </script>
@@ -244,7 +244,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <script type="text/javascript">
 		$(function() {
 			$( "#search_juez" ).autocomplete({
-			source: '../controllers/ajax-juez-search.php',
+			source: '../../controllers/js/ajax-juez-search.php',
 			});
 		});
 	</script>

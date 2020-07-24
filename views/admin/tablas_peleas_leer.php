@@ -1,10 +1,10 @@
 <?php
-require_once('../ws_soap/lib/nusoap.php');
+require_once('../../controllers/ws_soap/lib/nusoap.php');
 // Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 {
     $id =  trim($_GET["id"]);
-    $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_gimnasio.php");
+    $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_tablas_peleas_municipales.php");
 	$datos = array('id' => $id);
 
 	$resultado = $cliente->call('buscarTablaPelea', $datos);
@@ -46,7 +46,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 else
 {
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: ../error.php");
+    header("location: ../controllers/tools/error.php");
     exit();
 }
 ?>
@@ -119,7 +119,7 @@ else
         </thead>
         <tbody>
           <tr>
-          <form action="../controllers/soap_clients/cliente_tablas_peleas_agregar.php" method="post">
+          <form action="" method="post">
             <td class="pt-3-half"><input type="number" name="id" value="<?php echo $id; ?>" disabled></td>
             <td class="pt-3-half"><input type="text" name="id_juez" value="<?php echo $id_juez; ?>" disabled></td>
             <td class="pt-3-half"><input type="number" name="id_pelea" value="<?php echo $id_pelea; ?>" disabled></td>
