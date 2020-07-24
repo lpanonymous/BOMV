@@ -61,7 +61,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 		}else{
-			header("location: tablas_peleas_municipales.php");
+			header("location: ../../views/admin/tablas_peleas_municipales.php");
 		}
     }
 } else{

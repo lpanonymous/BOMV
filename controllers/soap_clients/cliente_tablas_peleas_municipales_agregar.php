@@ -11,31 +11,26 @@
 <!-- Bootstrap CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .pt-3-half 
-        {
+        .pt-3-half{
             padding-top: 1.4rem;
         }
 
-        #div1 
-        {
+        #div1{
           overflow:scroll;
           height:80%;
           width:100%;
         }
-        input
-        {
+        input{
           width:50px;
           height: 50px;
           border: 0;
           text-align:center;
           background-color:transparent;
         }
-        #search_boxeador
-        {
+		#search_boxeador{
           width:150px;
         }
-        #search_juez
-        {
+        #search_juez{
           width:150px;
         }
     </style>
