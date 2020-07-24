@@ -4,7 +4,7 @@ require_once('lib/nusoap.php');
 if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 {
     $id =  trim($_GET["id"]);
-    $cliente = new nusoap_client("http://localhost/BOMV/ws_soap/ws_peleas_municipales.php");
+    $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_municipales.php");
 	$datos = array('id' => $id);
 
 	$resultado = $cliente->call('buscarPeleaMunicipal', $datos);
@@ -116,7 +116,7 @@ else
                         <label>Ganador</label>
                         <p class="form-control-static"><?php echo $ganador; ?></p>
                     </div>
-                    <p><a href="../../views/peleas_municipales.php" class="btn btn-primary">Regresar</a></p>
+                    <p><a href="../../views/admin/peleas_municipales.php" class="btn btn-primary">Regresar</a></p>
                 </div>
             </div>        
         </div>
