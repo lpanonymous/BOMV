@@ -1,5 +1,5 @@
 <?php
-require_once('../../controllers/ws_soap/lib/nusoap.php');
+require_once('lib/nusoap.php');
 
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -61,7 +61,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
 		}else{
-			header("location: tablas_peleas_estatales.php");
+			header("location: ../../views/admin/tablas_peleas_estatales.php");
 		}
     }
 } else{
@@ -112,7 +112,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         
     }  else{    
         // URL doesn't contain valid id. Redirect to error page
-        header("location: ../../controllers/tools/error.php");
+        header("location: ../tools/error.php");
         exit();
         exit();
     }
@@ -236,7 +236,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <script type="text/javascript">
   $(function() {
      $( "#search_boxeador" ).autocomplete({
-       source: '../../controllers/js/ajax-boxeador-search.php',
+       source: '../js/ajax-boxeador-search.php',
      });
   });
 </script>
@@ -244,7 +244,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <script type="text/javascript">
 		$(function() {
 			$( "#search_juez" ).autocomplete({
-			source: '../../controllers/js/ajax-juez-search.php',
+			source: '../js/ajax-juez-search.php',
 			});
 		});
 	</script>

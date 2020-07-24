@@ -78,23 +78,23 @@
         </thead>
         <tbody>
           <tr>
-          <form action="../../controllers/soap_clients/cliente_tablas_peleas_estatales_agregar.php" method="post">
+          <form action="cliente_tablas_peleas_estatales_agregar.php" method="post">
             <td class="pt-3-half"><input type="text" name="id_juez" id="search_juez"></td>
             <td class="pt-3-half"><input type="number" name="id_pelea" placeholder="1"></td>
             <td class="pt-3-half"><input type="text" name="id_boxeador" id="search_boxeador"></td>  
-            <td class="pt-3-half"><input type="number" name="round1" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round2" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round3"placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round4" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round5" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round6" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round7" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round8" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round9" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round10" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round11" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round12" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="total_puntos" placeholder="115"></td>
+            <td class="pt-3-half"><input type="number" name="round1" placeholder="10" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round2" placeholder="10" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round3"placeholder="10" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round4" placeholder="9" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round5" placeholder="10" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round6" placeholder="9" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round7" placeholder="10" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round8" placeholder="9" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round9" placeholder="10" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round10" placeholder="9" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round11" placeholder="10" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="round12" placeholder="9" min="0" max="10"></td>
+            <td class="pt-3-half"><input type="number" name="total_puntos" placeholder="115" min="0" max="120"></td>
             <td class="pt-3-half"><input type="number" name="num_jabs" placeholder="150"></td>
             <td class="pt-3-half"><input type="number" name="num_power" placeholder="100"></td>
             <td class="pt-3-half"><input type="number" name="total_golpes" placeholder="250"></td>
@@ -116,14 +116,14 @@
 <script type="text/javascript">
   $(function() {
      $( "#search_boxeador" ).autocomplete({
-       source: '../../controllers/js/ajax-boxeador-search.php',
+       source: '../js/ajax-boxeador-search.php',
      });
   });
 </script>
 <script type="text/javascript">
 		$(function() {
 			$( "#search_juez" ).autocomplete({
-			source: '../../controllers/js/ajax-juez-search.php',
+			source: '../js/ajax-juez-search.php',
 			});
 		});
 	</script>
