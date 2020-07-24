@@ -124,8 +124,8 @@
 					"</td><td>".$fila['total_golpes'].
 					"</td><td>".$fila['ganador'].
 					"</td><td>
-				<a href='../../views/tablas_peleas_estatales_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
-				<a href='../../views/tablas_peleas_estatales_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
+				<a href='../../views/admin/tablas_peleas_estatales_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
+				<a href='../../views/admin/tablas_peleas_estatales_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
 				<a href='../../controllers/soap_clients/cliente_tablas_peleas_estatales_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
 			</td></tr>";
 		}
