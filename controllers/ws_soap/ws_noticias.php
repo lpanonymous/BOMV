@@ -81,7 +81,7 @@
 		$sql = "SELECT * FROM noticias";
 		$resultado = mysqli_query($conexion, $sql);
 
-		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>Titulo</th><th>Fecha</th><th>Cuerpo</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} id='myTable' class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>Titulo</th><th>Fecha</th><th>Cuerpo</th><th>Funciones</th></tr></thead><tbody>";
 
 
 		while ($fila = mysqli_fetch_array($resultado)){
