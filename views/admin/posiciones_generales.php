@@ -135,6 +135,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="">Posiciones generales municipales</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="posiciones_estatales.php">Posiciones generales estatales</a>
+      </li>
     </ul>
   </div>
 </nav>
