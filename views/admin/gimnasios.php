@@ -122,7 +122,7 @@
       <li class="nav-item">
         <a class="nav-link" href="noticias.php">Noticias<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="gimnasios.php">Gimnasios</a>
       </li>
       <li class="nav-item">
@@ -131,28 +131,30 @@
       <li class="nav-item">
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas_municipales.php">Tablas peleas municipales</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Peleas municipales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="tablas_peleas_municipales.php">Tablas peleas municipales</a>
+          <a class="dropdown-item" href="posiciones_generales.php">Posiciones generales municipales</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="peleas_municipales.php">Peleas municipales</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="posiciones_generales.php">Posiciones municipales</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="posiciones_estatales.php">Posiciones estatales</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Peleas estatales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
+          <a class="dropdown-item" href="posiciones_estatales.php">Posiciones generales estatales</a>
+        </div>
       </li>
     </ul>
   </div>
 </nav>
-    <div class="wrapper">
+<div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
