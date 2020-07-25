@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<title>Agregar tabla de pelea</title>
     <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  
@@ -46,7 +47,7 @@
 
 <body aria-busy="true"><!-- Editable table -->
 <div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Agregar tablas de peleas <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span></h3>
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Agregar tabla de pelea estatal<span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span></h3>
   <div class="card-body">
     <div id="table" class="table-editable">
       <div id="div1">
@@ -72,7 +73,7 @@
             <th class="text-center"># jabs</th>
             <th class="text-center"># power</th>
             <th class="text-center">Total golpes</th>
-            <th class="text-center">Ganador?</th>
+            <th class="text-center">¿Ganador?</th>
             <th class="text-center">Agregar</th>
           </tr>
         </thead>

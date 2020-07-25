@@ -171,7 +171,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Actualizar Pelea Estatal</title>
+    <title>Actualizar pelea</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -198,10 +198,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <div class="page-header">
                         <h2>Actualizar pelea estatal</h2>
                     </div>
-                    <p>Please edit the input values and submit to update the record.</p>
+                    <p>Por favor llena todos los datos y despues da clic en actualizar para almacenar los datos.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                     <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
-								<label>Categoria</label>
+								<label>Categoría</label>
 								<!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
 								<select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
 									<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
@@ -267,25 +267,25 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
 
                         <div class="form-group <?php echo (!empty($id_fecha_err)) ? 'has-error' : ''; ?>">
-                            <label>Fecha de la pelea</label>
+                            <label>Fecha</label>
                             <input type="date" name="fecha" class="form-control" value="<?php echo $fecha; ?>">
                             <span class="help-block"><?php echo $fecha_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($hora_err)) ? 'has-error' : ''; ?>">
-                            <label>Hora de la pelea</label>
+                            <label>Hora</label>
                             <input type="time" name="hora" class="form-control" value="<?php echo $hora; ?>" placeholder="">
                             <span class="help-block"><?php echo $hora_err;?></span>
                         </div>
 						
 						<div class="form-group <?php echo (!empty($ganador_err)) ? 'has-error' : ''; ?>">
-                            <label>Ganador</label>
+                            <label>¿Ganador?</label>
                             <input id="search_boxeador" type="text" name="ganador" class="form-control" value="<?php echo $ganador; ?>">
                             <span class="help-block"><?php echo $ganador_err;?></span>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Guardar Pelea Estatal">
+                        <input type="submit" class="btn btn-primary" value="Actualizar">
                         <a href="../../views/admin/peleas_estatales.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>

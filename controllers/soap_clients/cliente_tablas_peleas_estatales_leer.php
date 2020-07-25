@@ -52,6 +52,7 @@ else
 ?>
 <html>
 <head>
+    <title>Ver tabla de pelea</title>
     <base target="_parent">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
@@ -87,7 +88,7 @@ else
 
 <body aria-busy="true"><!-- Editable table -->
 <div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Ver tabla de pelea <span class="table-add float-right mb-3 mr-2"></span></h3>
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Detalles de tabla de pelea estatal <span class="table-add float-right mb-3 mr-2"></span></h3>
   <div class="card-body">
     <div id="table" class="table-editable">
       <div id="div1">
@@ -95,9 +96,9 @@ else
         <thead>
           <tr>
             <th class="text-center">Id</th>
-            <th class="text-center">Id juez</th>
+            <th class="text-center">Juez</th>
             <th class="text-center">Id pelea</th>
-            <th class="text-center">Id boxeador</th>
+            <th class="text-center">Alias boxeador</th>
             <th class="text-center">Round 1</th>
             <th class="text-center">Round 2</th>
             <th class="text-center">Round 3</th>
@@ -114,7 +115,7 @@ else
             <th class="text-center"># jabs</th>
             <th class="text-center"># power</th>
             <th class="text-center">Total golpes</th>
-            <th class="text-center">Ganador?</th>
+            <th class="text-center">¿Ganador?</th>
           </tr>
         </thead>
         <tbody>

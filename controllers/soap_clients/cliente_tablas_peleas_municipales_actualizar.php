@@ -121,6 +121,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <!doctype html>
 <html lang="en">
 <head>
+<title>Actualizar tabla</title>
     <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  
@@ -166,7 +167,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
 <body aria-busy="true"><!-- Editable table -->
 <div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Actualizar tabla de pelea<span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span></h3>
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Actualizar tabla de pelea municipal<span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span></h3>
   <div class="card-body">
     <div id="table" class="table-editable">
       <div id="div1">
@@ -174,7 +175,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <thead>
           <tr>
             <th class="text-center">Juez</th>
-            <th class="text-center">Id pelea</th>
+            <th class="text-center">Id de pelea</th>
             <th class="text-center">Alias boxeador</th>
             <th class="text-center">Round 1</th>
             <th class="text-center">Round 2</th>
@@ -192,7 +193,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <th class="text-center"># jabs</th>
             <th class="text-center"># power</th>
             <th class="text-center">Total golpes</th>
-            <th class="text-center">Ganador?</th>
+            <th class="text-center">¿Ganador?</th>
             <th class="text-center">Actualizar</th>
           </tr>
         </thead>

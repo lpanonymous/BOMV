@@ -123,7 +123,7 @@
 <head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Crear Pelea Municipal</title>
+    <title>Crear pelea municipal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -148,12 +148,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Crear Pelea Muncipal</h2>
+                        <h2>Crear pelea municipal</h2>
                     </div>
-                    <p>Porfavor ingresa los datos y luego da clic en agregar pelea municipal para almacenarlo en la base de datos.</p>
+                    <p>Por favor ingresa los datos y luego da clic en agregar pelea municipal para almacenarlo en la base de datos.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 						<div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
-								<label>Categoria</label>
+								<label>Categoría</label>
 								<!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
 								<select class="form-control" value="<?php echo $categoria; ?>" id="" name="categoria">
 									<!--<option selected="true" name="categoria" disabled="disabled" value="">Selecciona el peso</option>-->
@@ -236,7 +236,7 @@
                             <span class="help-block"><?php echo $ganador_err;?></span>
                         </div>
 
-                        <input type="submit" class="btn btn-primary" value="Agregar Pelea Muncipal">
+                        <input type="submit" class="btn btn-primary" value="Agregar pelea municipal">
                         <a href="../../views/admin/peleas_municipales.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>

@@ -65,11 +65,11 @@ else
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Ver Pelea Estatal</h1>
+                        <h1>Detalles de pelea estatal</h1>
                     </div>
                     <!--id, categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora-->
                     <div class="form-group">
-                        <label>Id Pelea Estatal</label>
+                        <label>Id</label>
                         <p class="form-control-static"><?php echo $id; ?></p>
                     </div>
                     <div class="form-group">
@@ -77,31 +77,31 @@ else
                         <p class="form-control-static"><?php echo $division; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Categoria</label>
+                        <label>Categoría</label>
                         <p class="form-control-static"><?php echo $categoria; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez1</label>
+                        <label>Juez 1</label>
                         <p class="form-control-static"><?php echo $id_juez1; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez2</label>
+                        <label>Juez 2</label>
                         <p class="form-control-static"><?php echo $id_juez2; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez3</label>
+                        <label>Juez 3</label>
                         <p class="form-control-static"><?php echo $id_juez3; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez4</label>
+                        <label>Juez 4</label>
                         <p class="form-control-static"><?php echo $id_juez4; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id boxeador1</label>
+                        <label>Boxeador 1</label>
                         <p class="form-control-static"><?php echo $id_boxeador1; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id boxeador2</label>
+                        <label>Boxeador 2</label>
                         <p class="form-control-static"><?php echo $id_boxeador2; ?></p>
                     </div>
                     <div class="form-group">
@@ -113,7 +113,7 @@ else
                         <p class="form-control-static"><?php echo $hora; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Ganador</label>
+                        <label>¿Ganador?</label>
                         <p class="form-control-static"><?php echo $ganador; ?></p>
                     </div>
                     <p><a href="../../views/admin/peleas_estatales.php" class="btn btn-primary">Regresar</a></p>

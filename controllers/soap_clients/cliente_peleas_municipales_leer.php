@@ -46,7 +46,7 @@ else
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Ver pelea</title>
+    <title>Ver pelea municipal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -65,43 +65,43 @@ else
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Ver Pelea Municipal</h1>
+                        <h1>Detalles de la pelea</h1>
                     </div>
                     <!--id, categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora-->
                     <div class="form-group">
-                        <label>Id Pelea Municipal</label>
+                        <label>Id</label>
                         <p class="form-control-static"><?php echo $id; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Categoria</label>
+                        <label>Categoría</label>
                         <p class="form-control-static"><?php echo $categoria; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Division</label>
+                        <label>División</label>
                         <p class="form-control-static"><?php echo $division; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez1</label>
+                        <label>Juez 1</label>
                         <p class="form-control-static"><?php echo $id_juez1; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez2</label>
+                        <label>Juez 2</label>
                         <p class="form-control-static"><?php echo $id_juez2; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez3</label>
+                        <label>Juez 3</label>
                         <p class="form-control-static"><?php echo $id_juez3; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id juez4</label>
+                        <label>Juez 4</label>
                         <p class="form-control-static"><?php echo $id_juez4; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id boxeador1</label>
+                        <label>Boxeador 1</label>
                         <p class="form-control-static"><?php echo $id_boxeador1; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Id boxeador2</label>
+                        <label>Boxeador 2</label>
                         <p class="form-control-static"><?php echo $id_boxeador2; ?></p>
                     </div>
                     <div class="form-group">
