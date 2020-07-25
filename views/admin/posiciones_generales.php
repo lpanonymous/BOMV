@@ -120,23 +120,26 @@
       <li class="nav-item">
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas_municipales.php">Tablas peleas municipales</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="peleas_municipales" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Peleas municipales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="peleas_municipales.php">Peleas municipales</a>
+          <a class="dropdown-item" href="tablas_peleas_municipales.php">Tablas de peleas municipales</a>
+          <a class="dropdown-item" href="posiciones_generales.php">Posiciones municipales</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="peleas_municipales.php">Peleas municipales</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="peleas_estatales.php">Peleas estatales</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="">Posiciones generales municipales</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="posiciones_estatales.php">Posiciones generales estatales</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="peleas_estatales" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Peleas estatales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="peleas_estatales.php">Peleas estatales</a>
+          <a class="dropdown-item" href="tablas_peleas_estatales.php">Tablas peleas estatales</a>
+          <a class="dropdown-item" href="posiciones_estatales.php">Posiciones estatales</a>
+        </div>
       </li>
     </ul>
   </div>
