@@ -157,7 +157,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="peleas_municipales.php">Peleas municipales</a>
-          <a class="dropdown-item" href="tablas_peleas_municipales.php">Tablas de peleas municipales</a>
+          <a class="dropdown-item active" href="tablas_peleas_municipales.php">Tablas de peleas municipales</a>
           <a class="dropdown-item" href="posiciones_generales.php">Posiciones de peleas municipales</a>
         </div>
       </li>

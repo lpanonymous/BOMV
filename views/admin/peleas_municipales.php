@@ -142,12 +142,12 @@
         <a class="nav-link" href="jueces.php">Jueces</a>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="peleas_municipales" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Peleas municipales
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="peleas_municipales.php">Peleas municipales</a>
+          <a class="dropdown-item active" href="peleas_municipales.php">Peleas municipales</a>
           <a class="dropdown-item" href="tablas_peleas_municipales.php">Tablas de peleas municipales</a>
           <a class="dropdown-item" href="posiciones_generales.php">Posiciones de peleas municipales</a>
         </div>

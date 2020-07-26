@@ -132,7 +132,7 @@
       <li class="nav-item">
         <a class="nav-link" href="noticias.php">Noticias<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="gimnasios.php">Gimnasios</a>
       </li>
       <li class="nav-item">

@@ -150,12 +150,12 @@
         </div>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="peleas_estatales" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Peleas estatales
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="peleas_estatales.php">Peleas estatales</a>
+          <a class="dropdown-item active" href="peleas_estatales.php">Peleas estatales</a>
           <a class="dropdown-item" href="tablas_peleas_estatales.php">Tablas de peleas estatales</a>
           <a class="dropdown-item" href="posiciones_estatales.php">Posiciones de peleas estatales</a>
         </div>
