@@ -81,7 +81,7 @@
 		$resultado = mysqli_query($conexion, $sql);
 
 
-		$listado = "<div class='opacity'><table id='myTable' table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>Nombre</th><th>Ubicacion</th><th>Telefono</th><th>Facebook</th><th>Email</th><th>Descripción</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<div class='opacity'><table id='myTable' table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' id='myTable'><thead><tr><th>ID</th><th>Foto</th><th>Nombre</th><th>Ubicacion</th><th>Telefono</th><th>Facebook</th><th>Email</th><th>Descripción</th><th>Funciones</th></tr></thead><tbody>";
 
 
 		while ($fila = mysqli_fetch_array($resultado)){

@@ -85,7 +85,7 @@
 		$sql = "SELECT * FROM jueces";
 		$resultado = mysqli_query($conexion, $sql);
 
-		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>ID</th><th>Foto</th><th>Nombre</th><th>usuario</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' id='myTable'><thead><tr><th>ID</th><th>Foto</th><th>Nombre</th><th>usuario</th><th>Funciones</th></tr></thead><tbody>";
 		while ($fila = mysqli_fetch_array($resultado)){
 				$listado = $listado."<tr><td>".$fila['id']."</td><td><img src='".$fila['foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['nombre']."</td><td>".$fila['usuario']
 				."</td><td>

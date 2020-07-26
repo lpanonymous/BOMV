@@ -76,7 +76,7 @@
 		$sql = "SELECT * FROM peleas_estatales";
 		$resultado = mysqli_query($conexion, $sql);
 		//categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora
-		$listado = "<div class='opacity table-responsive' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>Id</th><th>Categoría</th><th>División</th><th>Juez 1</th><th>Juez 2</th><th>Juez 3</th><th>Juez 4</th><th>Boxeador 1</th><th>Boxeador 2</th><th>Fecha</th><th>Hora</th><th>¿Ganador?</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<div class='opacity table-responsive' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' id='myTable'><thead><tr><th>Id</th><th>Categoría</th><th>División</th><th>Juez 1</th><th>Juez 2</th><th>Juez 3</th><th>Juez 4</th><th>Boxeador 1</th><th>Boxeador 2</th><th>Fecha</th><th>Hora</th><th>¿Ganador?</th><th>Funciones</th></tr></thead><tbody>";
 		while ($fila = mysqli_fetch_array($resultado)){
 				$listado = $listado."<tr><td>".$fila['id']."</td><td>".$fila['categoria']."</td><td>".$fila['division']
 				."</td><td>".$fila['id_juez1']."</td><td>".$fila['id_juez2']."</td><td>".$fila['id_juez3']."</td><td>".$fila['id_juez4']

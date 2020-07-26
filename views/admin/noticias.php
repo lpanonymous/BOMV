@@ -98,10 +98,7 @@
            display: block;
            text-align:center;
        }
-		/*
-		Label the data
-    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-		*/
+
 		td:nth-of-type(1):before { content: "Id"; }
 		td:nth-of-type(2):before { content: "Foto:"; }
 		td:nth-of-type(3):before { content: "Titulo:"; }
@@ -218,5 +215,5 @@
 				}
 				} );
 			} );
-        </script>
+</script>
 </html>

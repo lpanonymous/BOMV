@@ -101,7 +101,7 @@
 		$sql = "SELECT * FROM tabla_de_pelea";
 		$resultado = mysqli_query($conexion, $sql);
 
-		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>Id</th><th>Juez</th><th>Id de pelea</th><th>Alias boxeador</th><th>Round 1</th><th>Round 2</th><th>Round 3</th><th>Round 4</th><th>Round 5</th><th>Round 6</th><th>Round 7</th><th>Round 8</th><th>Round 9</th><th>Round 10</th><th>Round 11</th><th>Round 12</th><th>Total puntos</th><th>#jabs</th><th>#power</th><th>Total de golpes</th><th>¿Ganador?</th><th>Funciones</th></tr></thead><tbody>";
+		$listado = "<div class='opacity' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' id='myTable'><thead><tr><th>Id</th><th>Juez</th><th>Id de pelea</th><th>Alias boxeador</th><th>Round 1</th><th>Round 2</th><th>Round 3</th><th>Round 4</th><th>Round 5</th><th>Round 6</th><th>Round 7</th><th>Round 8</th><th>Round 9</th><th>Round 10</th><th>Round 11</th><th>Round 12</th><th>Total puntos</th><th>#jabs</th><th>#power</th><th>Total de golpes</th><th>¿Ganador?</th><th>Funciones</th></tr></thead><tbody>";
 		while ($fila = mysqli_fetch_array($resultado)){
 				$listado = $listado.
 				"<tr>
