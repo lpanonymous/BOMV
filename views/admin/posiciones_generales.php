@@ -152,41 +152,39 @@
                         <h2 class="pull-left" style="color:white;">Posiciones de peleas municipales</h2>
                         <a href="../controllers/soap_clients/cliente_noticias_agregar.php" class="btn btn-info pull-right">Agregar nueva posición</a>
                     </div>
-                    <form action="../ws_rest/posiciones_generales_rest.php" method="get">
-                        <div class="form-row align-items-center">
-                            <div class="col-auto my-1">
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="categoria">
-                                <option selected>Categoría...</option>
-                                <option value="M">Masculina</option>
-                                <option value="F">Femenina</option>
-                            </select>
-                            </div>
-
-                            <div class="col-auto my-1">
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="division">
-                                <option selected>División...</option>
-                                <option value="minimosca">minimosca o semimosca(48 kg)</option>
-                                <option value="mosca">mosca(51 kg)</option>
-                                <option value="gallo">gallo(54 kg)</option>
-                                <option value="pluma">pluma(57 kg)</option>
-                                <option value="ligero">ligero(60 kg)</option>
-                                <option value="superligero">superligero o welter jr(64 kg)</option>
-                                <option value="welter">welter(69 kg)</option>
-                                <option value="mediano">mediano o medio(75 kg)</option>
-                                <option value="mediopesado">mediopesado o semipesado(81 kg)</option>
-                                <option value="pesado">pesado(91 kg)</option>
-                                <option value="superpesado">superpesado(91 kg)</option>
-                            </select>
-                            </div>
-
-                            <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div>
-                    </form>
                     <?php
-                      //rest
+                      $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php");
+                      $array = json_decode($res);
+                      echo "<div class='opacity table-responsive' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' ><thead><tr><th>Id</th><th>Alias boxeador</th><th>Gimnasio</th><th>Categoría</th><th>División</th><th>Peleas ganadas</th><th>Peleas perdidas</th><th>Empates</th><th>Funciones</th></tr></thead><tbody>";
+                      foreach($array as $obj)
+                      {
+                        $id = $obj->id;
+                        $alias_boxeador = $obj->alias_boxeador;
+                        $gimnasio = $obj->gimnasio;
+                        $categoria = $obj->categoria;
+                        $division = $obj->division;
+                        $peleas_ganadas = $obj->peleas_ganadas;
+                        $peleas_perdidas = $obj->peleas_perdidas;
+                        $empates = $obj->empates;
+                        echo "<tr>";
+                        echo "<td>$id</td>";
+                        echo "<td>$alias_boxeador</td>";
+                        echo "<td>$gimnasio</td>";
+                        echo "<td>$categoria</td>";
+                        echo "<td>$division</td>";
+                        echo "<td>$peleas_ganadas</td>";
+                        echo "<td>$peleas_perdidas</td>";
+                        echo "<td>$empates</td>";
+                        echo "<td>";
+                        echo "<a href='../../controllers/soap_clients/cliente_peleas_municipales_leer.php?id=". $id ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>";
+                        echo "<a href='../../controllers/soap_clients/cliente_peleas_municipales_actualizar.php?id=". $id ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>";
+                        echo "<a href='../../controllers/soap_clients/cliente_peleas_municipales_elimina.php?id=". $id ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>";
+                        echo "</td>";
+                        echo "</tr>";
+                      }
+                      echo "</tbody></table></div>";
                     ?>
+                </div>
                 </div>
             </div>        
         </div>

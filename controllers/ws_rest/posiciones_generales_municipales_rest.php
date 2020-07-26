@@ -19,7 +19,7 @@
       } else {
     
         //Mostrar lista de post
-        $sql = $dbConn->prepare("SELECT * FROM posiciones_generales_municipales");
+        $sql = $dbConn->prepare("SELECT * FROM posiciones_generales_municipales ORDER BY peleas_ganadas DESC, peleas_perdidas ASC, empates DESC");
         $sql->execute();
         $sql->setFetchMode(PDO::FETCH_ASSOC);
         header("HTTP/1.1 200 OK");
