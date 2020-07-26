@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2020 at 01:06 AM
+-- Generation Time: Jul 26, 2020 at 05:35 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -217,8 +217,7 @@ CREATE TABLE `peleas_municipales` (
 --
 
 INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
-(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia'),
-(2, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Kingry  The Flash', 'Tank', '2020-07-30', '21:00:00', 'Tank');
+(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia');
 
 -- --------------------------------------------------------
 
@@ -237,6 +236,17 @@ CREATE TABLE `posiciones_generales_estatales` (
   `empates` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `posiciones_generales_estatales`
+--
+
+INSERT INTO `posiciones_generales_estatales` (`id`, `alias_boxeador`, `gimnasio`, `categoria`, `division`, `peleas_ganadas`, `peleas_perdidas`, `empates`) VALUES
+(1, 'Pac man', 'DECA', 'M', 'welter', 1, 0, 0),
+(2, 'Tank', 'DECA', 'M', 'ligero', 2, 0, 0),
+(3, 'Dinamita', 'DECA', 'M', 'pluma', 3, 1, 1),
+(4, 'Canelo', 'NOCKOUT', 'M', 'medio', 4, 1, 0),
+(5, 'Finito', 'Leones', 'M', 'minimosca', 5, 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -253,6 +263,17 @@ CREATE TABLE `posiciones_generales_municipales` (
   `peleas_perdidas` int(11) NOT NULL,
   `empates` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posiciones_generales_municipales`
+--
+
+INSERT INTO `posiciones_generales_municipales` (`id`, `alias_boxeador`, `gimnasio`, `categoria`, `division`, `peleas_ganadas`, `peleas_perdidas`, `empates`) VALUES
+(1, 'Pac man', 'DECA', 'M', 'welter', 1, 0, 0),
+(2, 'Tank', 'DECA', 'M', 'ligero', 2, 0, 0),
+(3, 'Dinamita', 'DECA', 'M', 'pluma', 3, 1, 1),
+(4, 'Canelo', 'NOCKOUT', 'M', 'medio', 4, 1, 0),
+(5, 'Finito', 'Leones', 'M', 'minimosca', 5, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -289,15 +310,14 @@ CREATE TABLE `tabla_de_pelea` (
 --
 
 INSERT INTO `tabla_de_pelea` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round1`, `round2`, `round3`, `round4`, `round5`, `round6`, `round7`, `round8`, `round9`, `round10`, `round11`, `round12`, `total_puntos`, `num_jabs`, `num_power`, `total_golpes`, `ganador`) VALUES
-(1, '1', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(1, 'Andres Sanchez', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
 (2, '1', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
 (3, '2', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
 (4, '2', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
 (5, '3', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
 (6, '3', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
 (7, '4', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
-(8, '4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
-(9, 'Beto Garcia', 1, 'Kingry  The Flash', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1);
+(8, '4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0);
 
 -- --------------------------------------------------------
 
@@ -439,7 +459,7 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT for table `peleas_estatales`
 --
 ALTER TABLE `peleas_estatales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `peleas_municipales`
@@ -451,25 +471,25 @@ ALTER TABLE `peleas_municipales`
 -- AUTO_INCREMENT for table `posiciones_generales_estatales`
 --
 ALTER TABLE `posiciones_generales_estatales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `posiciones_generales_municipales`
 --
 ALTER TABLE `posiciones_generales_municipales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tabla_de_pelea`
 --
 ALTER TABLE `tabla_de_pelea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tabla_de_pelea_estatal`
 --
 ALTER TABLE `tabla_de_pelea_estatal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
