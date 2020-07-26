@@ -96,14 +96,15 @@
            display: block;
            text-align:center;
        }
-		/*
-		
 		td:nth-of-type(1):before { content: "Id"; }
-		td:nth-of-type(2):before { content: "Foto:"; }
-		td:nth-of-type(3):before { content: "Titulo:"; }
-		td:nth-of-type(4):before { content: "Fecha:"; }
-		td:nth-of-type(5):before { content: "Cuerpo:"; }
-		*/
+		td:nth-of-type(2):before { content: "Alias boxeador:"; }
+		td:nth-of-type(3):before { content: "Gimnasio:"; }
+		td:nth-of-type(4):before { content: "Categoría:"; }
+		td:nth-of-type(5):before { content: "División:"; }
+		td:nth-of-type(6):before { content: "Peleas ganadas:"; }
+		td:nth-of-type(7):before { content: "Peleas perdidas:";}
+		td:nth-of-type(8):before { content: "Empates:"; }
+		td:nth-of-type(9):before { content: "Funciones:"; }
 	}
     </style>
 
