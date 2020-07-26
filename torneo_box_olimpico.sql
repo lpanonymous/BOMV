@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2020 at 05:19 AM
+-- Generation Time: Jul 26, 2020 at 05:35 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -236,6 +236,17 @@ CREATE TABLE `posiciones_generales_estatales` (
   `empates` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `posiciones_generales_estatales`
+--
+
+INSERT INTO `posiciones_generales_estatales` (`id`, `alias_boxeador`, `gimnasio`, `categoria`, `division`, `peleas_ganadas`, `peleas_perdidas`, `empates`) VALUES
+(1, 'Pac man', 'DECA', 'M', 'welter', 1, 0, 0),
+(2, 'Tank', 'DECA', 'M', 'ligero', 2, 0, 0),
+(3, 'Dinamita', 'DECA', 'M', 'pluma', 3, 1, 1),
+(4, 'Canelo', 'NOCKOUT', 'M', 'medio', 4, 1, 0),
+(5, 'Finito', 'Leones', 'M', 'minimosca', 5, 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -460,7 +471,7 @@ ALTER TABLE `peleas_municipales`
 -- AUTO_INCREMENT for table `posiciones_generales_estatales`
 --
 ALTER TABLE `posiciones_generales_estatales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `posiciones_generales_municipales`
