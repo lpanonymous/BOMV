@@ -28,7 +28,7 @@
         #div1 
         {
           overflow:scroll;
-          height:50%;
+          height:70%;
           width:100%;
         }
 		
