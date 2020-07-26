@@ -30,6 +30,9 @@
 			height:80%;
 			width:100%;
         }
+		tr td{
+			background: #2C3E50 !important;
+		}
 		/*Estilos de datatable*/
 		label{
 			color: aliceblue !important;
