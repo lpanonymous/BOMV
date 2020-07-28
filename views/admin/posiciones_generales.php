@@ -165,7 +165,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left" style="color:white;">Posiciones de peleas municipales</h2>
-                        <a href="../controllers/soap_clients/cliente_noticias_agregar.php" class="btn btn-info pull-right">Agregar nueva posición</a>
+                        <a href="../../controllers/rest_clients/cliente_posiciones_generales_municipales_agregar.php" class="btn btn-info pull-right">Agregar nueva posición</a>
                     </div>
                     <?php
                       $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php");
@@ -191,9 +191,9 @@
                         echo "<td>$peleas_perdidas</td>";
                         echo "<td>$empates</td>";
                         echo "<td>";
-                        echo "<a href='../../controllers/soap_clients/cliente_peleas_municipales_leer.php?id=". $id ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>";
-                        echo "<a href='../../controllers/soap_clients/cliente_peleas_municipales_actualizar.php?id=". $id ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>";
-                        echo "<a href='../../controllers/soap_clients/cliente_peleas_municipales_elimina.php?id=". $id ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>";
+                        echo "<a href='../../controllers/rest_clients/cliente_posiciones_generales_municipales_leer.php?id=". $id ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>";
+                        echo "<a href='../../controllers/rest_clients/cliente_posiciones_generales_municipales_actualizar.php?id=". $id ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>";
+                        echo "<a href='../../controllers/rest_clients/cliente_posiciones_generales_municipales_elimina.php?id=". $id ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>";
                         echo "</td>";
                         echo "</tr>";
                       }
@@ -226,6 +226,7 @@
 						"sNext":     "Siguiente",
 						"sPrevious": "Anterior"
 					}
+          
 				}
 				} );
 			} );
