@@ -74,7 +74,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     if(empty($alias_boxeador_err) && empty($gimnasio_err) && empty($categoria_err) && empty($division_err)){
 
         // ACTUALIZAR UN REGISTRO
-        $link = "http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php?id={$_POST['id']}&alias_boxeador={$_POST['alias_boxeador']}&gimnasio={$_POST['gimnasio']}&categoria={$_POST['categoria']}&division={$_POST['division']}&peleas_ganadas={$_POST['peleas_ganadas']}&peleas_perdidas={$_POST['peleas_perdidas']}&empates={$_POST['empates']}";
+        $link = "http://localhost/BOMV/controllers/ws_rest/posiciones_generales_estatales_rest.php?id={$_POST['id']}&alias_boxeador={$_POST['alias_boxeador']}&gimnasio={$_POST['gimnasio']}&categoria={$_POST['categoria']}&division={$_POST['division']}&peleas_ganadas={$_POST['peleas_ganadas']}&peleas_perdidas={$_POST['peleas_perdidas']}&empates={$_POST['empates']}";
         $link = str_replace ( ' ', '%20', $link);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $link); //Cambiar url
@@ -85,7 +85,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $data = curl_exec($ch);  
         print_r($data);  
         curl_close($ch);
-        header("location: ../../views/admin/posiciones_generales.php");  
+        header("location: ../../views/admin/posiciones_estatales.php");  
     }
 } else{
     // Check existence of id parameter before processing further
@@ -93,7 +93,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         // CONSULTAR UN REGISTRO
         $ch = curl_init();  
-        curl_setopt($ch, CURLOPT_URL, 'http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php?id='.$id.'');  //Cambiar url
+        curl_setopt($ch, CURLOPT_URL, 'http://localhost/BOMV/controllers/ws_rest/posiciones_generales_estatales_rest.php?id='.$id.'');  //Cambiar url
         curl_setopt($ch, CURLOPT_HEADER, false);  
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
 
@@ -149,7 +149,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Actualizar posición de pelea municipal</h2>
+                        <h2>Actualizar posición de pelea estatal</h2>
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en actualizar.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -210,7 +210,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar">
-                        <a href="../../views/admin/posiciones_generales.php" class="btn btn-default">Cancelar</a>
+                        <a href="../../views/admin/posiciones_estatales.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        

@@ -2,7 +2,7 @@
 if(isset($_POST["id"]) && !empty($_POST["id"])){
 	// BORRAR REGISTRO
     $ch = curl_init();  
-    curl_setopt($ch, CURLOPT_URL, 'http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php?id='.$_POST["id"].''); //Cambiar url
+    curl_setopt($ch, CURLOPT_URL, 'http://localhost/BOMV/controllers/ws_rest/posiciones_generales_estatales_rest.php?id='.$_POST["id"].''); //Cambiar url
     curl_setopt($ch, CURLOPT_HEADER, false);  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
@@ -11,7 +11,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     print_r($data);  
     curl_close($ch);
     
-    header("location: ../../views/admin/posiciones_generales.php");
+    header("location: ../../views/admin/posiciones_estatales.php");
     } 
 else{
     // Check existence of id parameter
@@ -46,15 +46,15 @@ else{
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Eliminar posición municipal</h1>
+                        <h1>Eliminar posición estatal</h1>
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
-                            <p>¿Estas seguro de querer eliminar esta posición municipal?</p><br>
+                            <p>¿Estas seguro de querer eliminar esta posición estatal?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="../../views/admin/posiciones_generales.php" class="btn btn-default">No</a>
+                                <a href="../../views/admin/posiciones_estatales.php" class="btn btn-default">No</a>
                             </p>
                         </div>
                     </form>

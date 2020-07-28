@@ -1,13 +1,12 @@
 <?php
+ 
 // Define variables and initialize with empty values
 $alias_boxeador = $gimnasio = $categoria = $division = $peleas_ganadas = $peleas_perdidas = $empates = "";
 $alias_boxeador_err = $gimnasio_err = $categoria_err = $division_err = $peleas_ganadas_err = $peleas_perdidas_err = $empates_err = "";
+ 
 // Processing form data when form is submitted
-if(isset($_POST["id"]) && !empty($_POST["id"])){
-        // Get hidden input value
-        $id = $_POST["id"];
-    
-        // Validate alias_boxeador
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // Validate alias_boxeador
     $input_alias_boxeador = trim($_POST["alias_boxeador"]);
     if(empty($input_alias_boxeador)){
         $alias_boxeador_err = "Ingresa el alias del boxeador.";
@@ -69,52 +68,39 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     else{
         $empates = $input_empates;
     }
-    
+
     // Check input errors before inserting in database
-    if(empty($alias_boxeador_err) && empty($gimnasio_err) && empty($categoria_err) && empty($division_err)){
+    if(empty($alias_boxeador_err) && empty($gimnasio_err) && empty($categoria_err) && empty($division_err))
+    {
+        $postData = array(
+            'alias_boxeador'=>$_POST["alias_boxeador"],
+            'gimnasio'=>$_POST["gimnasio"],
+            'categoria'=>$_POST["categoria"],
+            'division'=>$_POST["division"],
+            'peleas_ganadas'=>$_POST["peleas_ganadas"],
+            'peleas_perdidas'=>$_POST["peleas_perdidas"],
+            'empates'=>$_POST["empates"]
+        );
 
-        // ACTUALIZAR UN REGISTRO
-        $link = "http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php?id={$_POST['id']}&alias_boxeador={$_POST['alias_boxeador']}&gimnasio={$_POST['gimnasio']}&categoria={$_POST['categoria']}&division={$_POST['division']}&peleas_ganadas={$_POST['peleas_ganadas']}&peleas_perdidas={$_POST['peleas_perdidas']}&empates={$_POST['empates']}";
-        $link = str_replace ( ' ', '%20', $link);
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $link); //Cambiar url
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");  
-        // REGRESO
-        $data = curl_exec($ch);  
-        print_r($data);  
+        print_r($postData);
+        //url contra la que atacamos
+        $ch = curl_init("http://localhost/BOMV/controllers/ws_rest/posiciones_generales_estatales_rest.php");
+        //a true, obtendremos una respuesta de la url, en otro caso, 
+        //true si es correcto, false si no lo es
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        //establecemos el verbo http que queremos utilizar para la petición
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        //enviamos el array data
+        curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($postData));
+        //obtenemos la respuesta
+        $response = curl_exec($ch);
+        // Se cierra el recurso CURL y se liberan los recursos del sistema
         curl_close($ch);
-        header("location: ../../views/admin/posiciones_generales.php");  
-    }
-} else{
-    // Check existence of id parameter before processing further
-    if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-        $id =  trim($_GET["id"]);
-        // CONSULTAR UN REGISTRO
-        $ch = curl_init();  
-        curl_setopt($ch, CURLOPT_URL, 'http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php?id='.$id.'');  //Cambiar url
-        curl_setopt($ch, CURLOPT_HEADER, false);  
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
-
-        // REGRESO
-        $data = curl_exec($ch);    
-        curl_close($ch);
-        $array = json_decode($data);
-        
-        $alias_boxeador = $array->alias_boxeador;
-        $gimnasio = $array->gimnasio;
-        $categoria = $array->categoria;
-        $division = $array->division;
-        $peleas_ganadas = $array->peleas_ganadas;
-        $peleas_perdidas = $array->peleas_perdidas;
-        $empates = $array->empates;
-        
-    }  
-    else{    
-        // URL doesn't contain valid id. Redirect to error page
-        header("location: ../tools/error.php");
-        exit();
+        if(!$response) {
+            return false;
+        }else{
+            header("location: ../../views/admin/posiciones_estatales.php");
+        }
     }
 }
 ?>
@@ -124,7 +110,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Actualizar posición</title>
+    <title>Crear posicion</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -149,11 +135,11 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Actualizar posición de pelea municipal</h2>
+                        <h2>Crear posición estatal</h2>
                     </div>
-                    <p>Porfavor ingresa los datos y luego da clic en actualizar.</p>
+                    <p>Porfavor llena el formulario para almacenar la posición en la base de datos.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="form-group <?php echo (!empty($alias_boxeador_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($alias_boxeador_err)) ? 'has-error' : ''; ?>">
                             <label>Alias Boxeador(a)</label>
                             <input id="search_boxeador" type="text" name="alias_boxeador" class="form-control" value="<?php echo $alias_boxeador; ?>">
                             <span class="help-block"><?php echo $alias_boxeador_err;?></span>
@@ -208,9 +194,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $empates_err;?></span>
                         </div>
 
-                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Actualizar">
-                        <a href="../../views/admin/posiciones_generales.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar">
+                        <a href="../../views/admin/posiciones_estatales.php" class="btn btn-default">Cancelar</a>
                     </form>
                 </div>
             </div>        
