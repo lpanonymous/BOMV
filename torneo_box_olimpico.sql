@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2020 at 05:35 AM
+-- Generation Time: Aug 01, 2020 at 08:50 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -107,7 +107,7 @@ CREATE TABLE `gimnasio` (
 --
 
 INSERT INTO `gimnasio` (`id`, `nombre`, `ubicacion`, `telefono`, `facebook`, `email`, `descripcion`, `foto`) VALUES
-(1, 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31343334343932395f3132323034333834383235363032395f343430353032313834313732323031363636335f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d7a4a5a552d665736592d4141582d39636b2d72265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3931353363393037346139363966333236623163643562396437316161663434266f653d3546323441463839),
+(1, 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31343334343932395f3132323034333834383235363032395f343430353032313834313732323031363636335f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d6f50746e7a415a366d52384158395347717476265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3431643065346363353465386465356236323432313363396133306165656431266f653d3546344333433839),
 (2, 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', 'nockout@gmail.com', 'Equipo deportivo', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31303538333935305f313539313333303239343432363934355f383937383530373332313836393834343637385f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d61784d7432532d3039575541585f6941484a74265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3639383732383364353232366136393639613634616134386166363730316635266f653d3546323633453533),
 (3, 'Leones', 'https://www.google.com.mx/maps/place/Velodromo+Internacional+Xalapa/@19.5102922,-96.928647,17z/data=!4m5!3m4!1s0x85db2df2fdb0a561:0xa74bdbebe5232fe4!8m2!3d19.5102922!4d-96.928647?hl=en&authuser=0', 's/n', 'Leones Xalapa', 'leonesxalapa@outlook.es', 'Equipo deportivo de aficionados', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f35333035303635305f3339313637313130343736313538355f323331393639373233333638303739333630305f6e2e6a70673f5f6e635f6361743d313033265f6e635f7369643d303963626665265f6e635f6f68633d393158673339723038797341582d6b6d775232265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3236626437613537336136356665363839396438383937633830373661306535266f653d3546323837424245),
 (4, 'Sparring Boxing Club', 'https://www.google.com.mx/maps/place/Sparring+Boxing+Club/@19.528234,-96.8950183,17z/data=!3m1!4b1!4m5!3m4!1s0x85db322139a0ca7f:0x171560e90ccae6c0!8m2!3d19.528234!4d-96.8950183?hl=en&authuser=0', '228 180 2668', 'Sparring Boxing Club', 'sparringboxingclub@gmail.com', 'Gimnasio para la práctica del boxeo, en el cual mejorarás tu condición física, desarrollarás habilidades y reducirás de peso.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f7433312e302d382f31363130373130345f313238323236363436313833323834325f313433363034353834393935373938333630315f6f2e6a70673f5f6e635f6361743d313037265f6e635f7369643d303963626665265f6e635f6f68633d427067317242596b354d4141583862646d7934265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3661633335396638313430633561303638326333396565643331626134316632266f653d3546323841303832),
@@ -209,15 +209,18 @@ CREATE TABLE `peleas_municipales` (
   `id_boxeador2` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
-  `ganador` varchar(100) NOT NULL
+  `ganador` varchar(100) NOT NULL,
+  `foto_pelea` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peleas_municipales`
 --
 
-INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
-(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia');
+INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `foto_pelea`) VALUES
+(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia', 'https://i.ytimg.com/vi/6bHkvS3g5kY/maxresdefault.jpg'),
+(3, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Kingry  The Flash', 'Tank', '2020-08-01', '22:00:00', 'Kingry  The Flash', 'https://i.ytimg.com/vi/5UFfFlnprGc/maxresdefault.jpg'),
+(4, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'El Brooklyn', 'Hi-Tech', '2020-08-02', '23:00:00', 'ninguno', 'https://e00-us-marca.uecdn.es/claro/assets/multimedia/imagenes/2020/01/09/15786037991462.jpg');
 
 -- --------------------------------------------------------
 
@@ -269,11 +272,13 @@ CREATE TABLE `posiciones_generales_municipales` (
 --
 
 INSERT INTO `posiciones_generales_municipales` (`id`, `alias_boxeador`, `gimnasio`, `categoria`, `division`, `peleas_ganadas`, `peleas_perdidas`, `empates`) VALUES
-(1, 'Pac man', 'DECA', 'M', 'welter', 1, 0, 0),
-(2, 'Tank', 'DECA', 'M', 'ligero', 2, 0, 0),
+(1, 'El Terrible', 'Sparring Boxing Club', 'M', 'pesado', 8, 2, 1),
+(2, 'Tank', 'DECA', 'M', 'minimosca', 7, 0, 0),
 (3, 'Dinamita', 'DECA', 'M', 'pluma', 3, 1, 1),
 (4, 'Canelo', 'NOCKOUT', 'M', 'medio', 4, 1, 0),
-(5, 'Finito', 'Leones', 'M', 'minimosca', 5, 0, 1);
+(5, 'Finito', 'Leones', 'M', 'minimosca', 5, 0, 1),
+(6, 'El Gallo', 'Leones', 'M', 'gallo', 4, 2, 1),
+(8, 'Gusano', 'Boxeo Rojas', 'M', 'minimosca', 6, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -465,19 +470,19 @@ ALTER TABLE `peleas_estatales`
 -- AUTO_INCREMENT for table `peleas_municipales`
 --
 ALTER TABLE `peleas_municipales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posiciones_generales_estatales`
 --
 ALTER TABLE `posiciones_generales_estatales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `posiciones_generales_municipales`
 --
 ALTER TABLE `posiciones_generales_municipales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tabla_de_pelea`

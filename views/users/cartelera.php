@@ -29,47 +29,68 @@
 <nav class="clearfix">
   <ul class="main-nav">
     <li><a class="nav-link" href="http://localhost/BOMV/views/users/noticias.php">Noticias<span class="sr-only">(current)</span></a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/cartelera.php">Cartelera</a></li>
+    <li><a class="nav-link" href="http://localhost/BOMV/views/users/cartelera.php">Cartelera municipal</a></li>
+    <li><a class="nav-link" href="http://localhost/BOMV/views/users/cartelera.php">Cartelera estatal</a></li>
     <li><a class="nav-link" href="http://localhost/BOMV/views/users/boxeadores.php">Boxeadores</a></li>
     <li><a class="nav-link" href="http://localhost/BOMV/views/users/gimnasios.php">Gimnasios</a></li>
     <li><a class="nav-link" href="">Resultados</a></li>
   </ul>
 </nav>
-<section class="slider">
-<div class="div-carousel">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="http://localhost/BOMV/resources/banderaMexico.jpg" alt="First Slide">
-            </div>
 
-            <?php
-              $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/post.php");
+<?php
+              $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/cartelera_municipal_rest.php");
               $array = json_decode($res);
+              echo "<div class='card-group'>";
+              $cont = 0;
               foreach($array as $obj)
               {
+                $cont = $cont+1;
                 $id = $obj->id;
-                $titulo = $obj->titulo;
+                $categoria = $obj->categoria;
+                $division = $obj->division;
+                $id_juez1 = $obj->id_juez1;
+                $id_juez2 = $obj->id_juez2;
+                $id_juez3 = $obj->id_juez3;
+                $id_juez4 = $obj->id_juez4;
+                $id_boxeador1 = $obj->id_boxeador1;
+                $id_boxeador2 = $obj->id_boxeador2;
                 $fecha = $obj->fecha;
-                $cuerpo = $obj->cuerpo;
-                $foto = $obj->foto;
-                echo "<div class='carousel-item' >
-                        <img src='{$foto}' alt='Slide'>
-                      </div>";
+                $hora = $obj->hora;
+                $ganador = $obj->ganador;
+                $foto_pelea = $obj->foto_pelea;
+                if($cont<=3)
+                {
+                  echo "<div class='card'>
+                  <img class='card-img-top' src='$foto_pelea' alt='Card image cap'>
+                  <div class='card-body'>
+                    <h5 class='card-title'>$id_boxeador1 VS $id_boxeador2</h5>
+                    <p class='card-text'>Categoria: $categoria</p>
+                    <p class='card-text'>División: $division</p>
+                    <p class='card-text'>Fecha: $fecha</p>
+                    <p class='card-text'>Hora: $hora</p>
+                  </div>
+                </div>";
+                }
+                else
+                {
+                  $cont = 0;
+                  echo "</div>";
+                  echo "<div class='card-group'>";
+                  echo "<div class='card'>
+                  <img class='card-img-top' src='$foto_pelea' alt='Card image cap'>
+                  <div class='card-body'>
+                    <h5 class='card-title'>$id_boxeador1 VS $id_boxeador2</h5>
+                    <p class='card-text'>Categoria: $categoria</p>
+                    <p class='card-text'>División: $division</p>
+                    <p class='card-text'>Fecha: $fecha</p>
+                    <p class='card-text'>Hora: $hora</p>
+                  </div>
+                </div>";
+                }
               }
+              echo "</div>";
             ?>
-        </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-  </div>
-</section>
+
 </body>
 </html>
 

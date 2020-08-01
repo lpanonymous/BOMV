@@ -40,7 +40,7 @@
             Da click en uno para ver más detalles.</p>
     </div>
 <?php
-  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/post.php");
+  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/gimnasios_rest.php");
   $array = json_decode($res);
   echo "<ul class='lista-gimnasios clearfix'>";
   $cont = 0;

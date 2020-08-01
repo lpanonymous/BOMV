@@ -63,7 +63,6 @@
 
   </ul>
 </nav>
-<section>
 <?php
   $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/post.php");
   $array = json_decode($res);
@@ -119,7 +118,6 @@
               }
               echo "</div>";
             ?>
-</section>
 </body>
 </html>
 

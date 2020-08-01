@@ -37,7 +37,7 @@
 <section>
 
 <?php
-  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/post.php");
+  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/boxeadores_rest.php");
   $array = json_decode($res);
   echo "<div class='row grupo-boxeadores'>";
   $cont = 0;
