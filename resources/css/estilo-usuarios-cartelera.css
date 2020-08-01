@@ -1,0 +1,197 @@
+/*---------------------------------------------------------------------------------------------------------------------------------- */
+/*SETUP BASICO*/
+/*---------------------------------------------------------------------------------------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    background-color: #fff;
+    color: #000;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  .clearfix {zoom:1}
+  .clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+  
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*COMPONENTES REUSABLES*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  
+  .row {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  
+  section {
+    padding: 80px 0;
+  }
+  
+  .box {
+    padding: 1%;
+  }
+  
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*HEADER*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  
+  header{
+    background-image: linear-gradient(to right, green, white, red);
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+/*---------------------------------------------------------------------------------------------------------------------------------- */
+/*NAVEGACION*/
+/*---------------------------------------------------------------------------------------------------------------------------------- */
+
+.main-nav{
+    height: 6vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    float: right;
+    list-style: none;
+    margin-bottom: 0;
+  }
+  
+  .main-nav li{
+    display: inline-block;
+    margin-left: 40px;
+  
+  }
+  
+  .main-nav li a:link,
+  .main-nav li a:visited{
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 90%;
+    transition: color 0.2s;
+  }
+  
+  .main-nav li a:hover,
+  .main-nav li a:active{
+    color: #ff1616;
+  }
+  
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*NAVEGACION "STICKY"*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255,255,255,.96);
+    box-shadow: 0 2px 2px #efefef;
+    z-index: 9999;
+  }
+  
+  .sticky .main-nav{margin-top: 18px;}
+  
+  .sticky .main-nav li a:link,
+  .sticky .main-nav li a:visited{
+    padding: 16px 0;
+    color: #000;  
+  }
+  
+  .sticky .main-nav li a:hover,
+  .sticky .main-nav li a:active{
+    color: #ff1616;
+  }
+  
+  .sticky .logo{
+    cursor: grab;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin: 5px 0;
+  }
+  
+  .sticky .logo-color{display: none;}
+  .sticky .logo{display: block;}
+  
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*NAVEGACION MOVIL*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  
+  .mobile-nav-icon{
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .mobile-nav-icon i {
+    font-size: 200%;
+    color: #fff;
+  }
+
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+  /*CAROUSEL*/
+  /*---------------------------------------------------------------------------------------------------------------------------------- */
+
+  .slider{
+    padding: 0;
+    margin: 0;
+  }
+
+  .div-carousel{
+    height: 82vh;
+    width: 100%;
+    background: black;
+}
+.carousel{
+  background: black;
+  height: 100%;
+  width: 100%;
+}
+.carousel-item{
+  text-align: center;
+  min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+
+.carousel-inner img {
+  width: 90%;
+  height: 79vh;
+}
+
+.carousel-inner{
+  overflow-y: hidden;
+}
+
+input{
+  border:0;  
+}
+
+.carousel-control-prev:link,
+.carousel-control-prev:visited,
+.carousel-control-next:link,
+.carousel-control-next:visited{
+  width: 7%;
+  transition: 0.4s;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-prev:active,
+.carousel-control-next:hover,
+.carousel-control-next:active{
+  background-color: rgba(0, 0, 0, 0.8);
+  
+}
