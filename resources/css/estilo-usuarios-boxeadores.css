@@ -29,6 +29,24 @@
     justify-content: center;
     align-items: center;
   }
+
+  .navbar-custom {
+    background-color: black;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(4, 0, 255, 0.5);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(4, 0, 255, 0.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ff0000;
+}
   
   /*---------------------------------------------------------------------------------------------------------------------------------- */
   /*FLIPCARD*/

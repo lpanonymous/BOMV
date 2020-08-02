@@ -17,10 +17,12 @@
   <header>
       <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
   </header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar navbar-custom">
   <a class="navbar-brand" href="noticias.php">BOMV</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon">
+      <i class="fa fa-navicon" style="color:#fff; font-size:28px;"></i>
+    </span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
