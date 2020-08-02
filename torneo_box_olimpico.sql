@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2020 at 08:50 AM
+-- Generation Time: Aug 02, 2020 at 06:45 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -108,7 +108,7 @@ CREATE TABLE `gimnasio` (
 
 INSERT INTO `gimnasio` (`id`, `nombre`, `ubicacion`, `telefono`, `facebook`, `email`, `descripcion`, `foto`) VALUES
 (1, 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31343334343932395f3132323034333834383235363032395f343430353032313834313732323031363636335f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d6f50746e7a415a366d52384158395347717476265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3431643065346363353465386465356236323432313363396133306165656431266f653d3546344333433839),
-(2, 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', 'nockout@gmail.com', 'Equipo deportivo', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31303538333935305f313539313333303239343432363934355f383937383530373332313836393834343637385f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d61784d7432532d3039575541585f6941484a74265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3639383732383364353232366136393639613634616134386166363730316635266f653d3546323633453533),
+(2, 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', 'nockout@gmail.com', 'Equipo deportivo', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31303538333935305f313539313333303239343432363934355f383937383530373332313836393834343637385f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d5a4778474a6d454f6d477741582d6571384b61265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3430316232356566326230373763363064626166353935373862343636333234266f653d3546344443423533),
 (3, 'Leones', 'https://www.google.com.mx/maps/place/Velodromo+Internacional+Xalapa/@19.5102922,-96.928647,17z/data=!4m5!3m4!1s0x85db2df2fdb0a561:0xa74bdbebe5232fe4!8m2!3d19.5102922!4d-96.928647?hl=en&authuser=0', 's/n', 'Leones Xalapa', 'leonesxalapa@outlook.es', 'Equipo deportivo de aficionados', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f35333035303635305f3339313637313130343736313538355f323331393639373233333638303739333630305f6e2e6a70673f5f6e635f6361743d313033265f6e635f7369643d303963626665265f6e635f6f68633d393158673339723038797341582d6b6d775232265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3236626437613537336136356665363839396438383937633830373661306535266f653d3546323837424245),
 (4, 'Sparring Boxing Club', 'https://www.google.com.mx/maps/place/Sparring+Boxing+Club/@19.528234,-96.8950183,17z/data=!3m1!4b1!4m5!3m4!1s0x85db322139a0ca7f:0x171560e90ccae6c0!8m2!3d19.528234!4d-96.8950183?hl=en&authuser=0', '228 180 2668', 'Sparring Boxing Club', 'sparringboxingclub@gmail.com', 'Gimnasio para la práctica del boxeo, en el cual mejorarás tu condición física, desarrollarás habilidades y reducirás de peso.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f7433312e302d382f31363130373130345f313238323236363436313833323834325f313433363034353834393935373938333630315f6f2e6a70673f5f6e635f6361743d313037265f6e635f7369643d303963626665265f6e635f6f68633d427067317242596b354d4141583862646d7934265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3661633335396638313430633561303638326333396565643331626134316632266f653d3546323841303832),
 (5, 'Ultimate boxing club', 'https://www.google.com.mx/maps/place/UBC/@19.5413901,-96.9269425,15z/data=!4m8!1m2!2m1!1sultimate+boxing+club+xalapa+ver!3m4!1s0x85db31fce28ff8c1:0xd2c9fbb9cd42b464!8m2!3d19.5413901!4d-96.9181878?hl=en&authuser=0', '228 243 1365', 'Ultimate boxing club', 'adan.boxingcoach@hotmail.com', 'centro deportivo: preparación física para deportistas, escuela de boxeo amateur, olímpico, recreativo, rehabilitación deportiva, vendaje neuromuscular.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f39333131383437375f313537323130353438363238313237325f373535313132333239303334313736393231365f6f2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d5476487752624f347172774158395969724744265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3765306532353937643738333337373164336630323634646666613634643236266f653d3546323644313743),
@@ -158,10 +158,10 @@ CREATE TABLE `noticias` (
 
 INSERT INTO `noticias` (`id`, `titulo`, `fecha`, `cuerpo`, `foto`) VALUES
 (1, 'Campeonato estatal de boxeo', '2020-06-24', 'Se aproxima el campeonato estatal de boxeo olimpico de Veracruz.', 0x68747470733a2f2f696d67322e727476652e65732f692f3f773d3136303026693d313331363739363630363039362e6a7067),
-(2, 'Apoya a esta causa', '2020-06-25', 'Solicitamos el apoyo para este gran boxeador peso gallo, para poder participar en las estatales.', 0x68747470733a2f2f656e637279707465642d74626e302e677374617469632e636f6d2f696d616765733f713d74626e253341414e64394763527046716d5f58676f3251497a656752433467695439392d55596e55343059523647446726757371703d434155),
+(2, 'Apoya a esta causa', '2020-06-25', 'Solicitamos el apoyo para este gran boxeador peso mosca, para poder participar en las estatales.', 0x68747470733a2f2f7330332e7333632e65732f696d61672f5f76302f373730783432302f612f362f652f7461696c616e6469612d626f78656f2d6e696e6f2d726575746572732d322e6a7067),
 (3, 'Asi relata esta gran boxeadora su vida arriba y fuera del ring', '2020-06-26', 'Su nombre es Emily Xochicale y su pasion siempre a sido el boxeo pero no a tenido una vida tan facil afuera del ring, se dedica a trabajar, estudiar y entrena en las noches en el gimnasio de su colonia, sin duda un ejemplo a seguir.', 0x68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d756e646f2d6275636b65742d73332f77702d636f6e74656e742f75706c6f6164732f323031392f30392f30343038303031342f33342d3532313734312e6a7067),
 (4, 'Por primera vez en la historia boxeadores profesionales podran participar en las olimpiadas.', '2020-06-27', 'Los Juegos Olímpicos Tokio 2020 y la posibilidad de que pugilistas profesionales participen en esa competencia reavivaron el diferendo entre los titulares del Consejo Mundial de Boxeo y de la Federación Mexicana de Box, Mauricio Sulaimán y Ricardo Conteras. El primero es tajante: de ninguna manera puede aceptarse que un boxeador profesional compita en esa justa; el segundo arguye que se hará todo lo posible para llevar a Japón la mejor delegación boxística de la historia y ganar medallas en esa disciplina.', 0x68747470733a2f2f696d672e766176656c2e636f6d2f682f3432393435305f6572726f6c2d7370656e63652d626f78696e672e6a7067),
-(5, 'Boxeador peso welter con 0 derrotas hasta el momento.', '2020-06-28', 'El boxeador Saul a disputado 5 peleas seguidas sin derrota durante el campeonato estatal de boxeo', 0x68747470733a2f2f6530302d6d617263612e756563646e2e65732f6173736574732f6d756c74696d656469612f696d6167656e65732f323032302f30332f31302f31353833383334383537323437392e6a7067);
+(5, 'Boxeador peso welter con 0 derrotas hasta el momento.', '2020-06-28', 'El boxeador Saul a disputado 5 peleas seguidas sin derrota durante el campeonato estatal de boxeo', 0x68747470733a2f2f63646e2d332e657870616e73696f6e2e6d782f64696d73342f64656661756c742f323563366235322f323134373438333634372f73747269702f747275652f63726f702f353231783239372b302b302f726573697a652f313830307831303236212f7175616c6974792f39302f3f75726c3d68747470732533412532462532466368657272792d62726967687473706f742e73332e616d617a6f6e6177732e636f6d2532463539253246643425324662656663353931393432376338396663326666313065356632373261253246636170747572612d64652d70616e74616c6c612d323031362d30382d31372d612d6c61732d382e35312e3533253230612e6d2e2e706e67);
 
 -- --------------------------------------------------------
 
@@ -181,15 +181,18 @@ CREATE TABLE `peleas_estatales` (
   `id_boxeador2` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
-  `ganador` varchar(100) DEFAULT NULL
+  `ganador` varchar(100) DEFAULT NULL,
+  `foto_pelea` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peleas_estatales`
 --
 
-INSERT INTO `peleas_estatales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`) VALUES
-(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Baby Arizmendi', 'Canelo', '2020-07-10', '23:00:00', 'Canelo');
+INSERT INTO `peleas_estatales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `foto_pelea`) VALUES
+(3, 'F', 'gallo', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Barby', 'Bonita', '2020-08-03', '23:00:00', 'ninguno', 'https://mis-juegos-olimpicos.com/wp-content/uploads/2016/02/boxeo-londres.jpg'),
+(4, 'F', 'pluma', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Areli Garcia', 'Brenda Hernández', '2020-08-10', '13:00:00', 'ninguno', 'https://elsuperhincha.com/wp-content/uploads/2020/02/boxeo-femenino.jpg'),
+(5, 'F', 'mosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Carla Sosa', 'Daniela Martinez', '2020-08-28', '12:00:00', 'ninguno', 'https://www.elsoldetijuana.com.mx/deportes/lybany-crisna-alvarez/ALTERNATES/LANDSCAPE_960/Crisna%20%C3%81lvarez');
 
 -- --------------------------------------------------------
 
@@ -218,7 +221,7 @@ CREATE TABLE `peleas_municipales` (
 --
 
 INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `foto_pelea`) VALUES
-(1, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia', 'https://i.ytimg.com/vi/6bHkvS3g5kY/maxresdefault.jpg'),
+(1, 'M', 'medio', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia', 'https://i.ytimg.com/vi/6bHkvS3g5kY/maxresdefault.jpg'),
 (3, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Kingry  The Flash', 'Tank', '2020-08-01', '22:00:00', 'Kingry  The Flash', 'https://i.ytimg.com/vi/5UFfFlnprGc/maxresdefault.jpg'),
 (4, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'El Brooklyn', 'Hi-Tech', '2020-08-02', '23:00:00', 'ninguno', 'https://e00-us-marca.uecdn.es/claro/assets/multimedia/imagenes/2020/01/09/15786037991462.jpg');
 
@@ -464,7 +467,7 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT for table `peleas_estatales`
 --
 ALTER TABLE `peleas_estatales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `peleas_municipales`

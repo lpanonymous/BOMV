@@ -17,31 +17,6 @@
     font-weight: 400;
   }
   
-  .clearfix {zoom:1}
-  .clearfix:after {
-    content: '.';
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden;
-  }
-  
-  /*---------------------------------------------------------------------------------------------------------------------------------- */
-  /*COMPONENTES REUSABLES*/
-  /*---------------------------------------------------------------------------------------------------------------------------------- */
-  
-  .row {
-    max-width: 1140px;
-    margin: 0 auto;
-  }
-  
-  section {
-    padding: 80px 0;
-  }
-  
-  .box {
-    padding: 1%;
-  }
   
   /*---------------------------------------------------------------------------------------------------------------------------------- */
   /*HEADER*/
@@ -54,93 +29,7 @@
     justify-content: center;
     align-items: center;
   }
-
-/*---------------------------------------------------------------------------------------------------------------------------------- */
-/*NAVEGACION*/
-/*---------------------------------------------------------------------------------------------------------------------------------- */
-
-.main-nav{
-    width: 100%;
-    background-color: black;
-    display: flex;
-    float: right;
-    list-style: none;
-  }
   
-  .main-nav li{
-    display: inline-block;
-    margin-left: 40px;
-  
-  }
-  
-  .main-nav li a:link,
-  .main-nav li a:visited{
-    padding: 8px 0;
-    color: #fff;
-    text-decoration: none;
-    font-size: 90%;
-    transition: color 0.2s;
-  }
-  
-  .main-nav li a:hover,
-  .main-nav li a:active{
-    color: #ff1616;
-  }
-  
-  /*---------------------------------------------------------------------------------------------------------------------------------- */
-  /*NAVEGACION "STICKY"*/
-  /*---------------------------------------------------------------------------------------------------------------------------------- */
-  
-  .sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255,255,255,.96);
-    box-shadow: 0 2px 2px #efefef;
-    z-index: 9999;
-  }
-  
-  .sticky .main-nav{margin-top: 18px;}
-  
-  .sticky .main-nav li a:link,
-  .sticky .main-nav li a:visited{
-    padding: 16px 0;
-    color: #000;  
-  }
-  
-  .sticky .main-nav li a:hover,
-  .sticky .main-nav li a:active{
-    color: #ff1616;
-  }
-  
-  .sticky .logo{
-    cursor: grab;
-    height: 50px;
-    width: auto;
-    float: left;
-    margin: 5px 0;
-  }
-  
-  .sticky .logo-color{display: none;}
-  .sticky .logo{display: block;}
-  
-  /*---------------------------------------------------------------------------------------------------------------------------------- */
-  /*NAVEGACION MOVIL*/
-  /*---------------------------------------------------------------------------------------------------------------------------------- */
-  
-  .mobile-nav-icon{
-    float: right;
-    margin-top: 30px;
-    cursor: pointer;
-    display: none;
-  }
-  
-  .mobile-nav-icon i {
-    font-size: 200%;
-    color: #fff;
-  }
-
   /*---------------------------------------------------------------------------------------------------------------------------------- */
   /*FLIPCARD*/
   /*---------------------------------------------------------------------------------------------------------------------------------- */

@@ -13,31 +13,42 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../../resources/css/estilo-usuarios-cartelera.css">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../../resources/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../resources/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../resources/favicons/favicon-16x16.png">
-    <link rel="manifest" href="../../resources/favicons/site.webmanifest">
-    <link rel="shortcut icon" href="../../resources/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="../../resources/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
   <header>
       <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
   </header>
-<nav class="clearfix">
-  <ul class="main-nav">
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/noticias.php">Noticias<span class="sr-only">(current)</span></a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/cartelera.php">Cartelera municipal</a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/cartelera.php">Cartelera estatal</a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/boxeadores.php">Boxeadores</a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/gimnasios.php">Gimnasios</a></li>
-    <li><a class="nav-link" href="">Resultados</a></li>
-  </ul>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="noticias.php">BOMV</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<?php
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cartelera
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item active" href="cartelera.php">Peleas municipales</a>
+          <a class="dropdown-item" href="cartelera_estatal.php">Peleas estatales</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gimnasios.php">Gimnasios</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<section>
+            <?php
               $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/cartelera_municipal_rest.php");
               $array = json_decode($res);
               echo "<div class='card-group'>";
@@ -90,6 +101,7 @@
               }
               echo "</div>";
             ?>
+</section>
 
 </body>
 </html>

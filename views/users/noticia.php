@@ -27,14 +27,35 @@
     <header>
         <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
     </header>
-    <nav class="clearfix">
-    <ul class="main-nav">
-        <li><a class="nav-link" href="http://localhost/BOMV/views/users/noticias.php">Noticias<span class="sr-only">(current)</span></a></li>
-        <li><a class="nav-link" href="http://localhost/BOMV/views/users/cartelera.php">Cartelera</a></li>
-        <li><a class="nav-link" href="http://localhost/BOMV/views/users/boxeadores.php">Boxeadores</a></li>
-        <li><a class="nav-link" href="http://localhost/BOMV/views/users/gimnasios.php">Gimnasios</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="noticias.php">BOMV</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cartelera
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="cartelera.php">Peleas municipales</a>
+          <a class="dropdown-item" href="cartelera_estatal.php">Peleas estatales</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gimnasios.php">Gimnasios</a>
+      </li>
     </ul>
-    </nav>
+  </div>
+</nav>
     <section class="seccion-noticia">
         <div class="noticia-img">
             <img src="<?php echo $_POST["foto"];?>" class="noticia-img" alt="Imagen Noticia">

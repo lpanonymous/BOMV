@@ -12,58 +12,93 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../../resources/css/estilo-usuarios-gimnasios.css">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="../../resources/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../resources/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../resources/favicons/favicon-16x16.png">
-    <link rel="manifest" href="../../resources/favicons/site.webmanifest">
-    <link rel="shortcut icon" href="../../resources/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="../../resources/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
   <header>
       <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
   </header>
-<nav>
-  <ul class="main-nav">
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/noticias.php">Noticias<span class="sr-only">(current)</span></a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/cartelera.php">Cartelera</a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/boxeadores.php">Boxeadores</a></li>
-    <li><a class="nav-link" href="http://localhost/BOMV/views/users/gimnasios.php">Gimnasios</a></li>
-  </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="noticias.php">BOMV</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cartelera
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="cartelera.php">Peleas municipales</a>
+          <a class="dropdown-item" href="cartelera_estatal.php">Peleas estatales</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="gimnasios.php">Gimnasios</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+<div class="titulo">
+  <h3><strong>¿Te interesa entrenar en alguno de estos gimnasios?</strong></h3>
+</div>
 <section>
-    <div class="row texto">
-        <p><strong>¿Te interesa entrenar en alguno de estos gimnasios?</strong><br>
-            Da click en uno para ver más detalles.</p>
-    </div>
-<?php
-  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/gimnasios_rest.php");
-  $array = json_decode($res);
-  echo "<ul class='lista-gimnasios clearfix'>";
-  $cont = 0;
-  foreach($array as $obj){
-    $cont = $cont+1;
-    $foto = $obj->foto;
-    if($cont<=4){
-      echo "<li>
-                <figure class='gym-photo'>
-                    <img src='{$foto}' alt='Foto gimnasio'>
-                </figure>
-            </li>";
-    }else{
-      $cont = 0;
-      echo "</ul>";
-      echo "<ul class='lista-gimnasios clearfix'>";
-      echo "<li>
-                <figure class='gym-photo'>
-                    <img src='{$foto}' alt='Foto gimnasio'>
-                </figure>
-            </li>";
+    <?php
+              $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/gimnasios_rest.php");
+              $array = json_decode($res);
+              echo "<div class='card-group'>";
+              $cont = 0;
+              foreach($array as $obj)
+              {
+                $cont = $cont+1;
+                $nombre = $obj->nombre;
+                $ubicacion = $obj->ubicacion;
+                $telefono = $obj->telefono;
+                $facebook = $obj->facebook;
+                $email = $obj->email;
+                $descripcion = $obj->descripcion;
+                $foto = $obj->foto;
+                
+                if($cont<=3)
+                {
+                  echo "<div class='card'>
+                  <img class='card-img-top' src='$foto' alt='Card image cap' height='400px'>
+                  <div class='card-body'>
+                    <h5 class='card-title'>$nombre</h5>
+                    <p class='card-text'>Telefono: $telefono</p>
+                    <p class='card-text'>Facebook: $facebook</p>
+                    <p class='card-text'>Email: $email</p>
+                    <p class='card-text'>Descripción: $descripcion</p>
+                    <p class='card-text'><a href='$ubicacion'>Clic para ver la ubicación...<a></p>
+                  </div>
+                </div>";
+                }
+                else
+                {
+                  $cont = 0;
+                  echo "</div>";
+                  echo "<div class='card-group'>";
+                  echo "<div class='card'>
+                  <img class='card-img-top' src='$foto' alt='Card image cap' height='400px'>
+                  <div class='card-body'>
+                    <h5 class='card-title'>$nombre</h5>
+                    <p class='card-text'>Telefono: $telefono</p>
+                    <p class='card-text'>Facebook: $facebook</p>
+                    <p class='card-text'>Email: $email</p>
+                    <p class='card-text'>Descripción: $descripcion</p>
+                    <p class='card-text'><a href='$ubicacion'>Clic para ver la ubicación...<a></p>
+                  </div>
+                </div>";
                 }
               }
+              echo "</div>";
             ?>
 </section>
 </body>
