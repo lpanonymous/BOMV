@@ -49,7 +49,7 @@
   </div>
 </nav>
 <?php
-  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/post.php");
+  /*$res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/post.php");
   $array = json_decode($res);
   echo "<div class='card-group'>";
   $cont = 0;
@@ -101,7 +101,24 @@
     </div>";
     }
   }
-  echo "</div>";
+  echo "</div>";*/
+
+  require_once('../../controllers/ws_soap/lib/nusoap.php');
+  $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_noticias.php");
+  $datos = array();
+  $resultado = $cliente->call('mostrarNoticiasUsers', $datos);
+  $err = $cliente->getError();
+  if($err)
+  {
+    echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
+    echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
+    echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
+    echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
+  }
+  else
+  {
+    echo $resultado;
+  }
 ?>
 </body>
 </html>
