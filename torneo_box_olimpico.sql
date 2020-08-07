@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2020 at 06:45 AM
+-- Generation Time: Aug 07, 2020 at 06:45 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -99,7 +99,7 @@ CREATE TABLE `gimnasio` (
   `facebook` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `descripcion` varchar(500) DEFAULT NULL,
-  `foto` mediumblob DEFAULT NULL
+  `foto` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -107,12 +107,12 @@ CREATE TABLE `gimnasio` (
 --
 
 INSERT INTO `gimnasio` (`id`, `nombre`, `ubicacion`, `telefono`, `facebook`, `email`, `descripcion`, `foto`) VALUES
-(1, 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31343334343932395f3132323034333834383235363032395f343430353032313834313732323031363636335f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d6f50746e7a415a366d52384158395347717476265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3431643065346363353465386465356236323432313363396133306165656431266f653d3546344333433839),
-(2, 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', 'nockout@gmail.com', 'Equipo deportivo', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f31303538333935305f313539313333303239343432363934355f383937383530373332313836393834343637385f6e2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d5a4778474a6d454f6d477741582d6571384b61265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3430316232356566326230373763363064626166353935373862343636333234266f653d3546344443423533),
-(3, 'Leones', 'https://www.google.com.mx/maps/place/Velodromo+Internacional+Xalapa/@19.5102922,-96.928647,17z/data=!4m5!3m4!1s0x85db2df2fdb0a561:0xa74bdbebe5232fe4!8m2!3d19.5102922!4d-96.928647?hl=en&authuser=0', 's/n', 'Leones Xalapa', 'leonesxalapa@outlook.es', 'Equipo deportivo de aficionados', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f35333035303635305f3339313637313130343736313538355f323331393639373233333638303739333630305f6e2e6a70673f5f6e635f6361743d313033265f6e635f7369643d303963626665265f6e635f6f68633d393158673339723038797341582d6b6d775232265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3236626437613537336136356665363839396438383937633830373661306535266f653d3546323837424245),
-(4, 'Sparring Boxing Club', 'https://www.google.com.mx/maps/place/Sparring+Boxing+Club/@19.528234,-96.8950183,17z/data=!3m1!4b1!4m5!3m4!1s0x85db322139a0ca7f:0x171560e90ccae6c0!8m2!3d19.528234!4d-96.8950183?hl=en&authuser=0', '228 180 2668', 'Sparring Boxing Club', 'sparringboxingclub@gmail.com', 'Gimnasio para la práctica del boxeo, en el cual mejorarás tu condición física, desarrollarás habilidades y reducirás de peso.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f7433312e302d382f31363130373130345f313238323236363436313833323834325f313433363034353834393935373938333630315f6f2e6a70673f5f6e635f6361743d313037265f6e635f7369643d303963626665265f6e635f6f68633d427067317242596b354d4141583862646d7934265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3661633335396638313430633561303638326333396565643331626134316632266f653d3546323841303832),
-(5, 'Ultimate boxing club', 'https://www.google.com.mx/maps/place/UBC/@19.5413901,-96.9269425,15z/data=!4m8!1m2!2m1!1sultimate+boxing+club+xalapa+ver!3m4!1s0x85db31fce28ff8c1:0xd2c9fbb9cd42b464!8m2!3d19.5413901!4d-96.9181878?hl=en&authuser=0', '228 243 1365', 'Ultimate boxing club', 'adan.boxingcoach@hotmail.com', 'centro deportivo: preparación física para deportistas, escuela de boxeo amateur, olímpico, recreativo, rehabilitación deportiva, vendaje neuromuscular.', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f39333131383437375f313537323130353438363238313237325f373535313132333239303334313736393231365f6f2e6a70673f5f6e635f6361743d313039265f6e635f7369643d303963626665265f6e635f6f68633d5476487752624f347172774158395969724744265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d3765306532353937643738333337373164336630323634646666613634643236266f653d3546323644313743),
-(6, 'Boxeo Rojas', 'https://www.google.com.mx/maps/place/GIMNASIO+DE+BOX+TOMAS+%22GUSANO%22+ROJAS/@19.1650756,-96.453255,10z/data=!4m8!1m2!2m1!1sboxeo+rojas!3m4!1s0x85c343ed25d01e69:0x93e0a4a62852d14!8m2!3d19.1650756!4d-96.1731036?hl=en&authuser=0', 's/n', 'GIMNASIO DE BOX TOMAS ', 'ninguno', 'Escuela de box de Tomas el Gusano Rojas', 0x68747470733a2f2f73636f6e74656e742e66766572322d312e666e612e666263646e2e6e65742f762f74312e302d392f37303032373339375f3634313438353933393539333832305f313734373430363039353735373836393035365f6f2e6a70673f5f6e635f6361743d313030265f6e635f7369643d303963626665265f6e635f6f68633d4b43744757675950644a6b41585f766251536f265f6e635f68743d73636f6e74656e742e66766572322d312e666e61266f683d6234656365353366633930666163343536643036316137643532613861393439266f653d3546323635314342);
+(1, 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 'https://scontent.fver2-1.fna.fbcdn.net/v/t1.0-9/14344929_122043848256029_4405021841722016663_n.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=oPtnzAZ6mR8AX9SGqtv&_nc_ht=scontent.fver2-1.fna&oh=41d0e4cc54e8de5b624213c9a30aeed1&oe=5F4C3C89'),
+(2, 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', 'nockout@gmail.com', 'Equipo deportivo', 'https://scontent.fver2-1.fna.fbcdn.net/v/t1.0-9/10583950_1591330294426945_8978507321869844678_n.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=ZGxGJmEOmGwAX-eq8Ka&_nc_ht=scontent.fver2-1.fna&oh=401b25ef2b077c60dbaf59578b466324&oe=5F4DCB53'),
+(3, 'Leones', 'https://www.google.com.mx/maps/place/Velodromo+Internacional+Xalapa/@19.5102922,-96.928647,17z/data=!4m5!3m4!1s0x85db2df2fdb0a561:0xa74bdbebe5232fe4!8m2!3d19.5102922!4d-96.928647?hl=en&authuser=0', 's/n', 'Leones Xalapa', 'leonesxalapa@outlook.es', 'Equipo deportivo de aficionados', 'https://scontent-qro1-1.xx.fbcdn.net/v/t1.0-9/53050650_391671104761585_2319697233680793600_n.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=M3Aze4x7cQIAX_6RoHS&_nc_ht=scontent-qro1-1.xx&oh=c7bc62a2b0a7aac59aa46c82c183918f&oe=5F53FD3E'),
+(4, 'Sparring Boxing Club', 'https://www.google.com.mx/maps/place/Sparring+Boxing+Club/@19.528234,-96.8950183,17z/data=!3m1!4b1!4m5!3m4!1s0x85db322139a0ca7f:0x171560e90ccae6c0!8m2!3d19.528234!4d-96.8950183?hl=en&authuser=0', '228 180 2668', 'Sparring Boxing Club', 'sparringboxingclub@gmail.com', 'Gimnasio para la práctica del boxeo, en el cual mejorarás tu condición física, desarrollarás habilidades y reducirás de peso.', 'https://scontent-qro1-1.xx.fbcdn.net/v/t31.0-8/16107104_1282266461832842_1436045849957983601_o.jpg?_nc_cat=107&_nc_sid=09cbfe&_nc_ohc=MoV-NDzLQmYAX8b4F0Y&_nc_ht=scontent-qro1-1.xx&oh=78380d43c3ec5242bc09f0810a18b599&oe=5F542202'),
+(5, 'Ultimate boxing club', 'https://www.google.com.mx/maps/place/UBC/@19.5413901,-96.9269425,15z/data=!4m8!1m2!2m1!1sultimate+boxing+club+xalapa+ver!3m4!1s0x85db31fce28ff8c1:0xd2c9fbb9cd42b464!8m2!3d19.5413901!4d-96.9181878?hl=en&authuser=0', '228 243 1365', 'Ultimate boxing club', 'adan.boxingcoach@hotmail.com', 'centro deportivo: preparación física para deportistas, escuela de boxeo amateur, olímpico, recreativo, rehabilitación deportiva, vendaje neuromuscular.', 'https://scontent-qro1-1.xx.fbcdn.net/v/t1.0-9/93118477_1572105486281272_7551123290341769216_o.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=_rFTOXBV6VwAX9-Rcb3&_nc_ht=scontent-qro1-1.xx&oh=966ba59d0e2b5decddc02a2c02d98311&oe=5F5252FC'),
+(6, 'Boxeo Rojas', 'https://www.google.com.mx/maps/place/GIMNASIO+DE+BOX+TOMAS+%22GUSANO%22+ROJAS/@19.1650756,-96.453255,10z/data=!4m8!1m2!2m1!1sboxeo+rojas!3m4!1s0x85c343ed25d01e69:0x93e0a4a62852d14!8m2!3d19.1650756!4d-96.1731036?hl=en&authuser=0', 's/n', 'GIMNASIO DE BOX TOMAS ', 'ninguno', 'Escuela de box de Tomas el Gusano Rojas', 'https://scontent-qro1-1.xx.fbcdn.net/v/t1.0-9/70027397_641485939593820_1747406095757869056_o.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=B_dh5IqUKx4AX91NpR7&_nc_ht=scontent-qro1-1.xx&oh=ecd5796acce7f65d9dc77cca2816d0fe&oe=5F51D34B');
 
 -- --------------------------------------------------------
 
@@ -221,7 +221,7 @@ CREATE TABLE `peleas_municipales` (
 --
 
 INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `foto_pelea`) VALUES
-(1, 'M', 'medio', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Canelo', 'Jaime Munguia', '2020-07-01', '23:00:00', 'Jaime Munguia', 'https://i.ytimg.com/vi/6bHkvS3g5kY/maxresdefault.jpg'),
+(1, 'M', 'minimosca', 'Carlos Gonzalez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Tank', 'Jaime Munguia', '2020-07-10', '12:00:00', 'ninguno', 'https://i.ytimg.com/vi/6bHkvS3g5kY/maxresdefault.jpg'),
 (3, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Kingry  The Flash', 'Tank', '2020-08-01', '22:00:00', 'Kingry  The Flash', 'https://i.ytimg.com/vi/5UFfFlnprGc/maxresdefault.jpg'),
 (4, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'El Brooklyn', 'Hi-Tech', '2020-08-02', '23:00:00', 'ninguno', 'https://e00-us-marca.uecdn.es/claro/assets/multimedia/imagenes/2020/01/09/15786037991462.jpg');
 
@@ -280,8 +280,7 @@ INSERT INTO `posiciones_generales_municipales` (`id`, `alias_boxeador`, `gimnasi
 (3, 'Dinamita', 'DECA', 'M', 'pluma', 3, 1, 1),
 (4, 'Canelo', 'NOCKOUT', 'M', 'medio', 4, 1, 0),
 (5, 'Finito', 'Leones', 'M', 'minimosca', 5, 0, 1),
-(6, 'El Gallo', 'Leones', 'M', 'gallo', 4, 2, 1),
-(8, 'Gusano', 'Boxeo Rojas', 'M', 'minimosca', 6, 2, 1);
+(6, 'El Gallo', 'Leones', 'M', 'gallo', 4, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -318,7 +317,7 @@ CREATE TABLE `tabla_de_pelea` (
 --
 
 INSERT INTO `tabla_de_pelea` (`id`, `id_juez`, `id_pelea`, `id_boxeador`, `round1`, `round2`, `round3`, `round4`, `round5`, `round6`, `round7`, `round8`, `round9`, `round10`, `round11`, `round12`, `total_puntos`, `num_jabs`, `num_power`, `total_golpes`, `ganador`) VALUES
-(1, 'Andres Sanchez', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
+(1, 'Carlos Gonzalez', 1, 'Money Pretty Boy', 9, 9, 10, 10, 9, 10, 10, 9, 10, 9, 10, 9, 111, 153, 98, 255, 0),
 (2, '1', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
 (3, '2', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
 (4, '2', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0),
@@ -461,7 +460,7 @@ ALTER TABLE `jueces`
 -- AUTO_INCREMENT for table `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `peleas_estatales`
