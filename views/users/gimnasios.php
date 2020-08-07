@@ -28,9 +28,6 @@
       <li class="nav-item">
         <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cartelera
@@ -38,6 +35,15 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="cartelera.php">Peleas municipales</a>
           <a class="dropdown-item" href="cartelera_estatal.php">Peleas estatales</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Posiciones generales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="posiciones_generales_municipales.php">Peleas municipales</a>
+          <a class="dropdown-item" href="posiciones_generales_estatales.php">Peleas estatales</a>
         </div>
       </li>
       <li class="nav-item active">
@@ -51,13 +57,14 @@
 </div>
 <section>
     <?php
-              $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/gimnasios_rest.php");
+              /*$res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/gimnasios_rest.php");
               $array = json_decode($res);
               echo "<div class='card-group'>";
               $cont = 0;
               foreach($array as $obj)
               {
                 $cont = $cont+1;
+                $id = $obj->id;
                 $nombre = $obj->nombre;
                 $ubicacion = $obj->ubicacion;
                 $telefono = $obj->telefono;
@@ -77,6 +84,11 @@
                     <p class='card-text'>Email: $email</p>
                     <p class='card-text'>Descripción: $descripcion</p>
                     <p class='card-text'><a href='$ubicacion'>Clic para ver la ubicación...<a></p>
+                    <form action='boxeadores.php' method='Post'>
+                      <input type='text' value='$id' name='id' hidden/>
+                      <input type='text' value='$nombre' name='nombre' hidden/>
+					            <input type='submit' class='btn btn-primary' value='Ver boxeadores participantes'/>
+					          </form>
                   </div>
                 </div>";
                 }
@@ -94,11 +106,33 @@
                     <p class='card-text'>Email: $email</p>
                     <p class='card-text'>Descripción: $descripcion</p>
                     <p class='card-text'><a href='$ubicacion'>Clic para ver la ubicación...<a></p>
+                    <form action='boxeadores.php' method='Post'>
+                      <input type='text' value='$id' name='id' hidden/>
+                      <input type='text' value='$nombre' name='nombre' hidden/>
+					            <input type='submit' class='btn btn-primary' value='Ver boxeadores participantes'/>
+					          </form>
                   </div>
                 </div>";
                 }
               }
-              echo "</div>";
+              echo "</div>";*/
+
+              require_once('../../controllers/ws_soap/lib/nusoap.php');
+              $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_gimnasios.php");
+              $datos = array();
+              $resultado = $cliente->call('mostrarGimnasiosUsers', $datos);
+              $err = $cliente->getError();
+              if($err)
+              {
+                echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
+                echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
+                echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
+                echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
+              }
+              else
+              {
+                echo $resultado;
+              }
             ?>
 </section>
 </body>

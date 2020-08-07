@@ -10,11 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
   if (isset($_GET['id'])) {
 
     //Mostrar un post
-    $sql = $dbConn->prepare("SELECT * FROM boxeadores where id=:id");
+    $sql = $dbConn->prepare("SELECT * FROM boxeadores where id_gimnasio=:id");
     $sql->bindValue(':id', $_GET['id']);
     $sql->execute();
+    $sql->setFetchMode(PDO::FETCH_ASSOC);
     header("HTTP/1.1 200 OK");
-    echo json_encode($sql->fetch(PDO::FETCH_ASSOC));
+    echo json_encode($sql->fetchAll());
     exit();
   } else {
 

@@ -30,9 +30,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cartelera

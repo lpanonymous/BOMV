@@ -11,6 +11,7 @@
 	$servicio->register("editarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarGimnasio", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('mostrarGimnasios', array(), array('return' => 'xsd:string'), $ns);
+	$servicio->register('mostrarGimnasiosUsers', array(), array('return' => 'xsd:string'), $ns);
 
 	function buscarGimnasio($id) 
 	{
@@ -101,5 +102,65 @@
 
 	}
 	
+	function mostrarGimnasiosUsers() 
+	{
+		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
+		$sql = "SELECT * FROM gimnasio";
+		$resultado = mysqli_query($conexion, $sql);
+
+		$listado = "<div class='card-group'>";
+		$cont = 0;
+		while ($fila = mysqli_fetch_array($resultado))
+		{
+			$cont = $cont+1;
+			if($cont<=3)
+			{
+				$listado = $listado."<div class='card'>
+				<img class='card-img-top' src='".$fila['foto']."' alt='Card image cap' height='400px'>
+				<div class='card-body'>
+				<h5 class='card-title'>".$fila['nombre']."</h5>
+				<p class='card-text'>Telefono: ".$fila['telefono']."</p>
+				<p class='card-text'>Facebook: ".$fila['facebook']."</p>
+				<p class='card-text'>Email: ".$fila['email']."</p>
+				<p class='card-text'>Descripción: ".$fila['descripcion']."</p>
+				<p class='card-text'><a href='".$fila['ubicacion']."'>Clic para ver la ubicación...<a></p>
+				<form action='boxeadores.php' method='Post'>
+				  <input type='text' value='".$fila['id']."' name='id' hidden/>
+				  <input type='text' value='".$fila['nombre']."' name='nombre' hidden/>
+				  <input type='submit' class='btn btn-primary' value='Ver boxeadores participantes'/>
+				</form>
+				</div>
+				</div>";
+			}
+			else
+			{
+				$cont = 0;
+				$listado = $listado."</div>
+				<div class='card-group'>
+				<div class='card'>
+				<img class='card-img-top' src='".$fila['foto']."' alt='Card image cap' height='400px'>
+				<div class='card-body'>
+					<h5 class='card-title'>".$fila['nombre']."</h5>
+					<p class='card-text'>Telefono: ".$fila['telefono']."</p>
+					<p class='card-text'>Facebook: ".$fila['facebook']."</p>
+					<p class='card-text'>Email: ".$fila['email']."</p>
+					<p class='card-text'>Descripción: ".$fila['descripcion']."</p>
+					<p class='card-text'><a href='".$fila['ubicacion']."'>Clic para ver la ubicación...<a></p>
+					<form action='boxeadores.php' method='Post'>
+					<input type='text' value='".$fila['id']."' name='id' hidden/>
+					<input type='text' value='".$fila['nombre']."' name='nombre' hidden/>
+					<input type='submit' class='btn btn-primary' value='Ver boxeadores participantes'/>
+					</form>
+				</div>
+				</div>";
+			}
+		}
+		$listado = $listado."</div>";
+		//$json = json_encode($listado);
+		mysqli_close($conexion);
+
+		return new soapval('return', 'xsd:string', $listado);
+
+	}
 	$servicio->service(file_get_contents("php://input"));
 ?>

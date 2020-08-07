@@ -38,9 +38,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cartelera
@@ -48,6 +45,15 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="cartelera.php">Peleas municipales</a>
           <a class="dropdown-item" href="cartelera_estatal.php">Peleas estatales</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Posiciones generales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="posiciones_generales_municipales.php">Peleas municipales</a>
+          <a class="dropdown-item" href="posiciones_generales_estatales.php">Peleas estatales</a>
         </div>
       </li>
       <li class="nav-item">

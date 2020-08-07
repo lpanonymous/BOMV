@@ -17,7 +17,6 @@
   <header>
       <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
   </header>
-  
   <nav class="navbar navbar-expand-lg navbar navbar-custom">
   <a class="navbar-brand" href="noticias.php">BOMV</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +28,6 @@
       <li class="nav-item">
         <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="boxeadores.php">Boxeadores</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cartelera
@@ -41,16 +37,28 @@
           <a class="dropdown-item" href="cartelera_estatal.php">Peleas estatales</a>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Posiciones generales
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="posiciones_generales_municipales.php">Peleas municipales</a>
+          <a class="dropdown-item" href="posiciones_generales_estatales.php">Peleas estatales</a>
+        </div>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link" href="gimnasios.php">Gimnasios</a>
       </li>
     </ul>
   </div>
 </nav>
+<div class="titulo">
+  <h3>Boxeadores del gimnasio <strong><?php echo $_POST["nombre"];?></strong></h3>
+</div>
 <section>
-
 <?php
-  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/boxeadores_rest.php");
+  /*$id_gimnasio= $_POST["id"];
+  $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/boxeadores_rest.php?id={$id_gimnasio}");
   $array = json_decode($res);
   echo "<div class='row grupo-boxeadores'>";
   $cont = 0;
@@ -100,7 +108,25 @@
         </div>";
                 }
               }
-              echo "</div>";
+              echo "</div>";*/
+
+              require_once('../../controllers/ws_soap/lib/nusoap.php');
+              $id_gimnasio= $_POST["id"];
+              $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
+              $datos = array($id_gimnasio);
+              $resultado = $cliente->call('mostrarBoxeadoresUsers', $datos);
+              $err = $cliente->getError();
+              if($err)
+              {
+                echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
+                echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
+                echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
+                echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
+              }
+              else
+              {
+                echo $resultado;
+              }
             ?>
 </section>
 </body>

@@ -29,7 +29,12 @@
     justify-content: center;
     align-items: center;
   }
-
+  .titulo
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .navbar-custom {
     background-color: black;
 }
