@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BOMV Posiciones generales municipales</title>
+    <title>BOMV Posiciones generales estatales</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
@@ -149,8 +149,8 @@
           Posiciones generales
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item active" href="posiciones_generales_municipales.php">Peleas municipales</a>
-          <a class="dropdown-item" href="posiciones_generales_estatales.php">Peleas estatales</a>
+          <a class="dropdown-item" href="posiciones_generales_municipales.php">Peleas municipales</a>
+          <a class="dropdown-item active" href="posiciones_generales_estatales.php">Peleas estatales</a>
         </div>
       </li>
       <li class="nav-item">
@@ -165,10 +165,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left" style="color:white;">Posiciones de peleas municipales</h2>
+                        <h2 class="pull-left" style="color:white;">Posiciones de peleas estatales</h2>
                     </div>
                     <?php
-                      $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/posiciones_generales_municipales_rest.php");
+                      $res = file_get_contents("http://localhost/BOMV/controllers/ws_rest/posiciones_generales_estatales_rest.php");
                       $array = json_decode($res);
                       echo "<div class='opacity table-responsive' id='div1'><table table-responsive{-sm|-md|-lg|-xl} class='table table-bordered table-striped table-dark' id='myTable'><thead><tr><th>Id</th><th>Alias boxeador</th><th>Gimnasio</th><th>Categoría</th><th>División</th><th>Peleas ganadas</th><th>Peleas perdidas</th><th>Empates</th></tr></thead><tbody>";
                       foreach($array as $obj)
