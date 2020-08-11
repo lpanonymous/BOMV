@@ -15,6 +15,8 @@
 	$servicio->register("eliminarBoxeador", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	
 	$servicio->register('mostrarBoxeadores', array(), array('return' => 'xsd:string'), $ns);
+
+	$servicio->register('mostrarBoxeadoresUsers', array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	
 
 	function buscarBoxeador($id) 
@@ -91,6 +93,67 @@
 			</td></tr>";
 		}
 		$listado = $listado."</tbody></table></div>";
+		//$json = json_encode($listado);
+		mysqli_close($conexion);
+
+		return new soapval('return', 'xsd:string', $listado);
+
+	}
+
+	function mostrarBoxeadoresUsers($id) 
+	{
+		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
+		$sql = "SELECT * FROM boxeadores where id_gimnasio='$id'";
+		$resultado = mysqli_query($conexion, $sql);
+
+		$listado = "<div class='row grupo-boxeadores'>";
+		$cont = 0;
+		while ($fila = mysqli_fetch_array($resultado))
+		{
+			$cont = $cont+1;
+			if($cont<=3)
+			{
+				$listado = $listado."<div class='flip-card col span-1-of-3'>
+				<div class='flip-card-inner'>
+						<div class='flip-card-front'>
+						  <img src='".$fila['foto']."' alt='Boxeador' class='foto-boxeador'>
+						</div>
+						<div class='flip-card-back'>
+						  <h1>".$fila['division']."</h1>
+						  <div class='card-texto'>
+							<p>".$fila['nombre_boxeador']."</p>
+							<p>&quot;<i>".$fila['alias']."<i>&quot;</p>
+						  </div>
+						  <input type='text' value='".$fila['id_boxeador']."' name='id' hidden/>
+						  <input type='submit' class='btn-boxeador' value='VER RECORD'/>
+						</div>
+						</div>
+				  </div>";
+			}
+			else
+			{
+				$cont = 0;
+				$listado = $listado."</div> 
+				<div class='row grupo-boxeadores'>
+				<div class='flip-card col span-1-of-3'>
+				<div class='flip-card-inner'>
+						<div class='flip-card-front'>
+						  <img src='".$fila['foto']."' alt='Boxeador' class='foto-boxeador'>
+						</div>
+						<div class='flip-card-back'>
+						  <h1>".$fila['division']."</h1>
+						  <div class='card-texto'>
+							<p>".$fila['nombre_boxeador']."</p>
+							<p>&quot;<i>".$fila['alias']."<i>&quot;</p>
+						  </div>
+						  <input type='text' value='".$fila['id_boxeador']."' name='id' hidden/>
+						  <input type='submit' class='btn-boxeador' value='VER RECORD'/>
+						</div>
+						</div>
+				  </div>";
+			}
+		}
+		$listado = $listado."</div>";
 		//$json = json_encode($listado);
 		mysqli_close($conexion);
 

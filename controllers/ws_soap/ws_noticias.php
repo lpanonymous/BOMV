@@ -15,6 +15,8 @@
 	$servicio->register("eliminarNoticia", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	
 	$servicio->register('mostrarNoticias', array(), array('return' => 'xsd:string'), $ns);
+
+	$servicio->register('mostrarNoticiasUsers', array(), array('return' => 'xsd:string'), $ns);
 	
 
 	function buscarNoticia($id) 
@@ -92,6 +94,65 @@
 				</td></tr>";
 		}
 		$listado = $listado."</tbody></table></div>";
+		//$json = json_encode($listado);
+		mysqli_close($conexion);
+
+		return new soapval('return', 'xsd:string', $listado);
+
+	}
+
+	function mostrarNoticiasUsers() 
+	{
+		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
+		$sql = "SELECT * FROM noticias";
+		$resultado = mysqli_query($conexion, $sql);
+
+		$listado = "<div class='card-group'>";
+		$cont = 0;
+		while ($fila = mysqli_fetch_array($resultado))
+		{
+			$cont = $cont+1;
+			if($cont<=3)
+			{
+				$listado = $listado."<div class='card'>
+				<img class='card-img-top' src='".$fila['foto']."' alt='Card image cap' height='400px'>
+				<div class='card-body'>
+					<h5 class='card-title'>".$fila['titulo']."</h5>
+					<p class='card-text'><small class='text-muted'>".$fila['fecha']."</small></p>
+					<form action='noticia.php' method='Post'>
+					<input type='text' value='".$fila['id']."' name='id' hidden/>
+					<input type='text' value='".$fila['titulo']."' name='titulo' hidden/>
+					<input type='text' value='".$fila['fecha']."' name='fecha' hidden/>
+					<input type='text' value='".$fila['cuerpo']."' name='cuerpo' hidden/>
+					<input type='text' value='".$fila['foto']."' name='foto' hidden/>
+					<input type='submit' class='btn btn-primary' value='Más información'/>
+					</form>
+				</div>
+				</div>";
+			}
+			else
+			{
+				$cont = 0;
+				$listado = $listado."</div>
+				<div class='card-group'>
+				<div class='card'>
+				<img class='card-img-top' src='".$fila['foto']."' alt='Card image cap' height='400px'>
+				<div class='card-body'>
+					<h5 class='card-title'>".$fila['titulo']."</h5>
+					<p class='card-text'><small class='text-muted'>".$fila['fecha']."</small></p>
+					<form action='noticia.php' method='Post'>
+					<input type='text' value='".$fila['id']."' name='id' hidden/>
+					<input type='text' value='".$fila['titulo']."' name='titulo' hidden/>
+					<input type='text' value='".$fila['fecha']."' name='fecha' hidden/>
+					<input type='text' value='".$fila['cuerpo']."' name='cuerpo' hidden/>
+					<input type='text' value='".$fila['foto']."' name='foto' hidden/>
+					<input type='submit' class='btn btn-primary' value='Más información'/>
+					</form>
+				</div>
+				</div>";
+			}
+		}
+		$listado = $listado."</div>";
 		//$json = json_encode($listado);
 		mysqli_close($conexion);
 
