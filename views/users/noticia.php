@@ -61,6 +61,10 @@
       </li>
     </ul>
   </div>
+  <a class="btn btn-outline-light btn-lg" href="../../login/cerrarSesion.php">
+  	<i class="fa fa-sign-out" onclick="cerrarSesion()" aria-hidden="true"></i>
+                    Cerrar Sesion
+  </a>
 </nav>
     <section class="seccion-noticia">
         <div class="noticia-img">

@@ -53,14 +53,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 		$resultado = $cliente->call('editarNoticia', $datos);
 		
 		$err = $cliente->getError();
-		if($err){
+		/*if($err){
 			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
 			echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
 			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
 			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-		}else{
+		}else{*/
 			header("location: ../../views/admin/noticias.php");
-		}
+		//}
     }
 } else{
     // Check existence of id parameter before processing further
@@ -147,7 +147,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <img src="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
                             <div class="form-group">
                                 <label>Foto</label>
-                                <input type="file" name="foto" class="form-control" multiple> 
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple> 
                             </div>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>

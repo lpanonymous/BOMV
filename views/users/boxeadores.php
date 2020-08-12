@@ -17,7 +17,7 @@
   <header>
       <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
   </header>
-  <nav class="navbar navbar-expand-lg navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="noticias.php">BOMV</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
@@ -46,11 +46,15 @@
           <a class="dropdown-item" href="posiciones_generales_estatales.php">Peleas estatales</a>
         </div>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="gimnasios.php">Gimnasios</a>
       </li>
     </ul>
   </div>
+  <a class="btn btn-outline-light btn-lg" href="../../login/cerrarSesion.php">
+  	<i class="fa fa-sign-out" onclick="cerrarSesion()" aria-hidden="true"></i>
+                    Cerrar Sesion
+  </a>
 </nav>
 <div class="titulo">
   <h3>Boxeadores del gimnasio <strong><?php echo $_POST["nombre"];?></strong></h3>

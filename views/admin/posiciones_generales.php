@@ -13,13 +13,18 @@
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     
     <style type="text/css">
-	
-		
         body{
             background-image: url('../../resources/ali.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+        }
+		
+		.btn-outline-light {
+            color: #f8f9fa;
+            background-color: #2C3E50;
+            background-image: none;
+            border-color: #f8f9fa;
         }
         .opacity{
             opacity:0.8; /* Opacidad 60% */
@@ -158,6 +163,10 @@
       </li>
     </ul>
   </div>
+  <a class="btn btn-outline-light btn-lg" href="../../login/cerrarSesion.php">
+  	<i class="fa fa-sign-out" onclick="cerrarSesion()" aria-hidden="true"></i>
+                    Cerrar Sesion
+  </a>
 </nav>
     <div class="wrapper">
         <div class="container-fluid">

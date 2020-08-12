@@ -18,7 +18,7 @@
   <header>
       <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
   </header>
-  <nav class="navbar navbar-expand-lg navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="noticias.php">BOMV</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -29,11 +29,11 @@
       <li class="nav-item">
         <a class="nav-link" href="noticias.php">Noticias <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown active">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cartelera
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
           <a class="dropdown-item active" href="cartelera.php">Peleas municipales</a>
           <a class="dropdown-item" href="cartelera_estatal.php">Peleas estatales</a>
         </div>
@@ -52,6 +52,10 @@
       </li>
     </ul>
   </div>
+  <a class="btn btn-outline-light btn-lg" href="../../login/cerrarSesion.php">
+  	<i class="fa fa-sign-out" onclick="cerrarSesion()" aria-hidden="true"></i>
+                    Cerrar Sesion
+  </a>
 </nav>
 <section>
             <?php

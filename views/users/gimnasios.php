@@ -17,7 +17,7 @@
   <header>
       <h1><strong>B</strong>oxeo <strong>O</strong>límpico <strong>M</strong>exicano en <strong>V</strong>ívo</h1>
   </header>
-  <nav class="navbar navbar-expand-lg navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="noticias.php">BOMV</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -51,6 +51,10 @@
       </li>
     </ul>
   </div>
+  <a class="btn btn-outline-light btn-lg" href="../../login/cerrarSesion.php">
+  	<i class="fa fa-sign-out" onclick="cerrarSesion()" aria-hidden="true"></i>
+                    Cerrar Sesion
+  </a>
 </nav>
 <div class="titulo">
   <h3><strong>¿Te interesa entrenar en alguno de estos gimnasios?</strong></h3>

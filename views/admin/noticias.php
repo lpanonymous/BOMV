@@ -33,7 +33,6 @@
         .btn-outline-light {
             color: #f8f9fa;
             background-color: #2C3E50;
-            background-image: none;
             border-color: #f8f9fa;
         }
 		tr td{
@@ -44,9 +43,23 @@
 			color: aliceblue !important;
 		}
 		#myTable_info{
-			color: #7F8C8D !important;
+			color: #2C3E50 !important;
 		}
-		
+		#myTable_previous{
+			color: #2C3E50 !important;
+		}
+		#myTable_next{
+			color: #2C3E50 !important;
+		}
+		/*.paginate_button current{
+			color: #2C3E50 !important;
+			background-color: #2C3E50 !important;
+		}
+		.paginate_button.current:hover {
+			color: #333 !important;
+			border: 1px solid #2C3E50 !important;
+			background-color: #2C3E50 !important;
+		}*/
 		@media
 	  only screen 
     and (max-width: 800px), (min-device-width: 868px) 
@@ -163,11 +176,10 @@
       </li>
     </ul>
   </div>
-
-                <a class="btn btn-outline-light btn-lg" href="../../login/cerrarSesion.php">
-                    <i class="fa fa-sign-out" onclick="cerrarSesion()" aria-hidden="true"></i>
+  <a class="btn btn-outline-light btn-lg" href="../../login/cerrarSesion.php">
+  	<i class="fa fa-sign-out" onclick="cerrarSesion()" aria-hidden="true"></i>
                     Cerrar Sesion
-                </a>
+  </a>
 </nav>
     <div class="wrapper">
         <div class="container-fluid">
