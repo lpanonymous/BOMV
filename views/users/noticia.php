@@ -64,7 +64,7 @@
 </nav>
     <section class="seccion-noticia">
         <div class="noticia-img">
-            <img src="<?php echo $_POST["foto"];?>" class="noticia-img" alt="Imagen Noticia">
+            <img src="http://localhost/BOMV/resources/images/noticias/<?php echo $_POST["foto"];?>" class="noticia-img" alt="Imagen Noticia">
         </div>
         <div class="row noticia-texto">
             <h1><?php echo $_POST["titulo"];?></h2>            

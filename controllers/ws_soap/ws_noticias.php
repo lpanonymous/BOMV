@@ -123,7 +123,7 @@
 			if($cont<=3)
 			{
 				$listado = $listado."<div class='card'>
-				<img class='card-img-top' src='".$fila['foto']."' alt='Card image cap' height='400px'>
+				<img class='card-img-top' src='../../resources/images/noticias/".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
 				<div class='card-body'>
 					<h5 class='card-title'>".$fila['titulo']."</h5>
 					<p class='card-text'><small class='text-muted'>".$fila['fecha']."</small></p>
@@ -132,7 +132,7 @@
 					<input type='text' value='".$fila['titulo']."' name='titulo' hidden/>
 					<input type='text' value='".$fila['fecha']."' name='fecha' hidden/>
 					<input type='text' value='".$fila['cuerpo']."' name='cuerpo' hidden/>
-					<input type='text' value='".$fila['foto']."' name='foto' hidden/>
+					<input type='text' value='".$fila['nombre_foto']."' name='foto' hidden/>
 					<input type='submit' class='btn btn-primary' value='Más información'/>
 					</form>
 				</div>
@@ -144,7 +144,7 @@
 				$listado = $listado."</div>
 				<div class='card-group'>
 				<div class='card'>
-				<img class='card-img-top' src='".$fila['foto']."' alt='Card image cap' height='400px'>
+				<img class='card-img-top' src='../../resources/images/noticias/".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
 				<div class='card-body'>
 					<h5 class='card-title'>".$fila['titulo']."</h5>
 					<p class='card-text'><small class='text-muted'>".$fila['fecha']."</small></p>
@@ -153,7 +153,7 @@
 					<input type='text' value='".$fila['titulo']."' name='titulo' hidden/>
 					<input type='text' value='".$fila['fecha']."' name='fecha' hidden/>
 					<input type='text' value='".$fila['cuerpo']."' name='cuerpo' hidden/>
-					<input type='text' value='".$fila['foto']."' name='foto' hidden/>
+					<input type='text' value='".$fila['nombre_foto']."' name='foto' hidden/>
 					<input type='submit' class='btn btn-primary' value='Más información'/>
 					</form>
 				</div>

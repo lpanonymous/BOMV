@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2020 at 06:45 AM
+-- Generation Time: Aug 12, 2020 at 06:18 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -149,19 +149,19 @@ CREATE TABLE `noticias` (
   `titulo` varchar(200) NOT NULL,
   `fecha` date NOT NULL,
   `cuerpo` varchar(10000) NOT NULL,
-  `foto` mediumblob DEFAULT NULL
+  `nombre_foto` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `noticias`
 --
 
-INSERT INTO `noticias` (`id`, `titulo`, `fecha`, `cuerpo`, `foto`) VALUES
-(1, 'Campeonato estatal de boxeo', '2020-06-24', 'Se aproxima el campeonato estatal de boxeo olimpico de Veracruz.', 0x68747470733a2f2f696d67322e727476652e65732f692f3f773d3136303026693d313331363739363630363039362e6a7067),
-(2, 'Apoya a esta causa', '2020-06-25', 'Solicitamos el apoyo para este gran boxeador peso mosca, para poder participar en las estatales.', 0x68747470733a2f2f7330332e7333632e65732f696d61672f5f76302f373730783432302f612f362f652f7461696c616e6469612d626f78656f2d6e696e6f2d726575746572732d322e6a7067),
-(3, 'Asi relata esta gran boxeadora su vida arriba y fuera del ring', '2020-06-26', 'Su nombre es Emily Xochicale y su pasion siempre a sido el boxeo pero no a tenido una vida tan facil afuera del ring, se dedica a trabajar, estudiar y entrena en las noches en el gimnasio de su colonia, sin duda un ejemplo a seguir.', 0x68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d756e646f2d6275636b65742d73332f77702d636f6e74656e742f75706c6f6164732f323031392f30392f30343038303031342f33342d3532313734312e6a7067),
-(4, 'Por primera vez en la historia boxeadores profesionales podran participar en las olimpiadas.', '2020-06-27', 'Los Juegos Olímpicos Tokio 2020 y la posibilidad de que pugilistas profesionales participen en esa competencia reavivaron el diferendo entre los titulares del Consejo Mundial de Boxeo y de la Federación Mexicana de Box, Mauricio Sulaimán y Ricardo Conteras. El primero es tajante: de ninguna manera puede aceptarse que un boxeador profesional compita en esa justa; el segundo arguye que se hará todo lo posible para llevar a Japón la mejor delegación boxística de la historia y ganar medallas en esa disciplina.', 0x68747470733a2f2f696d672e766176656c2e636f6d2f682f3432393435305f6572726f6c2d7370656e63652d626f78696e672e6a7067),
-(5, 'Boxeador peso welter con 0 derrotas hasta el momento.', '2020-06-28', 'El boxeador Saul a disputado 5 peleas seguidas sin derrota durante el campeonato estatal de boxeo', 0x68747470733a2f2f63646e2d332e657870616e73696f6e2e6d782f64696d73342f64656661756c742f323563366235322f323134373438333634372f73747269702f747275652f63726f702f353231783239372b302b302f726573697a652f313830307831303236212f7175616c6974792f39302f3f75726c3d68747470732533412532462532466368657272792d62726967687473706f742e73332e616d617a6f6e6177732e636f6d2532463539253246643425324662656663353931393432376338396663326666313065356632373261253246636170747572612d64652d70616e74616c6c612d323031362d30382d31372d612d6c61732d382e35312e3533253230612e6d2e2e706e67);
+INSERT INTO `noticias` (`id`, `titulo`, `fecha`, `cuerpo`, `nombre_foto`) VALUES
+(1, 'Campeonato estatal de boxeo', '2020-06-24', 'Se aproxima el campeonato estatal de boxeo olimpico de Veracruz.', 'ceb.jpeg'),
+(2, 'Apoya a esta causa', '2020-06-25', 'Solicitamos el apoyo para este gran boxeador peso mosca, para poder participar en las estatales.', 'nbpg.jpg'),
+(3, 'Asi relata esta gran boxeadora su vida arriba y fuera del ring', '2020-06-26', 'Su nombre es Emily Xochicale y su pasion siempre a sido el boxeo pero no a tenido una vida tan facil afuera del ring, se dedica a trabajar, estudiar y entrena en las noches en el gimnasio de su colonia, sin duda un ejemplo a seguir.', 'emily.jpg'),
+(4, 'Por primera vez en la historia boxeadores profesionales podran participar en las olimpiadas.', '2020-06-27', 'Los Juegos Olímpicos Tokio 2020 y la posibilidad de que pugilistas profesionales participen en esa competencia reavivaron el diferendo entre los titulares del Consejo Mundial de Boxeo y de la Federación Mexicana de Box, Mauricio Sulaimán y Ricardo Conteras. El primero es tajante: de ninguna manera puede aceptarse que un boxeador profesional compita en esa justa; el segundo arguye que se hará todo lo posible para llevar a Japón la mejor delegación boxística de la historia y ganar medallas en esa disciplina.', 'olimpiadas.jpg'),
+(5, 'Boxeador peso welter con 0 derrotas hasta el momento.', '2020-06-28', 'El boxeador Saul a disputado 5 peleas seguidas sin derrota durante el campeonato estatal de boxeo', 'boxeadorom.png');
 
 -- --------------------------------------------------------
 
@@ -370,9 +370,12 @@ INSERT INTO `tabla_de_pelea_estatal` (`id`, `id_juez`, `id_pelea`, `id_boxeador`
 (7, '4', 1, 'Money Pretty Boy', 10, 10, 10, 9, 10, 9, 10, 9, 10, 9, 10, 9, 115, 150, 100, 250, 1),
 (8, '4', 1, 'Pac Man', 9, 9, 9, 10, 9, 10, 9, 10, 9, 10, 9, 10, 113, 100, 80, 180, 0);
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Table structure for table `usuarios`
 --
+
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` varchar(20) COLLATE utf8mb4_bin NOT NULL,
@@ -383,7 +386,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `cargo`, `password`) VALUES
@@ -393,24 +396,9 @@ INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `cargo`, `passwor
 (4, 'drako', 'Drako', 'dragon', 'Administrador', '123');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Indexes for table `boxeadores`
 --
@@ -469,6 +457,12 @@ ALTER TABLE `tabla_de_pelea`
 -- Indexes for table `tabla_de_pelea_estatal`
 --
 ALTER TABLE `tabla_de_pelea_estatal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -534,6 +528,12 @@ ALTER TABLE `tabla_de_pelea`
 --
 ALTER TABLE `tabla_de_pelea_estatal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
