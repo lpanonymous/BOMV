@@ -8,7 +8,7 @@
 	//Boxeadores
 	$servicio->register('buscarNoticia',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
 	
-	$servicio->register("agregarNoticia", array('titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarNoticia", array('titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string', 'nombre_foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 
 	$servicio->register("editarNoticia", array('id' => 'xsd:string', 'titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	
@@ -38,10 +38,14 @@
 		return $data;
 	}
 
-	function agregarNoticia($titulo, $fecha, $cuerpo, $foto){
+	function agregarNoticia($titulo, $fecha, $cuerpo, $foto, $nombre_foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
 		
-		$agregar = $conexion->query("INSERT INTO noticias(titulo, fecha, cuerpo, foto) VALUES ('$titulo','$fecha','$cuerpo','$foto')");
+		$location = "..\\..\\resources\\images\\noticias\\".$nombre_foto;                               // Mention where to upload the file
+        $current = file_get_contents($location);                     // Get the file content. This will create an empty file if the file does not exist     
+        $current = base64_decode($foto);                          // Now decode the content which was sent by the client     
+        file_put_contents($location, $current);                      // Write the decoded content in the file mentioned at particular location      
+		$agregar = $conexion->query("INSERT INTO noticias(titulo, fecha, cuerpo, nombre_foto) VALUES ('$titulo','$fecha','$cuerpo', '$nombre_foto')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -87,7 +91,7 @@
 
 
 		while ($fila = mysqli_fetch_array($resultado)){
-				$listado = $listado."<tr><td>".$fila['id']."</td><td><img src='".$fila['foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['titulo']."</td><td>".date("d/m/Y", strtotime($fila['fecha']))."</td><td>".$fila['cuerpo']."</td><td>
+				$listado = $listado."<tr><td>".$fila['id']."</td><td><img src='../../resources/images/noticias/".$fila['nombre_foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['titulo']."</td><td>".date("d/m/Y", strtotime($fila['fecha']))."</td><td>".$fila['cuerpo']."</td><td>
 				<a href='../../controllers/soap_clients/cliente_noticias_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
 				<a href='../../controllers/soap_clients/cliente_noticias_actualizar.php?id=". $fila['id'] ."' title='Update Record' data-toggle='tooltip'><span class='fa fa-pencil'></span></a>
 				<a href='../../controllers/soap_clients/cliente_noticias_elimina.php?id=". $fila['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='fa fa-trash'></span></a>
