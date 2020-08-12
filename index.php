@@ -46,13 +46,13 @@
 				<form class="login100-form validate-form" action="login/ingresar.php" method="POST">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Ingresa el usuario">
 						<span class="label-input100">Usuario</span>
-						<input class="input100" type="text" name="username" placeholder="Ingresa el usuario">
+						<input class="input100" type="text" name="usuario" placeholder="Ingresa el usuario">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Ingresa la contraseña">
 						<span class="label-input100">Contraseña</span>
-						<input class="input100" type="password" name="pass" placeholder="Ingresa la contraseña">
+						<input class="input100" type="password" name="contrasena" placeholder="Ingresa la contraseña">
 						<span class="focus-input100"></span>
 					</div>
 

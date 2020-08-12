@@ -373,7 +373,44 @@ INSERT INTO `tabla_de_pelea_estatal` (`id`, `id_juez`, `id_pelea`, `id_boxeador`
 --
 -- Indexes for dumped tables
 --
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `nombre` varchar(40) COLLATE utf8mb4_bin NOT NULL,
+  `apellido` varchar(40) COLLATE utf8mb4_bin NOT NULL,
+  `cargo` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `password` varchar(20) COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `cargo`, `password`) VALUES
+(1, 'leo', 'Leonardo', 'Galicia', 'Administrador', '123'),
+(2, 'pablo', 'Pablo', 'Luis', 'Usuario', '159'),
+(3, 'law', 'Lawrense', 'la', 'Juez', '147'),
+(4, 'drako', 'Drako', 'dragon', 'Administrador', '123');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Indexes for table `boxeadores`
 --
