@@ -101,8 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
                             <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
-                            <span class="help-block"><?php echo $foto_err;?></span>
-                            
+                            <span class="help-block"><?php echo $foto_err;?></span> 
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Agregar noticia">

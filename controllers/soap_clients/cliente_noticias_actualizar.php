@@ -1,8 +1,8 @@
 <?php
 require_once('lib/nusoap.php');
 // Define variables and initialize with empty values
-$id = $titulo = $fecha = $cuerpo = $foto="";
-$id_err = $titulo_err = $fecha_err = $cuerpo_err = $foto_err ="";
+$id = $titulo = $fecha = $cuerpo = $nombre_foto="";
+$id_err = $titulo_err = $fecha_err = $cuerpo_err = $nombre_foto_err ="";
 
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -34,19 +34,21 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $cuerpo = $input_cuerpo;
     }
 
-    // Validate foto de la noticia
-    $input_foto = trim($_POST["foto"]);
-    if(empty($input_foto)){
-        $foto_err = "Ingresa la imagen de la noticia";
-    }else{
-        $foto = $input_foto;
-    }
+    $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+    $filename = $_FILES["foto"]["name"];      // Original filename
+
+    $handle = fopen($tmpfile, "r");                  // Open the temp file
+    $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+    fclose($handle);                                 // Close the temp file
+    $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
+
+
     
     // Check input errors before inserting in database
-    if(empty($id_err) && empty($titulo_err) && empty($fecha_err) && empty($cuerpo_err) && empty($foto_err)){
+    if(empty($id_err) && empty($titulo_err) && empty($fecha_err) && empty($cuerpo_err)){
     	$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_noticias.php");
 		//BOMV/controllers/ws_soap/ws_noticias
-		$datos = array('id' => $_POST["id"], 'titulo' => $_POST["titulo"], 'fecha' => $_POST["fecha"], 'cuerpo' => $_POST["cuerpo"], 'foto' => $_POST["foto"]);
+		$datos = array('id' => $_POST["id"], 'titulo' => $_POST["titulo"], 'fecha' => $_POST["fecha"], 'cuerpo' => $_POST["cuerpo"], 'foto' => $decodeContent, 'nombre_foto' => $filename);
 
 		$resultado = $cliente->call('editarNoticia', $datos);
 		
@@ -86,7 +88,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $titulo = $obj->titulo;
             $fecha = $obj->fecha;
             $cuerpo = $obj->cuerpo;
-            $foto = $obj->foto;
+            $nombre_foto = $obj->nombre_foto;
 		}
         
     }  else{    
@@ -125,7 +127,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <h2>Actualizar noticia</h2>
                     </div>
                     <p>Porfavor edita los campos y haz clic en enviar para actualizar la noticia.</p>
-                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group <?php echo (!empty($titulo_err)) ? 'has-error' : ''; ?>">
                             <label>Titulo</label>
                             <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
@@ -141,10 +143,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <input type="text" name="cuerpo" class="form-control" value="<?php echo $cuerpo; ?>">
                             <span class="help-block"><?php echo $cuerpo_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
-                            <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>">
-                            <span class="help-block"><?php echo $foto_err;?></span>
+                        <div class="form-group">
+                            <img src="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" name="foto" class="form-control" multiple> 
+                            </div>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Agregar">

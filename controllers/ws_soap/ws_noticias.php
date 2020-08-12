@@ -10,7 +10,7 @@
 	
 	$servicio->register("agregarNoticia", array('titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string', 'nombre_foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 
-	$servicio->register("editarNoticia", array('id' => 'xsd:string', 'titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("editarNoticia", array('id' => 'xsd:string', 'titulo' => 'xsd:string', 'fecha' => 'xsd:string', 'cuerpo' => 'xsd:string', 'foto' => 'xsd:string', 'nombre_foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	
 	$servicio->register("eliminarNoticia", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	
@@ -27,7 +27,7 @@
 
 		while ($fila = mysqli_fetch_array($resultado))
 		{
-			$datos = array("id" => $fila['id'], "titulo" => $fila['titulo'], "fecha" => $fila['fecha'], "cuerpo" => $fila['cuerpo'], "foto" => $fila['foto']);	
+			$datos = array("id" => $fila['id'], "titulo" => $fila['titulo'], "fecha" => $fila['fecha'], "cuerpo" => $fila['cuerpo'], "nombre_foto" => $fila['nombre_foto']);	
 		}
 		/*mysqli_close($conexion);
 		$datos2 = implode("<", $datos);
@@ -55,9 +55,13 @@
 		mysqli_close($conexion);
 	}
 
-	function editarNoticia($id, $titulo, $fecha, $cuerpo, $foto){
+	function editarNoticia($id, $titulo, $fecha, $cuerpo, $foto, $nombre_foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		$editar = $conexion->query("UPDATE noticias SET titulo='$titulo',fecha='$fecha',cuerpo='$cuerpo',foto='$foto' WHERE id='$id'");
+		$location = "..\\..\\resources\\images\\noticias\\".$nombre_foto;                               // Mention where to upload the file
+        $current = file_get_contents($location);                     // Get the file content. This will create an empty file if the file does not exist     
+        $current = base64_decode($foto);                          // Now decode the content which was sent by the client     
+        file_put_contents($location, $current);                      // Write the decoded content in the file mentioned at particular location      
+		$editar = $conexion->query("UPDATE noticias SET titulo='$titulo',fecha='$fecha',cuerpo='$cuerpo',nombre_foto='$nombre_foto' WHERE id='$id'");
 		$resultado=mysqli_query($conexion, $editar);
 
 		if(!$conexion) {

@@ -24,7 +24,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 		$titulo = $obj->titulo;
         $fecha = $obj->fecha;
         $cuerpo = $obj->cuerpo;
-        $foto = $obj->foto;
+        $nombre_foto = $obj->nombre_foto;
 	}
 } 
 else
@@ -77,8 +77,7 @@ else
                         <p class="form-control-static"><?php echo $cuerpo; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Foto</label>
-                        <p class="form-control-static"><?php echo $foto; ?></p>
+                        <img src="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
                     </div>
                     <p><a href="../../views/admin/noticias.php" class="btn btn-primary">Regresar</a></p>
                 </div>
