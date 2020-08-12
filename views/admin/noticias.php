@@ -30,6 +30,12 @@
 			height:80%;
 			width:100%;
         }
+        .btn-outline-light {
+            color: #f8f9fa;
+            background-color: #2C3E50;
+            background-image: none;
+            border-color: #f8f9fa;
+        }
 		tr td{
 			background: #2C3E50 !important;
 		}
