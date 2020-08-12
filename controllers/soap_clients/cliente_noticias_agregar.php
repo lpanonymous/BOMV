@@ -32,33 +32,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }else{
         $cuerpo = $input_cuerpo;
     }
-	
-    // Validate foto de la noticia
-    $input_foto = trim($_POST["foto"]);
-    if(empty($input_foto)){
-        $foto_err = "Ingresa la imagen de la noticia";
-    } else{
-        $foto = $input_foto;
-    }
+
+       $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+       $filename = $_FILES["foto"]["name"];      // Original filename
+
+       $handle = fopen($tmpfile, "r");                  // Open the temp file
+       $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+       fclose($handle);                                 // Close the temp file
+
+       $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
     
     // Check input errors before inserting in database
-    if(empty($titulo_err) && empty($fecha_err) && empty($cuerpo_err) && empty($foto_err)){
+    if(empty($titulo_err) && empty($fecha_err) && empty($cuerpo_err)){
 		$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_noticias.php");
 
-        $datos = array('titulo' => $_POST["titulo"], 'fecha' => $_POST["fecha"], 'cuerpo' => $_POST["cuerpo"], 'foto' => $_POST["foto"]);
+        $datos = array('titulo' => $_POST["titulo"], 'fecha' => $_POST["fecha"], 'cuerpo' => $_POST["cuerpo"], 'foto' => $decodeContent, 'nombre_foto' => $filename);
 
         $resultado = $cliente->call('agregarNoticia', $datos);
-        
-        $err = $cliente->getError();
-        if($err){
-            echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-            echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-            echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-            echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-        }else{
-            header("location: ../../views/admin/noticias.php");
-            //echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
-        }
+        header("location: ../../views/admin/noticias.php");
+        //echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
     }
 }
 ?>
@@ -90,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <h2>Crear noticia</h2>
                     </div>
                     <p>Please fill this form and submit to add employee record to the database.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group <?php echo (!empty($titulo_err)) ? 'has-error' : ''; ?>">
                             <label>Titulo</label>
                             <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
@@ -108,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>">
+                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
                             <span class="help-block"><?php echo $foto_err;?></span>
                         </div>
 
