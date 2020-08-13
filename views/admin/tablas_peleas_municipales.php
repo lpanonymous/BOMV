@@ -21,7 +21,17 @@
             background-attachment: fixed;
             background-size: cover;
         }
-		
+		.dataTables_wrapper .dataTables_paginate .paginate_button {
+			color: #000 !important;
+			border: 1px solid #ffffff;
+			border-radius: 2px;
+			background: white;
+		}
+		.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+			color: #000  !important;
+			border: 1px solid white;
+			background: white;
+		}
 		.btn-outline-light {
             color: #f8f9fa;
             background-color: #2C3E50;

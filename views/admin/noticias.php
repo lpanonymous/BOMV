@@ -22,6 +22,13 @@
             background-attachment: fixed;
             background-size: cover;
         }
+		.dataTables_wrapper .dataTables_paginate .paginate_button {
+			border: 1px solid #ffffff;
+			border-radius: 2px;
+		}
+		.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+			background: white !important;
+		}
         .opacity{
             opacity:0.8; /* Opacidad 60% */
         }

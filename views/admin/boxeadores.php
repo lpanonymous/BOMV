@@ -26,6 +26,17 @@
             background-image: none;
             border-color: #f8f9fa;
         }
+		.dataTables_wrapper .dataTables_paginate .paginate_button {
+			color: #000 !important;
+			border: 1px solid #ffffff;
+			border-radius: 2px;
+			background: white;
+		}
+		.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+			color: #000  !important;
+			border: 1px solid white;
+			background: white;
+		}
         .opacity
         {
             opacity:0.8; /* Opacidad 60% */

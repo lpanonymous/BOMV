@@ -169,16 +169,24 @@
 			$municipio = $input_municipio;
         }
 
-        $input_foto = trim($_POST["foto"]);
+        /*$input_foto = trim($_POST["foto"]);
 		if(empty($input_foto)){
 			$foto_err = "Porfavor ingresa una foto.";
 		} 
 		else{
 			$foto = $input_foto;
-        }
+        }*/
+		$tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+       $filename = $_FILES["foto"]["name"];      // Original filename
+
+       $handle = fopen($tmpfile, "r");                  // Open the temp file
+       $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+       fclose($handle);                                 // Close the temp file
+
+       $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
         
         // Check input errors before inserting in database
-        if(empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err) && empty($foto_err))
+        if(empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err))
         {
             
 			$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
@@ -199,8 +207,7 @@
                            'estado' => $_POST["estado"],
                            'ciudad' => $_POST["ciudad"],
                            'municipio' => $_POST["municipio"],
-                           'foto' => $_POST["foto"]
-                            );
+                           'foto' => $decodeContent, 'nombre_foto' => $filename);
 
 			$resultado = $cliente->call('agregarBoxeador', $datos);
 			
@@ -350,8 +357,8 @@
                         </div>
                         <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>">
-                            <span class="help-block"><?php echo $foto_err;?></span>
+                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
+                            <span class="help-block"><?php echo $foto_err;?></span> 
                         </div>
                         <input type="submit" class="btn btn-primary" value="Agregar boxeador">
                         <a href="../../views/admin/boxeadores.php" class="btn btn-default">Cancelar</a>
