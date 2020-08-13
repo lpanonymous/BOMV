@@ -176,7 +176,7 @@
 		else{
 			$foto = $input_foto;
         }*/
-		$tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+	   $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
        $filename = $_FILES["foto"]["name"];      // Original filename
 
        $handle = fopen($tmpfile, "r");                  // Open the temp file
@@ -210,17 +210,8 @@
                            'foto' => $decodeContent, 'nombre_foto' => $filename);
 
 			$resultado = $cliente->call('agregarBoxeador', $datos);
-			
-			$err = $cliente->getError();
-			if($err){
-				echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-				echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-				echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-				echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-			}else{
-				header("location: ../../views/admin/boxeadores.php");
-				//echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
-            }
+			header("location: ../../views/admin/boxeadores.php");
+			//echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
         }
 	}
 ?>
@@ -252,7 +243,7 @@
                         <h2>Crear boxeador</h2>
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en agregar boxeador para almacenarlo en la base de datos.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group <?php echo (!empty($id_gimnasio_err)) ? 'has-error' : ''; ?>">
                             <label>Id gimnasio</label>
                             <!--<input type="text" name="id_gimnasio" class="form-control" value="</*?php echo $id_gimnasio; ?>*/">-->

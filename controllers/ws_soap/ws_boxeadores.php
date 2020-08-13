@@ -89,7 +89,7 @@
 
 
 		while ($fila = mysqli_fetch_array($resultado)){
-				$listado = $listado."<tr><td>".$fila['id_boxeador']."</td><td><img src='".$fila['nombre_foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['id_gimnasio']
+				$listado = $listado."<tr><td>".$fila['id_boxeador']."</td><td><img src='../../resources/images/boxeadores/".$fila['nombre_foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['id_gimnasio']
 				."</td><td>".$fila['alias']."</td><td>".$fila['nombre_boxeador']
 				."</td><td>".$fila['total_peleas']."</td><td>".$fila['peleas_ganadas']."</td><td>".$fila['peleas_ganadas_ko']."</td><td>".$fila['peleas_perdidas']."</td><td>".$fila['peleas_perdidas_ko']."</td><td>".$fila['empates']."</td><td>".$fila['categoria']."</td><td>".$fila['division']."</td><td>".$fila['peso']."</td><td>".$fila['altura']."</td><td>".$fila['estado']."</td><td>".$fila['ciudad']."</td><td>".$fila['municipio']."</td><td>
 				<a href='../../controllers/soap_clients/cliente_boxeadores_leer.php?id=". $fila['id_boxeador'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>

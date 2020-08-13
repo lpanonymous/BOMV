@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2020 at 06:18 AM
+-- Generation Time: Aug 14, 2020 at 01:29 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -45,45 +45,49 @@ CREATE TABLE `boxeadores` (
   `estado` varchar(50) DEFAULT NULL,
   `ciudad` varchar(50) DEFAULT NULL,
   `municipio` varchar(50) DEFAULT NULL,
-  `foto` varchar(1000) NOT NULL
+  `nombre_foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `boxeadores`
 --
 
-INSERT INTO `boxeadores` (`id_boxeador`, `id_gimnasio`, `alias`, `nombre_boxeador`, `total_peleas`, `peleas_ganadas`, `peleas_ganadas_ko`, `peleas_perdidas`, `peleas_perdidas_ko`, `empates`, `categoria`, `division`, `peso`, `altura`, `estado`, `ciudad`, `municipio`, `foto`) VALUES
-(1, '1', 'Pac Man', 'Emmanuel Dapidran Pacquiao', 71, 62, 39, 7, 3, 2, 'M', 'welter', 66, 1.66, 'Cotabato del Sur', 'General Santos City', 'ninguno', 'https://boxrec.com/media/images/thumb/f/fa/MannyPacquiao1.jpg/200px-MannyPacquiao1.jpg'),
-(2, '1', 'Tank', 'Gervonta Davis', 23, 23, 22, 0, 0, 0, 'M', 'ligero', 62, 1.66, 'Maryland', 'Baltimore', NULL, 'https://boxrec.com/media/images/thumb/e/e6/643387.jpeg/200px-643387.jpeg'),
-(3, '1', 'El Tornado de Tijuana', 'Antonio Margarito Montiel', 50, 41, 27, 8, 2, 0, 'M', 'welter', 74, 1.8, 'Baja California', 'Tijuana', NULL, 'https://boxrec.com/media/images/thumb/0/03/Antonio_margarito.jpg/200px-Antonio_margarito.jpg'),
-(4, '1', 'Dinamita', 'Juan Manuel Márquez Méndez', 64, 56, 40, 7, 0, 1, 'M', 'pluma', 58, 1.7, 'Distrito Federal', 'Mexico City', NULL, 'https://boxrec.com/media/images/thumb/1/15/Juan_Manuel_Marquez_Mendez.jpg/200px-Juan_Manuel_Marquez_Mendez.jpg'),
-(5, '1', 'Canelo', 'Santos Saúl Álvarez Barragán', 56, 53, 36, 1, 0, 2, 'M', 'medio', 77, 1.73, 'Jalisco', 'Guadalajara', NULL, 'https://boxrec.com/media/images/thumb/7/74/Santos_Saul_Alvarez_Barragan1.jpg/200px-Santos_Saul_Alvarez_Barragan1.jpg'),
-(6, '2', 'The Brockton Blockbuster', 'Rocco Francis Marchegiano', 49, 49, 43, 0, 0, 0, 'M', 'pesado', 91, 1.79, 'Massachusetts', 'Brockton', NULL, 'https://boxrec.com/media/images/thumb/f/fd/Gloved_RM.JPG/200px-Gloved_RM.JPG'),
-(7, '2', 'Hi-Tech', 'Vasiliy Anatoliyovich Lomachenko', 15, 14, 10, 1, 0, 0, 'M', 'ligero', 63, 1.7, 'Dnistrovskyi', 'Bilhorod', NULL, 'https://boxrec.com/media/images/thumb/6/68/Vasyl_Lomachenko1.JPG/200px-Vasyl_Lomachenko1.JPG'),
-(8, '2', 'El Brooklyn', 'Teofimo Andres Lopez', 15, 15, 12, 0, 0, 0, 'M', 'ligero', 62, 1.73, 'New York', 'Brooklyn', NULL, 'https://boxrec.com/media/images/thumb/c/c5/Teofimo_Lopez.JPG/200px-Teofimo_Lopez.JPG'),
-(9, '2', 'Jaime Munguia', 'Jaime Munguia', 35, 35, 28, 0, 0, 0, 'M', 'medio', 78, 1.83, 'Baja California', 'Tijuana', NULL, 'https://boxrec.com/media/images/thumb/6/65/JaimeMunguia1.JPG/200px-JaimeMunguia1.JPG'),
-(10, '2', 'El Gallo', 'Juan Francisco Estrada Romero', 43, 40, 27, 3, 0, 0, 'M', 'pluma', 59, 1.63, 'Sonora', 'Puerto Penasco', NULL, 'https://boxrec.com/media/images/thumb/7/75/467843.jpeg/200px-467843.jpeg'),
-(11, '3', 'Gusano', 'Tomas Rojas Gomez', 72, 51, 34, 19, 4, 0, 'M', 'pluma', 59, 1.73, 'Veracruz', 'Veracruz', NULL, 'https://boxrec.com/media/images/thumb/a/a7/Clip_image008.jpg/200px-Clip_image008.jpg'),
-(12, '3', 'Finito', 'Ricardo López Nava', 52, 51, 38, 0, 0, 1, 'M', 'minimosca', 48, 1.65, 'Morelos', 'Cuernavaca', NULL, 'https://boxrec.com/media/images/thumb/3/32/Viaja-finito-a-induccion-a-salon-de-la-fama.jpg/200px-Viaja-finito-a-induccion-a-salon-de-la-fama.jpg'),
-(13, '3', 'El intocable', 'Nicolino Felipe Locche', 136, 117, 14, 4, 1, 14, 'M', 'ligero', 63, 1.68, 'Mendoza', 'Tunuyan', NULL, 'https://boxrec.com/media/images/thumb/6/62/Nicolino_Locche.jpg/200px-Nicolino_Locche.jpg'),
-(14, '3', 'El Zurdo de Oro', 'Vicente Saldivar', 40, 37, 26, 3, 3, 0, 'M', 'pluma', 58, 1.6, 'Distrito Federal', 'Mexico City', NULL, 'https://boxrec.com/media/images/thumb/1/18/Saldivar_Vicente.jpg/200px-Saldivar_Vicente.jpg'),
-(15, '3', 'Golden Boy', 'Oscar de la Hoya', 45, 39, 30, 6, 2, 0, 'M', 'welter', 72, 1.85, 'California', 'Los Angeles', NULL, 'https://boxrec.com/media/images/thumb/2/2e/Oscar776823.jpg/200px-Oscar776823.jpg'),
-(16, '4', 'Junito', 'Miguel Angel Cotto', 43, 32, 1, 11, 0, 0, 'M', 'mediano', 77, 1.71, 'Puerto Rico', 'Caguas', NULL, 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Miguel_Cotto.jpg/245px-Miguel_Cotto.jpg'),
-(17, '4', 'Travieso', 'Jorge Arce', 75, 64, 49, 8, 5, 2, 'M', 'mini mosca', 49, 1.64, 'Sinaloa', 'Los Mochis', NULL, 'https://boxrec.com/media/images/thumb/0/03/Jorge_Arce1.jpg/200px-Jorge_Arce1.jpg'),
-(18, '4', 'J.C.', 'Julio Cesar Chavez Gonzalez', 115, 107, 85, 6, 4, 2, 'M', 'ligero', 63, 1.71, 'Sonora', 'Ciudad Obregón', NULL, 'https://boxrec.com/media/images/thumb/4/40/Julio_Cesar_Chavez.jpg/200px-Julio_Cesar_Chavez.jpg'),
-(19, '4', 'El Puas', 'Rubén Olivares Avila', 105, 89, 79, 13, 9, 3, 'M', 'gallo', 54, 1.66, 'Distrito Federal', 'Mexico City', NULL, 'https://boxrec.com/media/images/thumb/3/33/Olivares.Ruben.jpg/200px-Olivares.Ruben.jpg'),
-(20, '4', 'El Terrible', 'Erik Isaac Morales Elvira', 61, 52, 36, 9, 3, 0, 'M', 'gallo', 56, 1.73, 'California', 'San Ysidro', NULL, 'https://boxrec.com/media/images/thumb/d/dd/Erik_Isaac_Morales_Elvira.jpg/200px-Erik_Isaac_Morales_Elvira.jpg'),
-(21, '5', 'Chava', 'Salvador Sánchez', 46, 44, 32, 1, 0, 1, 'M', 'pluma', 57, 1.68, 'México', 'Tianguistenco', NULL, 'https://boxrec.com/media/images/thumb/e/e6/Salvador_Sanchez.jpg/200px-Salvador_Sanchez.jpg'),
-(22, '5', 'Baby Faced Assassin', 'Marco Antonio Barrera Tapia', 75, 67, 44, 7, 1, 0, 'M', 'gallo', 56, 1.68, 'Jalisco', 'Guadalajara', NULL, 'https://boxrec.com/media/images/thumb/5/50/MarcoBarrera.jpg/200px-MarcoBarrera.jpg'),
-(23, '5', 'Baby Arizmendi', 'Alberto Arizmendi', 128, 87, 20, 26, 4, 14, 'M', 'pluma', 58, 1.64, 'Tamaulipas', 'Tampico', NULL, 'https://boxrec.com/media/images/thumb/e/e0/ArizmendiB.jpeg/200px-ArizmendiB.jpeg'),
-(24, '5', 'Canas', 'Carlos Zárate ', 70, 66, 63, 4, 2, 0, 'M', 'gallo', 55, 1.73, 'Distrito Federal', 'Mexico City', NULL, 'https://boxrec.com/media/images/thumb/b/bf/Carlos_Zarate.jpg/200px-Carlos_Zarate.jpg'),
-(25, '5', 'The Filipino Flash', 'Nonito Gonzales Donaire Jr', 46, 40, 26, 6, 1, 0, 'M', 'gallo', 56, 1.7, 'Bohol', 'Talibon', NULL, 'https://boxrec.com/media/images/thumb/b/b4/Nonito_Donaire.jpg/200px-Nonito_Donaire.jpg'),
-(26, '6', 'The Greatest', 'Cassius Marcellus Clay', 61, 56, 37, 5, 1, 0, 'M', 'pesado', 91, 1.91, 'Kentucky', 'Louisville', NULL, 'https://boxrec.com/media/images/thumb/4/43/Ali_480938006.jpg/200px-Ali_480938006.jpg'),
-(27, '6', 'Iron', 'Michael Gerard Tyson', 58, 50, 44, 6, 5, 0, 'M', 'pesado', 91, 1.78, 'New York', 'Brooklyn', NULL, 'https://boxrec.com/media/images/thumb/9/94/MikeTysonHeadshot2.jpg/200px-MikeTysonHeadshot2.jpg'),
-(28, '6', 'Money Pretty Boy', 'Floyd Joy Sinclair', 50, 50, 27, 0, 0, 0, 'M', 'welter', 72, 1.73, 'Michigan', 'Grand Rapids', NULL, 'https://boxrec.com/media/images/thumb/1/1a/FloydMayweatherHeadshot3.jpg/200px-FloydMayweatherHeadshot3.jpg'),
-(29, '6', 'Manos de Piedra / El Cholo', 'Roberto Duran Samaniego', 119, 103, 70, 16, 4, 0, 'M', 'ligero', 62, 1.7, 'Panama', 'El Chorrillo', NULL, 'https://boxrec.com/media/images/thumb/9/9c/Roberto_Duran1.JPG/200px-Roberto_Duran1.JPG'),
-(30, '6', 'Kingry \r\n The Flash', 'Ryan Garcia', 20, 20, 17, 0, 0, 0, 'M', 'ligero', 62, 1.78, 'California', 'Los Angeles', NULL, 'https://boxrec.com/media/images/thumb/0/07/RyanGarcia.jpg/200px-RyanGarcia.jpg'),
-(31, '1', 'Old man', 'Lucas', 4, 4, 4, 4, 4, 4, 'M', 'welter', 14, 147, 'xalapa', 'xalapa', 'xalapa', 'https://boxrec.com/media/images/thumb/f/fa/MannyPacquiao1.jpg/200px-MannyPacquiao1.jpg');
+INSERT INTO `boxeadores` (`id_boxeador`, `id_gimnasio`, `alias`, `nombre_boxeador`, `total_peleas`, `peleas_ganadas`, `peleas_ganadas_ko`, `peleas_perdidas`, `peleas_perdidas_ko`, `empates`, `categoria`, `division`, `peso`, `altura`, `estado`, `ciudad`, `municipio`, `nombre_foto`) VALUES
+(1, '1', 'Pac Man', 'Emmanuel Dapidran Pacquiao', 71, 62, 39, 7, 3, 2, 'M', 'welter', 66, 1.66, 'Cotabato del Sur', 'General Santos City', 'ninguno', 'boxeador.jfif'),
+(2, '1', 'Tank', 'Gervonta Davis', 23, 23, 22, 0, 0, 0, 'M', 'ligero', 62, 1.66, 'Maryland', 'Baltimore', NULL, 'boxeador.jfif'),
+(3, '1', 'El Tornado de Tijuana', 'Antonio Margarito Montiel', 50, 41, 27, 8, 2, 0, 'M', 'welter', 74, 1.8, 'Baja California', 'Tijuana', NULL, 'boxeador.jfif'),
+(4, '1', 'Dinamita', 'Juan Manuel Márquez Méndez', 64, 56, 40, 7, 0, 1, 'M', 'pluma', 58, 1.7, 'Distrito Federal', 'Mexico City', NULL, 'boxeador.jfif'),
+(5, '1', 'Canelo', 'Santos Saúl Álvarez Barragán', 56, 53, 36, 1, 0, 2, 'M', 'medio', 77, 1.73, 'Jalisco', 'Guadalajara', NULL, 'boxeador.jfif'),
+(6, '2', 'The Brockton Blockbuster', 'Rocco Francis Marchegiano', 49, 49, 43, 0, 0, 0, 'M', 'pesado', 91, 1.79, 'Massachusetts', 'Brockton', NULL, 'boxeador.jfif'),
+(7, '2', 'Hi-Tech', 'Vasiliy Anatoliyovich Lomachenko', 15, 14, 10, 1, 0, 0, 'M', 'ligero', 63, 1.7, 'Dnistrovskyi', 'Bilhorod', NULL, 'boxeador.jfif'),
+(8, '2', 'El Brooklyn', 'Teofimo Andres Lopez', 15, 15, 12, 0, 0, 0, 'M', 'ligero', 62, 1.73, 'New York', 'Brooklyn', NULL, 'boxeador.jfif'),
+(9, '2', 'Jaime Munguia', 'Jaime Munguia', 35, 35, 28, 0, 0, 0, 'M', 'medio', 78, 1.83, 'Baja California', 'Tijuana', NULL, 'boxeador.jfif'),
+(10, '2', 'El Gallo', 'Juan Francisco Estrada Romero', 43, 40, 27, 3, 0, 0, 'M', 'pluma', 59, 1.63, 'Sonora', 'Puerto Penasco', NULL, 'boxeador.jfif'),
+(11, '3', 'Gusano', 'Tomas Rojas Gomez', 72, 51, 34, 19, 4, 0, 'M', 'pluma', 59, 1.73, 'Veracruz', 'Veracruz', NULL, 'boxeador.jfif'),
+(12, '3', 'Finito', 'Ricardo López Nava', 52, 51, 38, 0, 0, 1, 'M', 'minimosca', 48, 1.65, 'Morelos', 'Cuernavaca', NULL, 'boxeador.jfif'),
+(13, '3', 'El intocable', 'Nicolino Felipe Locche', 136, 117, 14, 4, 1, 14, 'M', 'ligero', 63, 1.68, 'Mendoza', 'Tunuyan', NULL, 'boxeador.jfif'),
+(14, '3', 'El Zurdo de Oro', 'Vicente Saldivar', 40, 37, 26, 3, 3, 0, 'M', 'pluma', 58, 1.6, 'Distrito Federal', 'Mexico City', NULL, 'boxeador.jfif'),
+(15, '3', 'Golden Boy', 'Oscar de la Hoya', 45, 39, 30, 6, 2, 0, 'M', 'welter', 72, 1.85, 'California', 'Los Angeles', NULL, 'boxeador.jfif'),
+(16, '4', 'Junito', 'Miguel Angel Cotto', 43, 32, 1, 11, 0, 0, 'M', 'mediano', 77, 1.71, 'Puerto Rico', 'Caguas', NULL, 'boxeador.jfif'),
+(17, '4', 'Travieso', 'Jorge Arce', 75, 64, 49, 8, 5, 2, 'M', 'mini mosca', 49, 1.64, 'Sinaloa', 'Los Mochis', NULL, 'boxeador.jfif'),
+(18, '4', 'J.C.', 'Julio Cesar Chavez Gonzalez', 115, 107, 85, 6, 4, 2, 'M', 'ligero', 63, 1.71, 'Sonora', 'Ciudad Obregón', NULL, 'boxeador.jfif'),
+(19, '4', 'El Puas', 'Rubén Olivares Avila', 105, 89, 79, 13, 9, 3, 'M', 'gallo', 54, 1.66, 'Distrito Federal', 'Mexico City', NULL, 'boxeador.jfif'),
+(20, '4', 'El Terrible', 'Erik Isaac Morales Elvira', 61, 52, 36, 9, 3, 0, 'M', 'gallo', 56, 1.73, 'California', 'San Ysidro', NULL, 'boxeador.jfif'),
+(21, '5', 'Chava', 'Salvador Sánchez', 46, 44, 32, 1, 0, 1, 'M', 'pluma', 57, 1.68, 'México', 'Tianguistenco', NULL, 'boxeador.jfif'),
+(22, '5', 'Baby Faced Assassin', 'Marco Antonio Barrera Tapia', 75, 67, 44, 7, 1, 0, 'M', 'gallo', 56, 1.68, 'Jalisco', 'Guadalajara', NULL, 'boxeador.jfif'),
+(23, '5', 'Baby Arizmendi', 'Alberto Arizmendi', 128, 87, 20, 26, 4, 14, 'M', 'pluma', 58, 1.64, 'Tamaulipas', 'Tampico', NULL, 'boxeador.jfif'),
+(24, '5', 'Canas', 'Carlos Zárate ', 70, 66, 63, 4, 2, 0, 'M', 'gallo', 55, 1.73, 'Distrito Federal', 'Mexico City', NULL, 'boxeador.jfif'),
+(25, '5', 'The Filipino Flash', 'Nonito Gonzales Donaire Jr', 46, 40, 26, 6, 1, 0, 'M', 'gallo', 56, 1.7, 'Bohol', 'Talibon', NULL, 'boxeador.jfif'),
+(26, '6', 'The Greatest', 'Cassius Marcellus Clay', 61, 56, 37, 5, 1, 0, 'M', 'pesado', 91, 1.91, 'Kentucky', 'Louisville', NULL, 'boxeador.jfif'),
+(27, '6', 'Iron', 'Michael Gerard Tyson', 58, 50, 44, 6, 5, 0, 'M', 'pesado', 91, 1.78, 'New York', 'Brooklyn', NULL, 'boxeador.jfif'),
+(28, '6', 'Money Pretty Boy', 'Floyd Joy Sinclair', 50, 50, 27, 0, 0, 0, 'M', 'welter', 72, 1.73, 'Michigan', 'Grand Rapids', NULL, 'boxeador.jfif'),
+(29, '6', 'Manos de Piedra / El Cholo', 'Roberto Duran Samaniego', 119, 103, 70, 16, 4, 0, 'M', 'ligero', 62, 1.7, 'Panama', 'El Chorrillo', NULL, 'boxeador.jfif'),
+(30, '6', 'Kingry \r\n The Flash', 'Ryan Garcia', 20, 20, 17, 0, 0, 0, 'M', 'ligero', 62, 1.78, 'California', 'Los Angeles', NULL, 'boxeador.jfif'),
+(31, '1', 'Old man', 'Lucas', 4, 4, 4, 4, 4, 4, 'M', 'welter', 14, 147, 'xalapa', 'xalapa', 'xalapa', 'boxeador.jfif'),
+(32, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
+(33, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
+(34, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
+(35, '1', 'lp', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif');
 
 -- --------------------------------------------------------
 
@@ -473,7 +477,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `boxeadores`
 --
 ALTER TABLE `boxeadores`
-  MODIFY `id_boxeador` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_boxeador` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `gimnasio`
