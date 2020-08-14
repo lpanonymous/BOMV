@@ -1,10 +1,10 @@
 <?php
 require_once('lib/nusoap.php');
 // Define variables and initialize with empty values
-    $id = $id_gimnasio = $alias = $nombre_boxeador = $total_peleas = $peleas_ganadas = $peleas_ganadas_ko = $peleas_perdidas = $peleas_perdidas_ko = $empates = $categoria = $division = $peso = $altura = $estado = $ciudad = $municipio = $foto ="";
+    $id = $id_gimnasio = $alias = $nombre_boxeador = $total_peleas = $peleas_ganadas = $peleas_ganadas_ko = $peleas_perdidas = $peleas_perdidas_ko = $empates = $categoria = $division = $peso = $altura = $estado = $ciudad = $municipio = $nombre_foto ="";
 
     $id_err = $id_gimnasio_err = $alias_err = $nombre_boxeador_err = $total_peleas_err = $peleas_ganadas_err = 
-    $peleas_ganadas_ko_err = $peleas_perdidas_err = $peleas_perdidas_ko_err = $empates_err = $categoria_err = $division_err = $peso_err = $altura_err = $estado_err = $ciudad_err = $municipio_err = $foto_err ="";
+    $peleas_ganadas_ko_err = $peleas_perdidas_err = $peleas_perdidas_ko_err = $empates_err = $categoria_err = $division_err = $peso_err = $altura_err = $estado_err = $ciudad_err = $municipio_err = $nombre_foto_err ="";
  
  
 // Processing form data when form is submitted
@@ -140,16 +140,16 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			$municipio = $input_municipio;
         }
 
-        $input_foto = trim($_POST["foto"]);
-		if(empty($input_foto)){
-			$foto_err = "Porfavor ingresa una foto.";
-		} 
-		else{
-			$foto = $input_foto;
-        }
+        $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+        $filename = $_FILES["foto"]["name"];      // Original filename
+
+        $handle = fopen($tmpfile, "r");                  // Open the temp file
+        $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+        fclose($handle);                                 // Close the temp file
+        $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
     
     // Check input errors before inserting in database
-    if(empty($id_err) && empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err) && empty($foto_err)){
+    if(empty($id_err) && empty($id_gimnasio_err) && empty($alias_err) && empty($nombre_boxeador_err) && empty($total_peleas_err) && empty($peleas_ganadas_err) && empty($peleas_ganadas_ko_err) && empty($peleas_perdidas_err) && empty($peleas_perdidas_ko_err) && empty($empates_err) && empty($categoria_err) && empty($division_err) && empty($peso_err) && empty($altura_err) && empty($estado_err) && empty($ciudad_err) && empty($municipio_err)){
         $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_boxeadores.php");
 
 		$datos = array('id_boxeador' => $_POST["id"], 
@@ -169,20 +169,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                            'estado' => $_POST["estado"],
                            'ciudad' => $_POST["ciudad"],
                            'municipio' => $_POST["municipio"],
-                           'foto' => $_POST["foto"]
+                           'foto' => $decodeContent, 
+                           'nombre_foto' => $filename
                             );
 
 		$resultado = $cliente->call('editarBoxeador', $datos);
-		
-		$err = $cliente->getError();
-		if($err){
-			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-			echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-		}else{
-			header("location: ../../views/admin/boxeadores.php");
-		}
+		header("location: ../../views/admin/boxeadores.php");
     }
 } else{
     // Check existence of id parameter before processing further
@@ -223,7 +215,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $estado = $obj->estado;
             $ciudad = $obj->ciudad;
             $municipio = $obj->municipio;
-            $foto = $obj->foto;
+            $nombre_foto = $obj->nombre_foto;
 		}
         
     }  
@@ -263,7 +255,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <h2>Actualizar boxeador</h2>
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en actualizar boxeador.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group <?php echo (!empty($id_gimnasio_err)) ? 'has-error' : ''; ?>">
                             <label>Id gimnasio</label>
                             <!--<input type="text" name="id_gimnasio" class="form-control" value="</*?php echo $id_gimnasio;?>">-->
@@ -366,10 +358,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <input type="text" name="municipio" class="form-control" value="<?php echo $municipio; ?>">
                             <span class="help-block"><?php echo $municipio_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
-                            <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>">
-                            <span class="help-block"><?php echo $foto_err;?></span>
+                        <div class="form-group">
+                            <img src="http://localhost/BOMV/resources/images/boxeadores/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple> 
+                            </div>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar boxeador">

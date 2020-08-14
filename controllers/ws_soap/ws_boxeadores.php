@@ -26,7 +26,7 @@
 		$resultado = mysqli_query($conexion, $sql);
 
 		while ($fila = mysqli_fetch_array($resultado)){
-			$datos = array("id_boxeador" => $fila['id_boxeador'], "id_gimnasio" => $fila['id_gimnasio'], "alias" => $fila['alias'], "nombre_boxeador" => $fila['nombre_boxeador'], "total_peleas" => $fila['total_peleas'], "peleas_ganadas" => $fila['peleas_ganadas'], "peleas_ganadas_ko" => $fila['peleas_ganadas_ko'], "peleas_perdidas" => $fila['peleas_perdidas'], "peleas_perdidas_ko" => $fila['peleas_perdidas_ko'], "empates" => $fila['empates'], "categoria" => $fila['categoria'], "division" => $fila['division'], "peso" => $fila['peso'], "altura" => $fila['altura'], "estado" => $fila['estado'], "ciudad" => $fila['ciudad'], "municipio" => $fila['municipio'], "foto" => $fila['foto']);	
+			$datos = array("id_boxeador" => $fila['id_boxeador'], "id_gimnasio" => $fila['id_gimnasio'], "alias" => $fila['alias'], "nombre_boxeador" => $fila['nombre_boxeador'], "total_peleas" => $fila['total_peleas'], "peleas_ganadas" => $fila['peleas_ganadas'], "peleas_ganadas_ko" => $fila['peleas_ganadas_ko'], "peleas_perdidas" => $fila['peleas_perdidas'], "peleas_perdidas_ko" => $fila['peleas_perdidas_ko'], "empates" => $fila['empates'], "categoria" => $fila['categoria'], "division" => $fila['division'], "peso" => $fila['peso'], "altura" => $fila['altura'], "estado" => $fila['estado'], "ciudad" => $fila['ciudad'], "municipio" => $fila['municipio'], "nombre_foto" => $fila['nombre_foto']);	
 		}
 		$gimnasioJSON=json_encode($datos);
 		$gimnasioJSON2=json_decode($gimnasioJSON, true);
@@ -52,10 +52,14 @@
 		mysqli_close($conexion);
 	}
 
-	function editarBoxeador($id_boxeador, $id_gimnasio, $alias, $nombre_boxeador, $total_peleas, $peleas_ganadas, $peleas_ganadas_ko, $peleas_perdidas, $peleas_perdidas_ko, $empates, $categoria, $division, $peso, $altura, $estado, $ciudad, $municipio, $foto){
+	function editarBoxeador($id_boxeador, $id_gimnasio, $alias, $nombre_boxeador, $total_peleas, $peleas_ganadas, $peleas_ganadas_ko, $peleas_perdidas, $peleas_perdidas_ko, $empates, $categoria, $division, $peso, $altura, $estado, $ciudad, $municipio, $foto, $nombre_foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
+		$location = "..\\..\\resources\\images\\boxeadores\\".$nombre_foto;                               // Mention where to upload the file
+        $current = file_get_contents($location);                     // Get the file content. This will create an empty file if the file does not exist     
+        $current = base64_decode($foto);                          // Now decode the content which was sent by the client     
+        file_put_contents($location, $current);                      // Write the decoded content in the file mentioned at particular location      
 		$editar = $conexion->query("UPDATE boxeadores SET 
-		id_boxeador='$id_boxeador', id_gimnasio='$id_gimnasio', alias='$alias', nombre_boxeador='$nombre_boxeador', total_peleas='$total_peleas', peleas_ganadas='$peleas_ganadas', peleas_ganadas_ko='$peleas_ganadas_ko', peleas_perdidas='$peleas_perdidas', peleas_perdidas_ko='$peleas_perdidas_ko', empates='$empates', categoria='$categoria', division='$division', peso='$peso', altura='$altura', estado='$estado', ciudad='$ciudad', municipio='$municipio', foto='$foto' WHERE id_boxeador='$id_boxeador'");
+		id_boxeador='$id_boxeador', id_gimnasio='$id_gimnasio', alias='$alias', nombre_boxeador='$nombre_boxeador', total_peleas='$total_peleas', peleas_ganadas='$peleas_ganadas', peleas_ganadas_ko='$peleas_ganadas_ko', peleas_perdidas='$peleas_perdidas', peleas_perdidas_ko='$peleas_perdidas_ko', empates='$empates', categoria='$categoria', division='$division', peso='$peso', altura='$altura', estado='$estado', ciudad='$ciudad', municipio='$municipio', nombre_foto='$nombre_foto' WHERE id_boxeador='$id_boxeador'");
 		$resultado=mysqli_query($conexion, $editar);
 		if(!$conexion) {
 			return "Error en la conexion";
