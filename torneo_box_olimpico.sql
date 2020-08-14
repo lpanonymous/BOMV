@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2020 at 10:11 PM
+-- Generation Time: Aug 14, 2020 at 11:01 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -86,8 +86,7 @@ INSERT INTO `boxeadores` (`id_boxeador`, `id_gimnasio`, `alias`, `nombre_boxeado
 (31, '1', 'Old man', 'Lucas', 4, 4, 4, 4, 4, 4, 'M', 'welter', 14, 147, 'xalapa', 'xalapa', 'xalapa', 'boxeador.jfif'),
 (32, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
 (33, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
-(34, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
-(35, '1', 'lp', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif');
+(34, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif');
 
 -- --------------------------------------------------------
 
