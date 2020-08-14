@@ -1,8 +1,8 @@
 <?php
 require_once('lib/nusoap.php');
 // Define variables and initialize with empty values
-$id = $categoria = $division = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora = $ganador = "";
-$id_err = $categoria_err = $division_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err = $ganador_err = "";
+$id = $categoria = $division = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora = $ganador = $nombre_foto="";
+$id_err = $categoria_err = $division_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err = $ganador_err = $nombre_foto_err ="";
  
  
 // Processing form data when form is submitted
@@ -101,22 +101,21 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $ganador = $input_ganador;
     }
 
+    $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+    $filename = $_FILES["foto"]["name"];      // Original filename
+
+    $handle = fopen($tmpfile, "r");                  // Open the temp file
+    $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+    fclose($handle);                                 // Close the temp file
+    $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
+
     if(empty($id_err) && empty($categoria_err)  && empty($division_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err) && empty($ganador_err)){
         $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_municipales.php");
 		//id, categoria, id_juez1, id_juez2, id_juez3, id_juez4, id_boxeador1, id_boxeador2, fecha, hora
-		$datos = array('id' => $_POST["id"], 'categoria' => $_POST["categoria"],  'division' => $_POST["division"], 'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"], 'ganador' => $_POST["ganador"]);
+		$datos = array('id' => $_POST["id"], 'categoria' => $_POST["categoria"],  'division' => $_POST["division"], 'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"], 'ganador' => $_POST["ganador"], 'foto' => $decodeContent, 'nombre_foto' => $filename);
 
 		$resultado = $cliente->call('editarPeleaMunicipal', $datos);
-		
-		$err = $cliente->getError();
-		if($err){
-			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-			echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-		}else{
-			header("location: ../../views/admin/peleas_municipales.php");
-		}
+		header("location: ../../views/admin/peleas_municipales.php");
     }
 } else{
     // Check existence of id parameter before processing further
@@ -153,6 +152,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $fecha = $obj->fecha;
             $hora = $obj->hora;
             $ganador = $obj->ganador;
+            $nombre_foto = $obj->nombre_foto;
 		}
         
     }  else{    
@@ -197,7 +197,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <h2>Actualizar pelea</h2>
                     </div>
                     <p>Por favor llena los campos y luego da clic en actualizar para almacenarlos de la base de datos.</p>
-                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
 								<label>Categoría</label>
 								<!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
@@ -280,6 +280,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <label>Ganador</label>
                             <input id="search_boxeador" type="text" name="ganador" class="form-control" value="<?php echo $ganador; ?>">
                             <span class="help-block"><?php echo $ganador_err;?></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <img src="http://localhost/BOMV/resources/images/peleas_municipales/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/peleas_municipales/<?php echo $nombre_foto; ?>" multiple> 
+                            </div>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>

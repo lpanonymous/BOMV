@@ -125,7 +125,7 @@
 				$listado = $listado."<div class='flip-card col span-1-of-3'>
 				<div class='flip-card-inner'>
 						<div class='flip-card-front'>
-						  <img src='".$fila['foto']."' alt='Boxeador' class='foto-boxeador'>
+						  <img src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Boxeador' class='foto-boxeador'>
 						</div>
 						<div class='flip-card-back'>
 						  <h1>".$fila['division']."</h1>
@@ -147,7 +147,7 @@
 				<div class='flip-card col span-1-of-3'>
 				<div class='flip-card-inner'>
 						<div class='flip-card-front'>
-						  <img src='".$fila['foto']."' alt='Boxeador' class='foto-boxeador'>
+						  <img src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Boxeador' class='foto-boxeador'>
 						</div>
 						<div class='flip-card-back'>
 						  <h1>".$fila['division']."</h1>
