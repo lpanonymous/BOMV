@@ -56,19 +56,20 @@
 			$descripcion= $input_descripcion;
 		}
 
-		// Validate foto
-		$input_foto = trim($_POST["foto"]);
-		if(empty($input_foto)){
-			$foto_err = "Ingresa la imagen del gimnasio";
-		} else{
-			$foto = $input_foto;
-		}
+	   $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+       $filename = $_FILES["foto"]["name"];      // Original filename
+
+       $handle = fopen($tmpfile, "r");                  // Open the temp file
+       $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+       fclose($handle);                                 // Close the temp file
+
+       $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
 		
 		// Check input errors before inserting in database
-		if(empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err) && empty($foto_err)){
+		if(empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err)){
 			$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_gimnasio.php");
 
-			$datos = array('nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"], 'foto' => $_POST["foto"]);
+			$datos = array('nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"],'foto' => $decodeContent, 'nombre_foto' => $filename);
 
 			$resultado = $cliente->call('agregarGimnasio', $datos);
 			
@@ -113,7 +114,7 @@
                         <h2>Crear gimnasio</h2>
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en agregar gimnasio para almacenarlo en la base de datos.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
@@ -147,10 +148,10 @@
                             <span class="help-block"><?php echo $descripcion;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
+						<div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
-                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" placeholder="Dirección de internet de la imágen">
-                            <span class="help-block"><?php echo $foto_err;?></span>
+                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
+                            <span class="help-block"><?php echo $foto_err;?></span> 
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Agregar Gimnasio">

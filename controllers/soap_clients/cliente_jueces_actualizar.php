@@ -1,9 +1,9 @@
 <?php
 require_once('lib/nusoap.php');
 // Define variables and initialize with empty values
-    $id = $nombre = $usuario = $contrasena = $foto ="";
+    $id = $nombre = $usuario = $contrasena = $nombre_foto ="";
 
-    $id_err = $nombre_err = $usuario_err = $contrasena_err = $foto_err = "";
+    $id_err = $nombre_err = $usuario_err = $contrasena_err = $nombre_foto_err = "";
  
  
 // Processing form data when form is submitted
@@ -35,36 +35,27 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			$contrasena = $input_contrasena;
         }
         
-        $input_foto = trim($_POST["foto"]);
-		if(empty($input_foto)){
-			$foto_err = "Porfavor ingresa una foto.";
-		} 
-		else{
-			$foto = $input_foto;
-        }
+        $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+        $filename = $_FILES["foto"]["name"];      // Original filename
+
+        $handle = fopen($tmpfile, "r");                  // Open the temp file
+        $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+        fclose($handle);                                 // Close the temp file
+        $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
     
     // Check input errors before inserting in database
-    if(empty($id_err) && empty($nombre_err) && empty($usuario_err) && empty($contrasena_err) && empty($foto_err)){
+    if(empty($id_err) && empty($nombre_err) && empty($usuario_err) && empty($contrasena_err)){
         $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_jueces.php");
 
 		$datos = array('id' => $_POST["id"], 
                            'nombre' => $_POST["nombre"], 
                            'usuario' => $_POST["usuario"], 
                            'contrasena' => $_POST["contrasena"], 
-                           'foto' => $_POST["foto"]
+                           'foto' => $decodeContent, 'nombre_foto' => $filename
                             );
 
 		$resultado = $cliente->call('editarJuez', $datos);
-		
-		$err = $cliente->getError();
-		if($err){
-			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-			echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-		}else{
-			header("location: ../../views/admin/jueces.php");
-		}
+		header("location: ../../views/admin/jueces.php");
     }
 } else{
     // Check existence of id parameter before processing further
@@ -92,7 +83,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $nombre = $obj->nombre;
             $usuario = $obj->usuario;
             $contrasena = $obj->contrasena;
-            $foto = $obj->foto;
+            $nombre_foto = $obj->nombre_foto;
 		}
         
     }  
@@ -131,7 +122,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <h2>Actualizar juez</h2>
                     </div>
                     <p>Porfavor ingresa los datos y luego da clic en actualizar juez.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
@@ -147,10 +138,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <input type="password" name="contrasena" class="form-control" value="<?php echo $contrasena; ?>">
                             <span class="help-block"><?php echo $contrasena_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
-                            <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>">
-                            <span class="help-block"><?php echo $foto_err;?></span>
+                        <div class="form-group">
+                            <img src="http://localhost/BOMV/resources/images/jueces/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple> 
+                            </div>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar juez">

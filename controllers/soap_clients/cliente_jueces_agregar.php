@@ -33,32 +33,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         password_verify($input_contrasena, $contrasena);
     }
 
-    // Validate foto de juez
-    $input_foto = trim($_POST["foto"]);
-    if(empty($input_foto)){
-        $foto_err = "Ingresa la foto del usuario.";
-    }else{
-        $foto = $input_foto;
-    }
+    $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+    $filename = $_FILES["foto"]["name"];      // Original filename
+
+    $handle = fopen($tmpfile, "r");                  // Open the temp file
+    $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+    fclose($handle);                                 // Close the temp file
+
+    $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
     
     // Check input errors before inserting in database
-    if(empty($id_err) && empty($nombre_err) && empty($usuario_err) && empty($contrasena_err) && empty($foto_err)){
+    if(empty($id_err) && empty($nombre_err) && empty($usuario_err) && empty($contrasena_err)){
         $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_jueces.php");
 
-        $datos = array('nombre' => $_POST["nombre"], 'usuario' => $_POST["usuario"], 'contrasena' => $contrasena, 'foto' => $_POST["foto"]);
+        $datos = array('nombre' => $_POST["nombre"], 'usuario' => $_POST["usuario"], 'contrasena' => $contrasena, 'foto' => $decodeContent, 'nombre_foto' => $filename);
 
         $resultado = $cliente->call('agregarJuez', $datos);
-        
-        $err = $cliente->getError();
-        if($err){
-            echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-            echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-            echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-            echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-        }else{
-            header("location: ../../views/admin/jueces.php");
-            //echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
-        }
+
+        header("location: ../../views/admin/jueces.php");
+        //echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
     }
 }
 ?>
@@ -90,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <h2>Crear juez</h2>
                     </div>
                     <p>Porfavor llena el formulario para almacenar al juez en la base de datos.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
@@ -108,10 +101,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>">
-                            <span class="help-block"><?php echo $foto_err;?></span>
+                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
+                            <span class="help-block"><?php echo $foto_err;?></span> 
                         </div>
-
+                        
                         <input type="submit" class="btn btn-primary" value="Agregar juez">
                         <a href="../../views/admin/jueces.php" class="btn btn-default">Cancelar</a>
                     </form>

@@ -7,7 +7,7 @@
 
 	//Gimnasios
 	$servicio->register('buscarGimnasio',array('id' => 'xsd:string'), array('return' => 'xsd:string'),$ns);
-	$servicio->register("agregarGimnasio", array('nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string', 'foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
+	$servicio->register("agregarGimnasio", array('nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string', 'foto' => 'xsd:string', 'nombre_foto' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("editarGimnasio", array('id' => 'xsd:string', 'nombre' => 'xsd:string', 'ubicacion' => 'xsd:string', 'telefono' => 'xsd:string', 'facebook' => 'xsd:string', 'email' => 'xsd:string', 'descripcion' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register("eliminarGimnasio", array('id' => 'xsd:string'), array('return' => 'xsd:string'), $ns);
 	$servicio->register('mostrarGimnasios', array(), array('return' => 'xsd:string'), $ns);
@@ -36,10 +36,13 @@
 		return $data;
 	}
 
-	function agregarGimnasio($nombre, $ubicacion, $telefono, $facebook, $email, $descripcion, $foto){
+	function agregarGimnasio($nombre, $ubicacion, $telefono, $facebook, $email, $descripcion, $foto, $nombre_foto){
 		$conexion = mysqli_connect("localhost", "root", "", "torneo_box_olimpico");
-		
-		$agregar = $conexion->query("INSERT INTO gimnasio(nombre, ubicacion, telefono, facebook, email, descripcion, foto) VALUES ('$nombre','$ubicacion','$telefono','$facebook','$email','$descripcion', '$foto')");
+		$location = "..\\..\\resources\\images\\gimnasios\\".$nombre_foto;                               // Mention where to upload the file
+        $current = file_get_contents($location);                     // Get the file content. This will create an empty file if the file does not exist     
+        $current = base64_decode($foto);                          // Now decode the content which was sent by the client     
+        file_put_contents($location, $current);                      // Write the decoded content in the file mentioned at particular location      
+		$agregar = $conexion->query("INSERT INTO gimnasio(nombre, ubicacion, telefono, facebook, email, descripcion, nombre_foto) VALUES ('$nombre','$ubicacion','$telefono','$facebook','$email','$descripcion', '$nombre_foto')");
 		$resultado=mysqli_query($conexion, $agregar);
 		if(!$conexion) {
 			return "Error en la conexion";
@@ -86,7 +89,7 @@
 
 
 		while ($fila = mysqli_fetch_array($resultado)){
-				$listado = $listado."<tr><td>".$fila['id']."</td><td><img src='".$fila['foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['nombre']
+				$listado = $listado."<tr><td>".$fila['id']."</td><td><img src='../../resources/images/noticias/".$fila['nombre_foto']."' width='75' height='75' style= 'border-radius: 50%;'/></td><td>".$fila['nombre']
 				."</td><td><a href=".$fila['ubicacion'].">Ver mapa</a></td><td>".$fila['telefono']
 				."</td><td>".$fila['facebook']."</td><td>".$fila['email']."</td><td>".$fila['descripcion']."</td><td>
 				<a href='../../controllers/soap_clients/cliente_gimnasio_leer.php?id=". $fila['id'] ."' title='View Record' data-toggle='tooltip'><span class='fa fa-eye'></span></a>
