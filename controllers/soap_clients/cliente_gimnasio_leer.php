@@ -27,7 +27,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
         $facebook = $obj->facebook;
         $email = $obj->email;
         $descripcion = $obj->descripcion;
-        $foto = $obj->foto;
+        $nombre_foto = $obj->nombre_foto;
 	}
 } 
 else
@@ -92,9 +92,7 @@ else
                         <p class="form-control-static"><?php echo $descripcion; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Foto</label>
-
-                        <img src="<?php echo $foto; ?>" class="img-fluid" alt="Imagen">
+                        <img src="http://localhost/BOMV/resources/images/gimnasios/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
                     </div>
                     <p><a href="../../views/admin/gimnasios.php" class="btn btn-primary">Regresar</a></p>
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2020 at 07:07 PM
+-- Generation Time: Aug 14, 2020 at 10:11 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -99,10 +99,10 @@ CREATE TABLE `gimnasio` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `ubicacion` varchar(300) NOT NULL,
-  `telefono` varchar(50) DEFAULT NULL,
-  `facebook` varchar(50) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `descripcion` varchar(500) DEFAULT NULL,
+  `telefono` varchar(50) NOT NULL,
+  `facebook` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
   `nombre_foto` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -483,7 +483,7 @@ ALTER TABLE `boxeadores`
 -- AUTO_INCREMENT for table `gimnasio`
 --
 ALTER TABLE `gimnasio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `jueces`

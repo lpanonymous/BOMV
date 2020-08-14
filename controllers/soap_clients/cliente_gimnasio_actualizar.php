@@ -1,8 +1,8 @@
 <?php
 require_once('lib/nusoap.php');
 // Define variables and initialize with empty values
-$id = $nombre = $ubicacion = $telefono = $facebook = $email = $descripcion = $foto ="";
-$id_err = $nombre_err = $ubicacion_err = $telefono_err = $facebook_err = $email_err = $descripcion_err = $foto_err ="";
+$id = $nombre = $ubicacion = $telefono = $facebook = $email = $descripcion = $nombre_foto ="";
+$id_err = $nombre_err = $ubicacion_err = $telefono_err = $facebook_err = $email_err = $descripcion_err = $nombre_foto_err ="";
  
  
 // Processing form data when form is submitted
@@ -59,31 +59,23 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $descripcion= $input_descripcion;
     }
 
-    // Validate foto
-    $input_foto = trim($_POST["foto"]);
-    if(empty($input_foto)){
-        $foto_err = "Ingresa la imagen del gimnasio";
-    } else{
-        $foto = $input_foto;
-    }
+    $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+    $filename = $_FILES["foto"]["name"];      // Original filename
+
+    $handle = fopen($tmpfile, "r");                  // Open the temp file
+    $contents = fread($handle, filesize($tmpfile));  // Read the temp file
+    fclose($handle);                                 // Close the temp file
+    $decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
     
     // Check input errors before inserting in database
-    if(empty($id_err) && empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err) && empty($foto_err)){
+    if(empty($id_err) && empty($nombre_err) && empty($ubicacion_err) && empty($telefono_err) && empty($facebook_err) && empty($email_err) && empty($descripcion_err)){
         $cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_gimnasios.php");
 
-		$datos = array('id' => $_POST["id"], 'nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"], 'foto' => $_POST["foto"]);
+		$datos = array('id' => $_POST["id"], 'nombre' => $_POST["nombre"], 'ubicacion' => $_POST["ubicacion"], 'telefono' => $_POST["telefono"], 'facebook' => $_POST["facebook"], 'email' => $_POST["email"], 'descripcion' => $_POST["descripcion"], 'foto' => $decodeContent, 'nombre_foto' => $filename);
 
-		$resultado = $cliente->call('editarGimnasio', $datos);
-		
-		$err = $cliente->getError();
-		if($err){
-			echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-			echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-			echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-			echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-		}else{
-			header("location: ../../views/admin/gimnasios.php");
-		}
+        $resultado = $cliente->call('editarGimnasio', $datos);
+        
+	    header("location: ../../views/admin/gimnasios.php");
     }
 } else{
     // Check existence of id parameter before processing further
@@ -114,7 +106,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $facebook = $obj->facebook;
             $email = $obj->email;
             $descripcion = $obj->descripcion;
-            $foto = $obj->foto;
+            $nombre_foto = $obj->nombre_foto;
 		}
         
     }  else{    
@@ -153,7 +145,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <h2>Actualizar gimnasio</h2>
                     </div>
                     <p>Please edit the input values and submit to update the record.</p>
-                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
@@ -186,12 +178,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
-
-                        <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
-                            <label>Foto</label>
-                            <input type="text" name="foto" class="form-control" value="<?php echo $foto; ?>" placeholder="Dirección de internet de la imágen">
-                            <span class="help-block"><?php echo $foto_err;?></span>
+                        
+                        <div class="form-group">
+                            <img src="http://localhost/BOMV/resources/images/gimnasios/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple> 
+                            </div>
                         </div>
+
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Guardar Gimnasio">
                         <a href="../../views/admin/gimnasios.php" class="btn btn-default">Cancelar</a>
