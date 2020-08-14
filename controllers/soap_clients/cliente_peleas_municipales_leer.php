@@ -32,6 +32,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"])))
 		$fecha = $obj->fecha;
         $hora = $obj->hora;
         $ganador = $obj->ganador;
+        $nombre_foto = $obj->nombre_foto;
 	}
 } 
 else
@@ -115,6 +116,9 @@ else
                     <div class="form-group">
                         <label>Ganador</label>
                         <p class="form-control-static"><?php echo $ganador; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <img src="http://localhost/BOMV/resources/images/peleas_municipales/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
                     </div>
                     <p><a href="../../views/admin/peleas_municipales.php" class="btn btn-primary">Regresar</a></p>
                 </div>

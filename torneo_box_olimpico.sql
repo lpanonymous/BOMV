@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2020 at 11:01 PM
+-- Generation Time: Aug 15, 2020 at 12:58 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -83,10 +83,7 @@ INSERT INTO `boxeadores` (`id_boxeador`, `id_gimnasio`, `alias`, `nombre_boxeado
 (28, '6', 'Money Pretty Boy', 'Floyd Joy Sinclair', 50, 50, 27, 0, 0, 0, 'M', 'welter', 72, 1.73, 'Michigan', 'Grand Rapids', NULL, 'boxeador.jfif'),
 (29, '6', 'Manos de Piedra / El Cholo', 'Roberto Duran Samaniego', 119, 103, 70, 16, 4, 0, 'M', 'ligero', 62, 1.7, 'Panama', 'El Chorrillo', NULL, 'boxeador.jfif'),
 (30, '6', 'Kingry \r\n The Flash', 'Ryan Garcia', 20, 20, 17, 0, 0, 0, 'M', 'ligero', 62, 1.78, 'California', 'Los Angeles', NULL, 'boxeador.jfif'),
-(31, '1', 'Old man', 'Lucas', 4, 4, 4, 4, 4, 4, 'M', 'welter', 14, 147, 'xalapa', 'xalapa', 'xalapa', 'boxeador.jfif'),
-(32, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
-(33, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif'),
-(34, '1', 'lpanonymous', 'Pablo', 1, 1, 1, 1, 1, 1, 'M', 'welter', 72, 1.72, 'Veracruz', 'Coatepec', 'Coatepec', 'boxeador.jfif');
+(31, '1', 'Old man', 'Lucas', 4, 4, 4, 4, 4, 4, 'M', 'welter', 14, 147, 'xalapa', 'xalapa', 'xalapa', 'boxeador.jfif');
 
 -- --------------------------------------------------------
 
@@ -216,17 +213,18 @@ CREATE TABLE `peleas_municipales` (
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
   `ganador` varchar(100) NOT NULL,
-  `foto_pelea` varchar(1000) NOT NULL
+  `nombre_foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peleas_municipales`
 --
 
-INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `foto_pelea`) VALUES
-(1, 'M', 'minimosca', 'Carlos Gonzalez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Tank', 'Jaime Munguia', '2020-07-10', '12:00:00', 'ninguno', 'https://i.ytimg.com/vi/6bHkvS3g5kY/maxresdefault.jpg'),
-(3, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Kingry  The Flash', 'Tank', '2020-08-01', '22:00:00', 'Kingry  The Flash', 'https://i.ytimg.com/vi/5UFfFlnprGc/maxresdefault.jpg'),
-(4, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'El Brooklyn', 'Hi-Tech', '2020-08-02', '23:00:00', 'ninguno', 'https://e00-us-marca.uecdn.es/claro/assets/multimedia/imagenes/2020/01/09/15786037991462.jpg');
+INSERT INTO `peleas_municipales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `nombre_foto`) VALUES
+(1, 'M', 'minimosca', 'Carlos Gonzalez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Tank', 'Jaime Munguia', '2020-07-10', '12:00:00', 'ninguno', 'canelovsmunguia.jpg'),
+(3, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Kingry  The Flash', 'Tank', '2020-08-01', '22:00:00', 'Kingry  The Flash', 'ryanvsgervonta.jpg'),
+(4, 'M', 'ligero', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'El Brooklyn', 'Hi-Tech', '2020-08-02', '23:00:00', 'ninguno', 'techvsbroklyn.jpg'),
+(5, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Golden Boy', 'J.C.', '2020-08-15', '22:00:00', 'Golden Boy', 'ChavezvsHoya.jpeg');
 
 -- --------------------------------------------------------
 
@@ -506,7 +504,7 @@ ALTER TABLE `peleas_estatales`
 -- AUTO_INCREMENT for table `peleas_municipales`
 --
 ALTER TABLE `peleas_municipales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `posiciones_generales_estatales`

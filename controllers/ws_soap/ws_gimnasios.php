@@ -124,7 +124,9 @@
 			if($cont<=3)
 			{
 				$listado = $listado."<div class='card'>
+
 				<img class='card-img-top' src='".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
+				<img class='card-img-top' src='../../resources/images/gimnasios/".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
 				<div class='card-body'>
 				<h5 class='card-title'>".$fila['nombre']."</h5>
 				<p class='card-text'>Telefono: ".$fila['telefono']."</p>
@@ -147,6 +149,7 @@
 				<div class='card-group'>
 				<div class='card'>
 				<img class='card-img-top' src='".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
+				<img class='card-img-top' src='../../resources/images/gimnasios/".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
 				<div class='card-body'>
 					<h5 class='card-title'>".$fila['nombre']."</h5>
 					<p class='card-text'>Telefono: ".$fila['telefono']."</p>
