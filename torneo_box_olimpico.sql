@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2020 at 01:29 AM
+-- Generation Time: Aug 14, 2020 at 07:07 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -103,20 +103,20 @@ CREATE TABLE `gimnasio` (
   `facebook` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `descripcion` varchar(500) DEFAULT NULL,
-  `foto` varchar(1000) DEFAULT NULL
+  `nombre_foto` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gimnasio`
 --
 
-INSERT INTO `gimnasio` (`id`, `nombre`, `ubicacion`, `telefono`, `facebook`, `email`, `descripcion`, `foto`) VALUES
-(1, 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 'https://scontent.fver2-1.fna.fbcdn.net/v/t1.0-9/14344929_122043848256029_4405021841722016663_n.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=oPtnzAZ6mR8AX9SGqtv&_nc_ht=scontent.fver2-1.fna&oh=41d0e4cc54e8de5b624213c9a30aeed1&oe=5F4C3C89'),
-(2, 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', 'nockout@gmail.com', 'Equipo deportivo', 'https://scontent.fver2-1.fna.fbcdn.net/v/t1.0-9/10583950_1591330294426945_8978507321869844678_n.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=ZGxGJmEOmGwAX-eq8Ka&_nc_ht=scontent.fver2-1.fna&oh=401b25ef2b077c60dbaf59578b466324&oe=5F4DCB53'),
-(3, 'Leones', 'https://www.google.com.mx/maps/place/Velodromo+Internacional+Xalapa/@19.5102922,-96.928647,17z/data=!4m5!3m4!1s0x85db2df2fdb0a561:0xa74bdbebe5232fe4!8m2!3d19.5102922!4d-96.928647?hl=en&authuser=0', 's/n', 'Leones Xalapa', 'leonesxalapa@outlook.es', 'Equipo deportivo de aficionados', 'https://scontent-qro1-1.xx.fbcdn.net/v/t1.0-9/53050650_391671104761585_2319697233680793600_n.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=M3Aze4x7cQIAX_6RoHS&_nc_ht=scontent-qro1-1.xx&oh=c7bc62a2b0a7aac59aa46c82c183918f&oe=5F53FD3E'),
-(4, 'Sparring Boxing Club', 'https://www.google.com.mx/maps/place/Sparring+Boxing+Club/@19.528234,-96.8950183,17z/data=!3m1!4b1!4m5!3m4!1s0x85db322139a0ca7f:0x171560e90ccae6c0!8m2!3d19.528234!4d-96.8950183?hl=en&authuser=0', '228 180 2668', 'Sparring Boxing Club', 'sparringboxingclub@gmail.com', 'Gimnasio para la práctica del boxeo, en el cual mejorarás tu condición física, desarrollarás habilidades y reducirás de peso.', 'https://scontent-qro1-1.xx.fbcdn.net/v/t31.0-8/16107104_1282266461832842_1436045849957983601_o.jpg?_nc_cat=107&_nc_sid=09cbfe&_nc_ohc=MoV-NDzLQmYAX8b4F0Y&_nc_ht=scontent-qro1-1.xx&oh=78380d43c3ec5242bc09f0810a18b599&oe=5F542202'),
-(5, 'Ultimate boxing club', 'https://www.google.com.mx/maps/place/UBC/@19.5413901,-96.9269425,15z/data=!4m8!1m2!2m1!1sultimate+boxing+club+xalapa+ver!3m4!1s0x85db31fce28ff8c1:0xd2c9fbb9cd42b464!8m2!3d19.5413901!4d-96.9181878?hl=en&authuser=0', '228 243 1365', 'Ultimate boxing club', 'adan.boxingcoach@hotmail.com', 'centro deportivo: preparación física para deportistas, escuela de boxeo amateur, olímpico, recreativo, rehabilitación deportiva, vendaje neuromuscular.', 'https://scontent-qro1-1.xx.fbcdn.net/v/t1.0-9/93118477_1572105486281272_7551123290341769216_o.jpg?_nc_cat=109&_nc_sid=09cbfe&_nc_ohc=_rFTOXBV6VwAX9-Rcb3&_nc_ht=scontent-qro1-1.xx&oh=966ba59d0e2b5decddc02a2c02d98311&oe=5F5252FC'),
-(6, 'Boxeo Rojas', 'https://www.google.com.mx/maps/place/GIMNASIO+DE+BOX+TOMAS+%22GUSANO%22+ROJAS/@19.1650756,-96.453255,10z/data=!4m8!1m2!2m1!1sboxeo+rojas!3m4!1s0x85c343ed25d01e69:0x93e0a4a62852d14!8m2!3d19.1650756!4d-96.1731036?hl=en&authuser=0', 's/n', 'GIMNASIO DE BOX TOMAS ', 'ninguno', 'Escuela de box de Tomas el Gusano Rojas', 'https://scontent-qro1-1.xx.fbcdn.net/v/t1.0-9/70027397_641485939593820_1747406095757869056_o.jpg?_nc_cat=100&_nc_sid=09cbfe&_nc_ohc=B_dh5IqUKx4AX91NpR7&_nc_ht=scontent-qro1-1.xx&oh=ecd5796acce7f65d9dc77cca2816d0fe&oe=5F51D34B');
+INSERT INTO `gimnasio` (`id`, `nombre`, `ubicacion`, `telefono`, `facebook`, `email`, `descripcion`, `nombre_foto`) VALUES
+(1, 'DECA', 'https://www.google.com.mx/maps/place/Campo+Deportivo+Adolfo+Lopez+Mateos/@19.4968874,-96.9846754,13z/data=!4m8!1m2!2m1!1sCoatepec+ver+gimnasio+adolfo+lopez+mateo!3m4!1s0x85db2cdefd93b181:0xb299afcfde3f728e!8m2!3d19.4551188!4d-96.9661799?hl=en&authuser=0', '228 257 6388', 'DECA Deporte de calidad', 'decacoatepec@hotmail.com', 'Deporte de Calidad (DECA) es una iniciativa creada para organizar y realizar eventos en fomento y mejora del deporte.', 'DECA.jpg'),
+(2, 'KNOCKOUT', 'https://www.google.com.mx/maps/place/Gimnasio+Knockout/@19.5429518,-96.9398053,17z/data=!3m1!4b1!4m5!3m4!1s0x85db2e1280c42a6b:0x62fc736024fb53a!8m2!3d19.5429518!4d-96.9398053?hl=en&authuser=0', '228 112 5470', 'Boxeo Knockout', 'nockout@gmail.com', 'Equipo deportivo', 'KNOCKOUT.jpg'),
+(3, 'Leones', 'https://www.google.com.mx/maps/place/Velodromo+Internacional+Xalapa/@19.5102922,-96.928647,17z/data=!4m5!3m4!1s0x85db2df2fdb0a561:0xa74bdbebe5232fe4!8m2!3d19.5102922!4d-96.928647?hl=en&authuser=0', 's/n', 'Leones Xalapa', 'leonesxalapa@outlook.es', 'Equipo deportivo de aficionados', 'LEONES.jpg'),
+(4, 'Sparring Boxing Club', 'https://www.google.com.mx/maps/place/Sparring+Boxing+Club/@19.528234,-96.8950183,17z/data=!3m1!4b1!4m5!3m4!1s0x85db322139a0ca7f:0x171560e90ccae6c0!8m2!3d19.528234!4d-96.8950183?hl=en&authuser=0', '228 180 2668', 'Sparring Boxing Club', 'sparringboxingclub@gmail.com', 'Gimnasio para la práctica del boxeo, en el cual mejorarás tu condición física, desarrollarás habilidades y reducirás de peso.', 'SparringBoxingClub.jpg'),
+(5, 'Ultimate boxing club', 'https://www.google.com.mx/maps/place/UBC/@19.5413901,-96.9269425,15z/data=!4m8!1m2!2m1!1sultimate+boxing+club+xalapa+ver!3m4!1s0x85db31fce28ff8c1:0xd2c9fbb9cd42b464!8m2!3d19.5413901!4d-96.9181878?hl=en&authuser=0', '228 243 1365', 'Ultimate boxing club', 'adan.boxingcoach@hotmail.com', 'centro deportivo: preparación física para deportistas, escuela de boxeo amateur, olímpico, recreativo, rehabilitación deportiva, vendaje neuromuscular.', 'Ultimateboxingclub.jpg'),
+(6, 'Boxeo Rojas', 'https://www.google.com.mx/maps/place/GIMNASIO+DE+BOX+TOMAS+%22GUSANO%22+ROJAS/@19.1650756,-96.453255,10z/data=!4m8!1m2!2m1!1sboxeo+rojas!3m4!1s0x85c343ed25d01e69:0x93e0a4a62852d14!8m2!3d19.1650756!4d-96.1731036?hl=en&authuser=0', 's/n', 'GIMNASIO DE BOX TOMAS ', 'ninguno', 'Escuela de box de Tomas el Gusano Rojas', 'GIMNASIOTOMAS.jpg');
 
 -- --------------------------------------------------------
 
@@ -129,18 +129,18 @@ CREATE TABLE `jueces` (
   `nombre` varchar(50) NOT NULL,
   `usuario` varchar(50) NOT NULL,
   `contrasena` varchar(1000) NOT NULL,
-  `foto` varchar(1000) NOT NULL
+  `nombre_foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `jueces`
 --
 
-INSERT INTO `jueces` (`id`, `nombre`, `usuario`, `contrasena`, `foto`) VALUES
-(1, 'Andres Sanchez', 'andresSanchez', '$2y$10$Qh0L8blcdmS8LCUQptDBIeR.tPTrRRJMIFbNCr6YzMUkAyayLJTGu', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png'),
-(2, 'Beto Garcia', 'betoGarcia', '$2y$10$EkUrMhZ55izkS9grV7SLBuiuXYxitOo8DcanCi0RggWI85nGkAZxS', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png'),
-(3, 'Carlos Gonzalez', 'carlosGonzalez', '$2y$10$qPprP0G2HKxFZnhHGCbrYe.7g7eo5hS8QlJ1Tj5wqesQgALmeJVZ2', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png'),
-(4, 'Daniel Martinez', 'danielMartinez', '$2y$10$2DLmiMe7SP07/Ijs6pRhSOh5ociWsho0G3bjt5Qn9XlUchN24K0eW', 'https://cdn4.iconfinder.com/data/icons/free-large-boss-icon-set/512/Security.png');
+INSERT INTO `jueces` (`id`, `nombre`, `usuario`, `contrasena`, `nombre_foto`) VALUES
+(1, 'Andres Sanchez', 'andresSanchez', '12345678', 'juez.png'),
+(2, 'Beto Garcia', 'betoGarcia', '$2y$10$EkUrMhZ55izkS9grV7SLBuiuXYxitOo8DcanCi0RggWI85nGkAZxS', 'juez.png'),
+(3, 'Carlos Gonzalez', 'carlosGonzalez', '$2y$10$qPprP0G2HKxFZnhHGCbrYe.7g7eo5hS8QlJ1Tj5wqesQgALmeJVZ2', 'juez.png'),
+(4, 'Daniel Martinez', 'danielMartinez', '$2y$10$2DLmiMe7SP07/Ijs6pRhSOh5ociWsho0G3bjt5Qn9XlUchN24K0eW', 'juez.png');
 
 -- --------------------------------------------------------
 
@@ -489,7 +489,7 @@ ALTER TABLE `gimnasio`
 -- AUTO_INCREMENT for table `jueces`
 --
 ALTER TABLE `jueces`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `noticias`
