@@ -86,22 +86,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
-                            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
+                            <input type="text" name="nombre" maxlength="50" minlength="0" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($usuario_err)) ? 'has-error' : ''; ?>">
                             <label>Usuario</label>
-                            <input type="text" name="usuario" class="form-control" value="<?php echo $usuario; ?>">
+                            <input type="text" name="usuario" maxlength="50" minlength="0" class="form-control" value="<?php echo $usuario; ?>">
                             <span class="help-block"><?php echo $usuario_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($contrasena_err)) ? 'has-error' : ''; ?>">
                             <label>Contraseña</label>
-                            <input type="password" name="contrasena" class="form-control" value="<?php echo $contrasena; ?>">
+                            <input type="password" name="contrasena" maxlength="50" minlength="0" class="form-control" value="<?php echo $contrasena; ?>">
                             <span class="help-block"><?php echo $contrasena_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
-                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
+                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple accept="image/*">
                             <span class="help-block"><?php echo $foto_err;?></span> 
                         </div>
                         
