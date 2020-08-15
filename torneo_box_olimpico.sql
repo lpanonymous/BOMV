@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2020 at 12:58 AM
+-- Generation Time: Aug 15, 2020 at 03:43 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -182,17 +182,17 @@ CREATE TABLE `peleas_estatales` (
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
   `ganador` varchar(100) DEFAULT NULL,
-  `foto_pelea` varchar(1000) NOT NULL
+  `nombre_foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peleas_estatales`
 --
 
-INSERT INTO `peleas_estatales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `foto_pelea`) VALUES
-(3, 'F', 'gallo', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Barby', 'Bonita', '2020-08-03', '23:00:00', 'ninguno', 'https://mis-juegos-olimpicos.com/wp-content/uploads/2016/02/boxeo-londres.jpg'),
-(4, 'F', 'pluma', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Areli Garcia', 'Brenda Hernández', '2020-08-10', '13:00:00', 'ninguno', 'https://elsuperhincha.com/wp-content/uploads/2020/02/boxeo-femenino.jpg'),
-(5, 'F', 'mosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Carla Sosa', 'Daniela Martinez', '2020-08-28', '12:00:00', 'ninguno', 'https://www.elsoldetijuana.com.mx/deportes/lybany-crisna-alvarez/ALTERNATES/LANDSCAPE_960/Crisna%20%C3%81lvarez');
+INSERT INTO `peleas_estatales` (`id`, `categoria`, `division`, `id_juez1`, `id_juez2`, `id_juez3`, `id_juez4`, `id_boxeador1`, `id_boxeador2`, `fecha`, `hora`, `ganador`, `nombre_foto`) VALUES
+(3, 'M', 'minimosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Barby', 'Bonita', '2020-08-03', '23:00:00', 'ninguno', 'CarlavsDaniela.jfif'),
+(4, 'F', 'pluma', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Areli Garcia', 'Brenda Hernández', '2020-08-10', '13:00:00', 'ninguno', 'ArelivsBrenda.jpg'),
+(5, 'F', 'mosca', 'Andres Sanchez', 'Beto Garcia', 'Carlos Gonzalez', 'Daniel Martinez', 'Carla Sosa', 'Daniela Martinez', '2020-08-28', '12:00:00', 'ninguno', 'CarlavsDaniela.jfif');
 
 -- --------------------------------------------------------
 
@@ -498,7 +498,7 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT for table `peleas_estatales`
 --
 ALTER TABLE `peleas_estatales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `peleas_municipales`

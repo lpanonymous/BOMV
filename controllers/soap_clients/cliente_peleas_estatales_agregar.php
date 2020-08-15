@@ -2,8 +2,8 @@
 	require_once('lib/nusoap.php');
 
 	// Define variables and initialize with empty values
-	$categoria = $division = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora = $ganador="";
-	$categoria_err = $division_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err = $ganador_err="";
+	$categoria = $division = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora = $ganador = $foto="";
+	$categoria_err = $division_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err = $ganador_err = $foto_err="";
 	
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -97,6 +97,15 @@
 			$ganador = $input_ganador;
 		}
 
+		$tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
+		$filename = $_FILES["foto"]["name"];      // Original filename
+
+		$handle = fopen($tmpfile, "r");                  // Open the temp file
+		$contents = fread($handle, filesize($tmpfile));  // Read the temp file
+		fclose($handle);                                 // Close the temp file
+
+		$decodeContent   = base64_encode($contents);     // Decode the file content, so that we code send a binary string to SOAP
+
 
 		/*$id = $categoria = $id_juez1 = $id_juez2 = $id_juez3 = $id_juez4 = $id_boxeador1 = $id_boxeador2 = $fecha = $hora ="";
 $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_juez4_err = $id_boxeador1_err = $id_boxeador2_err = $fecha_err = $hora_err ="";*/
@@ -104,20 +113,11 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
 		if(empty($categoria_err) && empty($division_err) && empty($id_juez1_err) && empty($id_juez2_err) && empty($id_juez3_err) && empty($id_juez4_err) && empty($id_boxeador1_err) && empty($id_boxeador2_err) && empty($fecha_err) && empty($hora_err) && empty($ganador_err)){
 			$cliente = new nusoap_client("http://localhost/BOMV/controllers/ws_soap/ws_peleas_estatales.php");
 
-			$datos = array('categoria' => $_POST["categoria"], 'division' => $_POST["division"],'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"],'ganador' => $_POST["ganador"]);
+			$datos = array('categoria' => $_POST["categoria"], 'division' => $_POST["division"],'id_juez1' => $_POST["id_juez1"], 'id_juez2' => $_POST["id_juez2"], 'id_juez3' => $_POST["id_juez3"], 'id_juez4' => $_POST["id_juez4"], 'id_boxeador1' => $_POST["id_boxeador1"], 'id_boxeador2' => $_POST["id_boxeador2"], 'fecha' => $_POST["fecha"], 'hora' => $_POST["hora"],'ganador' => $_POST["ganador"], 'foto' => $decodeContent, 'nombre_foto' => $filename);
 
 			$resultado = $cliente->call('agregarPeleaEstatal', $datos);
-			
-			$err = $cliente->getError();
-			if($err){
-				echo '<h2>Error del constructor</h2><pre>'.$err.'</pre>';
-				echo '<h2>Request</h2><pre>'.htmlspecialchars($cliente->request, ENT_QUOTES).'</pre>';
-				echo '<h2>Response</h2><pre>'.htmlspecialchars($cliente->response, ENT_QUOTES).'</pre>';
-				echo '<h2>Debug</h2><pre>'.htmlspecialchars($cliente->getDebug(), ENT_QUOTES).'</pre>';
-			}else{
-				header("location: ../../views/admin/peleas_estatales.php");
-				//echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
-			}
+			header("location: ../../views/admin/peleas_estatales.php");
+			//echo '<h2>Resultado</h2><pre>'; print_r($resultado); echo '</pre>';
 		}
 	}
 ?>
@@ -155,7 +155,7 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
                         <h2>Crear pelea estatal</h2>
                     </div>
                     <p>Por favor ingresa los datos y luego da clic en agregar pelea estatal para almacenarlo en la base de datos.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
 						<div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
 								<label>Categoría</label>
 								<!--<input type="text" name="categoria" class="form-control" value="</*?php echo $categoria; ?*/>">-->
@@ -238,6 +238,12 @@ $id_err = $categoria_err = $id_juez1_err = $id_juez2_err = $id_juez3_err = $id_j
                             <label>¿Ganador?</label>
                             <input id="search_boxeador" type="text" name="ganador" class="form-control" value="<?php echo $ganador; ?>">
                             <span class="help-block"><?php echo $ganador_err;?></span>
+                        </div>
+
+						<div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
+                            <label>Foto</label>
+                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
+                            <span class="help-block"><?php echo $foto_err;?></span> 
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Agregar">

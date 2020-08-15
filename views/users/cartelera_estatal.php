@@ -78,11 +78,11 @@
                 $fecha = $obj->fecha;
                 $hora = $obj->hora;
                 $ganador = $obj->ganador;
-                $foto_pelea = $obj->foto_pelea;
+                $nombre_foto = $obj->nombre_foto;
                 if($cont<=3)
                 {
                   echo "<div class='card'>
-                  <img class='card-img-top' src='$foto_pelea' alt='Card image cap'>
+                  <img class='card-img-top' src='http://localhost/BOMV/resources/images/peleas_estatales/$nombre_foto' alt='Card image cap'>
                   <div class='card-body'>
                     <h5 class='card-title'>$id_boxeador1 VS $id_boxeador2</h5>
                     <p class='card-text'>Categoria: $categoria</p>
@@ -98,7 +98,7 @@
                   echo "</div>";
                   echo "<div class='card-group'>";
                   echo "<div class='card'>
-                  <img class='card-img-top' src='$foto_pelea' alt='Card image cap'>
+                  <img class='card-img-top' src='http://localhost/BOMV/resources/images/peleas_estatales/$nombre_foto' alt='Card image cap'>
                   <div class='card-body'>
                     <h5 class='card-title'>$id_boxeador1 VS $id_boxeador2</h5>
                     <p class='card-text'>Categoria: $categoria</p>
