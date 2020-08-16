@@ -115,7 +115,7 @@
 		$sql = "SELECT * FROM boxeadores where id_gimnasio='$id'";
 		$resultado = mysqli_query($conexion, $sql);
 
-		$listado = "<div class='row grupo-boxeadores'>";
+		$listado = "<div class='card-group'>";
 		$cont = 0;
 		while ($fila = mysqli_fetch_array($resultado))
 		{
@@ -138,41 +138,37 @@
 						<a href="#" class="card-link">Another link</a>
 					  </div>
 				</div>*/
-				$listado = $listado."<div class='card' style='width: 18rem;'>
-				<img class='card-img-top' src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Card image cap'>
+				$listado = $listado."<div class='card text-white bg-dark mb-3' style='font-size:15px'>
+				<img class='card-img-top' src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
 					<div class='card-body'>
-							<h5 class='card-title'>Nombre: ".$fila['nombre_boxeador']."</h5>
+							<h5 class='card-title'>".$fila['nombre_boxeador']."</h5>
 							<p class='card-text'>Alias: ".$fila['alias']."</p>
 							<p class='card-text'>Categoria: ".$fila['categoria'].",   Division: ".$fila['division']."</p>
 							<p class='card-text'>Peso: ".$fila['peso'].", Altura: ".$fila['altura']."</p>
 							<p class='card-text'>Estado: ".$fila['estado'].", </p>
 							<p class='card-text'>Ciudad: ".$fila['ciudad'].", Municipio: ".$fila['municipio']."</p>
+							<p class='card-text'>Total peleas: ".$fila['total_peleas'].", Empates: ".$fila['empates']."</p>
+							<p class='card-text'>Peleas ganadas: ".$fila['peleas_ganadas'].", Peleas Ganadas K.O: ".$fila['peleas_ganadas_ko']."</p>
+							<p class='card-text'>Peleas Perdidas: ".$fila['peleas_perdidas'].", Peleas Perdidas K.O: ".$fila['peleas_perdidas_ko']."</p>
 					</div>
-					<ul class='list-group list-group-flush'>
-						<li class='list-group-item'>Total de peleas: ".$fila['total_peleas']."</br>Empates:  ".$fila['empates']."</li>
-						<li class='list-group-item'>Peleas Ganadas: ".$fila['peleas_ganadas']."</br>Peleas Ganadas K.O: ".$fila['peleas_ganadas_ko']."</li>
-						<li class='list-group-item'>Peleas Perdidas: ".$fila['peleas_perdidas']."</br>Peleas Perdidas K.O: ".$fila['peleas_perdidas_ko']."</li>
-					  </ul>
 				</div>";
 			}
 			else
 			{
 				$cont = 0;
-				$listado = $listado."<div class='card' style='width: 18rem;'>
-				<img class='card-img-top' src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Card image cap'>
+				$listado = $listado."</div><div class='card-group'><div class='card text-white bg-dark mb-3' style='font-size:15px'>
+				<img class='card-img-top' src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Card image cap' height='400px'>
 					<div class='card-body'>
-							<h5 class='card-title'>Nombre: ".$fila['nombre_boxeador']."</h5>
+							<h5 class='card-title'>".$fila['nombre_boxeador']."</h5>
 							<p class='card-text'>Alias: ".$fila['alias']."</p>
 							<p class='card-text'>Categoria: ".$fila['categoria'].",   Division: ".$fila['division']."</p>
 							<p class='card-text'>Peso: ".$fila['peso'].", Altura: ".$fila['altura']."</p>
 							<p class='card-text'>Estado: ".$fila['estado'].", </p>
 							<p class='card-text'>Ciudad: ".$fila['ciudad'].", Municipio: ".$fila['municipio']."</p>
+							<p class='card-text'>Total peleas: ".$fila['total_peleas'].", Empates: ".$fila['empates']."</p>
+							<p class='card-text'>Peleas ganadas: ".$fila['peleas_ganadas'].", Peleas Ganadas K.O: ".$fila['peleas_ganadas_ko']."</p>
+							<p class='card-text'>Peleas Perdidas: ".$fila['peleas_perdidas'].", Peleas Perdidas K.O: ".$fila['peleas_perdidas_ko']."</p>
 					</div>
-					<ul class='list-group list-group-flush'>
-						<li class='list-group-item'>Total de peleas: ".$fila['total_peleas']."</br>Empates:  ".$fila['empates']."</li>
-						<li class='list-group-item'>Peleas Ganadas: ".$fila['peleas_ganadas']."</br>Peleas Ganadas K.O: ".$fila['peleas_ganadas_ko']."</li>
-						<li class='list-group-item'>Peleas Perdidas: ".$fila['peleas_perdidas']."</br>Peleas Perdidas K.O: ".$fila['peleas_perdidas_ko']."</li>
-					 </ul>
 				</div>";
 			}
 		}
