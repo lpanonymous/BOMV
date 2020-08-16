@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $usuario = $input_usuario;
     }
 
-    // Validate nombre de usuario del juez
+    // Validate password
     $input_contrasena = trim($_POST["contrasena"]);
     if(empty($input_contrasena)){
         $contrasena_err = "Ingresa la contraseña del usuario.";

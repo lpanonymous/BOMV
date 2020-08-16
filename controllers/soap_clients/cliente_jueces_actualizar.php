@@ -27,12 +27,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 			$usuario = $input_usuario;
         }
         
+        // Validate password
         $input_contrasena = trim($_POST["contrasena"]);
-		if(empty($input_contrasena)){
-			$contrasena_err = "Porfavor ingresa una contraseña.";
-		} 
-		else{
-			$contrasena = $input_contrasena;
+        if(empty($input_contrasena)){
+            $contrasena_err = "Ingresa la contraseña del usuario.";
+        }
+        else
+        {  
+            $contrasena = password_hash($input_contrasena, PASSWORD_BCRYPT);
+            password_verify($input_contrasena, $contrasena);
         }
         
         $tmpfile = $_FILES["foto"]["tmp_name"];   // temp filename
