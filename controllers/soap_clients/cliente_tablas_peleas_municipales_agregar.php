@@ -74,26 +74,26 @@
         <tbody>
           <tr>
           <form action="../../controllers/soap_clients/cliente_tablas_peleas_agregar.php" method="post">
-            <td class="pt-3-half"><input type="text" name="id_juez" id="search_juez"></td>
-            <td class="pt-3-half"><input type="number" name="id_pelea" placeholder="1"></td>
-            <td class="pt-3-half"><input type="text" name="id_boxeador" id="search_boxeador"></td>  
-            <td class="pt-3-half"><input type="number" name="round1" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round2" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round3"placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round4" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round5" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round6" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round7" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round8" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round9" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round10" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="round11" placeholder="10"></td>
-            <td class="pt-3-half"><input type="number" name="round12" placeholder="9"></td>
-            <td class="pt-3-half"><input type="number" name="total_puntos" placeholder="115"></td>
-            <td class="pt-3-half"><input type="number" name="num_jabs" placeholder="150"></td>
-            <td class="pt-3-half"><input type="number" name="num_power" placeholder="100"></td>
-            <td class="pt-3-half"><input type="number" name="total_golpes" placeholder="250"></td>
-            <td class="pt-3-half"><input type="number" name="ganador" placeholder="1"></td>
+            <td class="pt-3-half"><input type="text" maxlength="50" minlength="0" name="id_juez" id="search_juez"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="id_pelea" placeholder="1"></td>
+            <td class="pt-3-half"><input type="text" maxlength="50" minlength="0" name="id_boxeador" id="search_boxeador"></td>  
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round1" placeholder="10"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round2" placeholder="10"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round3"placeholder="10"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round4" placeholder="9"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round5" placeholder="10"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round6" placeholder="9"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round7" placeholder="10"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round8" placeholder="9"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round9" placeholder="10"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round10" placeholder="9"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round11" placeholder="10"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="round12" placeholder="9"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="total_puntos" placeholder="115"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="num_jabs" placeholder="150"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="num_power" placeholder="100"></td>
+            <td class="pt-3-half"><input type="number" maxlength="11" minlength="0" name="total_golpes" placeholder="250"></td>
+            <td class="pt-3-half"><input type="number"  name="ganador" placeholder="1"></td>
             <td>
               <span><button type="submit" class="btn btn-success btn-rounded btn-sm my-0 waves-effect waves-light">Agregar</button></span>
             </td>

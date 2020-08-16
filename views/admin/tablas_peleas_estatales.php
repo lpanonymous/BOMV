@@ -44,7 +44,7 @@
         }
         #div1 
         {
-          overflow:scroll;
+          /*overflow:scroll;*/
           height:80%;
           width:100%;
         }
@@ -230,6 +230,7 @@
 <script>
         $(document).ready(function() {
 			$('#myTable').DataTable({
+				"scrollX": true,
 				 "language":	{
 					"sProcessing":     "Procesando...",
 					"sLengthMenu":     "Mostrar _MENU_ registros",

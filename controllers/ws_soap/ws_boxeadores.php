@@ -122,44 +122,58 @@
 			$cont = $cont+1;
 			if($cont<=3)
 			{
-				$listado = $listado."<div class='flip-card col span-1-of-3'>
-				<div class='flip-card-inner'>
-						<div class='flip-card-front'>
-						  <img src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Boxeador' class='foto-boxeador'>
-						</div>
-						<div class='flip-card-back'>
-						  <h1>".$fila['division']."</h1>
-						  <div class='card-texto'>
-							<p>".$fila['nombre_boxeador']."</p>
-							<p>&quot;<i>".$fila['alias']."<i>&quot;</p>
-						  </div>
-						  <input type='text' value='".$fila['id_boxeador']."' name='id' hidden/>
-						  <input type='submit' class='btn-boxeador' value='VER RECORD'/>
-						</div>
-						</div>
-				  </div>";
+				/*<div class="card" style="width: 18rem;">
+					  <img class="card-img-top" src="..." alt="Card image cap">
+					  <div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					  </div>
+					  <ul class="list-group list-group-flush">
+						<li class="list-group-item">Cras justo odio</li>
+						<li class="list-group-item">Dapibus ac facilisis in</li>
+						<li class="list-group-item">Vestibulum at eros</li>
+					  </ul>
+					  <div class="card-body">
+						<a href="#" class="card-link">Card link</a>
+						<a href="#" class="card-link">Another link</a>
+					  </div>
+				</div>*/
+				$listado = $listado."<div class='card' style='width: 18rem;'>
+				<img class='card-img-top' src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Card image cap'>
+					<div class='card-body'>
+							<h5 class='card-title'>Nombre: ".$fila['nombre_boxeador']."</h5>
+							<p class='card-text'>Alias: ".$fila['alias']."</p>
+							<p class='card-text'>Categoria: ".$fila['categoria'].",   Division: ".$fila['division']."</p>
+							<p class='card-text'>Peso: ".$fila['peso'].", Altura: ".$fila['altura']."</p>
+							<p class='card-text'>Estado: ".$fila['estado'].", </p>
+							<p class='card-text'>Ciudad: ".$fila['ciudad'].", Municipio: ".$fila['municipio']."</p>
+					</div>
+					<ul class='list-group list-group-flush'>
+						<li class='list-group-item'>Total de peleas: ".$fila['total_peleas']."</br>Empates:  ".$fila['empates']."</li>
+						<li class='list-group-item'>Peleas Ganadas: ".$fila['peleas_ganadas']."</br>Peleas Ganadas K.O: ".$fila['peleas_ganadas_ko']."</li>
+						<li class='list-group-item'>Peleas Perdidas: ".$fila['peleas_perdidas']."</br>Peleas Perdidas K.O: ".$fila['peleas_perdidas_ko']."</li>
+					  </ul>
+				</div>";
 			}
 			else
 			{
 				$cont = 0;
-				$listado = $listado."</div> 
-				<div class='row grupo-boxeadores'>
-				<div class='flip-card col span-1-of-3'>
-				<div class='flip-card-inner'>
-						<div class='flip-card-front'>
-						  <img src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Boxeador' class='foto-boxeador'>
-						</div>
-						<div class='flip-card-back'>
-						  <h1>".$fila['division']."</h1>
-						  <div class='card-texto'>
-							<p>".$fila['nombre_boxeador']."</p>
-							<p>&quot;<i>".$fila['alias']."<i>&quot;</p>
-						  </div>
-						  <input type='text' value='".$fila['id_boxeador']."' name='id' hidden/>
-						  <input type='submit' class='btn-boxeador' value='VER RECORD'/>
-						</div>
-						</div>
-				  </div>";
+				$listado = $listado."<div class='card' style='width: 18rem;'>
+				<img class='card-img-top' src='../../resources/images/boxeadores/".$fila['nombre_foto']."' alt='Card image cap'>
+					<div class='card-body'>
+							<h5 class='card-title'>Nombre: ".$fila['nombre_boxeador']."</h5>
+							<p class='card-text'>Alias: ".$fila['alias']."</p>
+							<p class='card-text'>Categoria: ".$fila['categoria'].",   Division: ".$fila['division']."</p>
+							<p class='card-text'>Peso: ".$fila['peso'].", Altura: ".$fila['altura']."</p>
+							<p class='card-text'>Estado: ".$fila['estado'].", </p>
+							<p class='card-text'>Ciudad: ".$fila['ciudad'].", Municipio: ".$fila['municipio']."</p>
+					</div>
+					<ul class='list-group list-group-flush'>
+						<li class='list-group-item'>Total de peleas: ".$fila['total_peleas']."</br>Empates:  ".$fila['empates']."</li>
+						<li class='list-group-item'>Peleas Ganadas: ".$fila['peleas_ganadas']."</br>Peleas Ganadas K.O: ".$fila['peleas_ganadas_ko']."</li>
+						<li class='list-group-item'>Peleas Perdidas: ".$fila['peleas_perdidas']."</br>Peleas Perdidas K.O: ".$fila['peleas_perdidas_ko']."</li>
+					 </ul>
+				</div>";
 			}
 		}
 		$listado = $listado."</div>";

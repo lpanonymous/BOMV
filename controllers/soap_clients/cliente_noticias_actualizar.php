@@ -130,7 +130,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group <?php echo (!empty($titulo_err)) ? 'has-error' : ''; ?>">
                             <label>Titulo</label>
-                            <input type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
+                            <input type="text" name="titulo" max="200" min="0" maxlength="200" minlength="0" class="form-control" value="<?php echo $titulo; ?>">
                             <span class="help-block"><?php echo $titulo_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($fecha_err)) ? 'has-error' : ''; ?>">
@@ -140,14 +140,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <div class="form-group <?php echo (!empty($cuerpo_err)) ? 'has-error' : ''; ?>">
                             <label>Cuerpo</label>
-                            <input type="text" name="cuerpo" class="form-control" value="<?php echo $cuerpo; ?>">
+                            <input type="text" name="cuerpo" max="1000" min="0" maxlength="1000" minlength="0" class="form-control" value="<?php echo $cuerpo; ?>">
                             <span class="help-block"><?php echo $cuerpo_err;?></span>
                         </div>
                         <div class="form-group">
                             <img src="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
                             <div class="form-group">
                                 <label>Foto</label>
-                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple> 
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple accept="image/*"> 
                             </div>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>

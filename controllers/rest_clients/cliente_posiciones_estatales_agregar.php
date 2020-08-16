@@ -141,12 +141,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group <?php echo (!empty($alias_boxeador_err)) ? 'has-error' : ''; ?>">
                             <label>Alias Boxeador(a)</label>
-                            <input id="search_boxeador" type="text" name="alias_boxeador" class="form-control" value="<?php echo $alias_boxeador; ?>">
+                            <input id="search_boxeador" type="text" name="alias_boxeador" maxlength="100" class="form-control" value="<?php echo $alias_boxeador; ?>">
                             <span class="help-block"><?php echo $alias_boxeador_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($gimnasio_err)) ? 'has-error' : ''; ?>">
                             <label>Gimnasio</label>
-                            <input id="search_gimnasio" type="text" name="gimnasio" class="form-control" value="<?php echo $gimnasio; ?>">
+                            <input id="search_gimnasio" type="text" name="gimnasio" class="form-control" maxlength="50" value="<?php echo $gimnasio; ?>">
                             <span class="help-block"><?php echo $gimnasio_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
@@ -180,17 +180,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_ganadas_err)) ? 'has-error' : ''; ?>">
                             <label>#Peleas ganadas</label>
-                            <input type="number" name="peleas_ganadas" class="form-control" value="<?php echo $peleas_ganadas; ?>" min="0">
+                            <input type="number" name="peleas_ganadas" maxlength="11" class="form-control" value="<?php echo $peleas_ganadas; ?>" min="0">
                             <span class="help-block"><?php echo $peleas_ganadas_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_perdidas_err)) ? 'has-error' : ''; ?>">
                             <label>#Peleas perdidas</label>
-                            <input type="number" name="peleas_perdidas" class="form-control" value="<?php echo $peleas_perdidas; ?>" min="0">
+                            <input type="number" name="peleas_perdidas" maxlength="11" class="form-control" value="<?php echo $peleas_perdidas; ?>" min="0">
                             <span class="help-block"><?php echo $peleas_perdidas_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($empates_err)) ? 'has-error' : ''; ?>">
                             <label>#Empates</label>
-                            <input type="number" name="empates" class="form-control" value="<?php echo $empates; ?>" min="0">
+                            <input type="number" name="empates" maxlength="11" class="form-control" value="<?php echo $empates; ?>" min="0">
                             <span class="help-block"><?php echo $empates_err;?></span>
                         </div>
 

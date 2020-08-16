@@ -108,40 +108,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre</label>
-                            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
+                            <input type="text" name="nombre" maxlength="50" minlength="0" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($ubicacion_err)) ? 'has-error' : ''; ?>">
                             <label>Ubicación</label>
-                            <input type="text" name="ubicacion" class="form-control" value="<?php echo $ubicacion; ?>" placeholder="Dirección de google maps">
+                            <input type="text" name="ubicacion" max="300" min="0" maxlength="300" minlength="0" class="form-control" value="<?php echo $ubicacion; ?>" placeholder="Dirección de google maps">
                             <span class="help-block"><?php echo $ubicacion_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($telefono_err)) ? 'has-error' : ''; ?>">
                             <label>Telefono</label>
-                            <input type="text" name="telefono" class="form-control" value="<?php echo $telefono; ?>">
+                            <input type="text" name="telefono" min="0" maxlength="50" minlength="0" pattern="{0-9}" class="form-control" value="<?php echo $telefono; ?>">
                             <span class="help-block"><?php echo $telefono_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($facebook_err)) ? 'has-error' : ''; ?>">
                             <label>Facebook</label>
-                            <input type="text" name="facebook" class="form-control" value="<?php echo $facebook; ?>">
+                            <input type="text" name="facebook" max="50" min="0" maxlength="50" minlength="0" class="form-control" value="<?php echo $facebook; ?>">
                             <span class="help-block"><?php echo $facebook_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                             <label>Email</label>
-                            <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
+                            <input type="text" name="email" max="100" min="0" maxlength="100" minlength="0" class="form-control" value="<?php echo $email; ?>">
                             <span class="help-block"><?php echo $email_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
                             <label>Descripción</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <input type="text" name="descripcion" max="500" min="0" maxlength="500" minlength="0" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
                         
                         <div class="form-group <?php echo (!empty($foto_err)) ? 'has-error' : ''; ?>">
                             <label>Foto</label>
-                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple>
+                            <input type="file" name="foto" class="form-control" value="<?php echo $foto; ?>" multiple accept="image/*">
                             <span class="help-block"><?php echo $foto_err;?></span> 
                         </div>
 

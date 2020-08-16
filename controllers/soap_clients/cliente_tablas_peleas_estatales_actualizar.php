@@ -200,25 +200,25 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <tbody>
           <tr>
           <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
-              <td class="pt-3-half"><input type="text" id="search_juez" name="id_juez" value="<?php echo $id_juez; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="id_pelea" value="<?php echo $id_pelea; ?>"></td>
-              <td class="pt-3-half"><input type="text" id="search_boxeador" name="id_boxeador" value="<?php echo $id_boxeador; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round1" value="<?php echo $round1; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round2" value="<?php echo $round2; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round3" value="<?php echo $round3; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round4" value="<?php echo $round4; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round5" value="<?php echo $round5; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round6" value="<?php echo $round6; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round7" value="<?php echo $round7; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round8" value="<?php echo $round8; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round9" value="<?php echo $round9; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round10" value="<?php echo $round10; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round11" value="<?php echo $round11; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="round12" value="<?php echo $round12; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="total_puntos" value="<?php echo $total_puntos; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="num_jabs" value="<?php echo $num_jabs; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="num_power" value="<?php echo $num_power; ?>"></td>
-              <td class="pt-3-half"><input type="number" name="total_golpes" value="<?php echo $total_golpes; ?>"></td>
+              <td class="pt-3-half"><input maxlength="50" type="text" id="search_juez" name="id_juez" value="<?php echo $id_juez; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="id_pelea" value="<?php echo $id_pelea; ?>"></td>
+              <td class="pt-3-half"><input maxlength="50" type="text" id="search_boxeador" name="id_boxeador" value="<?php echo $id_boxeador; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round1" value="<?php echo $round1; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round2" value="<?php echo $round2; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round3" value="<?php echo $round3; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round4" value="<?php echo $round4; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round5" value="<?php echo $round5; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11"  type="number" name="round6" value="<?php echo $round6; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round7" value="<?php echo $round7; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round8" value="<?php echo $round8; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round9" value="<?php echo $round9; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round10" value="<?php echo $round10; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round11" value="<?php echo $round11; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="round12" value="<?php echo $round12; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="total_puntos" value="<?php echo $total_puntos; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="num_jabs" value="<?php echo $num_jabs; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="num_power" value="<?php echo $num_power; ?>"></td>
+              <td class="pt-3-half"><input maxlength="11" type="number" name="total_golpes" value="<?php echo $total_golpes; ?>"></td>
               <td class="pt-3-half"><input type="number" name="ganador" value="<?php echo $ganador; ?>"></td>
             <td>
               <input type="hidden" name="id" value="<?php echo $id; ?>"/>

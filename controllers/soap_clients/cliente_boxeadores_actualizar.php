@@ -285,84 +285,84 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <div class="form-group <?php echo (!empty($alias_err)) ? 'has-error' : ''; ?>">
                             <label>Alias</label>
-                            <input type="text" name="alias" class="form-control" value="<?php echo $alias; ?>">
+                            <input type="text" name="alias" maxlength="100" minlength="0" class="form-control" value="<?php echo $alias; ?>">
                             <span class="help-block"><?php echo $alias_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($nombre_boxeador_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre boxeador</label>
-                            <input type="text" name="nombre_boxeador" class="form-control" value="<?php echo $nombre_boxeador; ?>">
+                            <input type="text" name="nombre_boxeador" maxlength="100" minlength="0" class="form-control" value="<?php echo $nombre_boxeador; ?>">
                             <span class="help-block"><?php echo $nombre_boxeador_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($total_peleas_err)) ? 'has-error' : ''; ?>">
                             <label>Total de peleas</label>
-                            <input type="text" name="total_peleas" class="form-control" value="<?php echo $total_peleas; ?>">
+                            <input type="text" name="total_peleas" maxlength="11" minlength="0" class="form-control" value="<?php echo $total_peleas; ?>">
                             <span class="help-block"><?php echo $total_peleas_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_ganadas_err)) ? 'has-error' : ''; ?>">
                             <label>#Pelas ganadas</label>
-                            <input type="text" name="peleas_ganadas" class="form-control" value="<?php echo $peleas_ganadas; ?>">
+                            <input type="text" name="peleas_ganadas" maxlength="11" minlength="0" class="form-control" value="<?php echo $peleas_ganadas; ?>">
                             <span class="help-block"><?php echo $peleas_ganadas_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_ganadas_ko_err)) ? 'has-error' : ''; ?>">
                             <label>#Peleas ganadas por k.o</label>
-                            <input type="text" name="peleas_ganadas_ko" class="form-control" value="<?php echo $peleas_ganadas_ko; ?>">
+                            <input type="text" name="peleas_ganadas_ko" maxlength="11" minlength="0" class="form-control" value="<?php echo $peleas_ganadas_ko; ?>">
                             <span class="help-block"><?php echo $peleas_ganadas_ko_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_perdidas_err)) ? 'has-error' : ''; ?>">
                             <label>#Peleas perdidas</label>
-                            <input type="text" name="peleas_perdidas" class="form-control" value="<?php echo $peleas_perdidas; ?>">
+                            <input type="text" name="peleas_perdidas" maxlength="11" minlength="0" class="form-control" value="<?php echo $peleas_perdidas; ?>">
                             <span class="help-block"><?php echo $peleas_perdidas_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($peleas_perdidas_ko_err)) ? 'has-error' : ''; ?>">
                             <label>#Peleas perdidas por k.o</label>
-                            <input type="text" name="peleas_perdidas_ko" class="form-control" value="<?php echo $peleas_perdidas_ko; ?>">
+                            <input type="text" name="peleas_perdidas_ko" maxlength="11" minlength="0" class="form-control" value="<?php echo $peleas_perdidas_ko; ?>">
                             <span class="help-block"><?php echo $peleas_perdidas_ko_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($empates_err)) ? 'has-error' : ''; ?>">
                             <label>Empates</label>
-                            <input type="text" name="empates" class="form-control" value="<?php echo $empates; ?>">
+                            <input type="text" name="empates" maxlength="11" minlength="0" class="form-control" value="<?php echo $empates; ?>">
                             <span class="help-block"><?php echo $empates_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
                             <label>Categoria</label>
-                            <input type="text" name="categoria" class="form-control" value="<?php echo $categoria; ?>">
+                            <input type="text" name="categoria" maxlength="50" minlength="0" class="form-control" value="<?php echo $categoria; ?>">
                             <span class="help-block"><?php echo $categoria_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($division_err)) ? 'has-error' : ''; ?>">
                             <label>División</label>
-                            <input type="text" name="division" class="form-control" value="<?php echo $division; ?>">
+                            <input type="text" name="division" maxlength="50" minlength="0" class="form-control" value="<?php echo $division; ?>">
                             <span class="help-block"><?php echo $division_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($peso_err)) ? 'has-error' : ''; ?>">
                             <label>Peso</label>
-                            <input type="text" name="peso" class="form-control" value="<?php echo $peso; ?>">
+                            <input type="number" pattern=".{0-9}" min="0.01" maxlength="10" minlength="0" step="0.01" name="peso" class="form-control" value="<?php echo $peso; ?>">
                             <span class="help-block"><?php echo $peso_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($altura_err)) ? 'has-error' : ''; ?>">
                             <label>Altura</label>
-                            <input type="text" name="altura" class="form-control" value="<?php echo $altura; ?>">
+                            <input type="number" pattern=".{0-9}" min="0.01" maxlength="10" minlength="0" step="0.01" name="altura" class="form-control" value="<?php echo $altura; ?>">
                             <span class="help-block"><?php echo $altura_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($estado_err)) ? 'has-error' : ''; ?>">
                             <label>Estado</label>
-                            <input type="text" name="estado" class="form-control" value="<?php echo $estado; ?>">
+                            <input type="text" name="estado" maxlength="50" minlength="0" class="form-control" value="<?php echo $estado; ?>">
                             <span class="help-block"><?php echo $estado_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($ciudad_err)) ? 'has-error' : ''; ?>">
                             <label>Ciudad</label>
-                            <input type="text" name="ciudad" class="form-control" value="<?php echo $ciudad; ?>">
+                            <input type="text" name="ciudad" maxlength="50" minlength="0" class="form-control" value="<?php echo $ciudad; ?>">
                             <span class="help-block"><?php echo $ciudad_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($municipio_err)) ? 'has-error' : ''; ?>">
                             <label>Municipio</label>
-                            <input type="text" name="municipio" class="form-control" value="<?php echo $municipio; ?>">
+                            <input type="text" name="municipio" maxlength="50" minlength="0" class="form-control" value="<?php echo $municipio; ?>">
                             <span class="help-block"><?php echo $municipio_err;?></span>
                         </div>
                         <div class="form-group">
                             <img src="http://localhost/BOMV/resources/images/boxeadores/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
                             <div class="form-group">
                                 <label>Foto</label>
-                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple> 
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/noticias/<?php echo $nombre_foto; ?>" multiple accept="image/*"> 
                             </div>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>

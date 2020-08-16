@@ -230,37 +230,37 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         
 						<div class="form-group <?php echo (!empty($id_juez1_err)) ? 'has-error' : ''; ?>">
                             <label>Juez 1</label>
-                            <input id="search_juez" type="text" name="id_juez1" class="form-control" value="<?php echo $id_juez1; ?>">
+                            <input id="search_juez" type="text" name="id_juez1" maxlength="50" minlength="0" class="form-control" value="<?php echo $id_juez1; ?>">
                             <span class="help-block"><?php echo $id_juez1_err;?></span>
                         </div>
 
 						<div class="form-group <?php echo (!empty($id_juez2_err)) ? 'has-error' : ''; ?>">
                             <label>Juez 2</label>
-                            <input id="search_juez2" type="text" name="id_juez2" class="form-control" value="<?php echo $id_juez2; ?>">
+                            <input id="search_juez2" type="text" name="id_juez2" maxlength="50" minlength="0" class="form-control" value="<?php echo $id_juez2; ?>">
                             <span class="help-block"><?php echo $id_juez2_err;?></span>
                         </div>
 
 						<div class="form-group <?php echo (!empty($id_juez3_err)) ? 'has-error' : ''; ?>">
                             <label>Juez 3</label>
-                            <input id="search_juez3" type="text" name="id_juez3" class="form-control" value="<?php echo $id_juez3; ?>">
+                            <input id="search_juez3" type="text" name="id_juez3" maxlength="50" minlength="0" class="form-control" value="<?php echo $id_juez3; ?>">
                             <span class="help-block"><?php echo $id_juez3_err;?></span>
                         </div>
                         
 						<div class="form-group <?php echo (!empty($id_juez4_err)) ? 'has-error' : ''; ?>">
                             <label>Juez 4</label>
-                            <input id="search_juez4" type="text" name="id_juez4" class="form-control" value="<?php echo $id_juez4; ?>">
+                            <input id="search_juez4" type="text" name="id_juez4" maxlength="50" minlength="0" class="form-control" value="<?php echo $id_juez4; ?>">
                             <span class="help-block"><?php echo $id_juez4_err;?></span>
                         </div>
 
 						<div class="form-group <?php echo (!empty($id_boxeador1_err)) ? 'has-error' : ''; ?>">
                             <label>Boxeador 1</label>
-                            <input id="search_boxeador2" type="text" name="id_boxeador1" class="form-control" value="<?php echo $id_boxeador1; ?>">
+                            <input id="search_boxeador2" type="text" name="id_boxeador1" maxlength="50" minlength="0" class="form-control" value="<?php echo $id_boxeador1; ?>">
                             <span class="help-block"><?php echo $id_boxeador1_err;?></span>
                         </div>
 
 						<div class="form-group <?php echo (!empty($id_boxeador2_err)) ? 'has-error' : ''; ?>">
                             <label>Boxeador 2</label>
-                            <input id="search_boxeador3" type="text" name="id_boxeador2" class="form-control" value="<?php echo $id_boxeador2; ?>">
+                            <input id="search_boxeador3" type="text" name="id_boxeador2" maxlength="50" minlength="0" class="form-control" value="<?php echo $id_boxeador2; ?>">
                             <span class="help-block"><?php echo $id_boxeador2_err;?></span>
                         </div>
 
@@ -278,7 +278,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 						
 						<div class="form-group <?php echo (!empty($ganador_err)) ? 'has-error' : ''; ?>">
                             <label>Ganador</label>
-                            <input id="search_boxeador" type="text" name="ganador" class="form-control" value="<?php echo $ganador; ?>">
+                            <input id="search_boxeador" type="text" name="ganador" maxlength="100" minlength="0" class="form-control" value="<?php echo $ganador; ?>">
                             <span class="help-block"><?php echo $ganador_err;?></span>
                         </div>
                         
@@ -286,7 +286,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <img src="http://localhost/BOMV/resources/images/peleas_municipales/<?php echo $nombre_foto; ?>" class="img-fluid" alt="Imagen">
                             <div class="form-group">
                                 <label>Foto</label>
-                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/peleas_municipales/<?php echo $nombre_foto; ?>" multiple> 
+                                <input type="file" name="foto" class="form-control" value="http://localhost/BOMV/resources/images/peleas_municipales/<?php echo $nombre_foto; ?>" multiple accept="image/*"> 
                             </div>
                         </div>
 
