@@ -39,11 +39,11 @@
         .opacity{
             opacity:0.8; /* Opacidad 60% */
         }
-        #div1{
-			/*overflow:scroll;*/
+        /*#div1{
+			/*overflow:scroll;
 			height:80%;
 			width:100%;
-        }
+        }*/
 		tr td{
 			background: #2C3E50 !important;
 		}
