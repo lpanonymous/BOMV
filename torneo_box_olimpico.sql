@@ -393,7 +393,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `usuario`, `nombre`, `apellido`, `cargo`, `password`) VALUES
 (1, 'leo', 'Leonardo', 'Galicia', 'Administrador', '123'),
 (2, 'pablo', 'Pablo', 'Luis', 'Usuario', '159'),
-(3, 'law', 'Lawrense', 'la', 'Juez', '147'),
+(3, 'law', 'Lawrense', 'la', 'Usuario', '147'),
 (4, 'drako', 'Drako', 'dragon', 'Administrador', '123');
 
 --
